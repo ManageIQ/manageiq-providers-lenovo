@@ -1,0 +1,17 @@
+$:.push File.expand_path("../lib", __FILE__)
+
+require "manageiq/providers/lenovo/version"
+
+Gem::Specification.new do |s|
+  s.name        = "projectclarity"
+  s.version     = ManageIQ::Providers::Lenovo::VERSION
+  s.authors     = ["ManageIQ Developers"]
+  s.homepage    = "https://github.com/ManageIQ/manageiq"
+  s.summary     = "Lenovo XClarity Provider for ManageIQ"
+  s.description = "Lenovo XClarity Provider for ManageIQ"
+  s.licenses    = ["Apache-2.0"]
+
+  s.files = Dir["{app,config.lib}/**/*"]
+
+  s.add_dependency("xclarityclient", ["~>0.0.1"])
+end
