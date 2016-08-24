@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require "manageiq/providers/lenovo/version"
 
 Gem::Specification.new do |s|
-  s.name        = "projectclarity"
+  s.name        = "xclarity"
   s.version     = ManageIQ::Providers::Lenovo::VERSION
   s.authors     = ["ManageIQ Developers"]
   s.homepage    = "https://github.com/ManageIQ/manageiq"
