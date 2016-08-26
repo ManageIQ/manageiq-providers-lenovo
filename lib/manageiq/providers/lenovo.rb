@@ -1,6 +1,6 @@
 require "manageiq/providers/lenovo/engine"
 
-module Manageiq
+module ManageIQ
   module Providers
     module Lenovo
     end
