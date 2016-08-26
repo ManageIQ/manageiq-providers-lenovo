@@ -13,5 +13,5 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config.lib}/**/*"]
 
-  s.add_dependency "xclarityclient", "~> 0.1.0"
+  s.add_dependency "xclarity_client", "~> 0.1.0"
 end
