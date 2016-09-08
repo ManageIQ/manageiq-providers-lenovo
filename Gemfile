@@ -6,6 +6,12 @@ gemspec
 group :test do
   gem "codeclimate-test-reporter", :require => false, :git => "git://github.com/codeclimate/ruby-test-reporter", :branch => "master"
   gem 'guard'
+	
+end
+
+
+group :test, :development do
+  gem "rspec"
 
 end
 
