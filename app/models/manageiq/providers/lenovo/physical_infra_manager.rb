@@ -1,7 +1,6 @@
 class ManageIQ::Providers::PhysicalInfraManager < ManageIQ::Providers::InfraManager
 end
 
-#TODO Lenovo::PhysucalInfraManager have to extends ManageIQ::Providers::PhysicalInfraManager
-class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::InfraManager
+class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::PhysicalInfraManager
   include ManageIQ::Providers::Lenovo::ManagerMixin
 end
