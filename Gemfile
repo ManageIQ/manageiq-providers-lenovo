@@ -3,16 +3,16 @@
 # development dependencies will be added by default to the :development group.
 gemspec
 
+gem 'rake'
+
 group :test do
   gem "codeclimate-test-reporter", :require => false, :git => "git://github.com/codeclimate/ruby-test-reporter", :branch => "master"
   gem 'guard'
 	
 end
 
-
 group :test, :development do
   gem "rspec"
-
 end
 
 unless dependencies.detect { |d| d.name == "xclarity_client" }
