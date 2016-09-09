@@ -8,4 +8,8 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::I
   def self.ems_type
     @ems_type ||= "lenovo_ph_infra".freeze
   end
+
+  def self.description
+    @description ||= "Lenovo XClarity"
+  end
 end
