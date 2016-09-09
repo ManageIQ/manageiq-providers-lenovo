@@ -2,6 +2,7 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
   extend ActiveSupport::Concern
 
   def description
+    "Lenovo XClarity"
   end
 
   #
