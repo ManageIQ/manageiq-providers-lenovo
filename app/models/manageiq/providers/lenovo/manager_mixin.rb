@@ -21,7 +21,7 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
   def translate_exception(err)
   end
 
-  def verify_credentials
+  def verify_credentials(auth_type = nil, options = {})
     # TODO: (julian) Find out if Lenovo supports a verify credentials method
     true
   end
