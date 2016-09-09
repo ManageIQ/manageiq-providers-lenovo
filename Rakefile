@@ -17,6 +17,7 @@ Dir.glob('./lib/tasks/**/*.rake').each { |r| load r}
 # end
 
 APP_RAKEFILE = File.expand_path("../spec/manageiq/Rakefile", __FILE__)
+load 'rails/tasks/engine.rake'
 
 
 # load 'rails/tasks/statistics.rake'
