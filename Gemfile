@@ -16,7 +16,7 @@ group :test, :development do
 end
 
 unless dependencies.detect { |d| d.name == "xclarity_client" }
-  gem "xclarity_client", :git => "git://github.com/juliancheal/xclarity_client", :branch => "master"
+  gem "xclarity_client", :git => "git://github.com/maas-ufcg/xclarity_client", :branch => "master"
 end
 
 # Declare any dependencies that are still in development here instead of in

@@ -1,5 +1,5 @@
-module ManageIQ::Providers
-  class Lenovo::PhysicalInfraManager::Refresher < ManageIQ::Providers::BaseManager::Refresher
+module ManageIQ::Providers::Lenovo
+  class PhysicalInfraManager::Refresher < ManageIQ::Providers::BaseManager::Refresher
     include ::EmsRefresh::Refreshers::EmsRefresherMixin
 
     def parse_legacy_inventory(ems)
@@ -8,6 +8,10 @@ module ManageIQ::Providers
 
     def save_inventory(ems, target, hashes)
       EmsRefresh.save_ems_inventory(ems, hashes)
+    end
+
+    def post_process_refresh_classes
+      []
     end
 
   end
