@@ -4,15 +4,7 @@
 gemspec
 
 group :test do
-  gem "codeclimate-test-reporter", :require => false, :git => "git://github.com/codeclimate/ruby-test-reporter", :branch => "master"
-  gem 'guard'
-	
-end
-
-
-group :test, :development do
-  gem "rspec"
-
+  gem "codeclimate-test-reporter", :require => false
 end
 
 unless dependencies.detect { |d| d.name == "xclarity_client" }
@@ -27,4 +19,4 @@ end
 
 
 # Load Gemfile with dependencies from manageiq
-#eval_gemfile(File.expand_path("spec/manageiq/Gemfile", __dir__))
+eval_gemfile(File.expand_path("spec/manageiq/Gemfile", __dir__))
