@@ -27,6 +27,7 @@ module ManageIQ::Providers::Lenovo
     private
 
     def get_nodes
+      $log.info("#{log_header} CALLING get_nodes " )
       nodes = @connection.discover_nodes
       process_collection(nodes, :nodeList) { |node| parse_node(node) }
     end
