@@ -11,7 +11,7 @@ module ManageIQ::Providers::Lenovo
       @host_hash_by_name = {}
     end
 
-    def ems_inv_to_hashes
+    def self.ems_inv_to_hashes
       log_header = "MIQ(#{self.class.name}.#{__method__}) Collecting data for EMS : [#{@ems.name}] id: [#{@ems.id}]"
 
       $log.info("#{log_header}...")
@@ -34,7 +34,7 @@ module ManageIQ::Providers::Lenovo
 
     def parse_node(node)
       uid    = node.uuid
-      type = ManageIQ::Providers::Lenovo::PhysicalInfraManager::Vm.name
+      type = 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::Node'
       new_result = {
           :type              => type,
           :uid_ems           => uid,
