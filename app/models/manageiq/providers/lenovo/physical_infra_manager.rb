@@ -4,6 +4,10 @@
 class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::InfraManager
   include ManageIQ::Providers::Lenovo::ManagerMixin
 
+  required_nested :Refresher
+  required_nested :RefreshParser
+  required_nested :RefreshWorker
+
   def self.ems_type
     @ems_type ||= "lenovo_ph_infra".freeze
   end
