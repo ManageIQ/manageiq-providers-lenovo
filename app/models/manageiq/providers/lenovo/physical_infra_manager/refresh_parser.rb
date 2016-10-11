@@ -34,13 +34,13 @@ module ManageIQ::Providers
 
     def parse_nodes(node)
       node
-      phsical_server = ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.new(node)
+      physical_server = ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.new(node)
 
       new_result = {
         :type     => ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.name,
-        :name     => phsical_server.name,
-        :ems_ref  => phsical_server.uuid,
-        :uuid     => phsical_server.hostname,
+        :name     => physical_server.name,
+        :ems_ref  => physical_server.uuid,
+        :uid_ems  => physical_server.hostname,
       }
 
       return uid, new_result
