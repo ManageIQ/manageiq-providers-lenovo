@@ -19,7 +19,7 @@ module ManageIQ::Providers
       $log.info("#{log_header}...")
       # The order of the below methods does matter, because there are inner dependencies of the data!
 
-      get_phsical_servers
+      get_physical_servers
 
       $log.info("#{log_header}...Complete")
       @data
@@ -29,10 +29,10 @@ module ManageIQ::Providers
 
     def get_phsical_servers
       nodes = @connection.discover_nodes
-      process_collection(nodes, :nodeList) { |node| parse_nodes(node) }
+      process_collection(nodes, :nodeList) { |node| parse_node(node) }
     end
 
-    def parse_nodes(node)
+    def parse_node(node)
       node
       physical_server = ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.new(node)
 
