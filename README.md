@@ -3,7 +3,7 @@
 [![Gem Version](https://badge.fury.io/rb/manageiq-providers-lenovo.svg)](http://badge.fury.io/rb/manageiq-providers-lenovo)
 [![Build Status](https://travis-ci.org/ManageIQ/manageiq-providers-lenovo.svg)](https://travis-ci.org/ManageIQ/manageiq-providers-lenovo)
 [![Code Climate](https://codeclimate.com/github/ManageIQ/manageiq-providers-lenovo.svg)](https://codeclimate.com/github/ManageIQ/manageiq-providers-lenovo)
-[![Test Coverage](https://codeclimate.com/github/ManageIQ/manageiq-providers-lenovo/badges/coverage.svg)](https://codeclimate.com/github/ManageIQ/manageiq-providers-amazon/coverage)
+[![Test Coverage](https://codeclimate.com/github/ManageIQ/manageiq-providers-lenovo/badges/coverage.svg)](https://codeclimate.com/github/ManageIQ/manageiq-providers-lenovo/coverage)
 [![Dependency Status](https://gemnasium.com/ManageIQ/manageiq-providers-lenovo.svg)](https://gemnasium.com/ManageIQ/manageiq-providers-lenovo)
 [![Security](https://hakiri.io/github/ManageIQ/manageiq-providers-lenovo/master.svg)](https://hakiri.io/github/ManageIQ/manageiq-providers-lenovo/master)
 
