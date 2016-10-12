@@ -29,7 +29,7 @@ module ManageIQ::Providers
 
     def get_physical_servers
       nodes = @connection.discover_nodes
-      process_collection(nodes, :nodeList) { |node| parse_node(node) }
+      process_collection(nodes, :physical_servers) { |node| parse_node(node) }
     end
 
     def parse_node(node)
