@@ -11,15 +11,15 @@ module ManageIQ::Providers::Lenovo
       @host_hash_by_name = {}
     end
 
-    def self.ems_inv_to_hashes
+    def ems_inv_to_hashes
       log_header = "MIQ(#{self.class.name}.#{__method__}) Collecting data for EMS : [#{@ems.name}] id: [#{@ems.id}]"
 
-      $lenovo_log.info("#{log_header}...")
+      $log.info("#{log_header}...")
 
       # The order of the below methods does matter, because there are inner dependencies of the data!
       get_nodes
 
-      $lenovo_log.info("#{log_header}...Complete")
+      $log.info("#{log_header}...Complete")
 
       @data
     end
@@ -27,7 +27,7 @@ module ManageIQ::Providers::Lenovo
     private
 
     def get_nodes
-      $lenovo_log.info("#{log_header} CALLING get_nodes " )
+      $log.info("#{log_header} CALLING get_nodes " )
       nodes = @connection.discover_nodes
       process_collection(nodes, :nodeList) { |node| parse_node(node) }
     end
