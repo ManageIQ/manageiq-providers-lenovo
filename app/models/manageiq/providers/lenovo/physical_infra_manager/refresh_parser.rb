@@ -1,5 +1,6 @@
 module ManageIQ::Providers::Lenovo
-  class PhysicalInfraManager::RefreshParser < ManageIQ::Providers::PhysicalInfraManager::RefreshParser
+  #TODO Change back to PhysicalInfra Inheritance
+  class PhysicalInfraManager::RefreshParser < EmsRefresh::Parsers::Infra
     include ManageIQ::Providers::Lenovo::RefreshHelperMethods
 
     def initialize(ems, options = nil)
