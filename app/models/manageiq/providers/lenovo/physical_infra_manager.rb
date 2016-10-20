@@ -2,7 +2,7 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::I
   include ManageIQ::Providers::Lenovo::ManagerMixin
 
   require_nested :Refresher
-#  require_nested :RefreshParser
+  require_nested :RefreshParser
 #  require_nested :RefreshWorker
 
   def self.ems_type
