@@ -4,8 +4,12 @@ module ManageIQ::Providers::Lenovo
     include ManageIQ::Providers::Lenovo::RefreshHelperMethods
 
     def initialize(ems, options = nil)
+      ems_auth = ems.authentications.first
+
       @ems               = ems
-      @connection        = ems.connect
+      @connection        = ems.connect({:user => ems_auth.userid,
+                                        :pass => ems_auth.password, 
+                                        :host =>  ems.endpoints.first.hostname})
       @options           = options || {}
       @data              = {}
       @data_index        = {}
@@ -28,7 +32,6 @@ module ManageIQ::Providers::Lenovo
     private
 
     def get_nodes
-      $log.info("#{log_header} CALLING get_nodes " )
       nodes = @connection.discover_nodes
       process_collection(nodes, :nodeList) { |node| parse_node(node) }
     end

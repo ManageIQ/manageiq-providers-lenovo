@@ -8,7 +8,6 @@ module ManageIQ::Providers::Lenovo
       log_header = "MIQ_LENOVO(#{self.class.name}.#{__method__} Calling for [#{ems.name}])"
       $log.info("#{log_header}")
     
-      #TODO the following call isn't working
       ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser.ems_inv_to_hashes(ems, refresher_options)
     end
 
