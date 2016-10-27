@@ -43,9 +43,7 @@ module ManageIQ::Providers::Lenovo
           :type              => type,
           :uid_ems           => uid,
           :ems_ref           => uid,
-          :hostname          => node.hostname,
-          :mac_address       => node.macAddress,
-          :description       => node.description
+          :name              => node.name
           # TODO add other properties
       }
 
