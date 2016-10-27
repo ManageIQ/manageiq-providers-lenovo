@@ -11,11 +11,13 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
   def connect(options = {})
     # raise "no credentials defined" if missing_credentials?(options[:auth_type])
 
-    username = options[:user] || authentication_userid(options[:auth_type])
-    password = options[:pass] || authentication_password(options[:auth_type])
-    host     = options[:host]
+    username   = options[:user] || authentication_userid(options[:auth_type])
+    password   = options[:pass] || authentication_password(options[:auth_type])
+    host       = options[:host]
+    #TODO: improve this SSL verification
+    verify_ssl = options[:verify_ssl] == 1 ? 'PEER' : 'NONE'
 
-    self.class.raw_connect(username, password, host)
+    self.class.raw_connect(username, password, host, verify_ssl)
   end
 
   def translate_exception(err)
@@ -30,12 +32,13 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
     #
     # Connections
     #
-    def raw_connect(username, password, host)
+    def raw_connect(username, password, host, verify_ssl)
       require 'xclarity_client'
       xclarity = XClarityClient::Configuration.new(
         :username => username,
         :password => password,
-        :host     => host
+        :host     => host,
+        :verify_ssl => verify_ssl
       )
       XClarityClient::Client.new(xclarity)
     end
