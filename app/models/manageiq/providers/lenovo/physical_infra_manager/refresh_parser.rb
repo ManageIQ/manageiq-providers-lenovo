@@ -21,8 +21,7 @@ module ManageIQ::Providers::Lenovo
 
       $log.info("#{log_header}...")
 
-      # The order of the below methods does matter, because there are inner dependencies of the data!
-      get_nodes
+      get_physical_servers
 
       $log.info("#{log_header}...Complete")
 
@@ -31,24 +30,24 @@ module ManageIQ::Providers::Lenovo
 
     private
 
-    def get_nodes
+    def get_physical_servers
       nodes = @connection.discover_nodes
-      process_collection(nodes, :nodeList) { |node| parse_node(node) }
+      process_collection(nodes, :nodeList) { |node| parse_nodes(node) }
     end
 
-    def parse_node(node)
-      uid    = node.uuid
-      type = 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::Node'
+
+    def parse_nodes(node)
+      node
+      physical_server = ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.new(node)
+
       new_result = {
-          :type              => type,
-          :uid_ems           => uid,
-          :ems_ref           => uid,
-          :name              => node.name
-          # TODO add other properties
+        :type     => ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.name,
+        :name     => physical_server.name,
+        :ems_ref  => physical_server.uuid,
+        :uid_ems  => physical_server.hostname,
       }
 
       return uid, new_result
-
     end
 
     def self.miq_template_type
