@@ -38,16 +38,16 @@ module ManageIQ::Providers::Lenovo
 
     def parse_nodes(node)
       node
-      physical_server = ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.new(node)
+      # physical_server = ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.new(node)
 
       new_result = {
         :type     => ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.name,
-        :name     => physical_server.name,
-        :ems_ref  => physical_server.uuid,
-        :uid_ems  => physical_server.hostname,
+        :name     => node.name,
+        :ems_ref  => node.uuid,
+        :uid_ems  => node.hostname,
       }
 
-      return uid, new_result
+      return node.uuid, new_result
     end
 
     def self.miq_template_type
