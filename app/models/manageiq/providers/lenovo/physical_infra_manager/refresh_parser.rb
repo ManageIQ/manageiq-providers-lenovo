@@ -32,7 +32,7 @@ module ManageIQ::Providers::Lenovo
 
     def get_physical_servers
       nodes = @connection.discover_nodes
-      process_collection(nodes, :nodeList) { |node| parse_nodes(node) }
+      process_collection(nodes, :physical_servers) { |node| parse_nodes(node) }
     end
 
 
