@@ -53,7 +53,7 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
       all_emses         = includes(:authentications)
       all_ems_names     = all_emses.map(&:name).to_set
 
-      xclarity = raw_connect(username, password, host, verify_ssl)
+      raw_connect(username, password, host, verify_ssl)
 
       EmsRefresh.queue_refresh(new_emses) unless new_emses.blank?
 
