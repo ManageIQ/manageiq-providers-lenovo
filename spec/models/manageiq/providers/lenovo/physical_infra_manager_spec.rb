@@ -1,3 +1,5 @@
+require 'xclarity_client'
+
 describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
 
   pending "Must test authentication verification"
@@ -5,7 +7,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
   pending "Must test discovery"
 
   before :all do
-    @auth = { user: 'admin', pass: 'smartvm', host: 'localhost' }
+    @auth = { user: 'admin', pass: 'smartvm', host: 'localhost', verify_ssl: 'true'}
   end
 
   it 'ems_type should be lenovo_physical_infra_manager' do
@@ -15,10 +17,4 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
   it 'description should be "Lenovo XClarity"' do
     expect(described_class.description).to eq("Lenovo XClarity")
   end
-
-  it 'connect should return a XClarityClient::Client object' do
-    client = described_class.new.connect(@auth)
-    expect(client).to be_a(XClarityClient::Client)
-  end
-
 end
