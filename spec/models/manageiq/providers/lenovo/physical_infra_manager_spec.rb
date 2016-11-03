@@ -1,3 +1,5 @@
+require 'xclarity_client'
+
 describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
 
   pending "Must test authentication verification"
@@ -20,5 +22,4 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     client = described_class.new.connect(@auth)
     expect(client).to be_a(XClarityClient::Client)
   end
-
 end

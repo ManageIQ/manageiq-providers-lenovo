@@ -16,7 +16,6 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
     host       = options[:host]
     #TODO: improve this SSL verification
     verify_ssl = options[:verify_ssl] == 1 ? 'PEER' : 'NONE'
-
     self.class.raw_connect(username, password, host, verify_ssl)
   end
 
@@ -35,9 +34,9 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
     def raw_connect(username, password, host, verify_ssl)
       require 'xclarity_client'
       xclarity = XClarityClient::Configuration.new(
-        :username => username,
-        :password => password,
-        :host     => host,
+        :username   => username,
+        :password   => password,
+        :host       => host,
         :verify_ssl => verify_ssl
       )
       XClarityClient::Client.new(xclarity)
@@ -55,7 +54,7 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
       all_emses         = includes(:authentications)
       all_ems_names     = all_emses.map(&:name).to_set
 
-      xclarity = raw_connect(username, password, host)
+      raw_connect(username, password, host, verify_ssl)
 
       EmsRefresh.queue_refresh(new_emses) unless new_emses.blank?
 
