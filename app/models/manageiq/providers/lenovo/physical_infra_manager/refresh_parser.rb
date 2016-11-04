@@ -1,27 +1,30 @@
-module ManageIQ::Providers
-  class Lenovo::PhysicalInfraManager::RefreshParser < ManageIQ::Providers::PhysicalInfraManager::RefreshParser
-
-    def self.ems_inv_to_hashes(ems, options = nil)
-      new(ems, options).ems_inv_to_hashes
-    end
+module ManageIQ::Providers::Lenovo
+  #TODO Change back to PhysicalInfra Inheritance
+  class PhysicalInfraManager::RefreshParser < EmsRefresh::Parsers::Infra
+    include ManageIQ::Providers::Lenovo::RefreshHelperMethods
 
     def initialize(ems, options = nil)
+      ems_auth = ems.authentications.first
+
       @ems               = ems
-      @connection        = ems.connect
+      @connection        = ems.connect({:user => ems_auth.userid,
+                                        :pass => ems_auth.password, 
+                                        :host =>  ems.endpoints.first.hostname})
+      @options           = options || {}
       @data              = {}
       @data_index        = {}
       @host_hash_by_name = {}
     end
 
     def ems_inv_to_hashes
-      log_header = "MIQ(#{self.class.name}.#{__method__}) Collecting data" \
-                   " for EMS name: [#{@ems.name}] id: [#{@ems.id}]"
+      log_header = "MIQ(#{self.class.name}.#{__method__}) Collecting data for EMS : [#{@ems.name}] id: [#{@ems.id}]"
+
       $log.info("#{log_header}...")
-      # The order of the below methods does matter, because there are inner dependencies of the data!
 
       get_physical_servers
 
       $log.info("#{log_header}...Complete")
+
       @data
     end
 
@@ -29,40 +32,26 @@ module ManageIQ::Providers
 
     def get_physical_servers
       nodes = @connection.discover_nodes
-      process_collection(nodes, :physical_servers) { |node| parse_node(node) }
+      process_collection(nodes, :physical_servers) { |node| parse_nodes(node) }
     end
 
-    def parse_node(node)
+
+    def parse_nodes(node)
       node
-      physical_server = ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.new(node)
+      # physical_server = ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.new(node)
 
       new_result = {
         :type     => ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.name,
-        :name     => physical_server.name,
-        :ems_ref  => physical_server.uuid,
-        :uid_ems  => physical_server.hostname,
+        :name     => node.name,
+        :ems_ref  => node.uuid,
+        :uid_ems  => node.hostname,
       }
 
-      return uid, new_result
+      return node.uuid, new_result
     end
 
     def self.miq_template_type
       "ManageIQ::Providers::Lenovo::PhysicalInfraManager::Template"
-    end
-
-    #
-    # Helper methods
-    #
-    def process_collection(collection, key)
-      @data[key] ||= []
-      return if collection.nil?
-
-      collection.each do |item|
-        uid, new_result = yield(item)
-
-        @data[key] << new_result
-        @data_index.store_path(key, uid, new_result)
-      end
     end
 
   end

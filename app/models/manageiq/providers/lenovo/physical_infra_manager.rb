@@ -1,8 +1,14 @@
-class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::PhysicalInfraManager
+class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::InfraManager
+  has_many :physical_servers, foreign_key: "ems_id", class_name: "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer"
+
   include ManageIQ::Providers::Lenovo::ManagerMixin
 
+  require_nested :Refresher
+  require_nested :RefreshParser
+#  require_nested :RefreshWorker
+
   def self.ems_type
-    @ems_type ||= "lenovo_physical_infra_manager".freeze
+    @ems_type ||= "lenovo_ph_infra".freeze
   end
 
   def self.description
