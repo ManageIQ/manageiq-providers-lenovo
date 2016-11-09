@@ -31,9 +31,9 @@ module ManageIQ::Providers::Lenovo
     private
 
     def get_physical_servers
-      cabinets = @connection.discover_cabinet({status: "includestandalone"})
-      nodes = cabinets.map { |cabinet| cabinet.nodeList }.flatten
-      nodes = nodes.map do |node| 
+      cabinets = @connection.discover_cabinet(:status => "includestandalone")
+      nodes = cabinets.map(&:nodeList).flatten
+      nodes = nodes.map do |node|
         XClarityClient::Node.new node["itemInventory"]
       end
       process_collection(nodes, :physical_servers) { |node| parse_nodes(node) }
