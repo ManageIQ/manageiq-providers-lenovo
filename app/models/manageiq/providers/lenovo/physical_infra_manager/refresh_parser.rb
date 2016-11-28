@@ -34,18 +34,18 @@ module ManageIQ::Providers::Lenovo
       cabinets = @connection.discover_cabinet(:status => "includestandalone")
 
       nodes = cabinets.map(&:nodeList).flatten
-      nodes = nodes.map do |nodes|
-        nodes["itemInventory"]
+      nodes = nodes.map do |node|
+        node["itemInventory"]
       end.flatten
 
       chassis = cabinets.map(&:chassisList).flatten
 
-      nodesChassis = chassis.map do |chassi|
+      nodes_chassis = chassis.map do |chassi|
         chassi["itemInventory"]["nodes"]
       end.flatten
-      nodesChassis = nodesChassis.select{ |node| node["type"] != "SCU" }
+      nodes_chassis = nodes_chassis.select { |node| node["type"] != "SCU" }
 
-      nodes += nodesChassis
+      nodes += nodes_chassis
 
       nodes = nodes.map do |node|
         XClarityClient::Node.new node
@@ -55,14 +55,13 @@ module ManageIQ::Providers::Lenovo
 
 
     def parse_nodes(node)
-
       # physical_server = ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.new(node)
 
       new_result = {
-        :type     => ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.name,
-        :name     => node.name,
-        :ems_ref  => node.uuid,
-        :uid_ems  => node.uuid,
+        :type    => ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.name,
+        :name    => node.name,
+        :ems_ref => node.uuid,
+        :uid_ems => node.uuid
       }
 
       return node.uuid, new_result
