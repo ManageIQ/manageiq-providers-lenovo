@@ -8,7 +8,7 @@ module ManageIQ::Providers::Lenovo
 
       @ems               = ems
       @connection        = ems.connect({:user => ems_auth.userid,
-                                        :pass => ems_auth.password, 
+                                        :pass => ems_auth.password,
                                         :host =>  ems.endpoints.first.hostname})
       @options           = options || {}
       @data              = {}
@@ -32,23 +32,37 @@ module ManageIQ::Providers::Lenovo
 
     def get_physical_servers
       cabinets = @connection.discover_cabinet(:status => "includestandalone")
+
       nodes = cabinets.map(&:nodeList).flatten
+      nodes = nodes.map do |nodes|
+        nodes["itemInventory"]
+      end.flatten
+
+      chassis = cabinets.map(&:chassisList).flatten
+
+      nodesChassis = chassis.map do |chassi|
+        chassi["itemInventory"]["nodes"]
+      end.flatten
+      nodesChassis = nodesChassis.select{ |node| node["type"] != "SCU" }
+
+      nodes += nodesChassis
+
       nodes = nodes.map do |node|
-        XClarityClient::Node.new node["itemInventory"]
+        XClarityClient::Node.new node
       end
       process_collection(nodes, :physical_servers) { |node| parse_nodes(node) }
     end
 
 
     def parse_nodes(node)
-      node
+
       # physical_server = ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.new(node)
 
       new_result = {
         :type     => ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.name,
         :name     => node.name,
         :ems_ref  => node.uuid,
-        :uid_ems  => node.hostname,
+        :uid_ems  => node.uuid,
       }
 
       return node.uuid, new_result
