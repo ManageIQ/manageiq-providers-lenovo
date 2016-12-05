@@ -11,7 +11,7 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Runner < 
     event_monitor_handle.each_batch do |event|
       _log.debug { "#{log_prefix} Received event #{event["messageId"]}" }
       event_monitor_running
-      $logger.info { "This is a prove that shit works :D ============= DDDDDD" }
+      $logger.info { "Specific monitor_events method called." }
       @queue.enq event
 
     end
