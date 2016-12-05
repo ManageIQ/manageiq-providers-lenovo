@@ -1,28 +1,32 @@
 class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Runner < ManageIQ::Providers::BaseManager::EventCatcher::Runner
   def stop_event_monitor
-    @event_monitor_handle.try!(:stop)
+    @event_monitor_handle&.stop
   ensure
     reset_event_monitor_handle
   end
 
   def monitor_events
-    event_monitor_handle.poll do |event|
+    raise "event_monitor_handle is nil" if event_monitor_handle.nil?
+    event_monitor_handle.start
+    event_monitor_handle.each_batch do |event|
       _log.debug { "#{log_prefix} Received event #{event["messageId"]}" }
       event_monitor_running
+      $logger.info { "Specific monitor_events method called." }
       @queue.enq event
+
     end
   ensure
-    stop_event_monitor
+    reset_event_monitor_handle
   end
 
   def process_event(event)
-    if filtered?(event)
-      _log.info "#{log_prefix} Skipping filtered Amazon event [#{event["messageId"]}]"
-    else
+    # if filtered?(event)
+    #   _log.info "#{log_prefix} Skipping filtered Lenovo event [#{event["messageId"]}]"
+    # else
       _log.info "#{log_prefix} Caught event [#{event["messageId"]}]"
-      event_hash = ManageIQ::Providers::Amazon::CloudManager::EventParser.event_to_hash(event, @cfg[:ems_id])
+      event_hash = ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventParser.event_to_hash(event, @cfg[:ems_id])
       EmsEvent.add_queue('add', @cfg[:ems_id], event_hash)
-    end
+    # end
   end
 
   private
@@ -33,10 +37,7 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Runner < 
 
   def event_monitor_handle
     @event_monitor_handle ||= begin
-      stream = ManageIQ::Providers::Amazon::CloudManager::EventCatcher::Stream.new(@ems)
-      stream.before_poll do
-        heartbeat
-      end
+      stream = ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream.new(@ems)
       stream
     end
   end
