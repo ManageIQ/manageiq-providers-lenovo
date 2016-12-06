@@ -61,7 +61,15 @@ module ManageIQ::Providers::Lenovo
         :type    => ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.name,
         :name    => node.name,
         :ems_ref => node.uuid,
-        :uid_ems => node.uuid
+        :uid_ems => node.uuid,
+        :hostname => node.hostname,
+        :productName => node.productName,
+        :manufacturer => node.manufacturer,
+        :machineType => node.machineType,
+        :model  => node.model,
+        :serialNumber => node.serialNumber,
+        :uuid =>  node.uuid,
+        :FRU  =>  node.FRU
       }
 
       return node.uuid, new_result
