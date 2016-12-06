@@ -69,7 +69,10 @@ module ManageIQ::Providers::Lenovo
         :model  => node.model,
         :serialNumber => node.serialNumber,
         :uuid =>  node.uuid,
-        :FRU  =>  node.FRU
+        :FRU  =>  node.FRU,
+	:macAdresses => node.macAddress.split,
+	:ipv4Adresses => node.ipv4Adressesi.split,
+	:ipv6Adresses => node.ipv6Adresses.split
       }
 
       return node.uuid, new_result
