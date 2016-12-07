@@ -56,7 +56,6 @@ module ManageIQ::Providers::Lenovo
 
     def parse_nodes(node)
       # physical_server = ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.new(node)
-
       new_result = {
         :type    => ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.name,
         :name    => node.name,
@@ -70,9 +69,9 @@ module ManageIQ::Providers::Lenovo
         :serialNumber => node.serialNumber,
         :uuid =>  node.uuid,
         :FRU  =>  node.FRU,
-	:macAdresses => node.macAddress.split,
-	:ipv4Adresses => node.ipv4Adressesi.split,
-	:ipv6Adresses => node.ipv6Adresses.split
+        :macAddresses => node.macAddress.split(",").flatten,
+        :ipv4Addresses => node.ipv4Addresses.split.flatten,
+        :ipv6Addresses => node.ipv6Addresses.split.flatten
       }
 
       return node.uuid, new_result
