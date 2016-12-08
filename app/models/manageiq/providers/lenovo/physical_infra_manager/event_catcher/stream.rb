@@ -4,7 +4,7 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
   #
   def initialize(ems)
     @ems                  = ems
-    @event_monitor_handle = event_monitor_handle ems
+    @event_monitor_handle = event_monitor_handle
     @collecting_events    = false
     @since                = nil
   end
@@ -26,7 +26,7 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
   end
 
   def event_monitor_handle
-    @event_monitor_handle ||= monitor_event_handle
+    @event_monitor_handle ||= create_event_monitor_handle @ems
   end
 
   private
