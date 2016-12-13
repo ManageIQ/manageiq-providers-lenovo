@@ -7,8 +7,6 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventParser
     # _log.debug("#{log_header}event: [#{event["configurationItem"]["resourceType"]} - " \
     #            "#{event["configurationItem"]["resourceId"]}]")
 
-    
-
     #TODO: Here's where we'll turn event in a hash
     event_hash = {
       :event_type => event.localLogID,

@@ -8,24 +8,25 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Runner < 
   def monitor_events
     raise "event_monitor_handle is nil" if event_monitor_handle.nil?
     event_monitor_handle.start
-    event_monitor_handle.each_batch do |event|
-      _log.debug { "#{log_prefix} Received event #{event["messageId"]}" }
-      event_monitor_running
-      $logger.info { "Specific monitor_events method called." }
-      @queue.enq event
+    event_monitor_handle.each_batch do |events|
 
+      # _log.debug { "#{log_prefix} Received event #{event.localLogID}" }
+      event_monitor_running
+      $log.info ("Specific monitor_events method called.")
+
+      events.each { |event| @queue.enq event }
     end
   ensure
-    reset_event_monitor_handle
+    stop_event_monitor
   end
 
   def process_event(event)
     # if filtered?(event)
     #   _log.info "#{log_prefix} Skipping filtered Lenovo event [#{event["messageId"]}]"
     # else
-      _log.info "#{log_prefix} Caught event [#{event["messageId"]}]"
-      event_hash = ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventParser.event_to_hash(event, @cfg[:ems_id])
-      EmsEvent.add_queue('add', @cfg[:ems_id], event_hash)
+      # _log.info "#{log_prefix} Caught event [#{event["messageId"]}]"
+      # event_hash = ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventParser.event_to_hash(event, @cfg[:ems_id])
+      EmsEvent.add_queue('add', @cfg[:ems_id], event)
     # end
   end
 
