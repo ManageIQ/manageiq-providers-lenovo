@@ -48,10 +48,13 @@ module ManageIQ::Providers::Lenovo
       nodes += nodes_chassis
 
       nodes = nodes.map do |node|
+        Firmware.where(ph_server_uuid: node["uuid"]).delete_all
+
         #TODO (walteraa) see how to save it using process_collection
         node["firmware"].map do |firmware|
-         f =   Firmware.new parse_firmware(firmware,node["uuid"])
-         f.save!
+          
+          f =   Firmware.new parse_firmware(firmware,node["uuid"])
+          f.save!
         end
         XClarityClient::Node.new node
       end
