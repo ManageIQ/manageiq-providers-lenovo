@@ -8,11 +8,16 @@
 [![Security](https://hakiri.io/github/ManageIQ/manageiq-providers-lenovo/master.svg)](https://hakiri.io/github/ManageIQ/manageiq-providers-lenovo/master)
 
 [![Chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ManageIQ/manageiq-providers-lenovo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Translate](https://img.shields.io/badge/translate-zanata-blue.svg)](https://translate.zanata.org/zanata/project/view/manageiq-providers-lenovo)
 [![License](http://img.shields.io/badge/license-APACHE2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
+
+## Development
+
+See the section on pluggable providers in the [ManageIQ Developer Setup](http://manageiq.org/docs/guides/developer_setup)
 
 ## License
 
-The gem is available as open source under the terms of the [Apache License 2.0](LICENSE).
+The gem is available as open source under the terms of the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
 ## Contributing
 
