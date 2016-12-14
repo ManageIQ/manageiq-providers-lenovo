@@ -9,11 +9,11 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventParser
 
     #TODO: Here's where we'll turn event in a hash
     event_hash = {
-      :event_type => event.localLogID,
+      :event_type => event.eventID,
       :source     => "LXCA",
       :message    => event.msg,
-      :timestamp  => event.eventDate,
-      :full_data  => event,
+      :timestamp  => event.timeStamp,
+#      :full_data  => event,
       :ems_id     => ems_id
     }
 

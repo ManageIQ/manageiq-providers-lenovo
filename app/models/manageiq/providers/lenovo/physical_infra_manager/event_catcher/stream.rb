@@ -21,9 +21,9 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
   end
 
   def each_batch
-    while @collecting_events
+    #while @collecting_events
       yield get_events.collect { |e| ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventParser.event_to_hash(e,@ems.id) }
-    end
+    #end
   end
 
   def event_monitor_handle
