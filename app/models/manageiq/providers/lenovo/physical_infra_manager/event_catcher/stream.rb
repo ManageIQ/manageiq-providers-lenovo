@@ -31,7 +31,12 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
   private
 
   def get_events
-    @event_monitor_handle.discover_events
+
+    expression = '{"filterType":"FIELDNOTREGEXAND","fields":[{"operation":"GT","field":"cn","value":"' + get_last_cnn_from_events(@ems.id).to_s + '"}]}'
+
+    opts = {'filterWith' => expression}
+
+    @event_monitor_handle.fetch_events opts
   end
 
   def create_event_monitor_handle(ems)
@@ -40,6 +45,10 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
     ems.connect({:user => ems_auth.userid,
                  :pass => ems_auth.password,
                  :host =>  ems.endpoints.first.hostname})
+  end
+
+  def get_last_cnn_from_events(ems_id)
+    EventStream.where("ems_id = '#{ems_id}'").maximum("lxca_cn")
   end
 
 
