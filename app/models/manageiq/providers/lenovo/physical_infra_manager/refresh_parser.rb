@@ -48,20 +48,50 @@ module ManageIQ::Providers::Lenovo
       nodes += nodes_chassis
 
       nodes = nodes.map do |node|
+        Firmware.where(ph_server_uuid: node["uuid"]).delete_all
+
+        #TODO (walteraa) see how to save it using process_collection
+        node["firmware"].map do |firmware|
+          
+          f =   Firmware.new parse_firmware(firmware,node["uuid"])
+          f.save!
+        end
         XClarityClient::Node.new node
       end
       process_collection(nodes, :physical_servers) { |node| parse_nodes(node) }
     end
 
 
+    def parse_firmware(firmware,uuid)
+      new_result = {
+        :name => firmware["name"],
+        :build => firmware["build"],
+        :version => firmware["version"],
+        :release_date => firmware["date"],
+        :ph_server_uuid => uuid
+      }
+
+
+    end
+
     def parse_nodes(node)
       # physical_server = ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.new(node)
-
       new_result = {
         :type    => ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.name,
         :name    => node.name,
         :ems_ref => node.uuid,
-        :uid_ems => node.uuid
+        :uid_ems => node.uuid,
+        :hostname => node.hostname,
+        :productName => node.productName,
+        :manufacturer => node.manufacturer,
+        :machineType => node.machineType,
+        :model  => node.model,
+        :serialNumber => node.serialNumber,
+        :uuid =>  node.uuid,
+        :FRU  =>  node.FRU,
+        :macAddresses => node.macAddress.split(",").flatten,
+        :ipv4Addresses => node.ipv4Addresses.split.flatten,
+        :ipv6Addresses => node.ipv6Addresses.split.flatten
       }
 
       return node.uuid, new_result
