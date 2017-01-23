@@ -1,10 +1,4 @@
 inherit_from:
-- .rubocop_base.yml
-#
-# Overrides
-#
-GlobalVars:
-  AllowedVariables:
-  # Loggers
-  - $lenovo_log
-  - $log
+- https://raw.githubusercontent.com/ManageIQ/manageiq/master/.rubocop_base.yml
+# put all local rubocop config into .rubocop_local.yml as it will be loaded by .rubocop_cc.yml as well
+- .rubocop_local.yml
