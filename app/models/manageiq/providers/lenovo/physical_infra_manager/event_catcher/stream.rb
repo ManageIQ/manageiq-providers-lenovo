@@ -1,5 +1,4 @@
 class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
-
   # Creates an event monitor
   #
   def initialize(ems)
@@ -21,7 +20,7 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
   end
 
   def each_batch
-    yield get_events.collect { |e| ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventParser.event_to_hash(e,@ems.id) }
+    yield get_events.collect { |e| ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventParser.event_to_hash(e, @ems.id) }
   end
 
   def event_monitor_handle
@@ -31,8 +30,7 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
   private
 
   def get_events
-
-    expression = '{"filterType":"FIELDNOTREGEXAND","fields":[{"operation":"GT","field":"cn","value":"' + get_last_cnn_from_events(@ems.id).to_s + '"}]}'
+    expression = '{"filterType":"FIELDNOTREGEXAND","fields":["operation":"GT","field":"cn","value":"' + get_last_cnn_from_events(@ems.id).to_s + '"]}'
 
     opts = {'filterWith' => expression}
 
@@ -42,14 +40,12 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
   def create_event_monitor_handle(ems)
     ems_auth = ems.authentications.first
 
-    ems.connect({:user => ems_auth.userid,
-                 :pass => ems_auth.password,
-                 :host =>  ems.endpoints.first.hostname})
+    ems.connect(:user => ems_auth.userid,
+                :pass => ems_auth.password,
+                :host => ems.endpoints.first.hostname)
   end
 
   def get_last_cnn_from_events(ems_id)
     EventStream.where("ems_id = '#{ems_id}'").maximum("lxca_cn")
   end
-
-
 end
