@@ -1,5 +1,5 @@
 module ManageIQ::Providers::Lenovo
-  #TODO Change back to PhysicalInfra Inheritance
+  # TODO: Change back to PhysicalInfra Inheritance
   class PhysicalInfraManager::RefreshParser < EmsRefresh::Parsers::Infra
     include ManageIQ::Providers::Lenovo::RefreshHelperMethods
 
@@ -58,19 +58,19 @@ module ManageIQ::Providers::Lenovo
       # physical_server = ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.new(node)
 
       new_result = {
-        :type    => ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.name,
-        :name    => node.name,
-        :ems_ref => node.uuid,
-        :uid_ems => @ems.uid_ems,
-        :hostname => node.hostname,
-        :product_name => node.productName,
-        :manufacturer => node.manufacturer,
-        :machine_type => node.machineType,
-        :model  => node.model,
+        :type          => ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.name,
+        :name          => node.name,
+        :ems_ref       => node.uuid,
+        :uid_ems       => @ems.uid_ems,
+        :hostname      => node.hostname,
+        :product_name  => node.productName,
+        :manufacturer  => node.manufacturer,
+        :machine_type  => node.machineType,
+        :model         => node.model,
         :serial_number => node.serialNumber,
-        :uuid =>  node.uuid,
-        :FRU  =>  node.FRU,
-        :macAddresses => node.macAddress.split(",").flatten,
+        :uuid          =>  node.uuid,
+        :FRU           =>  node.FRU,
+        :macAddresses  => node.macAddress.split(",").flatten,
         :ipv4Addresses => node.ipv4Addresses.split.flatten,
         :ipv6Addresses => node.ipv6Addresses.split.flatten      
       }
