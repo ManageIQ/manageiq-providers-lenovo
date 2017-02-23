@@ -3,5 +3,7 @@ module ManageIQ::Providers
     def name
       "physical_server"
     end
+
+    has_many :firmwares, :foreign_key => "ph_server_uuid", :primary_key => "uuid"
   end
 end
