@@ -3,6 +3,5 @@ module ManageIQ::Providers
     def name
       "physical_server"
     end
-
   end
 end
