@@ -20,7 +20,7 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
   end
 
   def each_batch
-    yield get_events.collect { |e| ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventParser.event_to_hash(e, @ems.id) }
+    yield events.collect { |e| ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventParser.event_to_hash(e, @ems.id) }
   end
 
   def event_monitor_handle
@@ -29,7 +29,7 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
 
   private
 
-  def get_events
+  def events
     expression = '{"filterType":"FIELDNOTREGEXAND","fields":["operation":"GT","field":"cn","value":"' + get_last_cnn_from_events(@ems.id).to_s + '"]}'
 
     opts = {'filterWith' => expression}
