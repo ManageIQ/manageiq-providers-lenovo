@@ -1,5 +1,4 @@
 module ManageIQ::Providers::Lenovo
-  # TODO: Change back to PhysicalInfra Inheritance
   class PhysicalInfraManager::RefreshParser < EmsRefresh::Parsers::Infra
     include ManageIQ::Providers::Lenovo::RefreshHelperMethods
 
