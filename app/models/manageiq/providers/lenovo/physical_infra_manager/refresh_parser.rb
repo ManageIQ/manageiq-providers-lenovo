@@ -67,11 +67,11 @@ module ManageIQ::Providers::Lenovo
         :machine_type  => node.machineType,
         :model         => node.model,
         :serial_number => node.serialNumber,
-        :uuid          =>  node.uuid,
-        :FRU           =>  node.FRU,
+        :uuid          => node.uuid,
+        :FRU           => node.FRU,
         :macAddresses  => node.macAddress.split(",").flatten,
         :ipv4Addresses => node.ipv4Addresses.split.flatten,
-        :ipv6Addresses => node.ipv6Addresses.split.flatten      
+        :ipv6Addresses => node.ipv6Addresses.split.flatten
       }
 
       return node.uuid, new_result
