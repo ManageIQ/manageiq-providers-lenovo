@@ -54,8 +54,6 @@ module ManageIQ::Providers::Lenovo
 
 
     def parse_nodes(node)
-      # physical_server = ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.new(node)
-
       new_result = {
         :type          => ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.name,
         :name          => node.name,
