@@ -20,7 +20,9 @@ module ManageIQ::Providers::Lenovo
 
       $log.info("#{log_header}...")
 
+      # get_firmwares
       get_physical_servers
+      get_hardwares
 
       $log.info("#{log_header}...Complete")
 
@@ -29,7 +31,68 @@ module ManageIQ::Providers::Lenovo
 
     private
 
+    def get_hardwares
+      # hardware = host_inv_to_hardware_hash(host_inv)
+      # hardware[:guest_devices], guest_device_uids[mor] = host_inv_to_guest_device_hashes(host_inv, switch_uids[mor])
+      # hardware[:networks] = host_inv_to_network_hashes(host_inv, guest_device_uids[mor])
+    end
+
+    def get_firmwares
+      nodes = all_server_resources
+
+      nodes = nodes.map do |node|
+        Firmware.where(:ph_server_uuid => node["uuid"]).delete_all
+        node["firmware"].map do |firmware|
+          f = Firmware.new parse_firmware(firmware, node["uuid"])
+          f.save!
+        end
+        XClarityClient::Node.new node
+      end
+      process_collection(nodes, :firmwares) { |node| parse_firmware(node) }
+    end
+
     def get_physical_servers
+      nodes = all_server_resources
+
+      nodes = nodes.map do |node|
+        XClarityClient::Node.new node
+      end
+      process_collection(nodes, :physical_servers) { |node| parse_physical_server(node) }
+    end
+
+    def parse_firmware(firmware, uuid)
+      {
+        :name           => firmware["name"],
+        :build          => firmware["build"],
+        :version        => firmware["version"],
+        :release_date   => firmware["date"],
+        :ph_server_uuid => uuid
+      }
+    end
+
+    def parse_physical_server(node)
+      new_result = {
+        :type                   => ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.name,
+        :name                   => node.name,
+        :ems_ref                => node.uuid,
+        :uid_ems                => @ems.uid_ems,
+        :hostname               => node.hostname,
+        :product_name           => node.productName,
+        :manufacturer           => node.manufacturer,
+        :machine_type           => node.machineType,
+        :model                  => node.model,
+        :serial_number          => node.serialNumber,
+        :field_replaceable_unit => node.FRU,
+        # :macAddresses  => node.macAddress.split(",").flatten,
+        # :ipv4Addresses => node.ipv4Addresses.split.flatten,
+        # :ipv6Addresses => node.ipv6Addresses.split.flatten
+      }
+      return node.uuid, new_result
+    end
+
+    def all_server_resources
+      return @all_server_resources if @all_server_resources
+
       cabinets = @connection.discover_cabinet(:status => "includestandalone")
 
       nodes = cabinets.map(&:nodeList).flatten
@@ -46,49 +109,7 @@ module ManageIQ::Providers::Lenovo
 
       nodes += nodes_chassis
 
-      nodes = nodes.map do |node|
-        Firmware.where(:ph_server_uuid => node["uuid"]).delete_all
-
-        # TODO: (walteraa) see how to save it using process_collection
-        node["firmware"].map do |firmware|
-          f = Firmware.new parse_firmware(firmware, node["uuid"])
-          f.save!
-        end
-        XClarityClient::Node.new node
-      end
-      process_collection(nodes, :physical_servers) { |node| parse_nodes(node) }
-    end
-
-    def parse_firmware(firmware, uuid)
-      new_result = {
-        :name           => firmware["name"],
-        :build          => firmware["build"],
-        :version        => firmware["version"],
-        :release_date   => firmware["date"],
-        :ph_server_uuid => uuid
-      }
-    end
-
-    def parse_nodes(node)
-      new_result = {
-        :type          => ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.name,
-        :name          => node.name,
-        :ems_ref       => node.uuid,
-        :uid_ems       => @ems.uid_ems,
-        :hostname      => node.hostname,
-        :product_name  => node.productName,
-        :manufacturer  => node.manufacturer,
-        :machine_type  => node.machineType,
-        :model         => node.model,
-        :serial_number => node.serialNumber,
-        :uuid          => node.uuid,
-        :FRU           => node.FRU,
-        :macAddresses  => node.macAddress.split(",").flatten,
-        :ipv4Addresses => node.ipv4Addresses.split.flatten,
-        :ipv6Addresses => node.ipv6Addresses.split.flatten
-      }
-
-      return node.uuid, new_result
+      @all_server_resources = nodes
     end
 
     def self.miq_template_type
