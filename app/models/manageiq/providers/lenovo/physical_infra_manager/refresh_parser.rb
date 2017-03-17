@@ -20,7 +20,7 @@ module ManageIQ::Providers::Lenovo
 
       $log.info("#{log_header}...")
 
-      # get_firmwares
+      get_firmwares
       get_physical_servers
       get_hardwares
 
@@ -41,14 +41,9 @@ module ManageIQ::Providers::Lenovo
       nodes = all_server_resources
 
       nodes = nodes.map do |node|
-        Firmware.where(:ph_server_uuid => node["uuid"]).delete_all
-        node["firmware"].map do |firmware|
-          f = Firmware.new parse_firmware(firmware, node["uuid"])
-          f.save!
-        end
-        XClarityClient::Node.new node
+        node["firmware"].first
       end
-      process_collection(nodes, :firmwares) { |node| parse_firmware(node) }
+      process_collection(nodes, :firmwares) { |firmware| parse_firmware(firmware) }
     end
 
     def get_physical_servers
@@ -60,13 +55,13 @@ module ManageIQ::Providers::Lenovo
       process_collection(nodes, :physical_servers) { |node| parse_physical_server(node) }
     end
 
-    def parse_firmware(firmware, uuid)
+    def parse_firmware(firmware)
       {
-        :name           => firmware["name"],
-        :build          => firmware["build"],
-        :version        => firmware["version"],
-        :release_date   => firmware["date"],
-        :ph_server_uuid => uuid
+        :name         => firmware["name"],
+        :build        => firmware["build"],
+        :version      => firmware["version"],
+        :release_date => firmware["date"],
+        # :ph_server_uuid => uuid
       }
     end
 
