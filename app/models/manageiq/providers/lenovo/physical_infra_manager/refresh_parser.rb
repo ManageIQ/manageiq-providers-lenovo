@@ -1,3 +1,4 @@
+# rubocop:disable Style/AccessorMethodName
 module ManageIQ::Providers::Lenovo
   class PhysicalInfraManager::RefreshParser < EmsRefresh::Parsers::Infra
     include ManageIQ::Providers::Lenovo::RefreshHelperMethods
@@ -20,31 +21,18 @@ module ManageIQ::Providers::Lenovo
 
       $log.info("#{log_header}...")
 
-      get_firmwares
       get_physical_servers
-      get_hardwares
 
       $log.info("#{log_header}...Complete")
 
       @data
     end
 
+    def self.miq_template_type
+      "ManageIQ::Providers::Lenovo::PhysicalInfraManager::Template"
+    end
+
     private
-
-    def get_hardwares
-      # hardware = host_inv_to_hardware_hash(host_inv)
-      # hardware[:guest_devices], guest_device_uids[mor] = host_inv_to_guest_device_hashes(host_inv, switch_uids[mor])
-      # hardware[:networks] = host_inv_to_network_hashes(host_inv, guest_device_uids[mor])
-    end
-
-    def get_firmwares
-      nodes = all_server_resources
-
-      nodes = nodes.map do |node|
-        node["firmware"].first
-      end
-      process_collection(nodes, :firmwares) { |firmware| parse_firmware(firmware) }
-    end
 
     def get_physical_servers
       nodes = all_server_resources
@@ -55,13 +43,23 @@ module ManageIQ::Providers::Lenovo
       process_collection(nodes, :physical_servers) { |node| parse_physical_server(node) }
     end
 
+    def get_hardwares(node)
+      {:firmwares => get_firmwares(node.firmware)}
+    end
+
+    def get_firmwares(node)
+      firmwares = node.map do |firmware|
+        parse_firmware(firmware)
+      end
+      firmwares
+    end
+
     def parse_firmware(firmware)
       {
         :name         => firmware["name"],
         :build        => firmware["build"],
         :version      => firmware["version"],
         :release_date => firmware["date"],
-        # :ph_server_uuid => uuid
       }
     end
 
@@ -78,10 +76,16 @@ module ManageIQ::Providers::Lenovo
         :model                  => node.model,
         :serial_number          => node.serialNumber,
         :field_replaceable_unit => node.FRU,
-        # :macAddresses  => node.macAddress.split(",").flatten,
-        # :ipv4Addresses => node.ipv4Addresses.split.flatten,
-        # :ipv6Addresses => node.ipv6Addresses.split.flatten
+        :hardware               => {
+          :networks  => [
+            :mac_addresses => node.macAddress.split(",").flatten,
+            :ipaddresses   => node.ipv4Addresses.split.flatten,
+            :ipv6address   => node.ipv6Addresses.split.flatten
+          ],
+          :firmwares => [] # Filled in later conditionally on what's available
+        }
       }
+      new_result[:hardware] = get_hardwares(node)
       return node.uuid, new_result
     end
 
@@ -105,10 +109,6 @@ module ManageIQ::Providers::Lenovo
       nodes += nodes_chassis
 
       @all_server_resources = nodes
-    end
-
-    def self.miq_template_type
-      "ManageIQ::Providers::Lenovo::PhysicalInfraManager::Template"
     end
   end
 end
