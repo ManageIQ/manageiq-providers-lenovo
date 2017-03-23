@@ -3,11 +3,11 @@ module ManageIQ::Providers::Lenovo
     include ManageIQ::Providers::Lenovo::RefreshHelperMethods
 
     POWER_STATE_MAP = {
-                      8 => "on",
-                      5 => "off",
-                      18 => "Standby",
-                      0 => "Unknown"
-    }
+      8  => "on",
+      5  => "off",
+      18 => "Standby",
+      0  => "Unknown"
+    }.freeze
 
     HEALTH_STATE = {
       "normal"          => "Valid",
@@ -19,7 +19,7 @@ module ManageIQ::Providers::Lenovo
       "major-failure"   => "Critical",
       "non-recoverable" => "Critical",
       "fatal"           => "Critical"
-    }
+    }.freeze
 
     def initialize(ems, options = nil)
       ems_auth = ems.authentications.first
