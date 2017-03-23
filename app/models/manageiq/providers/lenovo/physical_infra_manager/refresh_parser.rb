@@ -68,6 +68,26 @@ module ManageIQ::Providers::Lenovo
         :ph_server_uuid => uuid
       }
     end
+    
+    def parse_hardware(node)
+      return nil if (node.memoryModules.blank? and node.processors.blank?)
+
+      new_result = {
+        :memory_mb => 0,
+        :cpu_total_cores => 0,
+        :cpu_speed  =>  0,
+      }
+
+      node.memoryModules.each do |mem|
+        new_result[:memory_mb] += mem['capacity'] * 1024
+      end
+
+      node.processors.each do |pr|
+        new_result[:cpu_total_cores] += pr['cores']
+        new_result[:cpu_speed] = pr['speed'].to_i if pr['speed'].to_i > new_result[:cpu_speed]
+      end
+      new_result
+    end
 
     def parse_nodes(node)
       new_result = {
@@ -85,7 +105,11 @@ module ManageIQ::Providers::Lenovo
         :FRU           => node.FRU,
         :macAddresses  => node.macAddress.split(",").flatten,
         :ipv4Addresses => node.ipv4Addresses.split.flatten,
-        :ipv6Addresses => node.ipv6Addresses.split.flatten
+        :ipv6Addresses => node.ipv6Addresses.split.flatten,
+        :health_state  => HEALTH_STATE[node.cmmHealthState.downcase],
+        :power_state   => POWER_STATE_MAP[node.powerStatus],
+        :vendor        => "lenovo",
+        :hardware      => parse_hardware(node)
       }
 
       return node.uuid, new_result
