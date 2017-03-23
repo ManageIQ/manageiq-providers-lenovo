@@ -68,14 +68,14 @@ module ManageIQ::Providers::Lenovo
         :ph_server_uuid => uuid
       }
     end
-    
+
     def parse_hardware(node)
-      return nil if (node.memoryModules.blank? and node.processors.blank?)
+      return nil if node.memoryModules.blank? && node.processors.blank?
 
       new_result = {
-        :memory_mb => 0,
+        :memory_mb       => 0,
         :cpu_total_cores => 0,
-        :cpu_speed  =>  0,
+        :cpu_speed       => 0
       }
 
       node.memoryModules.each do |mem|
