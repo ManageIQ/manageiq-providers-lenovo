@@ -86,9 +86,23 @@ module ManageIQ::Providers::Lenovo
         }
       }
       new_result[:hardware] = get_hardwares(node)
+      save_host_relationship(node)
       return node.uuid, new_result
     end
 
+    def save_host_relationship(node)
+      # Assign a physicalserver and host if server already exists and 
+      # some host match with physical Server's serial number
+      server = PhysicalServer.where(:uuid => node.uuid, :ems_id => @ems.id)
+      if server
+        host = Host.where(:service_tag => node.serialNumber)
+
+        if host
+          server.host = host
+          server.save!
+        end
+      end
+    end
     def all_server_resources
       return @all_server_resources if @all_server_resources
 
