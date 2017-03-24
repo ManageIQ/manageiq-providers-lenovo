@@ -110,25 +110,21 @@ module ManageIQ::Providers::Lenovo
 
     def parse_nodes(node)
       new_result = {
-        :type          => ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.name,
-        :name          => node.name,
-        :ems_ref       => node.uuid,
-        :uid_ems       => @ems.uid_ems,
-        :hostname      => node.hostname,
-        :product_name  => node.productName,
-        :manufacturer  => node.manufacturer,
-        :machine_type  => node.machineType,
-        :model         => node.model,
-        :serial_number => node.serialNumber,
-        :uuid          => node.uuid,
-        :FRU           => node.FRU,
-        :macAddresses  => node.macAddress.split(",").flatten,
-        :ipv4Addresses => node.ipv4Addresses.split.flatten,
-        :ipv6Addresses => node.ipv6Addresses.split.flatten,
-        :health_state  => HEALTH_STATE[node.cmmHealthState.downcase],
-        :power_state   => POWER_STATE_MAP[node.powerStatus],
-        :vendor        => "lenovo",
-        :hardware      => parse_hardware(node)
+        :type                  => ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.name,
+        :name                  => node.name,
+        :ems_ref               => node.uuid,
+        :uid_ems               => @ems.uid_ems,
+        :hostname              => node.hostname,
+        :product_name          => node.productName,
+        :manufacturer          => node.manufacturer,
+        :machine_type          => node.machineType,
+        :model                 => node.model,
+        :serial_number         => node.serialNumber,
+        :field_replaceble_unit => node.FRU,
+        :health_state          => HEALTH_STATE[node.cmmHealthState.downcase],
+        :power_state           => POWER_STATE_MAP[node.powerStatus],
+        :vendor                => "lenovo",
+        :hardware              => parse_hardware(node)
       }
 
       return node.uuid, new_result
