@@ -56,7 +56,7 @@ module ManageIQ::Providers::Lenovo
 
     def parse_firmware(firmware)
       {
-        :name         => firmware["name"],
+        :name         => "#{firmware["role"]} #{firmware["name"]}-#{firmware["status"]}",
         :build        => firmware["build"],
         :version      => firmware["version"],
         :release_date => firmware["date"],
@@ -76,13 +76,11 @@ module ManageIQ::Providers::Lenovo
         :model                  => node.model,
         :serial_number          => node.serialNumber,
         :field_replaceable_unit => node.FRU,
-        :hardware               => {
-          :networks  => [
-            :mac_addresses => node.macAddress.split(",").flatten,
-            :ipaddresses   => node.ipv4Addresses.split.flatten,
-            :ipv6address   => node.ipv6Addresses.split.flatten
-          ],
-          :firmwares => [] # Filled in later conditionally on what's available
+        :computer_system        => {
+          :hardware             => {
+            :networks  => [],
+            :firmwares => [] # Filled in later conditionally on what's available
+          }
         }
       }
       new_result[:hardware] = get_hardwares(node)
