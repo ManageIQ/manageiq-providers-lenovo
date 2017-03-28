@@ -77,7 +77,7 @@ module ManageIQ::Providers::Lenovo
         :serial_number          => node.serialNumber,
         :field_replaceable_unit => node.FRU,
         # Filled in later conditionally on what's available
-        :computer_system        => {:hardware => {:networks  => [], :firmwares => []}}
+        :computer_system        => {:hardware => {:networks => [], :firmwares => []}}
       }
       new_result[:hardware] = get_hardwares(node)
       save_host_relationship(node)
