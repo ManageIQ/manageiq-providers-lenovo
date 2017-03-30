@@ -1,6 +1,6 @@
 class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Runner < ManageIQ::Providers::BaseManager::EventCatcher::Runner
   def stop_event_monitor
-    @event_monitor_handle&.stop
+    @event_monitor_handle.try(:stop)
   ensure
     reset_event_monitor_handle
   end

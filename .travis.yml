@@ -10,10 +10,7 @@ env:
   - RUBY_GC_HEAP_GROWTH_FACTOR=1.25
 addons:
   postgresql: '9.4'
-before_install:
-- source ${TRAVIS_BUILD_DIR}/tools/ci/before_install.sh
-script:
-- bundle exec bin/rails app:test:providers:lenovo:setup app:test:providers:lenovo
+install: bin/setup
 after_script: bundle exec codeclimate-test-reporter
 notifications:
   webhooks:

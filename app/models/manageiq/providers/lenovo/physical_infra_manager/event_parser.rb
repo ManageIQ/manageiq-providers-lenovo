@@ -1,7 +1,6 @@
 module ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventParser
   def self.event_to_hash(event, ems_id)
-
-    event_hash= {
+    event_hash = {
       :event_type    => event.eventID,
       :source        => "LXCA",
       :message       => event.msg,
