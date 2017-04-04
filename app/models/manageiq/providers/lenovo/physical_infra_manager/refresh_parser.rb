@@ -2,6 +2,25 @@ module ManageIQ::Providers::Lenovo
   class PhysicalInfraManager::RefreshParser < EmsRefresh::Parsers::Infra
     include ManageIQ::Providers::Lenovo::RefreshHelperMethods
 
+    POWER_STATE_MAP = {
+      8  => "on",
+      5  => "off",
+      18 => "Standby",
+      0  => "Unknown"
+    }.freeze
+
+    HEALTH_STATE = {
+      "normal"          => "Valid",
+      "non-critical"    => "Valid",
+      "warning"         => "Warning",
+      "critical"        => "Critical",
+      "unknown"         => "None",
+      "minor-failure"   => "Critical",
+      "major-failure"   => "Critical",
+      "non-recoverable" => "Critical",
+      "fatal"           => "Critical"
+    }.freeze
+
     def initialize(ems, options = nil)
       ems_auth = ems.authentications.first
 
@@ -69,23 +88,43 @@ module ManageIQ::Providers::Lenovo
       }
     end
 
+    def parse_hardware(node)
+      return nil if node.memoryModules.blank? && node.processors.blank?
+
+      new_result = {
+        :memory_mb       => 0,
+        :cpu_total_cores => 0,
+        :cpu_speed       => 0
+      }
+
+      node.memoryModules.each do |mem|
+        new_result[:memory_mb] += mem['capacity'] * 1024
+      end
+
+      node.processors.each do |pr|
+        new_result[:cpu_total_cores] += pr['cores']
+        new_result[:cpu_speed] = pr['speed'].to_i if pr['speed'].to_i > new_result[:cpu_speed]
+      end
+      new_result
+    end
+
     def parse_nodes(node)
       new_result = {
-        :type          => ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.name,
-        :name          => node.name,
-        :ems_ref       => node.uuid,
-        :uid_ems       => @ems.uid_ems,
-        :hostname      => node.hostname,
-        :product_name  => node.productName,
-        :manufacturer  => node.manufacturer,
-        :machine_type  => node.machineType,
-        :model         => node.model,
-        :serial_number => node.serialNumber,
-        :uuid          => node.uuid,
-        :FRU           => node.FRU,
-        :macAddresses  => node.macAddress.split(",").flatten,
-        :ipv4Addresses => node.ipv4Addresses.split.flatten,
-        :ipv6Addresses => node.ipv6Addresses.split.flatten
+        :type                  => ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.name,
+        :name                  => node.name,
+        :ems_ref               => node.uuid,
+        :uid_ems               => @ems.uid_ems,
+        :hostname              => node.hostname,
+        :product_name          => node.productName,
+        :manufacturer          => node.manufacturer,
+        :machine_type          => node.machineType,
+        :model                 => node.model,
+        :serial_number         => node.serialNumber,
+        :field_replaceble_unit => node.FRU,
+        :health_state          => HEALTH_STATE[node.cmmHealthState.downcase],
+        :power_state           => POWER_STATE_MAP[node.powerStatus],
+        :vendor                => "lenovo",
+        :hardware              => parse_hardware(node)
       }
 
       return node.uuid, new_result
