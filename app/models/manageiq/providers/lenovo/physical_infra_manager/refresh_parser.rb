@@ -79,7 +79,7 @@ module ManageIQ::Providers::Lenovo
         # Filled in later conditionally on what's available
         :computer_system        => {:hardware => {:networks => [], :firmwares => []}}
       }
-      new_result[:hardware] = get_hardwares(node)
+      new_result[:computer_system][:hardware] = get_hardwares(node)
       save_host_relationship(node)
       return node.uuid, new_result
     end
