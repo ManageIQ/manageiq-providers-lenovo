@@ -3,9 +3,9 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventParser
     event_hash = {
       :event_type           => event.eventID,
       :source               => "LenovoXclarity",
-      :physical_server_id   => event.componentID,
+      :physical_server_ref  => event.componentID,
       :message              => event.msg,
-      :timestamp            => event.timeStamp,
+      :timeStamp            => event.timeStamp,
       :lxca_severity        => event.severity,
       :lxca_cn              => event.cn,
       :full_data            => event.to_hash,

@@ -1,3 +1,4 @@
+# rubocop:disable Style/AccessorMethodName
 module ManageIQ::Providers::Lenovo
   class PhysicalInfraManager::RefreshParser < EmsRefresh::Parsers::Infra
     include ManageIQ::Providers::Lenovo::RefreshHelperMethods
@@ -27,9 +28,68 @@ module ManageIQ::Providers::Lenovo
       @data
     end
 
+    def self.miq_template_type
+      "ManageIQ::Providers::Lenovo::PhysicalInfraManager::Template"
+    end
+
     private
 
     def get_physical_servers
+      nodes = all_server_resources
+
+      nodes = nodes.map do |node|
+        XClarityClient::Node.new node
+      end
+      process_collection(nodes, :physical_servers) { |node| parse_physical_server(node) }
+    end
+
+    def get_hardwares(node)
+      {:firmwares => get_firmwares(node.firmware)}
+    end
+
+    def get_firmwares(node)
+      firmwares = node.map do |firmware|
+        parse_firmware(firmware)
+      end
+      firmwares
+    end
+
+    def parse_firmware(firmware)
+      {
+        :name         => "#{firmware["role"]} #{firmware["name"]}-#{firmware["status"]}",
+        :build        => firmware["build"],
+        :version      => firmware["version"],
+        :release_date => firmware["date"],
+      }
+    end
+
+    def parse_physical_server(node)
+      new_result = {
+        :type                   => ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.name,
+        :name                   => node.name,
+        :ems_ref                => node.uuid,
+        :uid_ems                => @ems.uid_ems,
+        :hostname               => node.hostname,
+        :product_name           => node.productName,
+        :manufacturer           => node.manufacturer,
+        :machine_type           => node.machineType,
+        :model                  => node.model,
+        :serial_number          => node.serialNumber,
+        :field_replaceable_unit => node.FRU,
+        :computer_system        => {
+          :hardware             => {
+            :networks  => [],
+            :firmwares => [] # Filled in later conditionally on what's available
+          }
+        }
+      }
+      new_result[:computer_system][:hardware] = get_hardwares(node)
+      return node.uuid, new_result
+    end
+
+    def all_server_resources
+      return @all_server_resources if @all_server_resources
+
       cabinets = @connection.discover_cabinet(:status => "includestandalone")
 
       nodes = cabinets.map(&:nodeList).flatten
@@ -46,65 +106,7 @@ module ManageIQ::Providers::Lenovo
 
       nodes += nodes_chassis
 
-      nodes = nodes.map do |node|
-        Firmware.where(:ph_server_uuid => node["uuid"]).delete_all
-
-        # TODO: (walteraa) see how to save it using process_collection
-        node["firmware"].map do |firmware|
-          f = Firmware.new parse_firmware(firmware, node["uuid"])
-          f.save!
-        end
-        XClarityClient::Node.new node
-      end
-      process_collection(nodes, :physical_servers) { |node| parse_nodes(node) }
-    end
-
-    def parse_firmware(firmware, uuid)
-      new_result = {
-        :name           => firmware["name"],
-        :build          => firmware["build"],
-        :version        => firmware["version"],
-        :release_date   => firmware["date"],
-        :ph_server_uuid => uuid
-      }
-    end
-
-    def parse_firmware(firmware,uuid)
-      new_result = {
-        :name => firmware["name"],
-        :build => firmware["build"],
-        :version => firmware["version"],
-        :release_date => firmware["date"],
-        :ph_server_uuid => uuid
-      }
-
-
-    end
-
-    def parse_nodes(node)
-      new_result = {
-        :type          => ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.name,
-        :name          => node.name,
-        :ems_ref       => node.uuid,
-        :uid_ems       => @ems.uid_ems,
-        :hostname      => node.hostname,
-        :product_name  => node.productName,
-        :manufacturer  => node.manufacturer,
-        :machine_type  => node.machineType,
-        :model         => node.model,
-        :serial_number => node.serialNumber,
-        :uuid          => node.uuid,
-        :FRU           => node.FRU,
-        :macAddresses  => node.macAddress.split(",").flatten,
-        :ipv4Addresses => node.ipv4Addresses.split.flatten,
-        :ipv6Addresses => node.ipv6Addresses.split.flatten
-      }
-
-      return node.uuid, new_result
-    end
-
-    def self.miq_template_type
-      "ManageIQ::Providers::Lenovo::PhysicalInfraManager::Template"
+      @all_server_resources = nodes
     end
   end
 end
