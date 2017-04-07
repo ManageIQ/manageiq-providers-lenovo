@@ -3,7 +3,6 @@ module ManageIQ::Providers::Lenovo
   class PhysicalInfraManager::RefreshParser < EmsRefresh::Parsers::Infra
     include ManageIQ::Providers::Lenovo::RefreshHelperMethods
 
-
     POWER_STATE_MAP = {
       8  => "on",
       5  => "off",
