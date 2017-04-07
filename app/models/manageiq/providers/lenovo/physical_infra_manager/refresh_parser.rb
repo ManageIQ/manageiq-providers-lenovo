@@ -3,6 +3,26 @@ module ManageIQ::Providers::Lenovo
   class PhysicalInfraManager::RefreshParser < EmsRefresh::Parsers::Infra
     include ManageIQ::Providers::Lenovo::RefreshHelperMethods
 
+
+    POWER_STATE_MAP = {
+      8  => "on",
+      5  => "off",
+      18 => "Standby",
+      0  => "Unknown"
+    }.freeze
+
+    HEALTH_STATE_MAP = {
+      "normal"          => "Valid",
+      "non-critical"    => "Valid",
+      "warning"         => "Warning",
+      "critical"        => "Critical",
+      "unknown"         => "None",
+      "minor-failure"   => "Critical",
+      "major-failure"   => "Critical",
+      "non-recoverable" => "Critical",
+      "fatal"           => "Critical"
+    }.freeze
+
     def initialize(ems, options = nil)
       ems_auth = ems.authentications.first
 
@@ -76,6 +96,8 @@ module ManageIQ::Providers::Lenovo
         :model                  => node.model,
         :serial_number          => node.serialNumber,
         :field_replaceable_unit => node.FRU,
+        :power_state            => POWER_STATE_MAP[node.powerStatus],
+        :health_state           => HEALTH_STATE_MAP[node.cmmHealthState.downcase],
         :computer_system        => {
           :hardware             => {
             :networks  => [],
