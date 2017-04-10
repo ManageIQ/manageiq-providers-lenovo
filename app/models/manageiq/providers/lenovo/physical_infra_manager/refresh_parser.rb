@@ -45,9 +45,9 @@ module ManageIQ::Providers::Lenovo
 
     def get_hardwares(node)
       {
-        :memory_mb => get_memory_info(node),
+        :memory_mb       => get_memory_info(node),
         :cpu_total_cores => get_total_cores(node),
-        :firmwares => get_firmwares(node.firmware)
+        :firmwares       => get_firmwares(node.firmware)
       }
     end
 
