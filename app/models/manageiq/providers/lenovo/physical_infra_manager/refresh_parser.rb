@@ -44,7 +44,27 @@ module ManageIQ::Providers::Lenovo
     end
 
     def get_hardwares(node)
-      {:firmwares => get_firmwares(node.firmware)}
+      {
+        :memory_mb       => get_memory_info(node),
+        :cpu_total_cores => get_total_cores(node),
+        :firmwares       => get_firmwares(node.firmware)
+      }
+    end
+
+    def get_memory_info(node)
+      total_memory = 0
+      node.memoryModules.each do |mem|
+        total_memory += mem['capacity'] * 1024
+      end
+      total_memory
+    end
+
+    def get_total_cores(node)
+      total_cores = 0
+      node.processors.each do |pr|
+        total_cores += pr['cores']
+      end
+      total_cores
     end
 
     def get_firmwares(node)
