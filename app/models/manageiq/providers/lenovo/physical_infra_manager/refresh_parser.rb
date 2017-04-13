@@ -66,8 +66,17 @@ module ManageIQ::Providers::Lenovo
       {
         :memory_mb       => get_memory_info(node),
         :cpu_total_cores => get_total_cores(node),
+        :networks        => get_networks(node),
         :firmwares       => get_firmwares(node.firmware)
       }
+    end
+
+    def get_networks(node)
+      [{
+        :mac_addresses => node.macAddress,
+        :ipaddress     => node.ipv4Addresses.join(", "),
+        :ipv6address   => node.ipv6Addresses.join(", ")
+      }]
     end
 
     def get_memory_info(node)
