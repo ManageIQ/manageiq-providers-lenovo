@@ -3,25 +3,6 @@ module ManageIQ::Providers::Lenovo
   class PhysicalInfraManager::RefreshParser < EmsRefresh::Parsers::Infra
     include ManageIQ::Providers::Lenovo::RefreshHelperMethods
 
-    POWER_STATE_MAP = {
-      8  => "on",
-      5  => "off",
-      18 => "Standby",
-      0  => "Unknown"
-    }.freeze
-
-    HEALTH_STATE_MAP = {
-      "normal"          => "Valid",
-      "non-critical"    => "Valid",
-      "warning"         => "Warning",
-      "critical"        => "Critical",
-      "unknown"         => "None",
-      "minor-failure"   => "Critical",
-      "major-failure"   => "Critical",
-      "non-recoverable" => "Critical",
-      "fatal"           => "Critical"
-    }.freeze
-
     def initialize(ems, options = nil)
       ems_auth = ems.authentications.first
 
@@ -115,15 +96,13 @@ module ManageIQ::Providers::Lenovo
         :model                  => node.model,
         :serial_number          => node.serialNumber,
         :field_replaceable_unit => node.FRU,
-        :power_state            => POWER_STATE_MAP[node.powerStatus],
-        :health_state           => HEALTH_STATE_MAP[node.cmmHealthState.downcase],
-        :vendor                 => "Lenovo",
         :computer_system        => {
           :hardware             => {
             :networks  => [],
             :firmwares => [] # Filled in later conditionally on what's available
           }
-        }
+        },
+        :asset_details          => parse_asset_details(node)
       }
       new_result[:computer_system][:hardware] = get_hardwares(node)
       return node.uuid, new_result
@@ -150,5 +129,17 @@ module ManageIQ::Providers::Lenovo
 
       @all_server_resources = nodes
     end
+
+    def parse_asset_details(node)
+      {
+        :contact          => node.contact,
+        :description      => node.description,
+        :location         => node.location['location'],
+        :room             => node.location['room'],
+        :rack_name        => node.location['rack'],
+        :lowest_rack_unit => (node.location['lowestRackUnit']).to_s
+      }
+    end
+
   end
 end
