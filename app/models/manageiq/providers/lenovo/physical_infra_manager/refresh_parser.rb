@@ -117,7 +117,7 @@ module ManageIQ::Providers::Lenovo
         :field_replaceable_unit => node.FRU,
         :power_state            => POWER_STATE_MAP[node.powerStatus],
         :health_state           => HEALTH_STATE_MAP[node.cmmHealthState.downcase],
-        :vendor => "Lenovo",
+        :vendor                 => "Lenovo",
         :computer_system        => {
           :hardware             => {
             :networks  => [],
