@@ -159,7 +159,7 @@ module ManageIQ::Providers::Lenovo
         :location         => node.location['location'],
         :room             => node.location['room'],
         :rack_name        => node.location['rack'],
-        :lowest_rack_unit => (node.location['lowestRackUnit']).to_s
+        :lowest_rack_unit => node.location['lowestRackUnit'].to_s
       }
     end
   end
