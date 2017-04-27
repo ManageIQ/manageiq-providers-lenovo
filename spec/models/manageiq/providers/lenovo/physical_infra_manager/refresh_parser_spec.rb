@@ -1,9 +1,7 @@
-require 'xclarity_client'
-
 describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
   it 'will retrieve physical servers' do
-    RefreshParser = ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser
-    pim = FactoryGirl.create(:physical_infra_manager,
+    RefreshParser ||= ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser
+    pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
                              :ipaddress => "https://10.243.9.123")
@@ -22,7 +20,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
   end
 
   it 'will return its miq_template_type' do
-    RefreshParser = ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser
+    RefreshParser ||= ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser
     expect(RefreshParser.miq_template_type).to eq("ManageIQ::Providers::Lenovo::PhysicalInfraManager::Template")
   end
 end

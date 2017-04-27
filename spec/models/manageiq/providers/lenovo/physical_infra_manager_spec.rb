@@ -9,7 +9,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     ps = FactoryGirl.create(:physical_server,
                             :name    => "IMM2-e41f13ed5a1e",
                             :ems_ref => "BD775D06821111E189A3E41F13ED5A1A")
-    pim = FactoryGirl.create(:physical_infra_manager,
+    pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
                              :ipaddress => "https://10.243.9.123")
@@ -28,7 +28,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     ps = FactoryGirl.create(:physical_server,
                             :name    => "IMM2-e41f13ed5a1e",
                             :ems_ref => "BD775D06821111E189A3E41F13ED5A1A")
-    pim = FactoryGirl.create(:physical_infra_manager,
+    pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
                              :ipaddress => "https://10.243.9.123")
@@ -47,7 +47,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     ps = FactoryGirl.create(:physical_server,
                             :name    => "IMM2-e41f13ed5a1e",
                             :ems_ref => "BD775D06821111E189A3E41F13ED5A1A")
-    pim = FactoryGirl.create(:physical_infra_manager,
+    pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
                              :ipaddress => "https://10.243.9.123")
@@ -66,7 +66,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     ps = FactoryGirl.create(:physical_server,
                             :name    => "MimmNameDM",
                             :ems_ref => "EADEBE8316174750A27FEC2E8226AC48")
-    pim = FactoryGirl.create(:physical_infra_manager,
+    pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
                              :ipaddress => "https://10.243.9.123")
@@ -85,7 +85,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     ps = FactoryGirl.create(:physical_server,
                             :name    => "MimmNameDM",
                             :ems_ref => "EADEBE8316174750A27FEC2E8226AC48")
-    pim = FactoryGirl.create(:physical_infra_manager,
+    pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
                              :ipaddress => "https://10.243.9.123")
@@ -104,7 +104,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     ps = FactoryGirl.create(:physical_server,
                             :name    => "MimmNameDM",
                             :ems_ref => "EADEBE8316174750A27FEC2E8226AC48")
-    pim = FactoryGirl.create(:physical_infra_manager,
+    pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
                              :ipaddress => "https://10.243.9.123")
