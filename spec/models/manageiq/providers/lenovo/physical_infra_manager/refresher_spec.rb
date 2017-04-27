@@ -1,9 +1,9 @@
 describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
   let(:auth) do
     FactoryGirl.create(:authentication,
-                        :userid   => 'admin',
-                        :password => 'password',
-                        :authtype => 'default')
+                       :userid   => 'admin',
+                       :password => 'password',
+                       :authtype => 'default')
   end
 
   let(:ems) do
