@@ -31,7 +31,7 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
     #
     # Connections
     #
-    def raw_connect(username, password, host, verify_ssl = 0)
+    def raw_connect(username, password, host, verify_ssl)
       require 'xclarity_client'
       xclarity = XClarityClient::Configuration.new(
         :username   => username,
@@ -49,10 +49,10 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
     # Factory method to create EmsLenovo with instances
     #   or images for the given authentication.  Created EmsLenovo instances
     #   will automatically have EmsRefreshes queued up.
-    def discover(username, password, host)
+    def discover(username, password, host, verify_ssl = 0)
       new_emses = []
 
-      raw_connect(username, password, host)
+      raw_connect(username, password, host, verify_ssl)
 
       EmsRefresh.queue_refresh(new_emses) unless new_emses.blank?
 
@@ -68,8 +68,10 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
       )
     end
 
-    def discover_from_queue(username, password, host)
-      discover(username, password, host)
+    private
+
+    def discover_from_queue(username, password)
+      discover(username, MiqPassword.decrypt(password))
     end
   end
 end

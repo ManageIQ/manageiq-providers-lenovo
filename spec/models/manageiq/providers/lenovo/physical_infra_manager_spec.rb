@@ -129,11 +129,6 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     expect(result).to_not eq(nil)
   end
 
-  it 'will execute discover_from_queue successfully' do
-    result = described_class.new.class.discover_from_queue(@auth[:user], @auth[:pass], @auth[:host])
-    expect(result).to_not eq(nil)
-  end
-
   it 'will execute verify_credentials successfully' do
     result = described_class.new.verify_credentials
     expect(result).to eq(true)
