@@ -10,7 +10,7 @@ module ManageIQ::Providers::Lenovo
       ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser.ems_inv_to_hashes(ems, refresher_options)
     end
 
-    def save_inventory(ems, hashes)
+    def save_inventory(ems, target, hashes)
       EmsRefresh.save_ems_inventory(ems, hashes)
     end
 
