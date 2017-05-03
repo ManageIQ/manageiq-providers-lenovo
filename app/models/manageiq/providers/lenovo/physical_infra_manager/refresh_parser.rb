@@ -3,6 +3,25 @@ module ManageIQ::Providers::Lenovo
   class PhysicalInfraManager::RefreshParser < EmsRefresh::Parsers::Infra
     include ManageIQ::Providers::Lenovo::RefreshHelperMethods
 
+    POWER_STATE_MAP = {
+      8  => "on",
+      5  => "off",
+      18 => "Standby",
+      0  => "Unknown"
+    }.freeze
+
+    HEALTH_STATE_MAP = {
+      "normal"          => "Valid",
+      "non-critical"    => "Valid",
+      "warning"         => "Warning",
+      "critical"        => "Critical",
+      "unknown"         => "None",
+      "minor-failure"   => "Critical",
+      "major-failure"   => "Critical",
+      "non-recoverable" => "Critical",
+      "fatal"           => "Critical"
+    }.freeze
+
     def initialize(ems, options = nil)
       ems_auth = ems.authentications.first
 
@@ -44,7 +63,27 @@ module ManageIQ::Providers::Lenovo
     end
 
     def get_hardwares(node)
-      {:firmwares => get_firmwares(node.firmware)}
+      {
+        :memory_mb       => get_memory_info(node),
+        :cpu_total_cores => get_total_cores(node),
+        :firmwares       => get_firmwares(node.firmware)
+      }
+    end
+
+    def get_memory_info(node)
+      total_memory = 0
+      node.memoryModules.each do |mem|
+        total_memory += mem['capacity'] * 1024
+      end
+      total_memory
+    end
+
+    def get_total_cores(node)
+      total_cores = 0
+      node.processors.each do |pr|
+        total_cores += pr['cores']
+      end
+      total_cores
     end
 
     def get_firmwares(node)
@@ -76,9 +115,17 @@ module ManageIQ::Providers::Lenovo
         :model                  => node.model,
         :serial_number          => node.serialNumber,
         :field_replaceable_unit => node.FRU,
-        # Filled in later conditionally on what's available
         :computer_system        => {:hardware => {:networks => [], :firmwares => []}},
-        :host                   => get_host_relationship(node)
+        :host                   => get_host_relationship(node),
+        :power_state            => POWER_STATE_MAP[node.powerStatus],
+        :health_state           => HEALTH_STATE_MAP[node.cmmHealthState.downcase],
+        :vendor                 => "Lenovo",
+        :computer_system        => {
+          :hardware             => {
+            :networks  => [],
+            :firmwares => [] # Filled in later conditionally on what's available
+          }
+        }
       }
       new_result[:computer_system][:hardware] = get_hardwares(node)
       return node.uuid, new_result
