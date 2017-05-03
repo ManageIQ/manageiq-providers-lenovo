@@ -77,24 +77,19 @@ module ManageIQ::Providers::Lenovo
         :serial_number          => node.serialNumber,
         :field_replaceable_unit => node.FRU,
         # Filled in later conditionally on what's available
-        :computer_system        => {:hardware => {:networks => [], :firmwares => []}}
+        :computer_system        => {:hardware => {:networks => [], :firmwares => []}},
+        :host                   => get_host_relationship(node)
       }
       new_result[:computer_system][:hardware] = get_hardwares(node)
-      save_host_relationship(node)
       return node.uuid, new_result
     end
 
-    def save_host_relationship(node)
+    def get_host_relationship(node)
       # Assign a physicalserver and host if server already exists and
       # some host match with physical Server's serial number
-      server = PhysicalServer.find_by(:uuid => node.uuid, :ems_id => @ems.id)
+      server = PhysicalServer.find_by(:ems_ref => node.uuid, :ems_id => @ems.id)
       if server
         host = Host.find_by(:service_tag => node.serialNumber)
-
-        if host
-          server.host = host
-          server.save!
-        end
       end
     end
 
