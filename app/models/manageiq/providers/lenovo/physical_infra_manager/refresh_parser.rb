@@ -124,7 +124,8 @@ module ManageIQ::Providers::Lenovo
             :firmwares => [] # Filled in later conditionally on what's available
           }
         },
-        :asset_details          => parse_asset_details(node)
+        :asset_details          => parse_asset_details(node),
+        :location_led_state    	=> find_loc_led_state(node.leds)
       }
       new_result[:computer_system][:hardware] = get_hardwares(node)
       return node.uuid, new_result
@@ -161,6 +162,19 @@ module ManageIQ::Providers::Lenovo
         :rack_name        => node.location['rack'],
         :lowest_rack_unit => node.location['lowestRackUnit'].to_s
       }
+    end
+
+    def find_loc_led_state(leds)
+      loc_led_state = ""
+
+      leds.each do |led|
+        if led["name"] == "Identify"
+          loc_led_state = led["state"]
+          break
+        end
+      end
+
+      loc_led_state
     end
   end
 end
