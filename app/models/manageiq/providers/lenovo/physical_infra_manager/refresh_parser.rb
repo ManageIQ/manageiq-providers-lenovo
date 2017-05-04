@@ -115,6 +115,8 @@ module ManageIQ::Providers::Lenovo
         :model                  => node.model,
         :serial_number          => node.serialNumber,
         :field_replaceable_unit => node.FRU,
+        :computer_system        => {:hardware => {:networks => [], :firmwares => []}},
+        :host                   => get_host_relationship(node),
         :power_state            => POWER_STATE_MAP[node.powerStatus],
         :health_state           => HEALTH_STATE_MAP[node.cmmHealthState.downcase],
         :vendor                 => "Lenovo",
@@ -128,6 +130,12 @@ module ManageIQ::Providers::Lenovo
       }
       new_result[:computer_system][:hardware] = get_hardwares(node)
       return node.uuid, new_result
+    end
+
+    def get_host_relationship(node)
+      # Assign a physicalserver and host if server already exists and
+      # some host match with physical Server's serial number
+      Host.find_by(:service_tag => node.serialNumber)
     end
 
     def all_server_resources
