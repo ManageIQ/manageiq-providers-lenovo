@@ -14,7 +14,7 @@ namespace :spec do
   task :setup => 'app:test:providers:lenovo:setup'
 end
 
-desc "Run all amazon specs"
+desc "Run all Lenovo specs"
 task :spec => 'app:test:providers:lenovo'
 
 task :default => :spec
