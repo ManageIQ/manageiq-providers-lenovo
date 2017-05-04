@@ -141,7 +141,8 @@ module ManageIQ::Providers::Lenovo
             :guest_devices => [],
             :firmwares     => [] # Filled in later conditionally on what's available
           }
-        }
+        },
+        :location_led_state    	=> find_loc_led_state(node.leds)
       }
       new_result[:computer_system][:hardware] = get_hardwares(node)
       return node.uuid, new_result
@@ -167,6 +168,19 @@ module ManageIQ::Providers::Lenovo
       nodes += nodes_chassis
 
       @all_server_resources = nodes
+    end
+
+    def find_loc_led_state(leds)
+      loc_led_state = ""
+
+      leds.each do |led|
+        if led["name"] == "Identify"
+          loc_led_state = led["state"]
+          break
+        end
+      end
+
+      loc_led_state
     end
   end
 end

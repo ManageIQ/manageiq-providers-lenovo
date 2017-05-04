@@ -22,7 +22,7 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
   def translate_exception(err)
   end
 
-  def verify_credentials(auth_type = nil, options = {})
+  def verify_credentials(_auth_type = nil, _options = {})
     # TODO: (julian) Find out if Lenovo supports a verify credentials method
     true
   end
@@ -49,10 +49,8 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
     # Factory method to create EmsLenovo with instances
     #   or images for the given authentication.  Created EmsLenovo instances
     #   will automatically have EmsRefreshes queued up.
-    def discover(username, password, host)
-      new_emses         = []
-      all_emses         = includes(:authentications)
-      all_ems_names     = all_emses.map(&:name).to_set
+    def discover(username, password, host, verify_ssl = 0)
+      new_emses = []
 
       raw_connect(username, password, host, verify_ssl)
 
@@ -61,18 +59,19 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
       new_emses
     end
 
-    def discover_queue(username, password)
+    def discover_queue(username, password, zone = nil)
       MiqQueue.put(
         :class_name  => name,
         :method_name => "discover_from_queue",
-        :args        => [username, MiqPassword.encrypt(password)]
+        :args        => [username, MiqPassword.encrypt(password)],
+        :zone        => zone
       )
     end
 
     private
 
     def discover_from_queue(username, password)
-      discover(access_key_id, MiqPassword.decrypt(secret_access_key))
+      discover(username, MiqPassword.decrypt(password))
     end
   end
 end
