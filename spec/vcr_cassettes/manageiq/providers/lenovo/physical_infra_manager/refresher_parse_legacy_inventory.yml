@@ -48,7 +48,7 @@ http_interactions:
       - chunked
     body:
       encoding: ASCII-8BIT
-      string: '{"cabinetList":[{"storageList":[],"cabinetName":"cabinet71","height":42,"complexList":[],"chassisList":[],"location":"","UUID":"096F8C92-08D4-4A24-ABD8-FE56D482F8C4","nodeList":[],"placeholderList":[],"switchList":[],"room":""},{"storageList":[],"cabinetName":"STANDALONE_OBJECT_NAME","height":42,"complexList":[],"chassisList":[],"location":"","UUID":"STANDALONE_OBJECT_UUID","nodeList":[{"itemParentUUID":null,"itemName":"SERVER-A59D5B36821111E1A9F5E41F13ED4F6A","itemLowerUnit":0,"itemType":"SERVER","itemLocationRack":"","itemSubType":"LegacyServer","itemUUID":"A59D5B36821111E1A9F5E41F13ED4F6A","itemInventory":{"accessState":"Pending","arch":"x86_64","manufacturerId":"","location":{"lowestRackUnit":0,"location":"","rack":"","room":""},"addinCardSlots":0,"serialNumber":"06ARFA2","driveBays":0,"macAddress":"e4:1f:13:ed:4f:6f","type":"Rack-Tower
+      string: '{"nodeList":[{"itemParentUUID":null,"itemName":"SERVER-A59D5B36821111E1A9F5E41F13ED4F6A","itemLowerUnit":0,"itemType":"SERVER","itemLocationRack":"","itemSubType":"LegacyServer","itemUUID":"A59D5B36821111E1A9F5E41F13ED4F6A","itemInventory":{"accessState":"Pending","arch":"x86_64","manufacturerId":"","location":{"lowestRackUnit":0,"location":"","rack":"","room":""},"addinCardSlots":0,"serialNumber":"06ARFA2","driveBays":0,"macAddress":"e4:1f:13:ed:4f:6f","type":"Rack-Tower
         Server","lanOverUsb":"disabled","height":1,"leds":[{"conditions":"Warning","color":"Yellow","location":"Front
         Panel","name":"Check Log","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Front
         Panel","name":"Fault","state":"Off"},{"conditions":"Attention","color":"Blue","location":"Front
@@ -285,6 +285,6 @@ http_interactions:
         Corporation","family":"Intel(R) Xeon(R) processor","displayName":"","slot":2,"productVersion":"Intel(R)
         Xeon(R) CPU E5-2680 0 @ 2.70GHz","cores":8}],"processorSlots":0,"pciCapabilities":[],"productId":"","hasOS":false,"bootMode":{"possibleValues":["uefi","bios"],"currentValue":"unspecified"},"ports":[],"embeddedHypervisorPresence":false,"posID":"","nist":{"possibleValues":["Compatibility","Nist_800_131A_Strict","Nist_800_131A_Custom","unsupported"],"currentValue":"unsupported"},"overallHealthState":"Normal","subType":"LegacyServer","partitionID":-1,"flashStorage":[],"productName":"System
         x3550 M4"},"itemLocation":"","itemHeight":1,"itemLocationRoom":""}],"placeholderList":[],"switchList":[],"room":""}]}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 27 Apr 2017 18:05:32 GMT
 recorded_with: VCR 3.0.3

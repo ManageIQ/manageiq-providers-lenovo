@@ -17,7 +17,6 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 200
       message: OK
     headers:
       Date:
@@ -50,8 +49,7 @@ http_interactions:
       - chunked
     body:
       encoding: ASCII-8BIT
-      string: '{"statusCode":200,"statusDescription":"The request completed successfully.","messages":[{"id":"FQXDM0200","recoveryUrl":"","text":"The
-        request completed successfully.","explanation":"The request completed successfully.","recovery":""}]}'
-    http_version: 
+      string: ''
+    http_version:
   recorded_at: Mon, 24 Apr 2017 16:06:22 GMT
 recorded_with: VCR 3.0.3

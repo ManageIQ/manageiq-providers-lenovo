@@ -48,7 +48,7 @@ http_interactions:
       - chunked
     body:
       encoding: ASCII-8BIT
-      string: '{"cabinetList":[{"storageList":[],"cabinetName":"cabinet71","height":42,"complexList":[],"chassisList":[],"location":"","UUID":"096F8C92-08D4-4A24-ABD8-FE56D482F8C4","nodeList":[],"placeholderList":[],"switchList":[],"room":""},{"storageList":[],"cabinetName":"STANDALONE_OBJECT_NAME","height":42,"complexList":[],"chassisList":[],"location":"","UUID":"STANDALONE_OBJECT_UUID","nodeList":[{"itemParentUUID":null,"itemName":"Management
+      string: '{"cabinetName":"STANDALONE_OBJECT_NAME","height":42,"complexList":[],"chassisList":[],"location":"","UUID":"STANDALONE_OBJECT_UUID","nodeList":[{"itemParentUUID":null,"itemName":"Management
         Controller UUID-EADEBE8316174750A27FEC2E8226AC48","itemLowerUnit":0,"itemType":"SERVER","itemLocationRack":"","itemSubType":"","itemUUID":"EADEBE8316174750A27FEC2E8226AC48","itemInventory":{"accessState":"Online","arch":"x86","manufacturerId":"
         IBM(WIST)","location":{"lowestRackUnit":0,"location":"","rack":"","room":""},"addinCardSlots":0,"serialNumber":"KVX0171","driveBays":33,"macAddress":"40:F2:E9:AF:0F:FD,40:F2:E9:AF:0F:FE","type":"Rack-Tower
         Server","lanOverUsb":"enabled","onboardPciDevices":[{"pciSubID":"405","firmware":[{"revision":"0","classifications":[0],"status":"Active","name":"PCIFirmware","role":"Primary","softwareID":"1014:405","type":"","build":"0","date":"","version":""}],"fodUniqueID":"","pciRevision":"1","isAgentless":false,"pciBusNumber":"20","pciSubVendorID":"1014","isAddOnCard":false,"pciDeviceNumber":"0","posID":"534","pciFunctionNumber":"0","name":"","portInfo":{},"vpdID":"102b"},{"pciSubID":"4d1","firmware":[{"revision":"0","classifications":[33024],"status":"Active","name":"17.4.4.2a","role":"Primary","softwareID":"101404D1","type":"VPD-V0","build":"0","date":"","version":"17.4.4.2a"}],"fodUniqueID":"11SBCM957190123456789","pciRevision":"1","isAgentless":true,"pciBusNumber":"22","pciSubVendorID":"1014","isAddOnCard":false,"pciDeviceNumber":"0","posID":"1657","pciFunctionNumber":"0","name":"Broadcom
@@ -392,6 +392,6 @@ http_interactions:
         Corporation","family":"Intel(R) Xeon(R) processor","displayName":"","slot":2,"productVersion":"Intel(R)
         Xeon(R) CPU E5-2680 0 @ 2.70GHz","cores":8}],"processorSlots":0,"pciCapabilities":[],"productId":"","hasOS":false,"bootMode":{"possibleValues":["uefi","bios"],"currentValue":"unspecified"},"ports":[],"embeddedHypervisorPresence":false,"posID":"","nist":{"possibleValues":["Compatibility","Nist_800_131A_Strict","Nist_800_131A_Custom","unsupported"],"currentValue":"unsupported"},"overallHealthState":"Normal","subType":"LegacyServer","partitionID":-1,"flashStorage":[],"productName":"System
         x3550 M4"},"itemLocation":"","itemHeight":1,"itemLocationRoom":""}],"placeholderList":[],"switchList":[],"room":""}]}'
-    http_version: 
+    http_version:
   recorded_at: Mon, 24 Apr 2017 18:45:40 GMT
 recorded_with: VCR 3.0.3
