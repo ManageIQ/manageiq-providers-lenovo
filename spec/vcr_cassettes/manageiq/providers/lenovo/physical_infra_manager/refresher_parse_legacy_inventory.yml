@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://admin:password@10.243.9.123/cabinet?status=includestandalone
+    uri: https://10.243.9.123/cabinet?status=includestandalone
     body:
       encoding: US-ASCII
       string: ''
