@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://admin:password@10.243.9.123/nodes/BD775D06821111E189A3E41F13ED5A1A
+    uri: https://10.243.9.123/nodes/BD775D06821111E189A3E41F13ED5A1A
     body:
       encoding: UTF-8
       string: '{"leds":[{"name":"Identify","state":"Off"}]}'

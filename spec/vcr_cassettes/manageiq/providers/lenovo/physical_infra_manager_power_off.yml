@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://admin:password@10.243.9.123/nodes/EADEBE8316174750A27FEC2E8226AC48
+    uri: https://10.243.9.123/nodes/EADEBE8316174750A27FEC2E8226AC48
     body:
       encoding: UTF-8
       string: '{"powerState":"powerOff"}'
