@@ -125,6 +125,7 @@ module ManageIQ::Providers::Lenovo
             :firmwares => [] # Filled in later conditionally on what's available
           }
         },
+        :asset_details          => parse_asset_details(node),
         :location_led_state    	=> find_loc_led_state(node.leds)
       }
       new_result[:computer_system][:hardware] = get_hardwares(node)
@@ -157,6 +158,17 @@ module ManageIQ::Providers::Lenovo
       nodes += nodes_chassis
 
       @all_server_resources = nodes
+    end
+
+    def parse_asset_details(node)
+      {
+        :contact          => node.contact,
+        :description      => node.description,
+        :location         => node.location['location'],
+        :room             => node.location['room'],
+        :rack_name        => node.location['rack'],
+        :lowest_rack_unit => node.location['lowestRackUnit'].to_s
+      }
     end
 
     def find_loc_led_state(leds)
