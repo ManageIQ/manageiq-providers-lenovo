@@ -115,7 +115,6 @@ module ManageIQ::Providers::Lenovo
         :model                  => node.model,
         :serial_number          => node.serialNumber,
         :field_replaceable_unit => node.FRU,
-        :computer_system        => {:hardware => {:networks => [], :firmwares => []}},
         :host                   => get_host_relationship(node),
         :power_state            => POWER_STATE_MAP[node.powerStatus],
         :health_state           => HEALTH_STATE_MAP[node.cmmHealthState.downcase],
