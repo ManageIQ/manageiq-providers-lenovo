@@ -118,7 +118,7 @@ module ManageIQ::Providers::Lenovo
         :host                   => get_host_relationship(node),
         :power_state            => POWER_STATE_MAP[node.powerStatus],
         :health_state           => HEALTH_STATE_MAP[node.cmmHealthState.downcase],
-        :vendor                 => "Lenovo",
+        :vendor                 => "lenovo",
         :computer_system        => {
           :hardware             => {
             :networks  => [],
