@@ -66,7 +66,25 @@ module ManageIQ::Providers::Lenovo
       {
         :memory_mb       => get_memory_info(node),
         :cpu_total_cores => get_total_cores(node),
+        :guest_devices   => get_guest_devices(node),
         :firmwares       => get_firmwares(node.firmware)
+      }
+    end
+
+    def get_guest_devices(node)
+      [
+        {
+          :device_type => "ethernet",
+          :network     => get_network(node),
+          :address     => node.macAddress
+        }
+      ]
+    end
+
+    def get_network(node)
+      {
+        :ipaddress   => node.mgmtProcIPaddress,
+        :ipv6address => node.ipv6Addresses.join(", ")
       }
     end
 
@@ -121,8 +139,8 @@ module ManageIQ::Providers::Lenovo
         :vendor                 => "lenovo",
         :computer_system        => {
           :hardware             => {
-            :networks  => [],
-            :firmwares => [] # Filled in later conditionally on what's available
+            :guest_devices => [],
+            :firmwares     => [] # Filled in later conditionally on what's available
           }
         },
         :asset_details          => parse_asset_details(node),
