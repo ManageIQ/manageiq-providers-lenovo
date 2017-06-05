@@ -1,0 +1,12 @@
+---
+:ems:
+  :ems_nuage:
+    :blacklisted_event_names: []
+    :event_handling:
+      :event_groups:
+:http_proxy:
+  :nuage:
+    :host:
+    :password:
+    :port:
+    :user:
