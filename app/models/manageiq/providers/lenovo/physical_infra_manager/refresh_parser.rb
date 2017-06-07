@@ -155,7 +155,9 @@ module ManageIQ::Providers::Lenovo
 
       if (node_addin_cards != nil)
         node_addin_cards.each do |addin_card|
-          addin_cards.push(parse_addin_cards(addin_card))
+          if get_device_type(addin_card) == "ethernet"
+            addin_cards.push(parse_addin_cards(addin_card))
+          end
         end
       end
 
@@ -168,11 +170,24 @@ module ManageIQ::Providers::Lenovo
 
       if (node_onboard_cards != nil)
         node_onboard_cards.each do |onboard_card|
-          onboard_cards.push(parse_onboard_cards(onboard_card))
+          if get_device_type(onboard_card) == "ethernet"
+            onboard_cards.push(parse_onboard_cards(onboard_card))
+          end
         end
       end
 
       onboard_cards
+    end
+
+    def get_device_type(addin_card)
+      device_type = ""
+      card_name = addin_card["name"].downcase
+
+      if card_name.include?("nic") || card_name.include?("ethernet")
+        device_type = "ethernet"
+      end
+
+      device_type
     end
 
     def parse_ethernet_device(node)
@@ -195,7 +210,7 @@ module ManageIQ::Providers::Lenovo
     def parse_addin_cards(addin_card)
       {
         :device_name  => addin_card["productName"],
-        :device_type => "ethernet",
+        :device_type =>  get_device_type(addin_card),
         :firmwares    => get_guest_devices_firmwares(addin_card),
         :manufacturer => addin_card["manufacturer"],
         :fru          => addin_card["FRU"],
@@ -207,7 +222,7 @@ module ManageIQ::Providers::Lenovo
     def parse_onboard_cards(onboard_card)
       {
         :device_name  => onboard_card["name"],
-        :device_type  => "ethernet",
+        :device_type  => get_device_type(onboard_card),
         :firmwares    => get_guest_devices_firmwares(onboard_card),
         :guest_devices => get_guest_devices_ports(onboard_card)
       }
