@@ -13,3 +13,10 @@ addons:
   postgresql: '9.4'
 install: bin/setup
 after_script: bundle exec codeclimate-test-reporter
+notifications:
+  webhooks:
+    urls:
+    - https://webhooks.gitter.im/e/c8c0999427c13a6c13c5
+    on_success: change
+    on_failure: always
+    on_start: never
