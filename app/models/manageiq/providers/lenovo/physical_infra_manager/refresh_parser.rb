@@ -213,7 +213,7 @@ module ManageIQ::Providers::Lenovo
         :device_type =>  get_device_type(addin_card),
         :firmwares    => get_guest_devices_firmwares(addin_card),
         :manufacturer => addin_card["manufacturer"],
-        :fru          => addin_card["FRU"],
+        :field_replaceable_unit => addin_card["FRU"],
         :location     => addin_card["slotNumber"],
         :guest_devices => get_guest_devices_ports(addin_card)
       }
