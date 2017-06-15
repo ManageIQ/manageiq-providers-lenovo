@@ -44,7 +44,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
     expect(guest_device[:firmwares][0][:name]).to eq("Primary 17.4.4.2a-Active")
     expect(guest_device[:firmwares][0][:version]).to eq("17.4.4.2a")
     expect(guest_device[:manufacturer]).to eq("IBM")
-    expect(guest_device[:fru]).to eq("90Y9373")
+    expect(guest_device[:field_replaceable_unit]).to eq("90Y9373")
     expect(guest_device[:location]).to eq("7")
 
     expect(guest_device[:guest_devices][0][:address]).to eq("00:0A:F7:25:67:38")
