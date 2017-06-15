@@ -97,9 +97,9 @@ module ManageIQ::Providers::Lenovo
     def get_guest_devices_firmwares(addin_card)
       dev_fw = []
 
-      if addin_card != nil
+      unless addin_card.nil?
         firmwares = addin_card["firmware"]
-        if (firmwares != nil)
+        unless firmwares.nil?
           dev_fw = firmwares.map do |fw|
             parse_firmware(fw)
           end
@@ -111,10 +111,10 @@ module ManageIQ::Providers::Lenovo
 
     def get_guest_devices_ports(addin_card)
       dev_ports = []
-      if addin_card != nil
+      unless addin_card.nil?
         port_info = addin_card["portInfo"]
         physical_ports = port_info["physicalPorts"]
-        if physical_ports != nil
+        unless physical_ports.nil?
           physical_ports.each do |physical_port|
             parsed_physical_port = parse_physical_port(physical_port)
             logical_ports = physical_port["logicalPorts"]
@@ -153,7 +153,7 @@ module ManageIQ::Providers::Lenovo
       node_addin_cards = node.addinCards
       addin_cards = []
 
-      if (node_addin_cards != nil)
+      unless node_addin_cards.nil?
         node_addin_cards.each do |addin_card|
           if get_device_type(addin_card) == "ethernet"
             addin_cards.push(parse_addin_cards(addin_card))
@@ -168,7 +168,7 @@ module ManageIQ::Providers::Lenovo
       node_onboard_cards = node.onboardPciDevices
       onboard_cards = []
 
-      if (node_onboard_cards != nil)
+      unless node_onboard_cards.nil?
         node_onboard_cards.each do |onboard_card|
           if get_device_type(onboard_card) == "ethernet"
             onboard_cards.push(parse_onboard_cards(onboard_card))
@@ -209,21 +209,21 @@ module ManageIQ::Providers::Lenovo
 
     def parse_addin_cards(addin_card)
       {
-        :device_name  => addin_card["productName"],
-        :device_type =>  get_device_type(addin_card),
-        :firmwares    => get_guest_devices_firmwares(addin_card),
-        :manufacturer => addin_card["manufacturer"],
+        :device_name            => addin_card["productName"],
+        :device_type            => get_device_type(addin_card),
+        :firmwares              => get_guest_devices_firmwares(addin_card),
+        :manufacturer           => addin_card["manufacturer"],
         :field_replaceable_unit => addin_card["FRU"],
-        :location     => addin_card["slotNumber"],
-        :guest_devices => get_guest_devices_ports(addin_card)
+        :location               => addin_card["slotNumber"],
+        :guest_devices          => get_guest_devices_ports(addin_card)
       }
     end
 
     def parse_onboard_cards(onboard_card)
       {
-        :device_name  => onboard_card["name"],
-        :device_type  => get_device_type(onboard_card),
-        :firmwares    => get_guest_devices_firmwares(onboard_card),
+        :device_name   => onboard_card["name"],
+        :device_type   => get_device_type(onboard_card),
+        :firmwares     => get_guest_devices_firmwares(onboard_card),
         :guest_devices => get_guest_devices_ports(onboard_card)
       }
     end
@@ -263,7 +263,7 @@ module ManageIQ::Providers::Lenovo
         :health_state           => HEALTH_STATE_MAP[node.cmmHealthState.downcase],
         :vendor                 => "lenovo",
         :computer_system        => {
-          :hardware             => {
+          :hardware => {
             :guest_devices => [],
             :firmwares     => [] # Filled in later conditionally on what's available
           }
