@@ -94,65 +94,23 @@ module ManageIQ::Providers::Lenovo
       firmwares
     end
 
-    def get_guest_devices_firmwares(addin_card)
-      dev_fw = []
-
-      unless addin_card.nil?
-        firmwares = addin_card["firmware"]
-        unless firmwares.nil?
-          dev_fw = firmwares.map do |fw|
-            parse_firmware(fw)
-          end
-        end
-      end
-
-      dev_fw
-    end
-
-    def get_guest_devices_ports(addin_card)
-      dev_ports = []
-      unless addin_card.nil?
-        port_info = addin_card["portInfo"]
-        physical_ports = port_info["physicalPorts"]
-        unless physical_ports.nil?
-          physical_ports.each do |physical_port|
-            parsed_physical_port = parse_physical_port(physical_port)
-            logical_ports = physical_port["logicalPorts"]
-            parsed_logical_port = parse_logical_port(logical_ports[0])
-            dev_ports.push(parsed_logical_port.merge(parsed_physical_port))
-          end
-        end
-      end
-
-      dev_ports
-    end
-
     def get_guest_devices(node)
+      # Retrieve the addin cards associated with the node
       addin_cards = get_addin_cards(node)
-
       guest_devices = addin_cards.map do |addin_card|
         addin_card
       end
 
+      # Retrieve any ethernet device (non-addin card) associated with the node
       guest_devices.push(parse_ethernet_device(node))
-
-      onboard_cards = get_onboard_cards(node)
-      guest_devices = (guest_devices + onboard_cards)
 
       guest_devices
     end
 
-    def get_network(node)
-      {
-        :ipaddress   => node.mgmtProcIPaddress,
-        :ipv6address => node.ipv6Addresses.join(", ")
-      }
-    end
-
     def get_addin_cards(node)
-      node_addin_cards = node.addinCards
       addin_cards = []
 
+      node_addin_cards = node.addinCards
       unless node_addin_cards.nil?
         node_addin_cards.each do |addin_card|
           if get_device_type(addin_card) == "ethernet"
@@ -164,25 +122,10 @@ module ManageIQ::Providers::Lenovo
       addin_cards
     end
 
-    def get_onboard_cards(node)
-      node_onboard_cards = node.onboardPciDevices
-      onboard_cards = []
-
-      unless node_onboard_cards.nil?
-        node_onboard_cards.each do |onboard_card|
-          if get_device_type(onboard_card) == "ethernet"
-            onboard_cards.push(parse_onboard_cards(onboard_card))
-          end
-        end
-      end
-
-      onboard_cards
-    end
-
-    def get_device_type(addin_card)
+    def get_device_type(card)
       device_type = ""
-      card_name = addin_card["name"].downcase
 
+      card_name = card["name"].downcase
       if card_name.include?("nic") || card_name.include?("ethernet")
         device_type = "ethernet"
       end
@@ -190,12 +133,38 @@ module ManageIQ::Providers::Lenovo
       device_type
     end
 
-    def parse_ethernet_device(node)
-      {
-        :device_type => "ethernet",
-        :network     => get_network(node),
-        :address     => node.macAddress
-      }
+    def get_guest_device_ports(card)
+      device_ports = []
+
+      unless card.nil?
+        port_info = card["portInfo"]
+        physical_ports = port_info["physicalPorts"]
+        unless physical_ports.nil?
+          physical_ports.each do |physical_port|
+            parsed_physical_port = parse_physical_port(physical_port)
+            logical_ports = physical_port["logicalPorts"]
+            parsed_logical_port = parse_logical_port(logical_ports[0])
+            device_ports.push(parsed_logical_port.merge(parsed_physical_port))
+          end
+        end
+      end
+
+      device_ports
+    end
+
+    def get_guest_device_firmware(card)
+      device_fw = []
+
+      unless card.nil?
+        firmware = card["firmware"]
+        unless firmware.nil?
+          device_fw = firmware.map do |fw|
+            parse_firmware(fw)
+          end
+        end
+      end
+
+      device_fw
     end
 
     def parse_firmware(firmware)
@@ -207,24 +176,30 @@ module ManageIQ::Providers::Lenovo
       }
     end
 
+    def parse_ethernet_device(node)
+      {
+        :device_type => "ethernet",
+        :network     => parse_network(node),
+        :address     => node.macAddress
+      }
+    end
+
+    def parse_network(node)
+      {
+        :ipaddress   => node.mgmtProcIPaddress,
+        :ipv6address => node.ipv6Addresses.join(", ")
+      }
+    end
+
     def parse_addin_cards(addin_card)
       {
         :device_name            => addin_card["productName"],
         :device_type            => get_device_type(addin_card),
-        :firmwares              => get_guest_devices_firmwares(addin_card),
+        :firmwares              => get_guest_device_firmware(addin_card),
         :manufacturer           => addin_card["manufacturer"],
         :field_replaceable_unit => addin_card["FRU"],
         :location               => addin_card["slotNumber"],
-        :guest_devices          => get_guest_devices_ports(addin_card)
-      }
-    end
-
-    def parse_onboard_cards(onboard_card)
-      {
-        :device_name   => onboard_card["name"],
-        :device_type   => get_device_type(onboard_card),
-        :firmwares     => get_guest_devices_firmwares(onboard_card),
-        :guest_devices => get_guest_devices_ports(onboard_card)
+        :guest_devices          => get_guest_device_ports(addin_card)
       }
     end
 
