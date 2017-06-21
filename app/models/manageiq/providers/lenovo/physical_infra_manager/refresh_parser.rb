@@ -28,7 +28,8 @@ module ManageIQ::Providers::Lenovo
       @ems               = ems
       @connection        = ems.connect(:user => ems_auth.userid,
                                        :pass => ems_auth.password,
-                                       :host => ems.endpoints.first.hostname)
+                                       :host => ems.endpoints.first.hostname,
+                                       :port => ems.endpoints.first.port)
       @options           = options || {}
       @data              = {}
       @data_index        = {}
