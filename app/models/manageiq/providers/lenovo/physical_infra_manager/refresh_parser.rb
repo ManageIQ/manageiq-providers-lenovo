@@ -108,18 +108,52 @@ module ManageIQ::Providers::Lenovo
     end
 
     def get_addin_cards(node)
-      addin_cards = []
+      parsed_addin_cards = []
 
+      # For each of the node's addin cards, parse the addin card and then see
+      # if it is already in the list of parsed addin cards. If it is, see if
+      # all of its ports are already in the existing parsed addin card entry.
+      # If it's not, then add the port to the existing addin card entry and
+      # don't add the card again to the list of parsed addin cards.
+      # This is needed because xclarity_client seems to represent each port
+      # as a separate addin card. The code below ensures that each addin
+      # card is represented by a single addin card with multiple ports.
       node_addin_cards = node.addinCards
       unless node_addin_cards.nil?
-        node_addin_cards.each do |addin_card|
-          if get_device_type(addin_card) == "ethernet"
-            addin_cards.push(parse_addin_cards(addin_card))
+        node_addin_cards.each do |node_addin_card|
+          if get_device_type(node_addin_card) == "ethernet"
+            add_card = true
+            parsed_node_addin_card = parse_addin_cards(node_addin_card)
+
+            parsed_addin_cards.each do |addin_card|
+              if parsed_node_addin_card[:device_name] == addin_card[:device_name]
+                if parsed_node_addin_card[:location] == addin_card[:location]
+                  parsed_node_addin_card[:child_devices].each do |parsed_port|
+                    card_found = false
+
+                    addin_card[:child_devices].each do |port|
+                      if parsed_port[:device_name] == port[:device_name]
+                        card_found = true
+                      end
+                    end
+
+                    unless card_found
+                      addin_card[:child_devices].push(parsed_port)
+                      add_card = false
+                    end
+                  end
+                end
+              end
+            end
+
+            if add_card
+              parsed_addin_cards.push(parsed_node_addin_card)
+            end
           end
         end
       end
 
-      addin_cards
+      parsed_addin_cards
     end
 
     def get_device_type(card)
