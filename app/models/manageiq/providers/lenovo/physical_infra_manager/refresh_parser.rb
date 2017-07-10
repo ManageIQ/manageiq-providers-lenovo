@@ -101,8 +101,8 @@ module ManageIQ::Providers::Lenovo
         addin_card
       end
 
-      # Retrieve any ethernet device (non-addin card) associated with the node
-      guest_devices.push(parse_ethernet_device(node))
+      # Retrieve management devices
+      guest_devices.push(parse_management_device(node))
 
       guest_devices
     end
@@ -210,15 +210,15 @@ module ManageIQ::Providers::Lenovo
       }
     end
 
-    def parse_ethernet_device(node)
+    def parse_management_device(node)
       {
-        :device_type => "ethernet",
-        :network     => parse_network(node),
+        :device_type => "management",
+        :network     => parse_management_network(node),
         :address     => node.macAddress
       }
     end
 
-    def parse_network(node)
+    def parse_management_network(node)
       {
         :ipaddress   => node.mgmtProcIPaddress,
         :ipv6address => node.ipv6Addresses.join(", ")
