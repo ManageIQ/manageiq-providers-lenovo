@@ -146,24 +146,24 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
   context 'valid discover' do
     before :each do
       EvmSpecHelper.local_miq_server(:zone => Zone.seed)
-      @port = Random.rand(10000).to_s
+      @port = Random.rand(10_000).to_s
       @address = URI('https://' + Faker::Internet.ip_v4_address + ':' + @port)
       WebMock.allow_net_connect!
       stub_request(:get, File.join(@address.to_s, '/aicc')).to_return(:status => [200, 'OK'])
     end
 
     it 'should create a new instance' do
-      expect{described_class.discover(@address.host, @port)}.to change{described_class.count}.by 1
+      expect { described_class.discover(@address.host, @port) }.to change { described_class.count }.by 1
     end
   end
 
   context 'invalid discover' do
     before :each do
-      @port = Random.rand(10000).to_s
+      @port = Random.rand(10_000).to_s
       @address = URI('https://' + Faker::Internet.ip_v4_address + ':' + @port)
     end
     it 'should not create a new instance' do
-      expect{described_class.discover(@address.host, @port)}.to change{described_class.count}.by 0
+      expect { described_class.discover(@address.host, @port) }.to change { described_class.count }.by 0
     end
   end
 end
