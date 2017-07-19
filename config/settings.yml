@@ -1,0 +1,12 @@
+---
+:ems:
+  :ems_lenovo:
+    :blacklisted_event_names: []
+    :event_handling:
+      :event_groups:
+:http_proxy:
+  :lenovo:
+    :host:
+    :password:
+    :port:
+    :user:
