@@ -21,8 +21,24 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations
     change_resource_state(:power_off_node, args, options)
   end
 
+  def power_off_now(args, options = {})
+    change_resource_state(:power_off_now_node, args, options)
+  end
+
   def restart(args, options = {})
     change_resource_state(:power_restart_node, args, options)
+  end
+
+  def restart_now(args, options = {})
+    change_resource_state(:power_restart_now_node, args, options)
+  end
+
+  def restart_to_sys_setup(args, options = {})
+    change_resource_state(:power_restart_to_sys_setup_node, args, options)
+  end
+
+  def restart_mgmt_controller(args, options = {})
+    change_resource_state(:power_restart_mgmt_controller_node, args, options)
   end
 
   private
