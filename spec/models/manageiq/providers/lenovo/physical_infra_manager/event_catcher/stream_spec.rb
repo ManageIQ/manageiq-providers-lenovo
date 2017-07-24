@@ -2,7 +2,8 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
   let(:ems) do
     FactoryGirl.create(:physical_infra_with_authentication,
                        :name     => "LXCA",
-                       :hostname => "https://10.243.9.123")
+                       :hostname => "https://10.243.9.123",
+                       :port     => "443")
   end
 
   let(:stream) { described_class.new(ems) }

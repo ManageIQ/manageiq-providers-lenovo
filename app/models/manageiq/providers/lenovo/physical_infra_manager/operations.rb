@@ -35,7 +35,8 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations
     endpoint = endpoints.first
     client = connect(:user => auth.userid,
                      :pass => auth.password,
-                     :host => endpoint.hostname)
+                     :host => endpoint.hostname,
+                     :port => endpoint.port)
 
     # Turn on the location LED using the xclarity_client API
     client.send(verb, args.ems_ref)
