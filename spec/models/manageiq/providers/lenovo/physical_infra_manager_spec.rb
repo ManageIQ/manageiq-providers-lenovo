@@ -3,7 +3,7 @@ require 'faker'
 
 describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
   before :all do
-    @auth = { :user => 'admin', :pass => 'smartvm', :host => 'localhost' }
+    @auth = { :user => 'admin', :pass => 'smartvm', :host => 'localhost', :port => '3000' }
   end
 
   it 'will turn on a location LED successfully' do
@@ -13,7 +13,8 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
-                             :ipaddress => "https://10.243.9.123")
+                             :port      => "443",
+                             :ipaddress => "https://10.243.9.123:443")
     auth = FactoryGirl.create(:authentication,
                               :userid   => 'admin',
                               :password => 'password',
@@ -32,7 +33,8 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
-                             :ipaddress => "https://10.243.9.123")
+                             :port      => "443",
+                             :ipaddress => "https://10.243.9.123:443")
     auth = FactoryGirl.create(:authentication,
                               :userid   => 'admin',
                               :password => 'password',
@@ -51,7 +53,8 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
-                             :ipaddress => "https://10.243.9.123")
+                             :port      => "443",
+                             :ipaddress => "https://10.243.9.123:443")
     auth = FactoryGirl.create(:authentication,
                               :userid   => 'admin',
                               :password => 'password',
@@ -70,7 +73,8 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
-                             :ipaddress => "https://10.243.9.123")
+                             :port      => "443",
+                             :ipaddress => "https://10.243.9.123:443")
     auth = FactoryGirl.create(:authentication,
                               :userid   => 'admin',
                               :password => 'password',
@@ -89,7 +93,8 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
-                             :ipaddress => "https://10.243.9.123")
+                             :port      => "443",
+                             :ipaddress => "https://10.243.9.123:443")
     auth = FactoryGirl.create(:authentication,
                               :userid   => 'admin',
                               :password => 'password',
@@ -108,7 +113,8 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
-                             :ipaddress => "https://10.243.9.123")
+                             :port      => "443",
+                             :ipaddress => "https://10.243.9.123:443")
     auth = FactoryGirl.create(:authentication,
                               :userid   => 'admin',
                               :password => 'password',

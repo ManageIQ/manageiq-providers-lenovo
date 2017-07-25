@@ -14,9 +14,10 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
     username   = options[:user] || authentication_userid(options[:auth_type])
     password   = options[:pass] || authentication_password(options[:auth_type])
     host       = options[:host]
+    port       = options[:port]
     # TODO: improve this SSL verification
     verify_ssl = options[:verify_ssl] == 1 ? 'PEER' : 'NONE'
-    self.class.raw_connect(username, password, host, verify_ssl)
+    self.class.raw_connect(username, password, host, port, verify_ssl)
   end
 
   def translate_exception(err)
@@ -31,12 +32,13 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
     #
     # Connections
     #
-    def raw_connect(username, password, host, verify_ssl)
+    def raw_connect(username, password, host, port, verify_ssl)
       require 'xclarity_client'
       xclarity = XClarityClient::Configuration.new(
         :username   => username,
         :password   => password,
         :host       => host,
+        :port       => port,
         :verify_ssl => verify_ssl
       )
       XClarityClient::Client.new(xclarity)

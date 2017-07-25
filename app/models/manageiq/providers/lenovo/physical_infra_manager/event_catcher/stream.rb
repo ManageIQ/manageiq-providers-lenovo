@@ -51,7 +51,8 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
 
     ems.connect(:user => ems_auth.userid,
                 :pass => ems_auth.password,
-                :host => ems.endpoints.first.hostname)
+                :host => ems.endpoints.first.hostname,
+                :port => ems.endpoints.first.port)
   end
 
   def get_last_cnn_from_events(ems_id)
