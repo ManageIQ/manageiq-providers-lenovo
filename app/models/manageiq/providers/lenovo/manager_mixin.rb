@@ -51,29 +51,47 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
     # Factory method to create EmsLenovo with instances
     #   or images for the given authentication.  Created EmsLenovo instances
     #   will automatically have EmsRefreshes queued up.
-    def discover(username, password, host, port, verify_ssl = 0)
-      new_emses = []
+    def discover(ip_address, port)
+      require 'xclarity_client'
 
-      raw_connect(username, password, host, port, verify_ssl)
+      if XClarityClient::Discover.responds?(ip_address, port)
+        new_ems = create!(
+          :name     => "Discovered Provider ##{count + 1}",
+          :hostname => URI('https://' + ip_address),
+          :zone     => Zone.default_zone
+        )
 
-      EmsRefresh.queue_refresh(new_emses) unless new_emses.blank?
+        # Set empty authentications
+        create_default_authentications(new_ems)
 
-      new_emses
+        _log.info("Reached Lenovo XClarity Appliance with endpoint: #{ip_address}")
+        _log.info("Created EMS: #{new_ems.name} with id: #{new_ems.id}")
+      end
+
+      EmsRefresh.queue_refresh(new_ems) unless new_ems.blank?
     end
 
-    def discover_queue(username, password, zone = nil)
+    def discover_queue(ip_address, port, zone = nil)
       MiqQueue.put(
         :class_name  => name,
         :method_name => "discover_from_queue",
-        :args        => [username, MiqPassword.encrypt(password)],
+        :args        => [ip_address, port],
         :zone        => zone
       )
     end
 
     private
 
-    def discover_from_queue(username, password)
-      discover(username, MiqPassword.decrypt(password))
+    def discover_from_queue(ip_address, port)
+      discover(ip_address, port)
+    end
+
+    def create_default_authentications(ems)
+      auth = Authentication.new
+      auth.userid = ''
+      auth.password = ''
+      auth.resource_id = ems.id
+      auth.save!
     end
   end
 end

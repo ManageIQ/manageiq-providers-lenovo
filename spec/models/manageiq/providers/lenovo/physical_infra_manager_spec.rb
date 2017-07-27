@@ -1,4 +1,5 @@
 require 'xclarity_client'
+require 'faker'
 
 describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
   before :all do
@@ -125,11 +126,6 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     end
   end
 
-  it 'will execute discover successfully' do
-    result = described_class.new.class.discover(@auth[:user], @auth[:pass], @auth[:host], @auth[:port])
-    expect(result).to eq([])
-  end
-
   it 'will execute discover_queue successfully' do
     result = described_class.new.class.discover_queue(@auth[:user], @auth[:pass])
     expect(result).to_not eq(nil)
@@ -151,5 +147,29 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
   it 'connect should return a XClarityClient::Client object' do
     client = described_class.new.connect(@auth)
     expect(client).to be_a(XClarityClient::Client)
+  end
+
+  context 'valid discover' do
+    before :each do
+      EvmSpecHelper.local_miq_server(:zone => Zone.seed)
+      @port = Random.rand(10_000).to_s
+      @address = URI('https://' + Faker::Internet.ip_v4_address + ':' + @port)
+      WebMock.allow_net_connect!
+      stub_request(:get, File.join(@address.to_s, '/aicc')).to_return(:status => [200, 'OK'])
+    end
+
+    it 'should create a new instance' do
+      expect { described_class.discover(@address.host, @port) }.to change { described_class.count }.by 1
+    end
+  end
+
+  context 'invalid discover' do
+    before :each do
+      @port = Random.rand(10_000).to_s
+      @address = URI('https://' + Faker::Internet.ip_v4_address + ':' + @port)
+    end
+    it 'should not create a new instance' do
+      expect { described_class.discover(@address.host, @port) }.to change { described_class.count }.by 0
+    end
   end
 end
