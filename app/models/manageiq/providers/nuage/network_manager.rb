@@ -36,6 +36,7 @@ class ManageIQ::Providers::Nuage::NetworkManager < ManageIQ::Providers::NetworkM
   end
 
   def translate_exception(err)
+    require 'excon'
     case err
     when Excon::Errors::Unauthorized
       MiqException::MiqInvalidCredentialsError.new "Login failed due to a bad username or password."
