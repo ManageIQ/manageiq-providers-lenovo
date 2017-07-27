@@ -71,19 +71,19 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
       EmsRefresh.queue_refresh(new_ems) unless new_ems.blank?
     end
 
-    def discover_queue(username, password, zone = nil)
+    def discover_queue(ip_address, port, zone = nil)
       MiqQueue.put(
         :class_name  => name,
         :method_name => "discover_from_queue",
-        :args        => [username, MiqPassword.encrypt(password)],
+        :args        => [ip_address, port],
         :zone        => zone
       )
     end
 
     private
 
-    def discover_from_queue(username, password)
-      discover(username, '')
+    def discover_from_queue(ip_address, port)
+      discover(ip_address, port)
     end
 
     def create_default_authentications(ems)
