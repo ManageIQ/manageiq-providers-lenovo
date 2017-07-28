@@ -19,7 +19,8 @@ module ManageIQ::Providers::Lenovo
       "minor-failure"   => "Critical",
       "major-failure"   => "Critical",
       "non-recoverable" => "Critical",
-      "fatal"           => "Critical"
+      "fatal"           => "Critical",
+      nil               => "Unknown"
     }.freeze
 
     def initialize(ems, options = nil)
@@ -74,23 +75,32 @@ module ManageIQ::Providers::Lenovo
 
     def get_memory_info(node)
       total_memory = 0
-      node.memoryModules.each do |mem|
-        total_memory += mem['capacity'] * 1024
+      memory_modules = node.memoryModules
+      unless memory_modules.nil?
+        memory_modules.each do |mem|
+          total_memory += mem['capacity'] * 1024
+        end
       end
       total_memory
     end
 
     def get_total_cores(node)
       total_cores = 0
-      node.processors.each do |pr|
-        total_cores += pr['cores']
+      processors = node.processors
+      unless processors.nil?
+        processors.each do |pr|
+          total_cores += pr['cores']
+        end
       end
       total_cores
     end
 
     def get_firmwares(node)
-      firmwares = node.firmware.map do |firmware|
-        parse_firmware(firmware)
+      firmwares = node.firmware
+      unless firmwares.nil?
+        firmwares = firmwares.map do |firmware|
+          parse_firmware(firmware)
+        end
       end
       firmwares
     end
@@ -160,11 +170,12 @@ module ManageIQ::Providers::Lenovo
     def get_device_type(card)
       device_type = ""
 
-      card_name = card["name"].downcase
-      if card_name.include?("nic") || card_name.include?("ethernet")
-        device_type = "ethernet"
+      unless card["name"].nil?
+        card_name = card["name"].downcase
+        if card_name.include?("nic") || card_name.include?("ethernet")
+          device_type = "ethernet"
+        end
       end
-
       device_type
     end
 
@@ -222,7 +233,7 @@ module ManageIQ::Providers::Lenovo
     def parse_management_network(node)
       {
         :ipaddress   => node.mgmtProcIPaddress,
-        :ipv6address => node.ipv6Addresses.join(", ")
+        :ipv6address => node.ipv6Addresses.nil? ? node.ipv6Addresses : node.ipv6Addresses.join(", ")
       }
     end
 
@@ -270,7 +281,7 @@ module ManageIQ::Providers::Lenovo
         :field_replaceable_unit => node.FRU,
         :host                   => get_host_relationship(node),
         :power_state            => POWER_STATE_MAP[node.powerStatus],
-        :health_state           => HEALTH_STATE_MAP[node.cmmHealthState.downcase],
+        :health_state           => HEALTH_STATE_MAP[node.cmmHealthState.nil? ? node.cmmHealthState : node.cmmHealthState.downcase],
         :vendor                 => "lenovo",
         :computer_system        => {
           :hardware => {
@@ -326,14 +337,14 @@ module ManageIQ::Providers::Lenovo
 
     def find_loc_led_state(leds)
       loc_led_state = ""
-
-      leds.each do |led|
-        if led["name"] == "Identify"
-          loc_led_state = led["state"]
-          break
+      unless leds.nil?
+        leds.each do |led|
+          if led["name"] == "Identify"
+            loc_led_state = led["state"]
+            break
+          end
         end
       end
-
       loc_led_state
     end
   end
