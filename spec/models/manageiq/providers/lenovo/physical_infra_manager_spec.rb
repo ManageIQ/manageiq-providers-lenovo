@@ -14,7 +14,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
                              :port      => "443",
-                             :ipaddress => "https://10.243.9.123:443")
+                             :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
                               :userid   => 'admin',
                               :password => 'password',
@@ -34,7 +34,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
                              :port      => "443",
-                             :ipaddress => "https://10.243.9.123:443")
+                             :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
                               :userid   => 'admin',
                               :password => 'password',
@@ -46,6 +46,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     end
   end
 
+
   it 'will blink a location LED successfully' do
     ps = FactoryGirl.create(:physical_server,
                             :name    => "IMM2-e41f13ed5a1e",
@@ -54,7 +55,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
                              :port      => "443",
-                             :ipaddress => "https://10.243.9.123:443")
+                             :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
                               :userid   => 'admin',
                               :password => 'password',
@@ -74,7 +75,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
                              :port      => "443",
-                             :ipaddress => "https://10.243.9.123:443")
+                             :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
                               :userid   => 'admin',
                               :password => 'password',
@@ -94,7 +95,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
                              :port      => "443",
-                             :ipaddress => "https://10.243.9.123:443")
+                             :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
                               :userid   => 'admin',
                               :password => 'password',
@@ -106,6 +107,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     end
   end
 
+
   it 'will immediately power off a server successfully' do
     ps = FactoryGirl.create(:physical_server,
                             :name    => "17dspncsvdm",
@@ -113,10 +115,11 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
+                             :port      => "443",
                              :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
-                              :userid   => 'lxcc',
-                              :password => 'PASSW0rD',
+                              :userid   => 'admin',
+                              :password => 'password',
                               :authtype => 'default')
     pim.authentications = [auth]
 
@@ -133,7 +136,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
                              :port      => "443",
-                             :ipaddress => "https://10.243.9.123:443")
+                             :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
                               :userid   => 'admin',
                               :password => 'password',
@@ -152,10 +155,11 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
+                             :port      => "443",
                              :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
-                              :userid   => 'lxcc',
-                              :password => 'PASSW0rD',
+                              :userid   => 'admin',
+                              :password => 'password',
                               :authtype => 'default')
     pim.authentications = [auth]
 
@@ -171,10 +175,11 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
+                             :port      => "443",
                              :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
-                              :userid   => 'lxcc',
-                              :password => 'PASSW0rD',
+                              :userid   => 'admin',
+                              :password => 'password',
                               :authtype => 'default')
     pim.authentications = [auth]
 
@@ -190,10 +195,11 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
+                             :port      => "443",
                              :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
-                              :userid   => 'lxcc',
-                              :password => 'PASSW0rD',
+                              :userid   => 'admin',
+                              :password => 'password',
                               :authtype => 'default')
     pim.authentications = [auth]
 
