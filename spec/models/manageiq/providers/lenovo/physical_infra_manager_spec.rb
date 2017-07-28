@@ -46,7 +46,6 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     end
   end
 
-
   it 'will blink a location LED successfully' do
     ps = FactoryGirl.create(:physical_server,
                             :name    => "IMM2-e41f13ed5a1e",
@@ -106,7 +105,6 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
       pim.power_off(ps, :uuid => "EADEBE8316174750A27FEC2E8226AC48")
     end
   end
-
 
   it 'will immediately power off a server successfully' do
     ps = FactoryGirl.create(:physical_server,
