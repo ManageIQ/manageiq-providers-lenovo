@@ -1,4 +1,5 @@
 class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
+  require 'json'
   # Creates an event monitor
   #
   def initialize(ems)
@@ -29,10 +30,18 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
 
   private
 
-  def events
-    expression = '{"filterType":"FIELDNOTREGEXAND","fields":["operation":"GT","field":"cn","value":"' + get_last_cnn_from_events(@ems.id).to_s + '"]}'
+  def filter_fields
+    [
+      { :operation => 'GT', :field => 'cn', :value => get_last_cnn_from_events(@ems.id).to_s },
+      { :operation => 'NOT', :field => 'eventClass', :value => '200' },
+      { :operation => 'NOT', :field => 'eventClass', :value => '800' }
+    ]
+  end
 
-    opts = {'filterWith' => expression}
+  def events
+    expression = { :filterType => 'FIELDNOTREGEXAND', :fields => filter_fields }
+
+    opts = {'filterWith' => expression.to_json}
 
     @event_monitor_handle.fetch_events opts
   end
@@ -42,10 +51,11 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
 
     ems.connect(:user => ems_auth.userid,
                 :pass => ems_auth.password,
-                :host => ems.endpoints.first.hostname)
+                :host => ems.endpoints.first.hostname,
+                :port => ems.endpoints.first.port)
   end
 
   def get_last_cnn_from_events(ems_id)
-    EventStream.where("ems_id = '#{ems_id}'").maximum("lxca_cn")
+    EventStream.where(:ems_id => ems_id).select(:full_data).map { |event| event.full_data["cn"].to_i }.max
   end
 end

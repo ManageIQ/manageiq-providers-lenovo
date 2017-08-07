@@ -11,9 +11,11 @@ Gem::Specification.new do |s|
   s.description = "Lenovo Provider for ManageIQ"
   s.licenses    = ["Apache-2.0"]
 
-  s.files = Dir["{app,config.lib}/**/*"]
+  s.files = Dir["{app,config,lib}/**/*"]
 
-  s.add_dependency "xclarity_client", "~> 0.4.1"
+  s.add_dependency "xclarity_client", "~> 0.5.2"
   s.add_development_dependency "codeclimate-test-reporter", "~> 1.0.0"
+  s.add_development_dependency "webmock", "~> 2.1.0"
   s.add_development_dependency "simplecov"
+  s.add_dependency "faker", "~>1.8.3"
 end

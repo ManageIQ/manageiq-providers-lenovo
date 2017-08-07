@@ -1,0 +1,397 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://10.243.9.123/cabinet?status=includestandalone
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 24 Apr 2017 18:45:40 GMT
+      Set-Cookie:
+      - userAuthenticationMethod=local;Path=/;Secure
+      Expires:
+      - "-1"
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Strict-Transport-Security:
+      - max-age=86400; includeSubDomains;
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Content-Security-Policy:
+      - 'default-src https:; script-src https: ''unsafe-inline'' ''unsafe-eval'';
+        style-src https: ''unsafe-inline'''
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '1'
+      Content-Type:
+      - application/com.lenovo.lxca-v1.2.2+json; charset=UTF-8
+      Vary:
+      - Accept-Encoding, User-Agent
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"cabinetList":[{"storageList":[],"cabinetName":"cabinet71","height":42,"complexList":[],"chassisList":[],"location":"","UUID":"096F8C92-08D4-4A24-ABD8-FE56D482F8C4","nodeList":[],"placeholderList":[],"switchList":[],"room":""},{"storageList":[],"cabinetName":"STANDALONE_OBJECT_NAME","height":42,"complexList":[],"chassisList":[],"location":"","UUID":"STANDALONE_OBJECT_UUID","nodeList":[{"itemParentUUID":null,"itemName":"Management
+        Controller UUID-EADEBE8316174750A27FEC2E8226AC48","itemLowerUnit":0,"itemType":"SERVER","itemLocationRack":"","itemSubType":"","itemUUID":"EADEBE8316174750A27FEC2E8226AC48","itemInventory":{"accessState":"Online","arch":"x86","manufacturerId":"
+        IBM(WIST)","location":{"lowestRackUnit":0,"location":"","rack":"","room":""},"addinCardSlots":0,"serialNumber":"KVX0171","driveBays":33,"macAddress":"40:F2:E9:AF:0F:FD,40:F2:E9:AF:0F:FE","type":"Rack-Tower
+        Server","lanOverUsb":"enabled","onboardPciDevices":[{"pciSubID":"405","firmware":[{"revision":"0","classifications":[0],"status":"Active","name":"PCIFirmware","role":"Primary","softwareID":"1014:405","type":"","build":"0","date":"","version":""}],"fodUniqueID":"","pciRevision":"1","isAgentless":false,"pciBusNumber":"20","pciSubVendorID":"1014","isAddOnCard":false,"pciDeviceNumber":"0","posID":"534","pciFunctionNumber":"0","name":"","portInfo":{},"vpdID":"102b"},{"pciSubID":"4d1","firmware":[{"revision":"0","classifications":[33024],"status":"Active","name":"17.4.4.2a","role":"Primary","softwareID":"101404D1","type":"VPD-V0","build":"0","date":"","version":"17.4.4.2a"}],"fodUniqueID":"11SBCM957190123456789","pciRevision":"1","isAgentless":true,"pciBusNumber":"22","pciSubVendorID":"1014","isAddOnCard":false,"pciDeviceNumber":"0","posID":"1657","pciFunctionNumber":"0","name":"Broadcom
+        NetXtreme Gigabit Ethernet Controller","portInfo":{"physicalPorts":[{"portType":"ETHERNET","portNumber":1,"logicalPorts":[{"portType":"ETHERNET","portNumber":1,"logicalPortIndex":1,"addresses":"40F2E9AF0FF8","vnicMode":false}],"peerBay":0,"physicalPortIndex":1}]},"vpdID":"14e4"},{"pciSubID":"4d1","firmware":[{"revision":"0","classifications":[33024],"status":"Active","name":"17.4.4.2a","role":"Primary","softwareID":"101404D1","type":"VPD-V0","build":"0","date":"","version":"17.4.4.2a"}],"fodUniqueID":"11SBCM957190123456789","pciRevision":"1","isAgentless":true,"pciBusNumber":"22","pciSubVendorID":"1014","isAddOnCard":false,"pciDeviceNumber":"0","posID":"1657","pciFunctionNumber":"1","name":"Broadcom
+        NetXtreme Gigabit Ethernet Controller","portInfo":{"physicalPorts":[{"portType":"ETHERNET","portNumber":2,"logicalPorts":[{"portType":"ETHERNET","portNumber":1,"logicalPortIndex":1,"addresses":"40F2E9AF0FF9","vnicMode":false}],"peerBay":0,"physicalPortIndex":2}]},"vpdID":"14e4"},{"pciSubID":"4d1","firmware":[{"revision":"0","classifications":[33024],"status":"Active","name":"17.4.4.2a","role":"Primary","softwareID":"101404D1","type":"VPD-V0","build":"0","date":"","version":"17.4.4.2a"}],"fodUniqueID":"11SBCM957190123456789","pciRevision":"1","isAgentless":true,"pciBusNumber":"22","pciSubVendorID":"1014","isAddOnCard":false,"pciDeviceNumber":"0","posID":"1657","pciFunctionNumber":"2","name":"Broadcom
+        NetXtreme Gigabit Ethernet Controller","portInfo":{"physicalPorts":[{"portType":"ETHERNET","portNumber":3,"logicalPorts":[{"portType":"ETHERNET","portNumber":1,"logicalPortIndex":1,"addresses":"40F2E9AF0FFA","vnicMode":false}],"peerBay":0,"physicalPortIndex":3}]},"vpdID":"14e4"},{"pciSubID":"4d1","firmware":[{"revision":"0","classifications":[33024],"status":"Active","name":"17.4.4.2a","role":"Primary","softwareID":"101404D1","type":"VPD-V0","build":"0","date":"","version":"17.4.4.2a"}],"fodUniqueID":"11SBCM957190123456789","pciRevision":"1","isAgentless":true,"pciBusNumber":"22","pciSubVendorID":"1014","isAddOnCard":false,"pciDeviceNumber":"0","posID":"1657","pciFunctionNumber":"3","name":"Broadcom
+        NetXtreme Gigabit Ethernet Controller","portInfo":{"physicalPorts":[{"portType":"ETHERNET","portNumber":4,"logicalPorts":[{"portType":"ETHERNET","portNumber":1,"logicalPortIndex":1,"addresses":"40F2E9AF0FFB","vnicMode":false}],"peerBay":0,"physicalPortIndex":4}]},"vpdID":"14e4"}],"height":2,"leds":[{"color":"Yellow","location":"FrontRearPanel","name":"Fault","state":"Off"},{"color":"Blue","location":"FrontRearPanel","name":"Identify","state":"Off"},{"color":"Yellow","location":"FrontPanel","name":"Check
+        Log","state":"Off"},{"color":"Yellow","location":"Planar","name":"CPU Mismatch","state":"Off"},{"color":"Yellow","location":"Planar","name":"CPU
+        1","state":"Off"},{"color":"Yellow","location":"Planar","name":"CPU 2","state":"Off"},{"color":"Yellow","location":"Planar","name":"Fan
+        1","state":"Off"},{"color":"Yellow","location":"Planar","name":"Fan 2","state":"Off"},{"color":"Yellow","location":"Planar","name":"Fan
+        3","state":"Off"},{"color":"Yellow","location":"Planar","name":"Fan 4","state":"Off"},{"color":"Yellow","location":"Planar","name":"Fan
+        5","state":"Off"},{"color":"Yellow","location":"Planar","name":"Fan 6","state":"Off"},{"color":"Yellow","location":"Planar","name":"Fan
+        Riser1","state":"Off"},{"color":"Yellow","location":"Planar","name":"Fan Riser2","state":"Off"},{"color":"Yellow","location":"Planar","name":"DIMM
+        1","state":"Off"},{"color":"Yellow","location":"Planar","name":"DIMM 2","state":"Off"},{"color":"Yellow","location":"Planar","name":"DIMM
+        3","state":"Off"},{"color":"Yellow","location":"Planar","name":"DIMM 4","state":"Off"},{"color":"Yellow","location":"Planar","name":"DIMM
+        5","state":"Off"},{"color":"Yellow","location":"Planar","name":"DIMM 6","state":"Off"},{"color":"Yellow","location":"Planar","name":"DIMM
+        7","state":"Off"},{"color":"Yellow","location":"Planar","name":"DIMM 8","state":"Off"},{"color":"Yellow","location":"Planar","name":"DIMM
+        9","state":"Off"},{"color":"Yellow","location":"Planar","name":"DIMM 10","state":"Off"},{"color":"Yellow","location":"Planar","name":"DIMM
+        11","state":"Off"},{"color":"Yellow","location":"Planar","name":"DIMM 12","state":"Off"},{"color":"Yellow","location":"Planar","name":"DIMM
+        13","state":"Off"},{"color":"Yellow","location":"Planar","name":"DIMM 14","state":"Off"},{"color":"Yellow","location":"Planar","name":"DIMM
+        15","state":"Off"},{"color":"Yellow","location":"Planar","name":"DIMM 16","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI
+        1","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI 2","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI
+        3","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI 4","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI
+        5","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI 6","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI
+        7","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI 8","state":"Off"},{"color":"Yellow","location":"Planar","name":"Internal
+        RAID","state":"Off"},{"color":"Yellow","location":"Planar","name":"SysBrd
+        Fault","state":"Off"},{"color":"Yellow","location":"Planar","name":"Battery","state":"Off"},{"color":"Green","location":"FrontRearPanel","name":"Power","state":"On"},{"color":"Green","location":"Planar","name":"IMM2
+        Heartbeat","state":"Blinking"},{"color":"Yellow","location":"Planar","name":"DIMM
+        17","state":"Off"},{"color":"Yellow","location":"Planar","name":"DIMM 18","state":"Off"},{"color":"Yellow","location":"Planar","name":"DIMM
+        19","state":"Off"},{"color":"Yellow","location":"Planar","name":"DIMM 20","state":"Off"},{"color":"Yellow","location":"Planar","name":"DIMM
+        21","state":"Off"},{"color":"Yellow","location":"Planar","name":"DIMM 22","state":"Off"},{"color":"Yellow","location":"Planar","name":"DIMM
+        23","state":"Off"},{"color":"Yellow","location":"Planar","name":"DIMM 24","state":"Off"}],"description":"Chassis","mgmtProcIPaddress":"10.243.6.71","expansionCards":[],"errorFields":[{"ChassisMounted":"NO_CONNECTOR"}],"FQDN":"xinyi2.labs.lenovo.com","ipInterfaces":[{"IPv4enabled":true,"IPv4DHCPmode":"STATIC_ONLY","IPv6enabled":true,"IPv6DHCPenabled":true,"IPv4assignments":[{"id":0,"subnet":"255.255.240.0","gateway":"0.0.0.0","address":"10.243.6.71","type":"INUSE"}],"IPv6assignments":[{"id":0,"scope":"Global","gateway":"0:0:0:0:0:0:0:0","source":"Stateless","address":"fd55:faaf:e1ab:2021:42f2:e9ff:feaf:ffd","prefix":64,"type":"INUSE"},{"id":0,"scope":"LinkLocal","gateway":"0:0:0:0:0:0:0:0","source":"Other","address":"fe80:0:0:0:42f2:e9ff:feaf:ffd","prefix":64,"type":"INUSE"}],"name":"eth0","IPv6statelessEnabled":true,"label":"unknown","IPv6staticEnabled":false}],"firmware":[{"status":"Active","name":"UEFI
+        Firmware/BIOS","role":"Primary","date":"2016-09-07T00:00:00Z","type":"UEFI","build":"TCE125O","version":"2.20"},{"status":"Inactive","name":"UEFI
+        Backup Firmware/BIOS","role":"Backup","date":"2016-09-07T00:00:00Z","type":"UEFI-Backup","build":"TCE125O","version":"2.20"},{"status":"Active","name":"DSA
+        Diagnostic Software","role":"Primary","date":"2016-07-08T00:00:00Z","type":"DSA","build":"DSALA7K","version":"10.2"},{"status":"Active","name":"IMM2
+        Firmware","role":"Primary","date":"2016-08-29T00:00:00Z","type":"IMM2","build":"TCOO23A","version":"3.50"},{"status":"Inactive","name":"IMM2
+        Backup Firmware","role":"Backup","date":"2016-08-29T00:00:00Z","type":"IMM2-Backup","build":"TCOO23A","version":"3.50"}],"bladeState":255,"activationKeys":[{"keyFeatureType":1,"keyStatus":"VALID","description":"Integrated
+        Management Module Advanced Upgrade","keyUseLimit":0,"keyExpirationDate":"","keyUseCount":0,"uuid":"9799d80066a98a58","keyIdentiferList":[{"keyIdentifierType":"MT","keyIdentifier":"5462KVX0171"}]}],"status":{"message":"managed","name":"MANAGED"},"powerCappingPolicy":{"cappingACorDCMode":"DC","minimumHardCapLevel":200400,"cappingPolicy":"OFF","maxPowerCap":297000,"minimumPowerCappingHotPlugLevel":216000,"powerCappingAllocUnit":"watts*10^-3","maximumPowerCappingHotPlugLevel":313000,"currentPowerCap":0,"minPowerCap":90900},"hostname":"IMM2-40f2e9af0ffd","powerSupplies":[{"model":"","manufacturerId":"","serialNumber":"K10514660FU","inputVoltageIsAC":true,"inputVoltageMin":-1,"type":"PowerSupply","dataHandle":0,"cmmDisplayName":"Power
+        Supply 1","leds":[],"description":"","name":"Power Supply 1","userDescription":"","manufactureDate":"","partNumber":"94Y8143","firmware":[],"healthState":"CRITICAL","machineType":"","hardwareRevision":"","FRU":"","uri":"powerSupply/","productId":"","powerAllocation":{"totalInputPower":0,"totalOutputPower":750},"powerState":"Unknown","posID":"","slots":[1],"manufacturer":"DELT","vpdID":"","uuid":"","productName":"","fruSerialNumber":"","inputVoltageMax":-1}],"FRU":"None","uri":"node/EADEBE8316174750A27FEC2E8226AC48","vnicMode":"disabled","powerAllocation":{"maximumAllocatedPower":750,"minimumAllocatedPower":26},"expansionProductType":"","powerStatus":5,"bootOrder":{"uri":"node/EADEBE8316174750A27FEC2E8226AC48/bootOrder","bootOrderList":[{"currentBootOrderDevices":["None"],"bootType":"SingleUse","possibleBootOrderDevices":["None","PXE
+        Network","Hard Disk 0","Diagnostics","CD/DVD Rom","Boot To F1","Hypervisor","Floppy
+        Disk"]},{"currentBootOrderDevices":["Hard Disk 0","CD/DVD Rom","PXE Network"],"bootType":"Permanent","possibleBootOrderDevices":["Hard
+        Disk 0","CD/DVD Rom","PXE Network","Floppy Disk","Hard Disk 1","Hard Disk
+        2","Hard Disk 3","Hard Disk 4","USB Storage","Diagnostics","iSCSI","iSCSI
+        Critical","Embedded Hypervisor","Legacy Only","USB0","USB1","USB2","USB3","USB4","USB5","USB6","USB7","USB8","sSATA
+        Port 0","sSATA Port 1","Slot1","Slot2","Slot3","Slot4","Slot5","Slot6","Slot7","Slot8","RAID","NIC1","NIC2","NIC3","NIC4","DSA"]},{"currentBootOrderDevices":["PXE
+        Network","CD/DVD Rom","Hard Disk 0"],"bootType":"WakeOnLAN","possibleBootOrderDevices":["PXE
+        Network","CD/DVD Rom","Hard Disk 0","Floppy Disk","Hard Disk 1","Hard Disk
+        2","Hard Disk 3","Hard Disk 4","USB Storage","Diagnostics","iSCSI","iSCSI
+        Critical","Embedded Hypervisor","Legacy Only","USB0","USB1","USB2","USB3","USB4","USB5","USB6","USB7","USB8","sSATA
+        Port 0","sSATA Port 1","Slot1","Slot2","Slot3","Slot4","Slot5","Slot6","Slot7","Slot8","RAID","NIC1","NIC2","NIC3","NIC4","DSA"]}]},"expansionProducts":[],"ipv6Addresses":["fd55:faaf:e1ab:2021:42f2:e9ff:feaf:ffd","fe80:0:0:0:42f2:e9ff:feaf:ffd"],"slots":[1],"manufacturer":"
+        IBM(WIST)","addinCards":[{"pciSubID":"e729","firmware":[{"revision":"0","classifications":[13],"status":"Active","name":"BladeEngine
+        10G Flash Image","role":"Primary","softwareID":"10DFE729","type":"Software
+        Bundle","build":"0","date":"","version":"10.6.228.36"}],"slotSupportsHotPlug":"false","fodUniqueID":"N/A","pciRevision":"2","isAgentless":true,"pciBusNumber":"6","pciSubVendorID":"10df","isAddOnCard":true,"FRU":"FRU
+        49Y7952","pciDeviceNumber":"0","slotNumber":"4","posID":"710","pciFunctionNumber":"0","manufacturer":"IBM","name":"Emulex
+        10GbE Virtual Fabric Adapter II for IBM System x","portInfo":{"physicalPorts":[{"portType":"ETHERNET","portNumber":25,"logicalPorts":[{"portType":"ETHERNET","portNumber":1,"logicalPortIndex":1,"addresses":"0000C9D48304","vnicMode":false}],"peerBay":0,"physicalPortIndex":1}]},"vpdID":"19a2","productName":"Emulex
+        10GbE Virtual Fabric Adapter II for IBM System x","partNumber":"49Y7951","fruSerialNumber":"Y150HY2140BC","slotName":"SlotDesig6_Slot
+        4"},{"pciSubID":"e729","firmware":[{"revision":"0","classifications":[13],"status":"Active","name":"BladeEngine
+        10G Flash Image","role":"Primary","softwareID":"10DFE729","type":"Software
+        Bundle","build":"0","date":"","version":"10.6.228.36"}],"slotSupportsHotPlug":"false","fodUniqueID":"N/A","pciRevision":"2","isAgentless":true,"pciBusNumber":"6","pciSubVendorID":"10df","isAddOnCard":true,"FRU":"FRU
+        49Y7952","pciDeviceNumber":"0","slotNumber":"4","posID":"710","pciFunctionNumber":"1","manufacturer":"IBM","name":"Emulex
+        10GbE Virtual Fabric Adapter II for IBM System x","portInfo":{"physicalPorts":[{"portType":"ETHERNET","portNumber":26,"logicalPorts":[{"portType":"ETHERNET","portNumber":1,"logicalPortIndex":1,"addresses":"0000C9D48308","vnicMode":false}],"peerBay":0,"physicalPortIndex":2}]},"vpdID":"19a2","productName":"Emulex
+        10GbE Virtual Fabric Adapter II for IBM System x","partNumber":"49Y7951","fruSerialNumber":"Y150HY2140BC","slotName":"SlotDesig6_Slot
+        4"},{"pciSubID":"454","firmware":[{"revision":"0","classifications":[13],"status":"Active","name":"MegaRAID
+        Controller Firmware","role":"Primary","softwareID":"10140454","type":"Software
+        Bundle","build":"0","date":"2016-07-20T00:00:00Z","version":"24.12.0-0033"}],"slotSupportsHotPlug":"false","fodUniqueID":"N/A","pciRevision":"2","isAgentless":true,"pciBusNumber":"11","pciSubVendorID":"1014","isAddOnCard":true,"FRU":"N/A","pciDeviceNumber":"0","slotNumber":"9","posID":"5d","pciFunctionNumber":"0","manufacturer":"IBM","name":"ServeRAID
+        M5210","portInfo":{},"vpdID":"1000","productName":"ServeRAID M5210","partNumber":"N/A","fruSerialNumber":"SV42103713","slotName":"SlotDesig7_Slot
+        9"}],"raidSettings":[{"firmware":[{"revision":"0","classifications":[10],"status":"Active","name":"MegaRAID
+        Controller Firmware","role":"Primary","softwareID":"10140454","type":"Firmware","build":"0","date":"2016-07-20T00:00:00Z","version":"24.12.0-0033"}],"description":"ServeRAID
+        M5210","name":"ServeRAID M5210","uuid":"0000000000000000500605B008E547F0"}],"vpdID":"","uuid":"EADEBE8316174750A27FEC2E8226AC48","isConnectionTrusted":"true","memoryModules":[{"model":"DDR4","speed":2133,"manufacturer":"Hynix
+        Semiconductor","capacity":4,"serialNumber":"103D4D38","displayName":"DIMM
+        1","slot":1,"type":"DDR4","partNumber":"HMA451R7MFR8N-TFT1"}],"fruSerialNumber":"None","secureBootMode":{"possibleValues":["Disabled","Enabled"],"currentValue":"Disabled"},"encapsulation":{"encapsulationMode":"normal"},"tlsVersion":{"possibleValues":["TLS_10","TLS_11","TLS_12","unsupported"],"currentValue":"TLS_10"},"model":"35Z","isScalable":false,"expansionCardSlots":0,"fans":[{"healthState":"Normal","status":"OK","speed":944,"description":"Logical
+        Device for fan / cooling device 1","slots":1,"name":"Fan 1"},{"healthState":"Normal","status":"OK","speed":944,"description":"Logical
+        Device for fan / cooling device 2","slots":2,"name":"Fan 2"},{"healthState":"Normal","status":"OK","speed":944,"description":"Logical
+        Device for fan / cooling device 3","slots":3,"name":"Fan 3"},{"healthState":"Normal","status":"OK","speed":944,"description":"Logical
+        Device for fan / cooling device 4","slots":4,"name":"Fan 4"},{"healthState":"Normal","status":"OK","speed":944,"description":"Logical
+        Device for fan / cooling device 5","slots":5,"name":"Fan 5"},{"healthState":"Normal","status":"OK","speed":944,"description":"Logical
+        Device for fan / cooling device 6","slots":6,"name":"Fan 6"},{"healthState":"Normal","status":"OK","speed":5644,"description":"Logical
+        Device for fan / cooling device 9","slots":9,"name":"Fan 9"},{"healthState":"Normal","status":"OK","speed":5644,"description":"Logical
+        Device for fan / cooling device 10","slots":10,"name":"Fan 10"}],"isITME":false,"hostMacAddresses":"40:F2:E9:AF:0F:F8,40:F2:E9:AF:0F:F9,40:F2:E9:AF:0F:FA,40:F2:E9:AF:0F:FB,00:00:C9:D4:83:04,00:00:C9:D4:83:08","contact":"","dataHandle":1493059490137,"ipv4Addresses":["10.243.6.71","169.254.95.118"],"cmmDisplayName":"Management
+        Controller UUID-EADEBE8316174750A27FEC2E8226AC48","backedBy":"real","complexID":-1,"name":"MimmNameDM","memorySlots":1,"drives":[],"cmmHealthState":"Normal","userDescription":"","subSlots":[],"partNumber":"00KC777     ","excludedHealthState":"Normal","machineType":"5462","isRemotePresenceEnabled":true,"pciDevices":[{"pciSubID":"e729","firmware":[{"revision":"0","classifications":[13],"status":"Active","name":"BladeEngine
+        10G Flash Image","role":"Primary","softwareID":"10DFE729","type":"Software
+        Bundle","build":"0","date":"","version":"10.6.228.36"}],"slotSupportsHotPlug":"false","fodUniqueID":"N/A","pciRevision":"2","isAgentless":true,"pciBusNumber":"6","pciSubVendorID":"10df","isAddOnCard":true,"FRU":"FRU
+        49Y7952","pciDeviceNumber":"0","slotNumber":"4","posID":"710","pciFunctionNumber":"0","manufacturer":"IBM","name":"Emulex
+        10GbE Virtual Fabric Adapter II for IBM System x","portInfo":{"physicalPorts":[{"portType":"ETHERNET","portNumber":25,"logicalPorts":[{"portType":"ETHERNET","portNumber":1,"logicalPortIndex":1,"addresses":"0000C9D48304","vnicMode":false}],"peerBay":0,"physicalPortIndex":1}]},"vpdID":"19a2","productName":"Emulex
+        10GbE Virtual Fabric Adapter II for IBM System x","partNumber":"49Y7951","fruSerialNumber":"Y150HY2140BC","slotName":"SlotDesig6_Slot
+        4"},{"pciSubID":"e729","firmware":[{"revision":"0","classifications":[13],"status":"Active","name":"BladeEngine
+        10G Flash Image","role":"Primary","softwareID":"10DFE729","type":"Software
+        Bundle","build":"0","date":"","version":"10.6.228.36"}],"slotSupportsHotPlug":"false","fodUniqueID":"N/A","pciRevision":"2","isAgentless":true,"pciBusNumber":"6","pciSubVendorID":"10df","isAddOnCard":true,"FRU":"FRU
+        49Y7952","pciDeviceNumber":"0","slotNumber":"4","posID":"710","pciFunctionNumber":"1","manufacturer":"IBM","name":"Emulex
+        10GbE Virtual Fabric Adapter II for IBM System x","portInfo":{"physicalPorts":[{"portType":"ETHERNET","portNumber":26,"logicalPorts":[{"portType":"ETHERNET","portNumber":1,"logicalPortIndex":1,"addresses":"0000C9D48308","vnicMode":false}],"peerBay":0,"physicalPortIndex":2}]},"vpdID":"19a2","productName":"Emulex
+        10GbE Virtual Fabric Adapter II for IBM System x","partNumber":"49Y7951","fruSerialNumber":"Y150HY2140BC","slotName":"SlotDesig6_Slot
+        4"},{"pciSubID":"454","firmware":[{"revision":"0","classifications":[13],"status":"Active","name":"MegaRAID
+        Controller Firmware","role":"Primary","softwareID":"10140454","type":"Software
+        Bundle","build":"0","date":"2016-07-20T00:00:00Z","version":"24.12.0-0033"}],"slotSupportsHotPlug":"false","fodUniqueID":"N/A","pciRevision":"2","isAgentless":true,"pciBusNumber":"11","pciSubVendorID":"1014","isAddOnCard":true,"FRU":"N/A","pciDeviceNumber":"0","slotNumber":"9","posID":"5d","pciFunctionNumber":"0","manufacturer":"IBM","name":"ServeRAID
+        M5210","portInfo":{},"vpdID":"1000","productName":"ServeRAID M5210","partNumber":"N/A","fruSerialNumber":"SV42103713","slotName":"SlotDesig7_Slot
+        9"},{"pciSubID":"405","firmware":[{"revision":"0","classifications":[0],"status":"Active","name":"PCIFirmware","role":"Primary","softwareID":"1014:405","type":"","build":"0","date":"","version":""}],"fodUniqueID":"","pciRevision":"1","isAgentless":false,"pciBusNumber":"20","pciSubVendorID":"1014","isAddOnCard":false,"pciDeviceNumber":"0","posID":"534","pciFunctionNumber":"0","name":"","portInfo":{},"vpdID":"102b"},{"pciSubID":"4d1","firmware":[{"revision":"0","classifications":[33024],"status":"Active","name":"17.4.4.2a","role":"Primary","softwareID":"101404D1","type":"VPD-V0","build":"0","date":"","version":"17.4.4.2a"}],"fodUniqueID":"11SBCM957190123456789","pciRevision":"1","isAgentless":true,"pciBusNumber":"22","pciSubVendorID":"1014","isAddOnCard":false,"pciDeviceNumber":"0","posID":"1657","pciFunctionNumber":"0","name":"Broadcom
+        NetXtreme Gigabit Ethernet Controller","portInfo":{"physicalPorts":[{"portType":"ETHERNET","portNumber":1,"logicalPorts":[{"portType":"ETHERNET","portNumber":1,"logicalPortIndex":1,"addresses":"40F2E9AF0FF8","vnicMode":false}],"peerBay":0,"physicalPortIndex":1}]},"vpdID":"14e4"},{"pciSubID":"4d1","firmware":[{"revision":"0","classifications":[33024],"status":"Active","name":"17.4.4.2a","role":"Primary","softwareID":"101404D1","type":"VPD-V0","build":"0","date":"","version":"17.4.4.2a"}],"fodUniqueID":"11SBCM957190123456789","pciRevision":"1","isAgentless":true,"pciBusNumber":"22","pciSubVendorID":"1014","isAddOnCard":false,"pciDeviceNumber":"0","posID":"1657","pciFunctionNumber":"1","name":"Broadcom
+        NetXtreme Gigabit Ethernet Controller","portInfo":{"physicalPorts":[{"portType":"ETHERNET","portNumber":2,"logicalPorts":[{"portType":"ETHERNET","portNumber":1,"logicalPortIndex":1,"addresses":"40F2E9AF0FF9","vnicMode":false}],"peerBay":0,"physicalPortIndex":2}]},"vpdID":"14e4"},{"pciSubID":"4d1","firmware":[{"revision":"0","classifications":[33024],"status":"Active","name":"17.4.4.2a","role":"Primary","softwareID":"101404D1","type":"VPD-V0","build":"0","date":"","version":"17.4.4.2a"}],"fodUniqueID":"11SBCM957190123456789","pciRevision":"1","isAgentless":true,"pciBusNumber":"22","pciSubVendorID":"1014","isAddOnCard":false,"pciDeviceNumber":"0","posID":"1657","pciFunctionNumber":"2","name":"Broadcom
+        NetXtreme Gigabit Ethernet Controller","portInfo":{"physicalPorts":[{"portType":"ETHERNET","portNumber":3,"logicalPorts":[{"portType":"ETHERNET","portNumber":1,"logicalPortIndex":1,"addresses":"40F2E9AF0FFA","vnicMode":false}],"peerBay":0,"physicalPortIndex":3}]},"vpdID":"14e4"},{"pciSubID":"4d1","firmware":[{"revision":"0","classifications":[33024],"status":"Active","name":"17.4.4.2a","role":"Primary","softwareID":"101404D1","type":"VPD-V0","build":"0","date":"","version":"17.4.4.2a"}],"fodUniqueID":"11SBCM957190123456789","pciRevision":"1","isAgentless":true,"pciBusNumber":"22","pciSubVendorID":"1014","isAddOnCard":false,"pciDeviceNumber":"0","posID":"1657","pciFunctionNumber":"3","name":"Broadcom
+        NetXtreme Gigabit Ethernet Controller","portInfo":{"physicalPorts":[{"portType":"ETHERNET","portNumber":4,"logicalPorts":[{"portType":"ETHERNET","portNumber":1,"logicalPortIndex":1,"addresses":"40F2E9AF0FFB","vnicMode":false}],"peerBay":0,"physicalPortIndex":4}]},"vpdID":"14e4"}],"domainName":"","processors":[{"speed":2.5,"manufacturer":"Intel(R)
+        Corporation","family":"INTEL_R_XEON_TM","displayName":"Intel(R) Xeon(R) CPU
+        E5-2680 v3 @ 2.50GHz","slot":1,"productVersion":"Intel(R) Xeon(R) CPU E5-2680
+        v3 @ 2.50GHz","cores":12}],"processorSlots":1,"pciCapabilities":["Raid Link","OOB
+        PCIe","Raid Link Config","Raid Link Alert","OOB PCIe Config","OOB Option Firmware
+        Update"],"productId":"4D4F00","hasOS":false,"lanOverUsbPortForwardingModes":[{"state":"disabled","type":"DSA","externalIPAddress":""},{"state":"disabled","type":"OSDeploy","externalIPAddress":""}],"bootMode":{"possibleValues":["UEFI
+        Mode","Legacy Mode"],"currentValue":"UEFI Mode"},"ports":[{"ioModuleBay":0,"portNumber":25},{"ioModuleBay":0,"portNumber":26},{"ioModuleBay":0,"portNumber":1},{"ioModuleBay":0,"portNumber":2},{"ioModuleBay":0,"portNumber":3},{"ioModuleBay":0,"portNumber":4}],"embeddedHypervisorPresence":false,"posID":"","nist":{"possibleValues":["Compatibility","Nist_800_131A_Strict","unsupported"],"currentValue":"Compatibility"},"overallHealthState":"Normal","subType":"","partitionID":-1,"flashStorage":[],"productName":"Lenovo
+        System x3650 M5"},"itemLocation":"","itemHeight":2,"itemLocationRoom":""},{"itemParentUUID":null,"itemName":"SERVER-A59D5B36821111E1A9F5E41F13ED4F6A","itemLowerUnit":0,"itemType":"SERVER","itemLocationRack":"","itemSubType":"LegacyServer","itemUUID":"A59D5B36821111E1A9F5E41F13ED4F6A","itemInventory":{"accessState":"Pending","arch":"x86_64","manufacturerId":"","location":{"lowestRackUnit":0,"location":"","rack":"","room":""},"addinCardSlots":0,"serialNumber":"06ARFA2","driveBays":0,"macAddress":"e4:1f:13:ed:4f:6f","type":"Rack-Tower
+        Server","lanOverUsb":"disabled","height":1,"leds":[{"conditions":"Warning","color":"Yellow","location":"Front
+        Panel","name":"Check Log","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Front
+        Panel","name":"Fault","state":"Off"},{"conditions":"Attention","color":"Blue","location":"Front
+        Panel","name":"Identify","state":"Off"},{"conditions":"Health","color":"Green","location":"Front
+        Panel","name":"Power","state":"On"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"BOARD","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"Battery","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"CONFIG","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"CPU","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"CPU 1","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"CPU 2","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 1","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 10","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 11","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 12","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 13","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 14","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 15","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 16","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 17","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 18","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 19","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 2","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 20","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 21","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 22","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 23","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 24","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 3","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 4","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 5","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 6","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 7","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 8","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 9","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"FAN","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"FAN 1","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"FAN 2","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"FAN 3","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"FAN 4","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"FAN 5","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"FAN 6","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"HDD","state":"Off"},{"conditions":"Health","color":"Green","location":"System
+        Board","name":"IMM2 Heartbeat","state":"Blink"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"Internal RAID","state":"Off"},{"conditions":"Health","color":"Green","location":"Lightpath
+        Card","name":"LINK","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"MEM","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"Mezz Card Error","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"NMI","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"OVER SPEC","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"PCI","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"FRU","name":"PCI
+        1","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"FRU","name":"PCI
+        2","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"PS","state":"Off"},{"conditions":"Status","color":"Green","location":"FRU","name":"Power","state":"On"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"SysBrd Fault","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"TEMP","state":"Off"}],"description":"chassis System x3550 M4","mgmtProcIPaddress":"10.243.9.111","expansionCards":[],"errorFields":[],"FQDN":"ratchetimm1.labs.lenovo.com","ipInterfaces":[],"firmware":[{"status":"ACTIVE","name":"IMM","role":"","date":"","type":"IMM","build":"","version":"1AOO72H-5.60"},{"status":"ACTIVE","name":"Preboot
+        DSA","role":"","date":"","type":"Preboot DSA","build":"","version":"DSYTD8G-9.54"},{"status":"ACTIVE","name":"UEFI","role":"","date":"","type":"UEFI","build":"","version":"D7E152CUS-2.11"}],"bladeState":0,"activationKeys":[],"status":{"message":"managed","name":"MANAGED"},"powerCappingPolicy":{"cappingACorDCMode":"UNKNOWN","minimumHardCapLevel":-1,"cappingPolicy":"UNKNOWN","maxPowerCap":-1,"minimumPowerCappingHotPlugLevel":-1,"powerCappingAllocUnit":"watts","maximumPowerCappingHotPlugLevel":-1,"currentPowerCap":0,"minPowerCap":-1},"hostname":"IMM-e41f13ed4f6f","powerSupplies":[{"model":"43X3313","manufacturerId":"EMER","serialNumber":"
+        K1181227068","inputVoltageIsAC":false,"inputVoltageMin":0,"type":"PowerSupply","dataHandle":0,"cmmDisplayName":null,"leds":[{"color":"Green","location":"FRU","name":"IN","state":"On"},{"color":"Green","location":"FRU","name":"OUT","state":"On"},{"color":"Amber","location":"FRU","name":"FAULT","state":"Off"}],"description":"Power
+        Supply 1","name":" K1181227068","userDescription":null,"manufactureDate":"2011-12-02","partNumber":null,"firmware":[],"healthState":"GOOD","machineType":null,"hardwareRevision":null,"FRU":null,"uri":"powerSupply/null","productId":null,"powerAllocation":{"totalInputPower":0,"totalOutputPower":0},"powerState":null,"posID":null,"slots":[0],"manufacturer":null,"vpdID":null,"uuid":null,"productName":null,"fruSerialNumber":null,"inputVoltageMax":0}],"FRU":"","thinkServerFru":[],"uri":"node/A59D5B36821111E1A9F5E41F13ED4F6A","vnicMode":"disabled","powerAllocation":{"maximumAllocatedPower":0,"minimumAllocatedPower":0},"expansionProductType":"","powerStatus":8,"bootOrder":{"uri":"node/A59D5B36821111E1A9F5E41F13ED4F6A/bootOrder","bootOrderList":[{"currentBootOrderDevices":["default"],"bootType":"SingleUse","possibleBootOrderDevices":["setup","network","hd","cd","default"]}]},"expansionProducts":[],"ipv6Addresses":["fe80::e61f:13ff:feed:4f6f"],"slots":[1],"manufacturer":"
+        IBM","raidSettings":[],"vpdID":"","uuid":"A59D5B36821111E1A9F5E41F13ED4F6A","isConnectionTrusted":"true","memoryModules":[{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"39170a03","displayName":"DIMM 1","slot":1,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"1a8c3c13","displayName":"DIMM 2","slot":2,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"d673191b","displayName":"DIMM 4","slot":4,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"1a8c3c0a","displayName":"DIMM 5","slot":5,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"354074cd","displayName":"DIMM 8","slot":8,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"d673192d","displayName":"DIMM 9","slot":9,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"d673192e","displayName":"DIMM 11","slot":11,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"354074c3","displayName":"DIMM 12","slot":12,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"354074c7","displayName":"DIMM 13","slot":13,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"1a8c3c82","displayName":"DIMM 14","slot":14,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"d67318fb","displayName":"DIMM 16","slot":16,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"1a8c3c75","displayName":"DIMM 17","slot":17,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"d67318f3","displayName":"DIMM 20","slot":20,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"d67318ff","displayName":"DIMM 21","slot":21,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"d67318ef","displayName":"DIMM 23","slot":23,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"35407515","displayName":"DIMM 24","slot":24,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "}],"fruSerialNumber":"Y015UN23X06L","secureBootMode":{"possibleValues":[],"currentValue":""},"tlsVersion":{"possibleValues":["TLS_10","TLS_11","TLS_12","unsupported"],"currentValue":"unsupported"},"model":"AC1","isScalable":false,"expansionCardSlots":0,"fans":[],"isITME":false,"hostMacAddresses":"","contact":"","dataHandle":0,"ipv4Addresses":["10.243.9.111"],"cmmDisplayName":"","backedBy":"real","complexID":-1,"name":"IMM-e41f13ed4f6f","memorySlots":0,"drives":[],"cmmHealthState":"Normal","userDescription":"","subSlots":[],"partNumber":null,"excludedHealthState":"Normal","machineType":"7914","isRemotePresenceEnabled":false,"pciDevices":[],"domainName":"","processors":[{"speed":2.7,"manufacturer":"Intel(R)
+        Corporation","family":"Intel(R) Xeon(R) processor","displayName":"","slot":1,"productVersion":"Intel(R)
+        Xeon(R) CPU E5-2680 0 @ 2.70GHz","cores":8},{"speed":2.7,"manufacturer":"Intel(R)
+        Corporation","family":"Intel(R) Xeon(R) processor","displayName":"","slot":2,"productVersion":"Intel(R)
+        Xeon(R) CPU E5-2680 0 @ 2.70GHz","cores":8}],"processorSlots":0,"pciCapabilities":[],"productId":"","hasOS":false,"bootMode":{"possibleValues":["uefi","bios"],"currentValue":"unspecified"},"ports":[],"embeddedHypervisorPresence":false,"posID":"","nist":{"possibleValues":["Compatibility","Nist_800_131A_Strict","Nist_800_131A_Custom","unsupported"],"currentValue":"unsupported"},"overallHealthState":"Normal","subType":"LegacyServer","partitionID":-1,"flashStorage":[],"productName":"System
+        x3550 M4"},"itemLocation":"","itemHeight":1,"itemLocationRoom":""},{"itemParentUUID":null,"itemName":"SERVER-1284E270621503FF00105053FAC17714","itemLowerUnit":0,"itemType":"SERVER","itemLocationRack":"","itemSubType":"ThinkServer","itemUUID":"1284E270621503FF00105053FAC17714","itemInventory":{"accessState":"Pending","arch":"x86_64","manufacturerId":"","location":{"lowestRackUnit":0,"location":"","rack":"","room":""},"addinCardSlots":0,"serialNumber":"abcdefg","driveBays":3,"macAddress":"70:E2:84:12:15:62,70:E2:84:12:15:63","type":"Lenovo
+        ThinkServer","lanOverUsb":"disabled","height":1,"leds":[{"conditions":"Fault","color":"Red","location":"FrontPanel","name":"Fault","state":"Off"},{"conditions":"Attention","color":"Blue","location":"MotherBoard
+        & FrontPanel","name":"Identification","state":"Off"},{"conditions":"Health","color":"Green","location":"MotherBoard","name":"BMC
+        HEARTBEAT","state":"Blink"},{"conditions":"Fault","color":"Red","location":"MotherBoard","name":"LED
+        FAN FAULT 1","state":"Off"},{"conditions":"Fault","color":"Red","location":"MotherBoard","name":"LED
+        FAN FAULT 2","state":"Off"},{"conditions":"Fault","color":"Red","location":"MotherBoard","name":"LED
+        FAN FAULT 3","state":"Off"},{"conditions":"Fault","color":"Red","location":"MotherBoard","name":"LED
+        FAN FAULT 4","state":"Off"},{"conditions":"Fault","color":"Red","location":"PSU","name":"PSU1
+        FAULT","state":"Off"},{"conditions":"Fault","color":"Red","location":"PSU","name":"PSU2
+        FAULT","state":"Off"},{"conditions":"Status","color":"Green","location":"FRU","name":"Power","state":"On"}],"description":"chassis
+        tornado","mgmtProcIPaddress":"10.245.19.36","expansionCards":[],"errorFields":[],"FQDN":"ip-10-245-19-36.labs.lenovo.com","ipInterfaces":[],"firmware":[{"status":"ACTIVE","name":"BIOS","role":"PRIMARY","date":"","type":"BIOS","build":"","version":"TB5TS410"},{"status":"ACTIVE","name":"BIOS
+        Bundle Version","role":"","date":"","type":"BIOS Bundle Version","build":"","version":"0.0.0"},{"status":"ACTIVE","name":"BIOS
+        Current Version","role":"","date":"","type":"BIOS Current Version","build":"","version":"4.10.0"},{"status":"ACTIVE","name":"CPLD","role":"","date":"","type":"CPLD","build":"","version":"1.3.0"},{"status":"ACTIVE","name":"Deployment
+        Manager","role":"","date":"","type":"Deployment Manager","build":"","version":"1.2.12"},{"status":"ACTIVE","name":"Diagnostic","role":"","date":"","type":"Diagnostic","build":"","version":"0.0.0"},{"status":"ACTIVE","name":"Linux
+        Driver Bundle","role":"","date":"","type":"Linux Driver Bundle","build":"","version":"1.2.12"},{"status":"ACTIVE","name":"Mezzanine
+        1","role":"","date":"","type":"Mezzanine 1","build":"","version":"N/A"},{"status":"ACTIVE","name":"Mezzanine
+        2","role":"","date":"","type":"Mezzanine 2","build":"","version":"N/A"},{"status":"ACTIVE","name":"Operational
+        ME","role":"","date":"","type":"Operational ME","build":"","version":"3.1.3.38"},{"status":"ACTIVE","name":"PSU
+        1","role":"","date":"","type":"PSU 1","build":"","version":"3.31.0"},{"status":"ACTIVE","name":"PSU
+        2","role":"","date":"","type":"PSU 2","build":"","version":"3.31.0"},{"status":"ACTIVE","name":"RAID
+        1","role":"","date":"","type":"RAID 1","build":"","version":"4.620.00-8077"},{"status":"ACTIVE","name":"RAID
+        2","role":"","date":"","type":"RAID 2","build":"","version":"N/A"},{"status":"ACTIVE","name":"Recovery
+        ME","role":"","date":"","type":"Recovery ME","build":"","version":"3.1.3.38"},{"status":"ACTIVE","name":"System
+        Manager (BMC)","role":"","date":"","type":"System Manager (BMC)","build":"","version":"4.10.268"},{"status":"ACTIVE","name":"Windows
+        Driver Bundle","role":"","date":"","type":"Windows Driver Bundle","build":"","version":"1.2.12"}],"bladeState":0,"activationKeys":[],"status":{"message":"managed","name":"MANAGED"},"powerCappingPolicy":{"cappingACorDCMode":"UNKNOWN","minimumHardCapLevel":-1,"cappingPolicy":"UNKNOWN","maxPowerCap":-1,"minimumPowerCappingHotPlugLevel":-1,"powerCappingAllocUnit":"watts","maximumPowerCappingHotPlugLevel":-1,"currentPowerCap":0,"minPowerCap":-1},"hostname":"mlk","powerSupplies":[{"model":"PS-2551-6L-LF","manufacturerId":"LITEON","serialNumber":"0020","inputVoltageIsAC":false,"inputVoltageMin":0,"type":"PowerSupply","dataHandle":0,"cmmDisplayName":null,"leds":[{"color":"Green","location":"FRU","name":"IN","state":"On"},{"color":"Green","location":"FRU","name":"OUT","state":"On"},{"color":"Amber","location":"FRU","name":"FAULT","state":"Off"}],"description":"Power
+        Supply 1","name":"0020","userDescription":null,"manufactureDate":"2014-07-08","partNumber":null,"firmware":[],"healthState":"GOOD","machineType":null,"hardwareRevision":"00","FRU":null,"uri":"powerSupply/null","productId":null,"powerAllocation":{"totalInputPower":0,"totalOutputPower":0},"powerState":null,"posID":null,"slots":[0],"manufacturer":null,"vpdID":null,"uuid":null,"productName":null,"fruSerialNumber":null,"inputVoltageMax":0},{"model":"PS-2551-6L-LF","manufacturerId":"LITEON","serialNumber":"0055","inputVoltageIsAC":false,"inputVoltageMin":0,"type":"PowerSupply","dataHandle":0,"cmmDisplayName":null,"leds":[{"color":"Green","location":"FRU","name":"IN","state":"On"},{"color":"Green","location":"FRU","name":"OUT","state":"On"},{"color":"Amber","location":"FRU","name":"FAULT","state":"Off"}],"description":"Power
+        Supply 2","name":"0055","userDescription":null,"manufactureDate":"2014-07-08","partNumber":null,"firmware":[],"healthState":"GOOD","machineType":null,"hardwareRevision":"00","FRU":null,"uri":"powerSupply/null","productId":null,"powerAllocation":{"totalInputPower":0,"totalOutputPower":0},"powerState":null,"posID":null,"slots":[0],"manufacturer":null,"vpdID":null,"uuid":null,"productName":null,"fruSerialNumber":null,"inputVoltageMax":0}],"FRU":"","thinkServerFru":[{"description":"BackPlane1
+        FRU"},{"id":"0000001","deviceName":"720ix","description":"MidPlane1 FRU","manufatucturer":"LENOVO","manufatucturerDate":"Nov
+        13, 2014","serial":"8SSR10G99699L2SH4BSS540","partNumber":"00LF083"}],"uri":"node/1284E270621503FF00105053FAC17714","vnicMode":"disabled","powerAllocation":{"maximumAllocatedPower":0,"minimumAllocatedPower":0},"expansionProductType":"","powerStatus":8,"bootOrder":{"uri":"node/1284E270621503FF00105053FAC17714/bootOrder","bootOrderList":[{"currentBootOrderDevices":["default"],"bootType":"SingleUse","possibleBootOrderDevices":["setup","network","hd","cd","default"]}]},"expansionProducts":[],"ipv6Addresses":["fd55:faaf:e1ab:2201:72e2:84ff:fe12:1562"],"slots":[1],"manufacturer":"td350_","raidSettings":[],"vpdID":"","uuid":"1284E270621503FF00105053FAC17714","isConnectionTrusted":"true","memoryModules":[{"model":"","voltage":"1.2V","speed":2400,"manufacturer":"Samsung","capacity":16,"serialNumber":"2c3d75b","displayName":"DIMM
+        1","slot":1,"type":"RDIMM","partNumber":"M393A2G40DB1-CRC"},{"model":"","voltage":"1.2V","speed":2400,"manufacturer":"Samsung","capacity":16,"serialNumber":"2c3d696","displayName":"DIMM
+        3","slot":3,"type":"RDIMM","partNumber":"M393A2G40DB1-CRC"},{"model":"","voltage":"1.2V","speed":2400,"manufacturer":"Samsung","capacity":16,"serialNumber":"2c3d773","displayName":"DIMM
+        9","slot":9,"type":"RDIMM","partNumber":"M393A2G40DB1-CRC"},{"model":"","voltage":"1.2V","speed":2400,"manufacturer":"Samsung","capacity":16,"serialNumber":"2c3d6dd","displayName":"DIMM
+        11","slot":11,"type":"RDIMM","partNumber":"M393A2G40DB1-CRC"}],"fruSerialNumber":"bsn5bsn4bsn3bsn2bsn1","secureBootMode":{"possibleValues":[],"currentValue":""},"tlsVersion":{"possibleValues":["TLS_10","TLS_11","TLS_12","unsupported"],"currentValue":"Unknown"},"model":"567890","isScalable":false,"expansionCardSlots":0,"fans":[],"isITME":false,"hostMacAddresses":"","contact":"","dataHandle":0,"ipv4Addresses":["10.245.19.36"],"cmmDisplayName":"","backedBy":"real","complexID":-1,"name":"mlk","memorySlots":0,"drives":[{"interfaceType":"SATA","bay":0,"speed":"12.0
+        Gb/s","state":"active","capacity":3815,"raidPresence":"Regular","mediaType":"HDD"},{"interfaceType":"SATA","bay":1,"speed":"12.0
+        Gb/s","state":"active","capacity":1907,"raidPresence":"Regular","mediaType":"HDD"},{"interfaceType":"SATA","bay":2,"speed":"12.0
+        Gb/s","state":"active","capacity":1907,"raidPresence":"Regular","mediaType":"HDD"}],"cmmHealthState":"Normal","userDescription":"","subSlots":[],"partNumber":"","excludedHealthState":"Normal","machineType":"7915","isRemotePresenceEnabled":true,"pciDevices":[{"subVendor":"Lenovo","vendor":"LSI
+        Logic / Symbios Logic","subClass":"RAID bus controller","name":"PCI 1","device":"MegaRAID
+        SAS-3 3108 [Invader]","class":"Mass storage controller","subDevice":"ThinkServer
+        RAID 720ix","type":"ROC"}],"domainName":"labs.lenovo.com","processors":[{"speed":3.6,"manufacturer":"GenuineIntel","family":"Intel
+        Nehalem Family","displayName":"","slot":1,"productVersion":"Broadwell Server
+        Model","cores":20},{"speed":3.6,"manufacturer":"GenuineIntel","family":"Intel
+        Nehalem Family","displayName":"","slot":2,"productVersion":"Broadwell Server
+        Model","cores":20}],"processorSlots":0,"pciCapabilities":[],"productId":"","hasOS":false,"bootMode":{"possibleValues":["uefi","bios"],"currentValue":"unspecified"},"ports":[],"embeddedHypervisorPresence":false,"posID":"","nist":{"possibleValues":["Compatibility","Nist_800_131A_Strict","Nist_800_131A_Custom","unsupported"],"currentValue":"Nist_800_131A_Strict"},"overallHealthState":"Normal","subType":"ThinkServer","partitionID":-1,"flashStorage":[],"productName":"TD350"},"itemLocation":"","itemHeight":1,"itemLocationRoom":""},{"itemParentUUID":null,"itemName":"SERVER-BD775D06821111E189A3E41F13ED5A1A","itemLowerUnit":0,"itemType":"SERVER","itemLocationRack":"","itemSubType":"LegacyServer","itemUUID":"BD775D06821111E189A3E41F13ED5A1A","itemInventory":{"accessState":"Online","arch":"x86_64","manufacturerId":"","location":{"lowestRackUnit":0,"location":"","rack":"","room":""},"addinCardSlots":0,"serialNumber":"06AREZ9","driveBays":0,"macAddress":"e4:1f:13:ed:5a:1f","type":"Rack-Tower
+        Server","lanOverUsb":"disabled","height":1,"leds":[{"conditions":"Warning","color":"Yellow","location":"Front
+        Panel","name":"Check Log","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Front
+        Panel","name":"Fault","state":"Off"},{"conditions":"Attention","color":"Blue","location":"Front
+        Panel","name":"Identify","state":"Off"},{"conditions":"Health","color":"Green","location":"Front
+        Panel","name":"Power","state":"On"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"BOARD","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"Battery","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"CONFIG","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"CPU","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"CPU 1","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"CPU 2","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 1","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 10","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 11","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 12","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 13","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 14","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 15","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 16","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 17","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 18","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 19","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 2","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 20","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 21","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 22","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 23","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 24","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 3","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 4","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 5","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 6","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 7","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 8","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 9","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"FAN","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"FAN 1","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"FAN 2","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"FAN 3","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"FAN 4","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"FAN 5","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"FAN 6","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"HDD","state":"Off"},{"conditions":"Health","color":"Green","location":"System
+        Board","name":"IMM2 Heartbeat","state":"Blink"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"Internal RAID","state":"Off"},{"conditions":"Health","color":"Green","location":"Lightpath
+        Card","name":"LINK","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"MEM","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"Mezz Card Error","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"NMI","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"OVER SPEC","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"PCI","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"FRU","name":"PCI
+        1","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"FRU","name":"PCI
+        2","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"PS","state":"Off"},{"conditions":"Status","color":"Green","location":"FRU","name":"Power","state":"On"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"SysBrd Fault","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"TEMP","state":"Off"}],"description":"chassis System x3550 M4","mgmtProcIPaddress":"10.243.9.112","expansionCards":[],"errorFields":[],"FQDN":"ratchetimm2.labs.lenovo.com","ipInterfaces":[],"firmware":[{"status":"ACTIVE","name":"IMM","role":"","date":"","type":"IMM","build":"","version":"1AOO72H-5.60"},{"status":"ACTIVE","name":"Preboot
+        DSA","role":"","date":"","type":"Preboot DSA","build":"","version":"DSYTD8G-9.54"},{"status":"ACTIVE","name":"UEFI","role":"","date":"","type":"UEFI","build":"","version":"D7E152CUS-2.11"}],"bladeState":0,"activationKeys":[],"status":{"message":"managed","name":"MANAGED"},"powerCappingPolicy":{"cappingACorDCMode":"UNKNOWN","minimumHardCapLevel":-1,"cappingPolicy":"UNKNOWN","maxPowerCap":-1,"minimumPowerCappingHotPlugLevel":-1,"powerCappingAllocUnit":"watts","maximumPowerCappingHotPlugLevel":-1,"currentPowerCap":0,"minPowerCap":-1},"hostname":"IMM2-e41f13ed5a1e","powerSupplies":[{"model":"43X3313","manufacturerId":"EMER","serialNumber":"
+        K118122706D","inputVoltageIsAC":false,"inputVoltageMin":0,"type":"PowerSupply","dataHandle":0,"cmmDisplayName":null,"leds":[{"color":"Green","location":"FRU","name":"IN","state":"On"},{"color":"Green","location":"FRU","name":"OUT","state":"On"},{"color":"Amber","location":"FRU","name":"FAULT","state":"Off"}],"description":"Power
+        Supply 1","name":" K118122706D","userDescription":null,"manufactureDate":"2011-12-02","partNumber":null,"firmware":[],"healthState":"GOOD","machineType":null,"hardwareRevision":null,"FRU":null,"uri":"powerSupply/null","productId":null,"powerAllocation":{"totalInputPower":0,"totalOutputPower":0},"powerState":null,"posID":null,"slots":[0],"manufacturer":null,"vpdID":null,"uuid":null,"productName":null,"fruSerialNumber":null,"inputVoltageMax":0}],"FRU":"","thinkServerFru":[],"uri":"node/BD775D06821111E189A3E41F13ED5A1A","vnicMode":"disabled","powerAllocation":{"maximumAllocatedPower":0,"minimumAllocatedPower":0},"expansionProductType":"","powerStatus":8,"bootOrder":{"uri":"node/BD775D06821111E189A3E41F13ED5A1A/bootOrder","bootOrderList":[{"currentBootOrderDevices":["default"],"bootType":"SingleUse","possibleBootOrderDevices":["setup","network","hd","cd","default"]}]},"expansionProducts":[],"ipv6Addresses":["fe80::e61f:13ff:feed:5a1f"],"slots":[1],"manufacturer":"
+        IBM","raidSettings":[],"vpdID":"","uuid":"BD775D06821111E189A3E41F13ED5A1A","isConnectionTrusted":"true","memoryModules":[{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"d95bfb8c","displayName":"DIMM 1","slot":1,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"1a8c3c7d","displayName":"DIMM 2","slot":2,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"3540750c","displayName":"DIMM 4","slot":4,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"1a8c3c8e","displayName":"DIMM 5","slot":5,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"35407521","displayName":"DIMM 8","slot":8,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"d67318ee","displayName":"DIMM 9","slot":9,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"3540751c","displayName":"DIMM 11","slot":11,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"3540753b","displayName":"DIMM 12","slot":12,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"3540751e","displayName":"DIMM 13","slot":13,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"1a8c3c39","displayName":"DIMM 14","slot":14,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"3540750b","displayName":"DIMM 16","slot":16,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"1a8c3c4c","displayName":"DIMM 17","slot":17,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"3540753d","displayName":"DIMM 20","slot":20,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Hyundai
+        Electronics","capacity":8,"serialNumber":"44c11b68","displayName":"DIMM 21","slot":21,"type":"DDR3
+        SDRAM","partNumber":"HMT31GR7CFR4C-PB  "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"354074be","displayName":"DIMM 23","slot":23,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"354074c0","displayName":"DIMM 24","slot":24,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "}],"fruSerialNumber":"Y015UN23X13P","secureBootMode":{"possibleValues":[],"currentValue":""},"tlsVersion":{"possibleValues":["TLS_10","TLS_11","TLS_12","unsupported"],"currentValue":"unsupported"},"model":"AC1","isScalable":false,"expansionCardSlots":0,"fans":[],"isITME":false,"hostMacAddresses":"","contact":"","dataHandle":0,"ipv4Addresses":["10.243.9.112"],"cmmDisplayName":"","backedBy":"real","complexID":-1,"name":"IMM2-e41f13ed5a1e","memorySlots":0,"drives":[],"cmmHealthState":"Normal","userDescription":"","subSlots":[],"partNumber":null,"excludedHealthState":"Normal","machineType":"7914","isRemotePresenceEnabled":false,"pciDevices":[],"domainName":"","processors":[{"speed":2.7,"manufacturer":"Intel(R)
+        Corporation","family":"Intel(R) Xeon(R) processor","displayName":"","slot":1,"productVersion":"Intel(R)
+        Xeon(R) CPU E5-2680 0 @ 2.70GHz","cores":8},{"speed":2.7,"manufacturer":"Intel(R)
+        Corporation","family":"Intel(R) Xeon(R) processor","displayName":"","slot":2,"productVersion":"Intel(R)
+        Xeon(R) CPU E5-2680 0 @ 2.70GHz","cores":8}],"processorSlots":0,"pciCapabilities":[],"productId":"","hasOS":false,"bootMode":{"possibleValues":["uefi","bios"],"currentValue":"unspecified"},"ports":[],"embeddedHypervisorPresence":false,"posID":"","nist":{"possibleValues":["Compatibility","Nist_800_131A_Strict","Nist_800_131A_Custom","unsupported"],"currentValue":"unsupported"},"overallHealthState":"Normal","subType":"LegacyServer","partitionID":-1,"flashStorage":[],"productName":"System
+        x3550 M4"},"itemLocation":"","itemHeight":1,"itemLocationRoom":""}],"placeholderList":[],"switchList":[],"room":""}]}'
+    http_version: 
+  recorded_at: Mon, 24 Apr 2017 18:45:40 GMT
+recorded_with: VCR 3.0.3
