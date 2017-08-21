@@ -14,7 +14,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
                              :port      => "443",
-                             :ipaddress => "https://10.243.9.123:443")
+                             :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
                               :userid   => 'admin',
                               :password => 'password',
@@ -34,7 +34,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
                              :port      => "443",
-                             :ipaddress => "https://10.243.9.123:443")
+                             :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
                               :userid   => 'admin',
                               :password => 'password',
@@ -54,7 +54,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
                              :port      => "443",
-                             :ipaddress => "https://10.243.9.123:443")
+                             :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
                               :userid   => 'admin',
                               :password => 'password',
@@ -66,7 +66,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     end
   end
 
-  it 'power on a server successfully' do
+  it 'will power on a server successfully' do
     ps = FactoryGirl.create(:physical_server,
                             :name    => "MimmNameDM",
                             :ems_ref => "EADEBE8316174750A27FEC2E8226AC48")
@@ -74,7 +74,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
                              :port      => "443",
-                             :ipaddress => "https://10.243.9.123:443")
+                             :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
                               :userid   => 'admin',
                               :password => 'password',
@@ -94,7 +94,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
                              :port      => "443",
-                             :ipaddress => "https://10.243.9.123:443")
+                             :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
                               :userid   => 'admin',
                               :password => 'password',
@@ -106,6 +106,26 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     end
   end
 
+  it 'will immediately power off a server successfully' do
+    ps = FactoryGirl.create(:physical_server,
+                            :name    => "17dspncsvdm",
+                            :ems_ref => "7936DD182C5311E3A8D6000AF7256738")
+    pim = FactoryGirl.create(:physical_infra,
+                             :name      => "LXCA",
+                             :hostname  => "https://10.243.9.123",
+                             :port      => "443",
+                             :ipaddress => "https://10.243.9.123")
+    auth = FactoryGirl.create(:authentication,
+                              :userid   => 'admin',
+                              :password => 'password',
+                              :authtype => 'default')
+    pim.authentications = [auth]
+
+    VCR.use_cassette("#{described_class.name.underscore}_power_off_now") do
+      pim.power_off_now(ps, :uuid => "7936DD182C5311E3A8D6000AF7256738")
+    end
+  end
+
   it 'will restart a server successfully' do
     ps = FactoryGirl.create(:physical_server,
                             :name    => "MimmNameDM",
@@ -114,7 +134,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
                              :port      => "443",
-                             :ipaddress => "https://10.243.9.123:443")
+                             :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
                               :userid   => 'admin',
                               :password => 'password',
@@ -123,6 +143,66 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
 
     VCR.use_cassette("#{described_class.name.underscore}_restart") do
       pim.restart(ps, :uuid => "EADEBE8316174750A27FEC2E8226AC48")
+    end
+  end
+
+  it 'will immediately restart a server successfully' do
+    ps = FactoryGirl.create(:physical_server,
+                            :name    => "17dspncsvdm",
+                            :ems_ref => "7936DD182C5311E3A8D6000AF7256738")
+    pim = FactoryGirl.create(:physical_infra,
+                             :name      => "LXCA",
+                             :hostname  => "https://10.243.9.123",
+                             :port      => "443",
+                             :ipaddress => "https://10.243.9.123")
+    auth = FactoryGirl.create(:authentication,
+                              :userid   => 'admin',
+                              :password => 'password',
+                              :authtype => 'default')
+    pim.authentications = [auth]
+
+    VCR.use_cassette("#{described_class.name.underscore}_restart_now") do
+      pim.restart_now(ps, :uuid => "7936DD182C5311E3A8D6000AF7256738")
+    end
+  end
+
+  it 'will restart to system setup successfully' do
+    ps = FactoryGirl.create(:physical_server,
+                            :name    => "17dspncsvdm",
+                            :ems_ref => "7936DD182C5311E3A8D6000AF7256738")
+    pim = FactoryGirl.create(:physical_infra,
+                             :name      => "LXCA",
+                             :hostname  => "https://10.243.9.123",
+                             :port      => "443",
+                             :ipaddress => "https://10.243.9.123")
+    auth = FactoryGirl.create(:authentication,
+                              :userid   => 'admin',
+                              :password => 'password',
+                              :authtype => 'default')
+    pim.authentications = [auth]
+
+    VCR.use_cassette("#{described_class.name.underscore}_restart_to_sys_setup") do
+      pim.restart_to_sys_setup(ps, :uuid => "7936DD182C5311E3A8D6000AF7256738")
+    end
+  end
+
+  it 'will restart a server\'s management controller' do
+    ps = FactoryGirl.create(:physical_server,
+                            :name    => "17dspncsvdm",
+                            :ems_ref => "7936DD182C5311E3A8D6000AF7256738")
+    pim = FactoryGirl.create(:physical_infra,
+                             :name      => "LXCA",
+                             :hostname  => "https://10.243.9.123",
+                             :port      => "443",
+                             :ipaddress => "https://10.243.9.123")
+    auth = FactoryGirl.create(:authentication,
+                              :userid   => 'admin',
+                              :password => 'password',
+                              :authtype => 'default')
+    pim.authentications = [auth]
+
+    VCR.use_cassette("#{described_class.name.underscore}_restart_mgmt_controller") do
+      pim.restart_mgmt_controller(ps, :uuid => "7936DD182C5311E3A8D6000AF7256738")
     end
   end
 

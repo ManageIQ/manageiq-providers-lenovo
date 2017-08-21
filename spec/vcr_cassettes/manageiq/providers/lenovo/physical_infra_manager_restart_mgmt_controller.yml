@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://10.243.9.123/nodes/7936DD182C5311E3A8D6000AF7256738/bmc
+    body:
+      encoding: UTF-8
+      string: '{"powerState":"restart"}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Basic bHhjYzpQQVNTVzByRA==
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 27 Jul 2017 18:27:42 GMT
+      Set-Cookie:
+      - userAuthenticationMethod=local;Path=/;Secure
+      Expires:
+      - "-1"
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Strict-Transport-Security:
+      - max-age=86400; includeSubDomains;
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Content-Security-Policy:
+      - 'default-src https:; script-src https: ''unsafe-inline'' ''unsafe-eval'';
+        style-src https: ''unsafe-inline'''
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '1'
+      Content-Type:
+      - application/com.lenovo.lxca-v1.2.2+json; charset=UTF-8
+      Location:
+      - "/jobs/488"
+      Vary:
+      - Accept-Encoding, User-Agent
+      Content-Length:
+      - '20'
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    http_version: 
+  recorded_at: Thu, 27 Jul 2017 18:28:42 GMT
+recorded_with: VCR 3.0.3
