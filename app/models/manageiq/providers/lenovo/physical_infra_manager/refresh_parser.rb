@@ -269,7 +269,7 @@ module ManageIQ::Providers::Lenovo
 
     def parse_physical_server(node)
       new_result = {
-        :type                   => ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer.name,
+        :type                   => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer",
         :name                   => node.name,
         :ems_ref                => node.uuid,
         :uid_ems                => @ems.uid_ems,
