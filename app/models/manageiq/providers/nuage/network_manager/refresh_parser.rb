@@ -70,7 +70,7 @@ module ManageIQ::Providers
 
     def get_policy_groups
       policy_group = @vsd_client.get_policy_groups
-      process_collection(policy_group, :security_groups) { |pg| parse_policy_group(pg) }
+      process_collection(policy_group, :security_groups) { |pg| parse_policy_group(pg) } if policy_group
     end
 
     def to_cidr(netmask)
