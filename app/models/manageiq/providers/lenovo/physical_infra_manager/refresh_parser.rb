@@ -252,7 +252,7 @@ module ManageIQ::Providers::Lenovo
 
     def parse_physical_port(port)
       {
-        :device_type => "ethernet port",
+        :device_type => "physical_port",
         :device_name => "Physical Port #{port['physicalPortIndex']}"
       }
     end
