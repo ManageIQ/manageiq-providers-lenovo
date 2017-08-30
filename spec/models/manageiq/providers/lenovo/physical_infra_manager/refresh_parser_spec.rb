@@ -50,7 +50,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
     expect(guest_device[:location]).to eq("Bay 7")
 
     expect(guest_device[:child_devices][0][:address]).to eq("00:0A:F7:25:67:38")
-    expect(guest_device[:child_devices][0][:device_type]).to eq("ethernet port")
+    expect(guest_device[:child_devices][0][:device_type]).to eq("physical_port")
     expect(guest_device[:child_devices][0][:device_name]).to eq("Physical Port 1")
   end
 
