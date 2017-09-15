@@ -1,59 +1,89 @@
+require 'xclarity_client'
+
 module ManageIQ::Providers::Lenovo::ManagerMixin
   extend ActiveSupport::Concern
+
+  AUTH_TYPES = {
+    'default' => 'token',
+    nil       => 'token'
+  }.freeze
 
   def description
     "Lenovo XClarity"
   end
 
-  #
-  # Connections
-  #
   def connect(options = {})
     # raise "no credentials defined" if missing_credentials?(options[:auth_type])
 
     username   = options[:user] || authentication_userid(options[:auth_type])
     password   = options[:pass] || authentication_password(options[:auth_type])
-    host       = options[:host]
-    port       = options[:port]
+    host       = options[:host] || address
+    port       = options[:port] || self.port
+    auth_type  = AUTH_TYPES[options[:auth_type]]
+
     # TODO: improve this SSL verification
     verify_ssl = options[:verify_ssl] == 1 ? 'PEER' : 'NONE'
-    self.class.raw_connect(username, password, host, port, verify_ssl)
+    self.class.raw_connect(username, password, host, port, auth_type, verify_ssl)
   end
 
-  def translate_exception(err)
-  end
+  def verify_credentials(auth_type = nil, options = {})
+    raise MiqException::MiqHostError, "No credentials defined" if missing_credentials?(auth_type)
+    options[:auth_type] = auth_type
 
-  def verify_credentials(_auth_type = nil, _options = {})
-    # TODO: (julian) Find out if Lenovo supports a verify credentials method
+    self.class.connection_rescue_block do
+      with_provider_connection(options) do |lxca|
+        self.class.validate_connection(lxca)
+      end
+    end
     true
   end
 
   module ClassMethods
-    #
-    # Connections
-    #
-    def raw_connect(username, password, host, port, verify_ssl)
-      require 'xclarity_client'
+    def raw_connect(username, password, host, port, auth_type, verify_ssl)
       xclarity = XClarityClient::Configuration.new(
         :username   => username,
         :password   => password,
         :host       => host,
         :port       => port,
+        :auth_type  => auth_type,
         :verify_ssl => verify_ssl
       )
       XClarityClient::Client.new(xclarity)
     end
 
-    #
-    # Discovery
-    #
+    def validate_connection(connection)
+      connection.validate_configuration
+    end
+
+    def connection_rescue_block
+      yield
+    rescue => err
+      miq_exception = translate_exception(err)
+      raise unless miq_exception
+
+      _log.error("Error Class=#{err.class.name}, Message=#{err.message}")
+      raise miq_exception
+    end
+
+    def translate_exception(err)
+      case err
+      when XClarityClient::Error::AuthenticationError
+        MiqException::MiqHostError.new('Login failed due to a bad username or password.')
+      when XClarityClient::Error::ConnectionFailed
+        MiqException::MiqHostError.new('Execution expired or invalid port.')
+      when XClarityClient::Error::ConnectionRefused
+        MiqException::MiqHostError.new('Connection refused, invalid host.')
+      when XClarityClient::Error::HostnameUnknown
+        MiqException::MiqHostError.new('Connection failed, unknown hostname.')
+      else
+        MiqException::MiqHostError.new("Unexpected response returned from system: #{err.message.downcase}")
+      end
+    end
 
     # Factory method to create EmsLenovo with instances
     #   or images for the given authentication.  Created EmsLenovo instances
     #   will automatically have EmsRefreshes queued up.
     def discover(ip_address, port)
-      require 'xclarity_client'
-
       if XClarityClient::Discover.responds?(ip_address, port)
         new_ems = create!(
           :name     => "Discovered Provider ##{count + 1}",
