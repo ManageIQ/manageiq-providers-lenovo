@@ -8,13 +8,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
 
   let(:stream) { described_class.new(ems) }
 
-  it 'will start and stop without any exceptions occurring' do
-    stream.start
+  it 'will stop without any exceptions occurring' do
     stream.stop
-  end
-
-  it 'will return the event monitor handle' do
-    handle = stream.event_monitor_handle
-    expect(handle).not_to eq(nil)
   end
 end

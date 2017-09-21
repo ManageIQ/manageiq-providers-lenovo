@@ -1,41 +1,36 @@
 class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
-  require 'json'
   # Creates an event monitor
   #
   def initialize(ems)
-    @ems                  = ems
-    @event_monitor_handle = event_monitor_handle
-    @collecting_events    = false
-    @since                = nil
-  end
-
-  # Start capturing events
-  def start
-    @collecting_events = true
+    @ems = ems
+    @collect_events = true
   end
 
   # Stop capturing events
   def stop
-    @event_monitor_handle = nil
-    @collecting_events = false
+    @connection = nil
+    @collect_events = false
   end
 
   def each_batch
-    yield events.collect { |e| ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventParser.event_to_hash(e, @ems.id) }
-  end
-
-  def event_monitor_handle
-    @event_monitor_handle ||= create_event_monitor_handle @ems
+    $log.info('Starting collect of LXCA events ...')
+    while @collect_events
+      yield(events.collect { |e| ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventParser.event_to_hash(e, @ems.id) })
+    end
+    $log.info('Stopping collect of LXCA events ...')
   end
 
   private
 
   def filter_fields
-    [
-      { :operation => 'GT', :field => 'cn', :value => get_last_cnn_from_events(@ems.id).to_s },
+    fields = [
       { :operation => 'NOT', :field => 'eventClass', :value => '200' },
       { :operation => 'NOT', :field => 'eventClass', :value => '800' }
     ]
+    last_cn_event = get_last_cnn_from_events(@ems.id)
+    cn_operation = { :operation => 'GT', :field => 'cn', :value => last_cn_event.to_s }
+    fields.push(cn_operation) unless last_cn_event.nil?
+    fields
   end
 
   def events
@@ -43,10 +38,14 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
 
     opts = {'filterWith' => expression.to_json}
 
-    @event_monitor_handle.fetch_events opts
+    connection.fetch_events(opts)
   end
 
-  def create_event_monitor_handle(ems)
+  def connection
+    @connection ||= create_event_connection(@ems)
+  end
+
+  def create_event_connection(ems)
     ems_auth = ems.authentications.first
 
     ems.connect(:user => ems_auth.userid,
@@ -56,6 +55,6 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
   end
 
   def get_last_cnn_from_events(ems_id)
-    EventStream.where(:ems_id => ems_id).select(:full_data).map { |event| event.full_data["cn"].to_i }.max || 1
+    EventStream.where(:ems_id => ems_id).select(:full_data).map { |event| event.full_data["cn"].to_i }.max
   end
 end
