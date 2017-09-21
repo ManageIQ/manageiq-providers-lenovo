@@ -5,7 +5,7 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
 
   AUTH_TYPES = {
     'default' => 'token',
-    nil       => 'token'
+    nil       => 'basic_auth'
   }.freeze
 
   def description

@@ -6,213 +6,203 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     @auth = { :user => 'admin', :pass => 'smartvm', :host => 'localhost', :port => '3000' }
   end
 
-  context 'operations' do
-    host = 'https://10.243.9.123'
-    uri = '/sessions'
+  it 'will turn on a location LED successfully' do
+    ps = FactoryGirl.create(:physical_server,
+                            :name    => "IMM2-e41f13ed5a1e",
+                            :ems_ref => "BD775D06821111E189A3E41F13ED5A1A")
+    pim = FactoryGirl.create(:physical_infra,
+                             :name      => "LXCA",
+                             :hostname  => "https://10.243.9.123",
+                             :port      => "443",
+                             :ipaddress => "https://10.243.9.123")
+    auth = FactoryGirl.create(:authentication,
+                              :userid   => 'admin',
+                              :password => 'password',
+                              :authtype => 'default',)
+    pim.authentications = [auth]
 
-    before do
-      WebMock.allow_net_connect!
-      stub_request(:post, File.join(host, uri)).to_return(:status => [200, 'OK'])
+    VCR.use_cassette("#{described_class.name.underscore}_turn_on_loc_led") do
+      pim.turn_on_loc_led(ps, :uuid => "BD775D06821111E189A3E41F13ED5A1A")
     end
+  end
 
-    it 'will turn on a location LED successfully' do
-      ps = FactoryGirl.create(:physical_server,
-                              :name    => "IMM2-e41f13ed5a1e",
-                              :ems_ref => "BD775D06821111E189A3E41F13ED5A1A")
-      pim = FactoryGirl.create(:physical_infra,
-                               :name      => "LXCA",
-                               :hostname  => "https://10.243.9.123",
-                               :port      => "443",
-                               :ipaddress => "https://10.243.9.123")
-      auth = FactoryGirl.create(:authentication,
-                                :userid   => 'admin',
-                                :password => 'password',
-                                :authtype => 'default',)
-      pim.authentications = [auth]
+  it 'will turn off a location LED successfully' do
+    ps = FactoryGirl.create(:physical_server,
+                            :name    => "IMM2-e41f13ed5a1e",
+                            :ems_ref => "BD775D06821111E189A3E41F13ED5A1A")
+    pim = FactoryGirl.create(:physical_infra,
+                             :name      => "LXCA",
+                             :hostname  => "https://10.243.9.123",
+                             :port      => "443",
+                             :ipaddress => "https://10.243.9.123")
+    auth = FactoryGirl.create(:authentication,
+                              :userid   => 'admin',
+                              :password => 'password',
+                              :authtype => 'default')
+    pim.authentications = [auth]
 
-      VCR.use_cassette("#{described_class.name.underscore}_turn_on_loc_led") do
-        pim.turn_on_loc_led(ps, :uuid => "BD775D06821111E189A3E41F13ED5A1A")
-      end
+    VCR.use_cassette("#{described_class.name.underscore}_turn_off_loc_led") do
+      pim.turn_off_loc_led(ps, :uuid => "BD775D06821111E189A3E41F13ED5A1A")
     end
+  end
 
-    it 'will turn off a location LED successfully' do
-      ps = FactoryGirl.create(:physical_server,
-                              :name    => "IMM2-e41f13ed5a1e",
-                              :ems_ref => "BD775D06821111E189A3E41F13ED5A1A")
-      pim = FactoryGirl.create(:physical_infra,
-                               :name      => "LXCA",
-                               :hostname  => "https://10.243.9.123",
-                               :port      => "443",
-                               :ipaddress => "https://10.243.9.123")
-      auth = FactoryGirl.create(:authentication,
-                                :userid   => 'admin',
-                                :password => 'password',
-                                :authtype => 'default')
-      pim.authentications = [auth]
+  it 'will blink a location LED successfully' do
+    ps = FactoryGirl.create(:physical_server,
+                            :name    => "IMM2-e41f13ed5a1e",
+                            :ems_ref => "BD775D06821111E189A3E41F13ED5A1A")
+    pim = FactoryGirl.create(:physical_infra,
+                             :name      => "LXCA",
+                             :hostname  => "https://10.243.9.123",
+                             :port      => "443",
+                             :ipaddress => "https://10.243.9.123")
+    auth = FactoryGirl.create(:authentication,
+                              :userid   => 'admin',
+                              :password => 'password',
+                              :authtype => 'default')
+    pim.authentications = [auth]
 
-      VCR.use_cassette("#{described_class.name.underscore}_turn_off_loc_led") do
-        pim.turn_off_loc_led(ps, :uuid => "BD775D06821111E189A3E41F13ED5A1A")
-      end
+    VCR.use_cassette("#{described_class.name.underscore}_blink_loc_led") do
+      pim.blink_loc_led(ps, :uuid => "BD775D06821111E189A3E41F13ED5A1A")
     end
+  end
 
-    it 'will blink a location LED successfully' do
-      ps = FactoryGirl.create(:physical_server,
-                              :name    => "IMM2-e41f13ed5a1e",
-                              :ems_ref => "BD775D06821111E189A3E41F13ED5A1A")
-      pim = FactoryGirl.create(:physical_infra,
-                               :name      => "LXCA",
-                               :hostname  => "https://10.243.9.123",
-                               :port      => "443",
-                               :ipaddress => "https://10.243.9.123")
-      auth = FactoryGirl.create(:authentication,
-                                :userid   => 'admin',
-                                :password => 'password',
-                                :authtype => 'default')
-      pim.authentications = [auth]
+  it 'will power on a server successfully' do
+    ps = FactoryGirl.create(:physical_server,
+                            :name    => "MimmNameDM",
+                            :ems_ref => "EADEBE8316174750A27FEC2E8226AC48")
+    pim = FactoryGirl.create(:physical_infra,
+                             :name      => "LXCA",
+                             :hostname  => "https://10.243.9.123",
+                             :port      => "443",
+                             :ipaddress => "https://10.243.9.123")
+    auth = FactoryGirl.create(:authentication,
+                              :userid   => 'admin',
+                              :password => 'password',
+                              :authtype => 'default')
+    pim.authentications = [auth]
 
-      VCR.use_cassette("#{described_class.name.underscore}_blink_loc_led") do
-        pim.blink_loc_led(ps, :uuid => "BD775D06821111E189A3E41F13ED5A1A")
-      end
+    VCR.use_cassette("#{described_class.name.underscore}_power_on") do
+      pim.power_on(ps, :uuid => "EADEBE8316174750A27FEC2E8226AC48")
     end
+  end
 
-    it 'will power on a server successfully' do
-      ps = FactoryGirl.create(:physical_server,
-                              :name    => "MimmNameDM",
-                              :ems_ref => "EADEBE8316174750A27FEC2E8226AC48")
-      pim = FactoryGirl.create(:physical_infra,
-                               :name      => "LXCA",
-                               :hostname  => "https://10.243.9.123",
-                               :port      => "443",
-                               :ipaddress => "https://10.243.9.123")
-      auth = FactoryGirl.create(:authentication,
-                                :userid   => 'admin',
-                                :password => 'password',
-                                :authtype => 'default')
-      pim.authentications = [auth]
+  it 'will power off a server successfully' do
+    ps = FactoryGirl.create(:physical_server,
+                            :name    => "MimmNameDM",
+                            :ems_ref => "EADEBE8316174750A27FEC2E8226AC48")
+    pim = FactoryGirl.create(:physical_infra,
+                             :name      => "LXCA",
+                             :hostname  => "https://10.243.9.123",
+                             :port      => "443",
+                             :ipaddress => "https://10.243.9.123")
+    auth = FactoryGirl.create(:authentication,
+                              :userid   => 'admin',
+                              :password => 'password',
+                              :authtype => 'default')
+    pim.authentications = [auth]
 
-      VCR.use_cassette("#{described_class.name.underscore}_power_on") do
-        pim.power_on(ps, :uuid => "EADEBE8316174750A27FEC2E8226AC48")
-      end
+    VCR.use_cassette("#{described_class.name.underscore}_power_off") do
+      pim.power_off(ps, :uuid => "EADEBE8316174750A27FEC2E8226AC48")
     end
+  end
 
-    it 'will power off a server successfully' do
-      ps = FactoryGirl.create(:physical_server,
-                              :name    => "MimmNameDM",
-                              :ems_ref => "EADEBE8316174750A27FEC2E8226AC48")
-      pim = FactoryGirl.create(:physical_infra,
-                               :name      => "LXCA",
-                               :hostname  => "https://10.243.9.123",
-                               :port      => "443",
-                               :ipaddress => "https://10.243.9.123")
-      auth = FactoryGirl.create(:authentication,
-                                :userid   => 'admin',
-                                :password => 'password',
-                                :authtype => 'default')
-      pim.authentications = [auth]
+  it 'will immediately power off a server successfully' do
+    ps = FactoryGirl.create(:physical_server,
+                            :name    => "17dspncsvdm",
+                            :ems_ref => "7936DD182C5311E3A8D6000AF7256738")
+    pim = FactoryGirl.create(:physical_infra,
+                             :name      => "LXCA",
+                             :hostname  => "https://10.243.9.123",
+                             :port      => "443",
+                             :ipaddress => "https://10.243.9.123")
+    auth = FactoryGirl.create(:authentication,
+                              :userid   => 'admin',
+                              :password => 'password',
+                              :authtype => 'default')
+    pim.authentications = [auth]
 
-      VCR.use_cassette("#{described_class.name.underscore}_power_off") do
-        pim.power_off(ps, :uuid => "EADEBE8316174750A27FEC2E8226AC48")
-      end
+    VCR.use_cassette("#{described_class.name.underscore}_power_off_now") do
+      pim.power_off_now(ps, :uuid => "7936DD182C5311E3A8D6000AF7256738")
     end
+  end
 
-    it 'will immediately power off a server successfully' do
-      ps = FactoryGirl.create(:physical_server,
-                              :name    => "17dspncsvdm",
-                              :ems_ref => "7936DD182C5311E3A8D6000AF7256738")
-      pim = FactoryGirl.create(:physical_infra,
-                               :name      => "LXCA",
-                               :hostname  => "https://10.243.9.123",
-                               :port      => "443",
-                               :ipaddress => "https://10.243.9.123")
-      auth = FactoryGirl.create(:authentication,
-                                :userid   => 'admin',
-                                :password => 'password',
-                                :authtype => 'default')
-      pim.authentications = [auth]
+  it 'will restart a server successfully' do
+    ps = FactoryGirl.create(:physical_server,
+                            :name    => "MimmNameDM",
+                            :ems_ref => "EADEBE8316174750A27FEC2E8226AC48")
+    pim = FactoryGirl.create(:physical_infra,
+                             :name      => "LXCA",
+                             :hostname  => "https://10.243.9.123",
+                             :port      => "443",
+                             :ipaddress => "https://10.243.9.123")
+    auth = FactoryGirl.create(:authentication,
+                              :userid   => 'admin',
+                              :password => 'password',
+                              :authtype => 'default')
+    pim.authentications = [auth]
 
-      VCR.use_cassette("#{described_class.name.underscore}_power_off_now") do
-        pim.power_off_now(ps, :uuid => "7936DD182C5311E3A8D6000AF7256738")
-      end
+    VCR.use_cassette("#{described_class.name.underscore}_restart") do
+      pim.restart(ps, :uuid => "EADEBE8316174750A27FEC2E8226AC48")
     end
+  end
 
-    it 'will restart a server successfully' do
-      ps = FactoryGirl.create(:physical_server,
-                              :name    => "MimmNameDM",
-                              :ems_ref => "EADEBE8316174750A27FEC2E8226AC48")
-      pim = FactoryGirl.create(:physical_infra,
-                               :name      => "LXCA",
-                               :hostname  => "https://10.243.9.123",
-                               :port      => "443",
-                               :ipaddress => "https://10.243.9.123")
-      auth = FactoryGirl.create(:authentication,
-                                :userid   => 'admin',
-                                :password => 'password',
-                                :authtype => 'default')
-      pim.authentications = [auth]
+  it 'will immediately restart a server successfully' do
+    ps = FactoryGirl.create(:physical_server,
+                            :name    => "17dspncsvdm",
+                            :ems_ref => "7936DD182C5311E3A8D6000AF7256738")
+    pim = FactoryGirl.create(:physical_infra,
+                             :name      => "LXCA",
+                             :hostname  => "https://10.243.9.123",
+                             :port      => "443",
+                             :ipaddress => "https://10.243.9.123")
+    auth = FactoryGirl.create(:authentication,
+                              :userid   => 'admin',
+                              :password => 'password',
+                              :authtype => 'default')
+    pim.authentications = [auth]
 
-      VCR.use_cassette("#{described_class.name.underscore}_restart") do
-        pim.restart(ps, :uuid => "EADEBE8316174750A27FEC2E8226AC48")
-      end
+    VCR.use_cassette("#{described_class.name.underscore}_restart_now") do
+      pim.restart_now(ps, :uuid => "7936DD182C5311E3A8D6000AF7256738")
     end
+  end
 
-    it 'will immediately restart a server successfully' do
-      ps = FactoryGirl.create(:physical_server,
-                              :name    => "17dspncsvdm",
-                              :ems_ref => "7936DD182C5311E3A8D6000AF7256738")
-      pim = FactoryGirl.create(:physical_infra,
-                               :name      => "LXCA",
-                               :hostname  => "https://10.243.9.123",
-                               :port      => "443",
-                               :ipaddress => "https://10.243.9.123")
-      auth = FactoryGirl.create(:authentication,
-                                :userid   => 'admin',
-                                :password => 'password',
-                                :authtype => 'default')
-      pim.authentications = [auth]
+  it 'will restart to system setup successfully' do
+    ps = FactoryGirl.create(:physical_server,
+                            :name    => "17dspncsvdm",
+                            :ems_ref => "7936DD182C5311E3A8D6000AF7256738")
+    pim = FactoryGirl.create(:physical_infra,
+                             :name      => "LXCA",
+                             :hostname  => "https://10.243.9.123",
+                             :port      => "443",
+                             :ipaddress => "https://10.243.9.123")
+    auth = FactoryGirl.create(:authentication,
+                              :userid   => 'admin',
+                              :password => 'password',
+                              :authtype => 'default')
+    pim.authentications = [auth]
 
-      VCR.use_cassette("#{described_class.name.underscore}_restart_now") do
-        pim.restart_now(ps, :uuid => "7936DD182C5311E3A8D6000AF7256738")
-      end
+    VCR.use_cassette("#{described_class.name.underscore}_restart_to_sys_setup") do
+      pim.restart_to_sys_setup(ps, :uuid => "7936DD182C5311E3A8D6000AF7256738")
     end
+  end
 
-    it 'will restart to system setup successfully' do
-      ps = FactoryGirl.create(:physical_server,
-                              :name    => "17dspncsvdm",
-                              :ems_ref => "7936DD182C5311E3A8D6000AF7256738")
-      pim = FactoryGirl.create(:physical_infra,
-                               :name      => "LXCA",
-                               :hostname  => "https://10.243.9.123",
-                               :port      => "443",
-                               :ipaddress => "https://10.243.9.123")
-      auth = FactoryGirl.create(:authentication,
-                                :userid   => 'admin',
-                                :password => 'password',
-                                :authtype => 'default')
-      pim.authentications = [auth]
+  it 'will restart a server\'s management controller' do
+    ps = FactoryGirl.create(:physical_server,
+                            :name    => "17dspncsvdm",
+                            :ems_ref => "7936DD182C5311E3A8D6000AF7256738")
+    pim = FactoryGirl.create(:physical_infra,
+                             :name      => "LXCA",
+                             :hostname  => "https://10.243.9.123",
+                             :port      => "443",
+                             :ipaddress => "https://10.243.9.123")
+    auth = FactoryGirl.create(:authentication,
+                              :userid   => 'admin',
+                              :password => 'password',
+                              :authtype => 'default')
+    pim.authentications = [auth]
 
-      VCR.use_cassette("#{described_class.name.underscore}_restart_to_sys_setup") do
-        pim.restart_to_sys_setup(ps, :uuid => "7936DD182C5311E3A8D6000AF7256738")
-      end
-    end
-
-    it 'will restart a server\'s management controller' do
-      ps = FactoryGirl.create(:physical_server,
-                              :name    => "17dspncsvdm",
-                              :ems_ref => "7936DD182C5311E3A8D6000AF7256738")
-      pim = FactoryGirl.create(:physical_infra,
-                               :name      => "LXCA",
-                               :hostname  => "https://10.243.9.123",
-                               :port      => "443",
-                               :ipaddress => "https://10.243.9.123")
-      auth = FactoryGirl.create(:authentication,
-                                :userid   => 'admin',
-                                :password => 'password',
-                                :authtype => 'default')
-      pim.authentications = [auth]
-
-      VCR.use_cassette("#{described_class.name.underscore}_restart_mgmt_controller") do
-        pim.restart_mgmt_controller(ps, :uuid => "7936DD182C5311E3A8D6000AF7256738")
-      end
+    VCR.use_cassette("#{described_class.name.underscore}_restart_mgmt_controller") do
+      pim.restart_mgmt_controller(ps, :uuid => "7936DD182C5311E3A8D6000AF7256738")
     end
   end
 
