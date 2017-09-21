@@ -2,6 +2,7 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventParser
   def self.event_to_hash(event, ems_id)
     event_hash = {
       :event_type         => event.eventID,
+      :event_id           => event.cn,
       :source             => "LenovoXclarity",
       :physical_server_id => get_physical_server_id(event.componentID),
       :message            => event.msg,

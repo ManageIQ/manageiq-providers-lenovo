@@ -56,6 +56,6 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
   end
 
   def get_last_cnn_from_events(ems_id)
-    EventStream.where(:ems_id => ems_id).select(:full_data).map { |event| event.full_data["cn"].to_i }.max || 1
+    EventStream.where(:ems_id => ems_id).maximum('event_id') || 1
   end
 end
