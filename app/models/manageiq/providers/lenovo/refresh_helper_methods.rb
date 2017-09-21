@@ -9,7 +9,6 @@ module ManageIQ::Providers::Lenovo::RefreshHelperMethods
       uid, new_result = yield(item)
       next if uid.nil?
 
-
       @data[key] << new_result
       @data_index.store_path(key, uid, new_result)
     end
