@@ -272,7 +272,7 @@ module ManageIQ::Providers::Lenovo
         :type                   => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer",
         :name                   => node.name,
         :ems_ref                => node.uuid,
-        :uid_ems                => @ems.uid_ems,
+        :uid_ems                => node.uuid,
         :hostname               => node.hostname,
         :product_name           => node.productName,
         :manufacturer           => node.manufacturer,
