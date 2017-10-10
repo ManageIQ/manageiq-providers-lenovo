@@ -57,4 +57,29 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
   it 'will return its miq_template_type' do
     expect(described_class.miq_template_type).to eq("ManageIQ::Providers::Lenovo::PhysicalInfraManager::Template")
   end
+
+  it 'will retrieve config patterns' do
+    pim = FactoryGirl.create(:physical_infra,
+                             :name      => "LXCA",
+                             :hostname  => "https://10.243.9.123",
+                             :port      => "443",
+                             :ipaddress => "https://10.243.9.123:443")
+    auth = FactoryGirl.create(:authentication,
+                              :userid   => 'admin',
+                              :password => 'password',
+                              :authtype => 'default')
+    pim.authentications = [auth]
+    rp = described_class.new(pim)
+
+    result = VCR.use_cassette("#{described_class.name.underscore}_retrieve_config_patterns") do
+      rp.ems_inv_to_hashes
+    end
+
+    expect(result[:customization_scripts][0][:manager_ref]).to eq("65")
+    expect(result[:customization_scripts][0][:name]).to eq("17dspncsvdm-config")
+    expect(result[:customization_scripts][0][:in_use]).to eq(false)
+    expect(result[:customization_scripts][1][:manager_ref]).to eq("54")
+    expect(result[:customization_scripts][1][:name]).to eq("DaAn")
+    expect(result[:customization_scripts][1][:in_use]).to eq(false)
+  end
 end

@@ -44,6 +44,7 @@ module ManageIQ::Providers::Lenovo
 
       get_physical_servers
       discover_ip_physical_infra
+      get_config_patterns
 
       $log.info("#{log_header}...Complete")
 
@@ -214,6 +215,11 @@ module ManageIQ::Providers::Lenovo
       device_fw
     end
 
+    def get_config_patterns
+      config_patterns = @connection.discover_config_pattern
+      process_collection(config_patterns, :customization_scripts) { |config_pattern| parse_config_pattern(config_pattern) }
+    end
+
     def parse_firmware(firmware)
       {
         :name         => "#{firmware["role"]} #{firmware["name"]}-#{firmware["status"]}",
@@ -295,6 +301,18 @@ module ManageIQ::Providers::Lenovo
       }
       new_result[:computer_system][:hardware] = get_hardwares(node)
       return node.uuid, new_result
+    end
+
+    def parse_config_pattern(config_pattern)
+      new_result = 
+      {
+        :manager_ref  => config_pattern.id,
+        :name         => config_pattern.name,
+        :description  => config_pattern.description,
+        :user_defined => config_pattern.userDefined,
+        :in_use       => config_pattern.inUse
+      }
+      return config_pattern.id, new_result
     end
 
     def get_host_relationship(node)

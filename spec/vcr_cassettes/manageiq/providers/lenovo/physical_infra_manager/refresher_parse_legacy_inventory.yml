@@ -287,4 +287,62 @@ http_interactions:
         x3550 M4"},"itemLocation":"","itemHeight":1,"itemLocationRoom":""}],"placeholderList":[],"switchList":[],"room":""}]}'
     http_version: 
   recorded_at: Thu, 27 Apr 2017 18:05:32 GMT
+- request:
+    method: get
+    uri: https://10.243.9.123/patterns
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Basic bHhjYzpQQVNTVzByRA==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 10 Oct 2017 19:05:55 GMT
+      Set-Cookie:
+      - userAuthenticationMethod=local;Path=/;Secure
+      Expires:
+      - "-1"
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Strict-Transport-Security:
+      - max-age=86400; includeSubDomains;
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Content-Security-Policy:
+      - 'default-src https:; script-src https: ''unsafe-inline'' ''unsafe-eval'';
+        style-src https: ''unsafe-inline'''
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '1'
+      Content-Type:
+      - application/com.lenovo.lxca-v1.2.2+json; charset=UTF-8
+      Vary:
+      - Accept-Encoding, User-Agent
+      Content-Length:
+      - '605'
+    body:
+      encoding: UTF-8
+      string: '{"identifier":"id","label":"name","items":[{"id":"65","referencedBy":[],"userDefined":true,"formFactor":"rc","inUse":false,"description":"Copy
+        of the 17dspncsvdm server''s settings\nPattern created from server: 17dspncsvdm\nLearned
+        on: Sep 19, 2017 10:58:18 AM","name":"17dspncsvdm-config","nodeType":"sysx","type":"Server","uri":"/config/template/65"},{"id":"54","referencedBy":[],"userDefined":true,"formFactor":"r","inUse":false,"description":"Pattern
+        created from server: DaAn-68-gui\nLearned on: Aug 28, 2017 12:47:37 PM","name":"DaAn","nodeType":"sysx","type":"Server","uri":"/config/template/54"}]}
+
+'
+    http_version: 
+  recorded_at: Tue, 10 Oct 2017 19:05:55 GMT
 recorded_with: VCR 3.0.3
