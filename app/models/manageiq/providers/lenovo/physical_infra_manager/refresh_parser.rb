@@ -304,14 +304,14 @@ module ManageIQ::Providers::Lenovo
     end
 
     def parse_config_pattern(config_pattern)
-      new_result = 
-      {
-        :manager_ref  => config_pattern.id,
-        :name         => config_pattern.name,
-        :description  => config_pattern.description,
-        :user_defined => config_pattern.userDefined,
-        :in_use       => config_pattern.inUse
-      }
+      new_result =
+        {
+          :manager_ref  => config_pattern.id,
+          :name         => config_pattern.name,
+          :description  => config_pattern.description,
+          :user_defined => config_pattern.userDefined,
+          :in_use       => config_pattern.inUse
+        }
       return config_pattern.id, new_result
     end
 
