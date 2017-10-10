@@ -3,7 +3,7 @@ require 'xclarity_client'
 describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventParser do
   let(:event_attrs1) do
     {
-      :eventID            => 1,
+      :msgID              => 1,
       :source             => "LenovoXclarity",
       :msg                => "This is a test event.",
       :timeStamp          => "2017-04-26T13:55:49.749552",

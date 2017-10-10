@@ -4,6 +4,74 @@
     :blacklisted_event_names: []
     :event_handling:
       :event_groups:
+        :power:
+          :critical:
+          - 'CMM0157'
+          - 'IMM0015'
+          - 'FQXHMDM0125I'
+          - 'PLAT0106'
+          - 'PLAT0107'
+          - 'PLAT0108'
+          :detail: []
+          :name: Power Activity
+        :firmware:
+          :critical:
+          - '806F072B2201FFFF'
+          - '000AB001'
+          - '000AB002'
+          - '000AB003'
+          - '000AB004'
+          - '000AB005'
+          - '000AB006'
+          - '000AB007'
+          - '000AB008'
+          - '000AB009'
+          - '00015105'
+          - '0EA02101'
+          - '0EA02102'
+          - '0EA02103'
+          - '0EA02104'
+          - '00015101'
+          - 'FQXHMUP4007I'
+          - '00017310'
+          - '00017129'
+          - '00015103'
+          - '806F072B2101FFFF'
+          - '806F072B2201FFFF'
+          - 'FQXHMUP4006I'
+          - 'FQXHMUP4007I'
+          - 'FQXHMUP4008I'
+          :detail: []
+          :name: Firmware
+        :devices:
+          :critical:
+          - 'CMM0100'
+          - 'PLAT0162'
+          - 'PLAT0456'
+          - 'PLAT0084'
+          - 'CMM0101'
+          - 'PLAT0163'
+          - 'PLAT0457'
+          - 'PLAT0085'
+          - 'CMM0102'
+          - '806F000D0401FFFF'
+          - '806F000D0402FFFF'
+          - '806F000D0403FFFF'
+          - '806F000D0404FFFF'
+          - '806F000D0405FFFF'
+          - '806F000D0406FFFF'
+          - '806F000D0407FFFF'
+          - '816F000D0400FFFF'
+          - '816F000D0401FFFF'
+          - '816F000D0402FFFF'
+          - '816F000D0403FFFF'
+          - '816F000D0404FFFF'
+          - '816F000D0405FFFF'
+          - '816F000D0406FFFF'
+          - '816F000D0407FFFF'
+          - 'IMM0072'
+          :detail: []
+          :name: Devices
 :http_proxy:
   :lenovo:
     :host:
