@@ -30,7 +30,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
   it 'will save the inventory' do
     ems.authentications = [auth]
 
-    refresher.save_inventory(ems, {}, {})
+    refresher.save_inventory(ems, nil, {})
   end
 
   it 'will execute post_process_refresh_classes' do
