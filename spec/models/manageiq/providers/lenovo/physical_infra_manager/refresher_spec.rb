@@ -11,29 +11,24 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
                        :name      => "LXCA",
                        :hostname  => "https://10.243.9.123",
                        :port      => "443",
-                       :ipaddress => "https://10.243.9.123:443")
+                       :ipaddress => "https://10.243.9.123:443").tap do |ems|
+                         ems.authentications << auth
+                       end
   end
 
-  let(:targets) { [ems] }
-  let(:refresher) { described_class.new(targets) }
+  it 'will perform a full refresh' do
+    2.times do # Run twice to verify that a second run with existing data does not change anything
+      result = VCR.use_cassette("#{described_class.name.underscore}") do
+        EmsRefresh.refresh(ems)
+      end
 
-  it 'will parse the legacy inventory' do
-    ems.authentications = [auth]
+      ems.reload
 
-    result = VCR.use_cassette("#{described_class.name.underscore}_parse_legacy_inventory") do
-      refresher.parse_legacy_inventory(ems)
+      assert_table_counts
     end
-
-    expect(result[:physical_servers].size).to eq(3)
   end
 
-  it 'will save the inventory' do
-    ems.authentications = [auth]
-
-    refresher.save_inventory(ems, nil, {})
-  end
-
-  it 'will execute post_process_refresh_classes' do
-    expect(refresher.post_process_refresh_classes).to eq([])
+  def assert_table_counts
+    expect(PhysicalServer.count).to eq(3)
   end
 end
