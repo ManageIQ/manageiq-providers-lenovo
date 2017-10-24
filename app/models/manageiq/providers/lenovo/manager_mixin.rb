@@ -38,12 +38,15 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
     true
   end
 
-  def console_suported?(type)
+  #Default behavior is disabled console support, enabling it here
+  def console_supported?
     true
   end
 
+  #Override base class method to provide a provider specific url
   def console_url
-    URI('https://' + self.hostname)
+    URI::HTTPS.build(:host => hostname,
+                     :port => port)
   end
 
   module ClassMethods
