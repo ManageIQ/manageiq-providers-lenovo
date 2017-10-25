@@ -28,7 +28,7 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
 
   def verify_credentials(auth_type = nil, options = {})
     raise MiqException::MiqHostError, "No credentials defined" if missing_credentials?(auth_type)
-    options[:auth_type] = auth_type
+    options[:auth_type] = auth_type.nil? ? 'default' : auth_type.to_s
 
     self.class.connection_rescue_block do
       with_provider_connection(options) do |lxca|
