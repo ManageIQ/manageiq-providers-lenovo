@@ -41,6 +41,10 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations
     change_resource_state(:power_restart_node_controller, args, options)
   end
 
+  def apply_config_pattern(args, options = {})
+    change_resource_state(:deploy_config_pattern, args, options)
+  end
+
   private
 
   def change_resource_state(verb, args, options = {})
@@ -54,9 +58,16 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations
                      :host => endpoint.hostname,
                      :port => endpoint.port)
 
-    # Turn on the location LED using the xclarity_client API
-    client.send(verb, args.ems_ref)
+    # Execute the action via the client
+    response = case verb
+               when :deploy_config_pattern
+                 client.send(verb, options[:id], [options[:uuid]], options[:restart], options[:etype])
+               else
+                 client.send(verb, args.ems_ref)
+               end
 
     $lenovo_log.info("Exiting change resource state for #{verb} and uuid: #{args.ems_ref}")
+
+    response
   end
 end
