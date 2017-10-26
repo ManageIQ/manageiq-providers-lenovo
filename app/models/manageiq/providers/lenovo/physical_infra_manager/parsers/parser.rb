@@ -97,8 +97,8 @@ module ManageIQ::Providers::Lenovo
       Host.find_by(:service_tag => serial_number)
     end
 
+    # Find the identification led state
     def find_loc_led_state(leds)
-      identification_led_names = %w(Identify Identification)
       identification_led = leds.to_a.find { |led| dictionary::PROPERTIES_MAP[:led_identify_name].include?(led["name"]) }
       identification_led.try(:[], "state")
     end
