@@ -88,7 +88,8 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
         new_ems = create!(
           :name     => "Discovered Provider ##{count + 1}",
           :hostname => URI('https://' + ip_address),
-          :zone     => Zone.default_zone
+          :zone     => Zone.default_zone,
+          :port     => port
         )
 
         # Set empty authentications
