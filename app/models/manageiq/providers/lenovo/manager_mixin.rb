@@ -38,6 +38,17 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
     true
   end
 
+  # Default behavior is disabled console support, enabling it here
+  def console_supported?
+    true
+  end
+
+  # Override base class method to provide a provider specific url
+  def console_url
+    URI::HTTPS.build(:host => hostname,
+                     :port => port)
+  end
+
   module ClassMethods
     def raw_connect(username, password, host, port, auth_type, verify_ssl)
       xclarity = XClarityClient::Configuration.new(

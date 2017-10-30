@@ -228,6 +228,18 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     expect(client).to be_a(XClarityClient::Client)
   end
 
+  it 'should build the console URI' do
+    pim = FactoryGirl.create(:physical_infra,
+                             :name      => "LXCA1",
+                             :hostname  => "10.241.5.555",
+                             :port      => "443",
+                             :ipaddress => "10.243.5.555")
+    console_uri = URI::HTTPS.build(:host => pim.hostname,
+                                   :port => pim.port)
+
+    expect(pim.console_url).to eq(console_uri)
+  end
+
   context 'valid discover' do
     before :each do
       EvmSpecHelper.local_miq_server(:zone => Zone.seed)
