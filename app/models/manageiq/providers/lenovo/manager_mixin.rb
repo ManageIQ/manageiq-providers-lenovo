@@ -98,7 +98,7 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
       if XClarityClient::Discover.responds?(ip_address, port)
         new_ems = create!(
           :name     => "Discovered Provider ##{count + 1}",
-          :hostname => URI('https://' + ip_address),
+          :hostname => URI(ip_address),
           :zone     => Zone.default_zone,
           :port     => port
         )
