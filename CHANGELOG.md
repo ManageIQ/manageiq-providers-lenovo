@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
+## Unreleased as of Sprint 72 ending 2017-10-30
+
+### Added
+- Add support for applying a config pattern [(#95)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/95)
+- Adds console_supported methods to launch LXCA console [(#91)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/91)
+
 ## Unreleased as of Sprint 70 ending 2017-10-02
 
 ### Added
