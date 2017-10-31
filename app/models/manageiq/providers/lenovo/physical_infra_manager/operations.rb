@@ -41,22 +41,43 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations
     change_resource_state(:power_restart_node_controller, args, options)
   end
 
+  def apply_config_pattern(args, options = {})
+    $lenovo_log.info("Entering apply_config_pattern with pattern ID: #{options[:id]} and UUID: #{options[:uuid]}")
+
+    # Retrieve a connection to the LXCA instance
+    client = create_client_connection
+
+    # Execute the action via the client
+    response = client.send(:deploy_config_pattern, options[:id], [options[:uuid]], options[:restart], options[:etype])
+
+    $lenovo_log.info("Exiting apply_config_pattern with pattern ID: #{options[:id]} and UUID: #{options[:uuid]}")
+
+    response
+  end
+
   private
 
   def change_resource_state(verb, args, options = {})
     $lenovo_log.info("Entering change resource state for #{verb} and uuid: #{args.ems_ref} ")
 
-    # Connect to the LXCA instance
-    auth = authentications.first
-    endpoint = endpoints.first
-    client = connect(:user => auth.userid,
-                     :pass => auth.password,
-                     :host => endpoint.hostname,
-                     :port => endpoint.port)
+    # Retrieve a connection to the LXCA instance
+    client = create_client_connection
 
-    # Turn on the location LED using the xclarity_client API
-    client.send(verb, args.ems_ref)
+    # Execute the action via the client
+    response = client.send(verb, args.ems_ref)
 
     $lenovo_log.info("Exiting change resource state for #{verb} and uuid: #{args.ems_ref}")
+
+    response
+  end
+
+  def create_client_connection
+    auth = authentications.first
+    endpoint = endpoints.first
+
+    connect(:user => auth.userid,
+            :pass => auth.password,
+            :host => endpoint.hostname,
+            :port => endpoint.port)
   end
 end
