@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://10.243.9.123/nodes/7936DD182C5311E3A8D6000AF7256738/bmc
+    uri: https://10.243.9.123/nodes/EADEBE8316174750A27FEC2E8226AC48/bmc
     body:
       encoding: UTF-8
       string: '{"powerState":"restart"}'
@@ -55,6 +55,6 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: ''
-    http_version: 
+    http_version:
   recorded_at: Thu, 27 Jul 2017 18:28:42 GMT
 recorded_with: VCR 3.0.3
