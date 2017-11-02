@@ -108,11 +108,10 @@ module ManageIQ::Providers::Lenovo
     end
 
     def get_guest_devices(node)
-      # Retrieve the addin cards associated with the node
-      addin_cards = get_addin_cards(node)
-      guest_devices = addin_cards.map do |addin_card|
-        addin_card
-      end
+      # Retrieve the devices associated with the node
+      addin_cards = parse_all_guest_devices(node.addinCards) { |addin_card| parse_addin_cards(addin_card) }
+      onboard_devices = parse_all_guest_devices(node.onboardPciDevices) { |onboard_device| parse_onboard_devices(onboard_device) }
+      guest_devices = (addin_cards + onboard_devices)
 
       # Retrieve management devices
       guest_devices.push(parse_management_device(node))
@@ -120,72 +119,72 @@ module ManageIQ::Providers::Lenovo
       guest_devices
     end
 
-    def get_addin_cards(node)
-      parsed_addin_cards = []
+    def parse_all_guest_devices(node_devices)
+      parsed_devices = []
 
-      # For each of the node's addin cards, parse the addin card and then see
-      # if it is already in the list of parsed addin cards. If it is, see if
-      # all of its ports are already in the existing parsed addin card entry.
-      # If it's not, then add the port to the existing addin card entry and
-      # don't add the card again to the list of parsed addin cards.
+      # For each of the node's devices, parse the device and then see
+      # if it is already in the list of parsed devices. If it is, see if
+      # all of its ports are already in the existing parsed device entry.
+      # If it's not, then add the port to the existing device entry and
+      # don't add the device again to the list of parsed devices.
       # This is needed because xclarity_client seems to represent each port
-      # as a separate addin card. The code below ensures that each addin
-      # card is represented by a single addin card with multiple ports.
-      node_addin_cards = node.addinCards
-      unless node_addin_cards.nil?
-        node_addin_cards.each do |node_addin_card|
-          if get_device_type(node_addin_card) == "ethernet"
-            add_card = true
-            parsed_node_addin_card = parse_addin_cards(node_addin_card)
+      # as a separate device. The code below ensures that each device
+      # is represented by a device with multiple ports.
+      unless node_devices.nil?
+        node_devices.each do |node_device|
+          if get_device_type(node_device) == "ethernet"
+            add_device = true
+            parsed_node_device = yield(node_device)
 
-            parsed_addin_cards.each do |addin_card|
-              if parsed_node_addin_card[:device_name] == addin_card[:device_name]
-                if parsed_node_addin_card[:location] == addin_card[:location]
-                  parsed_node_addin_card[:child_devices].each do |parsed_port|
-                    card_found = false
+            parsed_devices.each do |device|
+              if parsed_node_device[:device_name] == device[:device_name]
+                if parsed_node_device[:location] == device[:location]
+                  parsed_node_device[:child_devices].each do |parsed_port|
+                    device_found = false
 
-                    addin_card[:child_devices].each do |port|
+                    device[:child_devices].each do |port|
                       if parsed_port[:device_name] == port[:device_name]
-                        card_found = true
+                        device_found = true
                       end
                     end
 
-                    unless card_found
-                      addin_card[:child_devices].push(parsed_port)
-                      add_card = false
+                    unless device_found
+                      device[:child_devices].push(parsed_port)
+                      add_device = false
                     end
                   end
                 end
               end
             end
 
-            if add_card
-              parsed_addin_cards.push(parsed_node_addin_card)
+            if add_device
+              parsed_devices.push(parsed_node_device)
             end
           end
         end
       end
 
-      parsed_addin_cards
+      parsed_devices
     end
 
-    def get_device_type(card)
+    def get_device_type(device)
       device_type = ""
 
-      unless card["name"].nil?
-        card_name = card["name"].downcase
-        if card_name.include?("nic") || card_name.include?("ethernet")
+      unless device["name"].nil?
+        device_name = device["name"].downcase
+        if device_name.include?("nic") || device_name.include?("ethernet")
           device_type = "ethernet"
         end
       end
+
       device_type
     end
 
-    def get_guest_device_ports(card)
+    def get_guest_device_ports(device)
       device_ports = []
 
-      unless card.nil?
-        port_info = card["portInfo"]
+      unless device.nil?
+        port_info = device["portInfo"]
         physical_ports = port_info["physicalPorts"]
         unless physical_ports.nil?
           physical_ports.each do |physical_port|
@@ -200,11 +199,11 @@ module ManageIQ::Providers::Lenovo
       device_ports
     end
 
-    def get_guest_device_firmware(card)
+    def get_guest_device_firmware(device)
       device_fw = []
 
-      unless card.nil?
-        firmware = card["firmware"]
+      unless device.nil?
+        firmware = device["firmware"]
         unless firmware.nil?
           device_fw = firmware.map do |fw|
             parse_firmware(fw)
@@ -253,6 +252,16 @@ module ManageIQ::Providers::Lenovo
         :field_replaceable_unit => addin_card["FRU"],
         :location               => "Bay #{addin_card['slotNumber']}",
         :child_devices          => get_guest_device_ports(addin_card)
+      }
+    end
+
+    def parse_onboard_devices(onboard_device)
+      {
+        :device_name   => onboard_device["name"],
+        :device_type   => get_device_type(onboard_device),
+        :firmwares     => get_guest_device_firmware(onboard_device),
+        :location      => "Onboard",
+        :child_devices => get_guest_device_ports(onboard_device)
       }
     end
 
