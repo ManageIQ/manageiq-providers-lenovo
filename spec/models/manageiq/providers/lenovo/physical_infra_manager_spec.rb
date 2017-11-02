@@ -19,7 +19,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
       @auth = FactoryGirl.create(:authentication,
                                  :userid   => "admin",
                                  :password => "password",
-                                 :authtype => "default",)
+                                 :authtype => "default")
       @physical_infra_manager.authentications = [@auth]
     end
 
@@ -136,6 +136,10 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     expect(@physical_infra_manager.console_url).to eq(console_uri)
   end
 
+  it "console should be supported" do
+    expect(described_class.new.console_supported?).to eql(true)
+  end
+
   describe "discover" do
     context "valid discover" do
       before :each do
@@ -158,6 +162,144 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
       end
       it "should not create a new instance" do
         expect { described_class.discover(@address.host, @port) }.to change { described_class.count }.by 0
+      end
+    end
+
+    context "from queue" do
+      before do
+        EvmSpecHelper.local_miq_server(:zone => Zone.seed)
+        @port = Random.rand(10_000).to_s
+        @address = URI("https://" + Faker::Internet.ip_v4_address + ":" + @port)
+        WebMock.allow_net_connect!
+        stub_request(:get, File.join(@address.to_s, "/aicc")).to_return(:status => [200, "OK"])
+      end
+
+      it "should create a new instance" do
+        expect { described_class.send(:discover_from_queue, @address.host, @port) }.to change { described_class.count }.by 1
+      end
+    end
+  end
+
+  describe "exceptions handling" do
+    context "authentication error" do
+      subject do
+        described_class.connection_rescue_block do
+          raise XClarityClient::Error::AuthenticationError.new, "Authentication error"
+        end
+      end
+
+      it "should raise MiqHostError with correctly translated message" do
+        expect { subject }.to raise_error(MiqException::MiqHostError, "Login failed due to a bad username or password.")
+      end
+    end
+
+    context "connection failed error" do
+      subject do
+        described_class.connection_rescue_block do
+          raise XClarityClient::Error::ConnectionFailed.new, "Connection failed"
+        end
+      end
+
+      it "should raise MiqHostError with correctly translated message" do
+        expect { subject }.to raise_error(MiqException::MiqHostError, "Execution expired or invalid port.")
+      end
+    end
+
+    context "connection refused error" do
+      subject do
+        described_class.connection_rescue_block do
+          raise XClarityClient::Error::ConnectionRefused.new, "Connection refused"
+        end
+      end
+
+      it "should raise MiqHostError with correctly translated message" do
+        expect { subject }.to raise_error(MiqException::MiqHostError, "Connection refused, invalid host.")
+      end
+    end
+
+    context "unknown hostname error" do
+      subject do
+        described_class.connection_rescue_block do
+          raise XClarityClient::Error::HostnameUnknown.new, "Hostname unknown"
+        end
+      end
+
+      it "should raise MiqHostError with correctly translated message" do
+        expect { subject }.to raise_error(MiqException::MiqHostError, "Connection failed, unknown hostname.")
+      end
+    end
+
+    context "unknown errors" do
+      subject do
+        described_class.connection_rescue_block do
+          raise StandardError.new, "Unexpected error"
+        end
+      end
+
+      it "should raise MiqHostError with correctly translated message" do
+        expect { subject }.to raise_error(MiqException::MiqHostError, "Unexpected response returned from system: unexpected error")
+      end
+    end
+  end
+
+  describe "configuration pattern" do
+    before :each do
+      @physical_infra_manager = FactoryGirl.create(:physical_infra,
+                                                   :name     => "LXCA",
+                                                   :hostname => "https://sample.com",
+                                                   :port     => "443")
+
+      @auth = FactoryGirl.create(:authentication,
+                                 :userid   => "admin",
+                                 :password => "password",
+                                 :authtype => "default")
+      @physical_infra_manager.authentications = [@auth]
+
+      @base_uri = "/patterns/"
+      @uuid = "B918EDCA1B5F11E2803EBECB82710ADE"
+    end
+
+    context "with valid id" do
+      before do
+        @pattern_id = "1"
+        response_body = {:status => [200, "OK"], :body => JSON.generate("uuid" => [@uuid], "restart" => "immediate")}
+        WebMock.allow_net_connect!
+        stub_request(:post, File.join(@physical_infra_manager.hostname, @base_uri + @pattern_id)).to_return(response_body)
+      end
+
+      subject do
+        @physical_infra_manager.apply_config_pattern({}, {:id      => @pattern_id,
+                                                          :uuid    => @uuid,
+                                                          :etype   => "node",
+                                                          :restart => "immediate"})
+      end
+
+      it "should return response with status 200" do
+        expect(subject.status).to eq(200)
+      end
+
+      it "should have response body with correct data" do
+        expect(JSON.parse(subject.body)).to include("uuid" => [@uuid], "restart" => "immediate")
+      end
+    end
+
+    context "with invalid id" do
+      before do
+        @pattern_id = "2"
+
+        WebMock.allow_net_connect!
+        stub_request(:post, File.join(@physical_infra_manager.hostname, @base_uri + @pattern_id)).to_return(:status => [404, "OK"])
+      end
+
+      subject do
+        @physical_infra_manager.apply_config_pattern({}, {:id      => @pattern_id,
+                                                          :uuid    => @uuid,
+                                                          :etype   => "node",
+                                                          :restart => "immediate"})
+      end
+
+      it "should return response with status 404" do
+        expect(subject.status).to eq(404)
       end
     end
   end
