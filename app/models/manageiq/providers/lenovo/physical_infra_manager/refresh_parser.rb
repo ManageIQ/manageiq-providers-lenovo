@@ -173,8 +173,8 @@ module ManageIQ::Providers::Lenovo
       # Look at the first port's portType to determine if we
       # are dealing with an Ethernet device
       port_info = device["portInfo"]
-      physical_ports = device["portInfo"]["physicalPorts"]
       unless port_info.nil?
+        physical_ports = port_info["physicalPorts"]
         unless physical_ports.nil?
           unless physical_ports.empty?
             port_type = physical_ports[0]["portType"]
