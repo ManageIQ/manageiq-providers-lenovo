@@ -170,10 +170,18 @@ module ManageIQ::Providers::Lenovo
     def get_device_type(device)
       device_type = ""
 
-      unless device["name"].nil?
-        device_name = device["name"].downcase
-        if device_name.include?("nic") || device_name.include?("ethernet")
-          device_type = "ethernet"
+      # Look at the first port's portType to determine if we
+      # are dealing with an Ethernet device
+      port_info = device["portInfo"]
+      unless port_info.nil?
+        physical_ports = port_info["physicalPorts"]
+        unless physical_ports.nil?
+          unless physical_ports.empty?
+            port_type = physical_ports[0]["portType"]
+            if port_type == "ETHERNET"
+              device_type = "ethernet"
+            end
+          end
         end
       end
 
