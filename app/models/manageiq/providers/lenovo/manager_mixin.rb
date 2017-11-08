@@ -50,7 +50,7 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
   end
 
   module ClassMethods
-    def raw_connect(username, password, host, port, auth_type, verify_ssl)
+    def raw_connect(username, password, host, port, auth_type, verify_ssl, validate = false)
       xclarity = XClarityClient::Configuration.new(
         :username   => username,
         :password   => password,
@@ -59,7 +59,11 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
         :auth_type  => auth_type,
         :verify_ssl => verify_ssl
       )
-      XClarityClient::Client.new(xclarity)
+      connection = XClarityClient::Client.new(xclarity)
+
+      connection_rescue_block { validate_connection(connection) } if validate
+
+      connection
     end
 
     def validate_connection(connection)
