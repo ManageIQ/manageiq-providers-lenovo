@@ -1,0 +1,117 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://10.243.9.123/events?filterWith=%7B%22filterType%22:%22FIELDNOTREGEXAND%22,%22fields%22:%5B%7B%22operation%22:%22NOT%22,%22field%22:%22eventClass%22,%22value%22:%22200%22%7D,%7B%22operation%22:%22NOT%22,%22field%22:%22eventClass%22,%22value%22:%22800%22%7D,%7B%22operation%22:%22GT%22,%22field%22:%22cn%22,%22value%22:%221%22%7D%5D%7D
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - LXCA via Ruby Client/0.5.7
+      Authorization:
+      - Basic bHhjYzpQQVNTVzByRA==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 15 Nov 2017 14:13:24 GMT
+      Set-Cookie:
+      - userAuthenticationMethod=local;Path=/;Secure
+      Expires:
+      - "-1"
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Strict-Transport-Security:
+      - max-age=86400; includeSubDomains;
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Content-Security-Policy:
+      - 'default-src https:; script-src https: ''unsafe-inline'' ''unsafe-eval'';
+        style-src https: ''unsafe-inline'''
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '1'
+      Content-Type:
+      - application/com.lenovo.lxca-v1.2.2+json; charset=UTF-8
+      Vary:
+      - Accept-Encoding, User-Agent
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"eventDate":"2017-11-08T21:50:42Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T17:49:14Z","location":"","args":["Host
+        Power","root/cimv2:IBM_ComputerSystem.CreationClassName=\"IBM_ComputerSystem\",Name=\"Host
+        UUID-EADEBE8316174750A27FEC2E8226AC48\""],"originatorUUID":"","systemName":"XinYi-71","bayText":"Not
+        Available","mtm":"546235Z","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"KVX0171","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
+        Required","failFRUs":[""],"msg":"Host Power has been turned on.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"816F00091301FFFF","sourceLogSequence":9852,"systemSerialNumberText":"KVX0171","cn":"684922","service":100,"typeText":"Power","msgID":"PLAT0107","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T21:50:27Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T17:49:14Z","location":"","args":["Host
+        Power","root/cimv2:IBM_ComputerSystem.CreationClassName=\"IBM_ComputerSystem\",Name=\"Host
+        UUID-EADEBE8316174750A27FEC2E8226AC48\""],"originatorUUID":"","systemName":"XinYi-71","bayText":"Not
+        Available","mtm":"546235Z","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"KVX0171","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
+        Required","failFRUs":[""],"msg":"Host Power has been turned off.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"806F00091301FFFF","sourceLogSequence":9851,"systemSerialNumberText":"KVX0171","cn":"684921","service":100,"typeText":"Power","msgID":"PLAT0106","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T17:49:13Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T17:49:13Z","location":"","args":["Host
+        Power"],"originatorUUID":"","systemName":"XinYi-71","bayText":"Not Available","mtm":"","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
+        Required","failFRUs":"","msg":"Host Power has been turned on.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"816F00091301FFFF","sourceLogSequence":9848,"systemSerialNumberText":"KVX0171","cn":"684920","service":100,"typeText":"Power","msgID":"PLAT0107","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T17:49:13Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T17:49:13Z","location":"","args":["Host
+        Power"],"originatorUUID":"","systemName":"XinYi-71","bayText":"Not Available","mtm":"","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
+        Required","failFRUs":"","msg":"Host Power has been turned off.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"806F00091301FFFF","sourceLogSequence":9847,"systemSerialNumberText":"KVX0171","cn":"684919","service":100,"typeText":"Power","msgID":"PLAT0106","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T17:49:13Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T17:49:13Z","location":"","args":["Host
+        Power"],"originatorUUID":"","systemName":"XinYi-71","bayText":"Not Available","mtm":"","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
+        Required","failFRUs":"","msg":"Host Power has been turned on.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"816F00091301FFFF","sourceLogSequence":9845,"systemSerialNumberText":"KVX0171","cn":"684918","service":100,"typeText":"Power","msgID":"PLAT0107","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T17:49:13Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T17:49:13Z","location":"","args":["Host
+        Power"],"originatorUUID":"","systemName":"XinYi-71","bayText":"Not Available","mtm":"","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
+        Required","failFRUs":"","msg":"Host Power has been turned off.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"806F00091301FFFF","sourceLogSequence":9844,"systemSerialNumberText":"KVX0171","cn":"684917","service":100,"typeText":"Power","msgID":"PLAT0106","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T17:49:13Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T17:49:13Z","location":"","args":["Host
+        Power"],"originatorUUID":"","systemName":"XinYi-71","bayText":"Not Available","mtm":"","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
+        Required","failFRUs":"","msg":"Host Power has been turned on.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"816F00091301FFFF","sourceLogSequence":9836,"systemSerialNumberText":"KVX0171","cn":"684916","service":100,"typeText":"Power","msgID":"PLAT0107","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T17:49:13Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T17:49:13Z","location":"","args":["Host
+        Power"],"originatorUUID":"","systemName":"XinYi-71","bayText":"Not Available","mtm":"","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
+        Required","failFRUs":"","msg":"Host Power has been turned off.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"806F00091301FFFF","sourceLogSequence":9835,"systemSerialNumberText":"KVX0171","cn":"684915","service":100,"typeText":"Power","msgID":"PLAT0106","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T17:49:13Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T17:49:13Z","location":"","args":["Host
+        Power"],"originatorUUID":"","systemName":"XinYi-71","bayText":"Not Available","mtm":"","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
+        Required","failFRUs":"","msg":"Host Power has been turned on.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"816F00091301FFFF","sourceLogSequence":9833,"systemSerialNumberText":"KVX0171","cn":"684914","service":100,"typeText":"Power","msgID":"PLAT0107","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T17:49:13Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T17:49:13Z","location":"","args":["Host
+        Power"],"originatorUUID":"","systemName":"XinYi-71","bayText":"Not Available","mtm":"","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
+        Required","failFRUs":"","msg":"Host Power has been turned off.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"806F00091301FFFF","sourceLogSequence":9831,"systemSerialNumberText":"KVX0171","cn":"684912","service":100,"typeText":"Power","msgID":"PLAT0106","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T19:03:52Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T19:04:04Z","location":"","args":["Host
+        Power","root/cimv2:IBM_ComputerSystem.CreationClassName=\"IBM_ComputerSystem\",Name=\"Host
+        UUID-EADEBE8316174750A27FEC2E8226AC48\""],"originatorUUID":"EADEBE8316174750A27FEC2E8226AC48","systemName":"XinYi-71","bayText":"Not
+        Available","mtm":"546235Z","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"KVX0171","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
+        Required","failFRUs":[""],"msg":"Host Power has been turned on.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"816F00091301FFFF","sourceLogSequence":9808,"systemSerialNumberText":"KVX0171","cn":"684817","service":100,"typeText":"Power","msgID":"PLAT0107","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T19:01:56Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T19:02:06Z","location":"","args":["Host
+        Power","root/cimv2:IBM_ComputerSystem.CreationClassName=\"IBM_ComputerSystem\",Name=\"Host
+        UUID-EADEBE8316174750A27FEC2E8226AC48\""],"originatorUUID":"EADEBE8316174750A27FEC2E8226AC48","systemName":"XinYi-71","bayText":"Not
+        Available","mtm":"546235Z","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"KVX0171","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
+        Required","failFRUs":[""],"msg":"Host Power has been turned off.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"806F00091301FFFF","sourceLogSequence":9807,"systemSerialNumberText":"KVX0171","cn":"684802","service":100,"typeText":"Power","msgID":"PLAT0106","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T18:51:46Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T18:52:00Z","location":"","args":["Host
+        Power","root/cimv2:IBM_ComputerSystem.CreationClassName=\"IBM_ComputerSystem\",Name=\"Host
+        UUID-EADEBE8316174750A27FEC2E8226AC48\""],"originatorUUID":"EADEBE8316174750A27FEC2E8226AC48","systemName":"XinYi-71","bayText":"Not
+        Available","mtm":"546235Z","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"KVX0171","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
+        Required","failFRUs":[""],"msg":"Host Power has been turned on.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"816F00091301FFFF","sourceLogSequence":9801,"systemSerialNumberText":"KVX0171","cn":"684780","service":100,"typeText":"Power","msgID":"PLAT0107","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T18:51:36Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T18:51:53Z","location":"","args":["Host
+        Power","root/cimv2:IBM_ComputerSystem.CreationClassName=\"IBM_ComputerSystem\",Name=\"Host
+        UUID-EADEBE8316174750A27FEC2E8226AC48\""],"originatorUUID":"EADEBE8316174750A27FEC2E8226AC48","systemName":"XinYi-71","bayText":"Not
+        Available","mtm":"546235Z","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"KVX0171","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
+        Required","failFRUs":[""],"msg":"Host Power has been turned off.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"806F00091301FFFF","sourceLogSequence":9800,"systemSerialNumberText":"KVX0171","cn":"684779","service":100,"typeText":"Power","msgID":"PLAT0106","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T18:45:29Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T18:45:49Z","location":"","args":["Host
+        Power","root/cimv2:IBM_ComputerSystem.CreationClassName=\"IBM_ComputerSystem\",Name=\"Host
+        UUID-EADEBE8316174750A27FEC2E8226AC48\""],"originatorUUID":"EADEBE8316174750A27FEC2E8226AC48","systemName":"XinYi-71","bayText":"Not
+        Available","mtm":"546235Z","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"KVX0171","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
+        Required","failFRUs":[""],"msg":"Host Power has been turned on.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"816F00091301FFFF","sourceLogSequence":9798,"systemSerialNumberText":"KVX0171","cn":"684761","service":100,"typeText":"Power","msgID":"PLAT0107","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T18:45:19Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T18:45:49Z","location":"","args":["Host
+        Power","root/cimv2:IBM_ComputerSystem.CreationClassName=\"IBM_ComputerSystem\",Name=\"Host
+        UUID-EADEBE8316174750A27FEC2E8226AC48\""],"originatorUUID":"EADEBE8316174750A27FEC2E8226AC48","systemName":"XinYi-71","bayText":"Not
+        Available","mtm":"546235Z","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"KVX0171","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
+        Required","failFRUs":[""],"msg":"Host Power has been turned off.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"806F00091301FFFF","sourceLogSequence":9797,"systemSerialNumberText":"KVX0171","cn":"684760","service":100,"typeText":"Power","msgID":"PLAT0106","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T18:42:31Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T18:42:40Z","location":"","args":["Host
+        Power","root/cimv2:IBM_ComputerSystem.CreationClassName=\"IBM_ComputerSystem\",Name=\"Host
+        UUID-EADEBE8316174750A27FEC2E8226AC48\""],"originatorUUID":"EADEBE8316174750A27FEC2E8226AC48","systemName":"XinYi-71","bayText":"Not
+        Available","mtm":"546235Z","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"KVX0171","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
+        Required","failFRUs":[""],"msg":"Host Power has been turned on.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"816F00091301FFFF","sourceLogSequence":9794,"systemSerialNumberText":"KVX0171","cn":"684754","service":100,"typeText":"Power","msgID":"PLAT0107","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-01-11T22:37:44Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-01-11T17:44:09Z","location":"","args":"","originatorUUID":"BD775D06821111E189A3E41F13ED5A1A","systemName":"IMM2-e41f13ed5a1e","bayText":"Not
+        Available","mtm":"","userid":"LXCA_waaBVBOc0A","fruSerialNumberText":"Y015UN23X13P","eventSourceText":"Hardware","serialnum":"","sourceLogID":"SYSTEM","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"BD775D06821111E189A3E41F13ED5A1A","systemTypeModelText":"7914-AC1","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
+        Required","failFRUs":"","msg":"Host Power has been turned on.","componentID":"BD775D06821111E189A3E41F13ED5A1A","eventClass":400,"eventID":"816F00091301FFFF","sourceLogSequence":0,"systemSerialNumberText":"06AREZ9","cn":"71902","service":100,"typeText":"Power","msgID":"snmpimm_107","systemFruNumberText":"Not
+        Available","systemText":"IMM2-e41f13ed5a1e"},{"eventDate":"2017-01-11T02:28:33Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-01-10T21:34:59Z","location":"","args":"","originatorUUID":"BD775D06821111E189A3E41F13ED5A1A","systemName":"IMM2-e41f13ed5a1e","bayText":"Not
+        Available","mtm":"","userid":"LXCA_waaBVBOc0A","fruSerialNumberText":"Y015UN23X13P","eventSourceText":"Hardware","serialnum":"","sourceLogID":"SYSTEM","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"BD775D06821111E189A3E41F13ED5A1A","systemTypeModelText":"7914-AC1","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
+        Required","failFRUs":"","msg":"Host Power has been turned on.","componentID":"BD775D06821111E189A3E41F13ED5A1A","eventClass":400,"eventID":"816F00091301FFFF","sourceLogSequence":0,"systemSerialNumberText":"06AREZ9","cn":"70467","service":100,"typeText":"Power","msgID":"snmpimm_107","systemFruNumberText":"Not
+        Available","systemText":"IMM2-e41f13ed5a1e"},{"eventDate":"2017-01-11T02:03:26Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-01-10T21:09:51Z","location":"","args":"","originatorUUID":"BD775D06821111E189A3E41F13ED5A1A","systemName":"IMM2-e41f13ed5a1e","bayText":"Not
+        Available","mtm":"","userid":"LXCA_waaBVBOc0A","fruSerialNumberText":"Y015UN23X13P","eventSourceText":"Hardware","serialnum":"","sourceLogID":"SYSTEM","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"BD775D06821111E189A3E41F13ED5A1A","systemTypeModelText":"7914-AC1","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
+        Required","failFRUs":"","msg":"Host Power has been turned on.","componentID":"BD775D06821111E189A3E41F13ED5A1A","eventClass":400,"eventID":"816F00091301FFFF","sourceLogSequence":0,"systemSerialNumberText":"06AREZ9","cn":"70430","service":100,"typeText":"Power","msgID":"snmpimm_107","systemFruNumberText":"Not
+        Available","systemText":"IMM2-e41f13ed5a1e"}]'
+    http_version: 
+  recorded_at: Wed, 15 Nov 2017 14:14:02 GMT
+recorded_with: VCR 3.0.3
