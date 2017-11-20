@@ -372,16 +372,9 @@ module ManageIQ::Providers::Lenovo
     end
 
     def find_loc_led_state(leds)
-      loc_led_state = ""
-      unless leds.nil?
-        leds.each do |led|
-          if led["name"] == "Identify"
-            loc_led_state = led["state"]
-            break
-          end
-        end
-      end
-      loc_led_state
+      identification_led_names = %w(Identify Identification)
+      identification_led = leds.to_a.find { |led| identification_led_names.include?(led["name"]) }
+      identification_led.try(:[], "state")
     end
 
     def discover_ip_physical_infra
