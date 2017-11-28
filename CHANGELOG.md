@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
+## Gaprindashvili Beta2
+
+### Fixed
+- Fix exception handing for credential validation on raw_connect [(#108)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/108)
+- Supporting differents identify leds name of physical servers on refresh [(#115)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/115)
+
+### Removed
+- Remove old Lenovo provider objects [(#112)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/112)
+
 ## Gaprindashvili Beta1
 
 ### Added
