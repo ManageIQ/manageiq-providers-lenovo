@@ -20,7 +20,7 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
     host       = options[:host] || address
     port       = options[:port] || self.port
     auth_type  = AUTH_TYPES[options[:auth_type]]
-    user_agent_label = VMDB::Appliance::USER_AGENT
+    user_agent_label = Vmdb::Appliance.USER_AGENT
 
     # TODO: improve this SSL verification
     verify_ssl = options[:verify_ssl] == 1 ? 'PEER' : 'NONE'
