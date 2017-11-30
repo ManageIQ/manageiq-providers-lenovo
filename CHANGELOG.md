@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
+## Unreleased as of Sprint 74 ending 2017-11-27
+
+### Fixed
+- Supporting differents identify leds name of physical servers on refresh [(#115)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/115)
+
 ## Unreleased as of Sprint 73 ending 2017-11-13
 
 ### Removed
