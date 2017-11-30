@@ -20,10 +20,11 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
     host       = options[:host] || address
     port       = options[:port] || self.port
     auth_type  = AUTH_TYPES[options[:auth_type]]
+    user_agent_label = Vmdb::Appliance.USER_AGENT
 
     # TODO: improve this SSL verification
     verify_ssl = options[:verify_ssl] == 1 ? 'PEER' : 'NONE'
-    self.class.raw_connect(username, password, host, port, auth_type, verify_ssl)
+    self.class.raw_connect(username, password, host, port, auth_type, verify_ssl, user_agent_label)
   end
 
   def verify_credentials(auth_type = nil, options = {})
@@ -50,14 +51,15 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
   end
 
   module ClassMethods
-    def raw_connect(username, password, host, port, auth_type, verify_ssl, validate = false)
+    def raw_connect(username, password, host, port, auth_type, verify_ssl, user_agent_label, validate = false)
       xclarity = XClarityClient::Configuration.new(
-        :username   => username,
-        :password   => password,
-        :host       => host,
-        :port       => port,
-        :auth_type  => auth_type,
-        :verify_ssl => verify_ssl
+        :username         => username,
+        :password         => password,
+        :host             => host,
+        :port             => port,
+        :auth_type        => auth_type,
+        :verify_ssl       => verify_ssl,
+        :user_agent_label => user_agent_label,
       )
       connection = XClarityClient::Client.new(xclarity)
 
