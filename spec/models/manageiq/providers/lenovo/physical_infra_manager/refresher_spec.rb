@@ -1,30 +1,29 @@
 describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
   let(:auth) do
     FactoryGirl.create(:authentication,
-                       :userid   => 'admin',
-                       :password => 'password',
+                       :userid   => 'lxcc',
+                       :password => 'PASSW0rD',
                        :authtype => 'default')
   end
 
   let(:ems) do
-    FactoryGirl.create(:physical_infra,
+    ems = FactoryGirl.create(:physical_infra,
                        :name      => "LXCA",
                        :hostname  => "https://10.243.9.123",
                        :port      => "443",
                        :ipaddress => "https://10.243.9.123:443")
+    ems.authentications = [auth]
+    ems
   end
 
   let(:targets) { [ems] }
+
   let(:refresher) { described_class.new(targets) }
 
   it 'will parse the legacy inventory' do
-    ems.authentications = [auth]
+    result = VCR.use_cassette("#{described_class.name.underscore}_aicc") { refresher.parse_legacy_inventory(ems) }
 
-    result = VCR.use_cassette("#{described_class.name.underscore}_parse_legacy_inventory") do
-      refresher.parse_legacy_inventory(ems)
-    end
-
-    expect(result[:physical_servers].size).to eq(3)
+    expect(result[:physical_servers].size).to eq(4)
   end
 
   it 'will save the inventory' do

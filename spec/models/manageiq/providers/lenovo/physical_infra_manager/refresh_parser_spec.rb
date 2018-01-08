@@ -1,39 +1,36 @@
 describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
-  it 'will retrieve physical servers' do
-    pim = FactoryGirl.create(:physical_infra,
+  let(:auth) do
+    FactoryGirl.create(:authentication,
+                       :userid   => "admin",
+                       :password => "password",
+                       :authtype => "default")
+  end
+
+  let(:ems) do
+    ems = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
                              :hostname  => "https://10.243.9.123",
                              :port      => "443",
-                             :ipaddress => "https://10.243.9.123:443")
-    auth = FactoryGirl.create(:authentication,
-                              :userid   => 'admin',
-                              :password => 'password',
-                              :authtype => 'default')
-    pim.authentications = [auth]
-    rp = described_class.new(pim)
+                             :ipaddress => "https://10.243.9.123/443")
+    ems.authentications = [auth]
+    ems
+  end
 
+  let(:refresh_parser) do
+    VCR.use_cassette("#{described_class.name.underscore}_aicc") { described_class.new(ems) }
+  end
+
+  it 'will retrieve physical servers' do
     result = VCR.use_cassette("#{described_class.name.underscore}_ems_inv_to_hashes") do
-      rp.ems_inv_to_hashes
+      refresh_parser.ems_inv_to_hashes
     end
 
     expect(result[:physical_servers].size).to eq(4)
   end
 
   it 'will retrieve addin cards on the physical servers' do
-    pim = FactoryGirl.create(:physical_infra,
-                             :name      => "LXCA",
-                             :hostname  => "https://10.243.9.123",
-                             :port      => "443",
-                             :ipaddress => "https://10.243.9.123:443")
-    auth = FactoryGirl.create(:authentication,
-                              :userid   => 'admin',
-                              :password => 'password',
-                              :authtype => 'default')
-    pim.authentications = [auth]
-    rp = described_class.new(pim)
-
     result = VCR.use_cassette("#{described_class.name.underscore}_retrieve_addin_cards") do
-      rp.ems_inv_to_hashes
+      refresh_parser.ems_inv_to_hashes
     end
 
     physical_server = result[:physical_servers][0]
@@ -59,20 +56,8 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
   end
 
   it 'will retrieve config patterns' do
-    pim = FactoryGirl.create(:physical_infra,
-                             :name      => "LXCA",
-                             :hostname  => "https://10.243.9.123",
-                             :port      => "443",
-                             :ipaddress => "https://10.243.9.123:443")
-    auth = FactoryGirl.create(:authentication,
-                              :userid   => 'admin',
-                              :password => 'password',
-                              :authtype => 'default')
-    pim.authentications = [auth]
-    rp = described_class.new(pim)
-
     result = VCR.use_cassette("#{described_class.name.underscore}_retrieve_config_patterns") do
-      rp.ems_inv_to_hashes
+      refresh_parser.ems_inv_to_hashes
     end
 
     expect(result[:customization_scripts][0][:manager_ref]).to eq("65")
