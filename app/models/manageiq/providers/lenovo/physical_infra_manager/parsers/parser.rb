@@ -114,11 +114,13 @@ module ManageIQ::Providers::Lenovo
     end
 
     def get_disk_capacity(node)
-      node.raidSettings&.reduce(0) do |total, storage|
-        total + storage['diskDrives']&.reduce(0) do |total_disk_cap, disk|
-          total_disk_cap + disk['capacity']
+      total_disk_cap = 0
+      node.raidSettings&.each do |storage|
+        storage['diskDrives']&.each do |disk|
+          total_disk_cap += disk['capacity'] unless disk['capacity'].nil?
         end
       end
+      total_disk_cap
     end
 
     def get_memory_info(node)

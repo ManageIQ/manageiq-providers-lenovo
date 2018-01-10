@@ -67,4 +67,30 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
     expect(result[:customization_scripts][1][:name]).to eq("DaAn")
     expect(result[:customization_scripts][1][:in_use]).to eq(false)
   end
+
+  context 'retrieve disk capacity from a physical server' do
+    before do
+      @result = VCR.use_cassette("#{described_class.name.underscore}_retrieve_physical_server_disk_capacity") do
+        refresh_parser.ems_inv_to_hashes
+      end
+    end
+
+    it 'will retrieve disk capacity from a physical server' do
+
+      physical_server_with_disk = @result[:physical_servers][0]
+      computer_system = physical_server_with_disk[:computer_system]
+      hardware = computer_system[:hardware]
+
+      expect(hardware[:disk_capacity]).to eq(3_000_614_658_000)
+    end
+
+    it 'will try to retrieve disk capacity from a physical server without RAID information' do
+
+      physical_server = @result[:physical_servers][1]
+      computer_system = physical_server[:computer_system]
+      hardware = computer_system[:hardware]
+
+      expect(hardware[:disk_capacity]).to eq(0)
+    end
+  end
 end
