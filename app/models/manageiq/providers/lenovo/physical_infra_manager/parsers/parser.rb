@@ -105,11 +105,20 @@ module ManageIQ::Providers::Lenovo
 
     def get_hardwares(node)
       {
+        :disk_capacity   => get_disk_capacity(node),
         :memory_mb       => get_memory_info(node),
         :cpu_total_cores => get_total_cores(node),
         :firmwares       => get_firmwares(node),
         :guest_devices   => get_guest_devices(node)
       }
+    end
+
+    def get_disk_capacity(node)
+      node.raidSettings&.reduce(0) do |total, storage|
+        total + storage['diskDrives']&.reduce(0) do |total_disk_cap, disk|
+          total_disk_cap + disk['capacity']
+        end
+      end
     end
 
     def get_memory_info(node)
