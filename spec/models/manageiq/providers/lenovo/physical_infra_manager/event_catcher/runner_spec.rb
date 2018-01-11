@@ -2,7 +2,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Runner
   let(:ems) do
     FactoryGirl.create(:physical_infra_with_authentication,
                        :name     => "LXCA",
-                       :hostname => "https://10.243.9.123")
+                       :hostname => "10.243.9.123")
   end
 
   let(:runner) { described_class.new(:ems_id => ems.id) }
