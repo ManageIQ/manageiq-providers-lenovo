@@ -9,7 +9,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
   let(:ems) do
     FactoryGirl.create(:physical_infra,
                        :name      => "LXCA",
-                       :hostname  => "https://10.243.9.123",
+                       :hostname  => "10.243.9.123",
                        :port      => "443",
                        :ipaddress => "https://10.243.9.123:443")
   end

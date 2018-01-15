@@ -12,7 +12,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
                             :ems_ref => "BD775D06821111E189A3E41F13ED5A1A")
     pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
-                             :hostname  => "https://10.243.9.123",
+                             :hostname  => "10.243.9.123",
                              :port      => "443",
                              :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
@@ -32,7 +32,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
                             :ems_ref => "BD775D06821111E189A3E41F13ED5A1A")
     pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
-                             :hostname  => "https://10.243.9.123",
+                             :hostname  => "10.243.9.123",
                              :port      => "443",
                              :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
@@ -52,7 +52,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
                             :ems_ref => "BD775D06821111E189A3E41F13ED5A1A")
     pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
-                             :hostname  => "https://10.243.9.123",
+                             :hostname  => "10.243.9.123",
                              :port      => "443",
                              :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
@@ -72,7 +72,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
                             :ems_ref => "EADEBE8316174750A27FEC2E8226AC48")
     pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
-                             :hostname  => "https://10.243.9.123",
+                             :hostname  => "10.243.9.123",
                              :port      => "443",
                              :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
@@ -92,7 +92,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
                             :ems_ref => "EADEBE8316174750A27FEC2E8226AC48")
     pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
-                             :hostname  => "https://10.243.9.123",
+                             :hostname  => "10.243.9.123",
                              :port      => "443",
                              :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
@@ -112,7 +112,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
                             :ems_ref => "7936DD182C5311E3A8D6000AF7256738")
     pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
-                             :hostname  => "https://10.243.9.123",
+                             :hostname  => "10.243.9.123",
                              :port      => "443",
                              :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
@@ -132,7 +132,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
                             :ems_ref => "EADEBE8316174750A27FEC2E8226AC48")
     pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
-                             :hostname  => "https://10.243.9.123",
+                             :hostname  => "10.243.9.123",
                              :port      => "443",
                              :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
@@ -152,7 +152,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
                             :ems_ref => "7936DD182C5311E3A8D6000AF7256738")
     pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
-                             :hostname  => "https://10.243.9.123",
+                             :hostname  => "10.243.9.123",
                              :port      => "443",
                              :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
@@ -172,7 +172,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
                             :ems_ref => "7936DD182C5311E3A8D6000AF7256738")
     pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
-                             :hostname  => "https://10.243.9.123",
+                             :hostname  => "10.243.9.123",
                              :port      => "443",
                              :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
@@ -192,7 +192,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
                             :ems_ref => "7936DD182C5311E3A8D6000AF7256738")
     pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
-                             :hostname  => "https://10.243.9.123",
+                             :hostname  => "10.243.9.123",
                              :port      => "443",
                              :ipaddress => "https://10.243.9.123")
     auth = FactoryGirl.create(:authentication,
@@ -231,9 +231,9 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
   it 'should build the console URI' do
     pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA1",
-                             :hostname  => "10.241.5.555",
+                             :hostname  => "10.243.5.255",
                              :port      => "443",
-                             :ipaddress => "10.243.5.555")
+                             :ipaddress => "10.243.5.255")
     console_uri = URI::HTTPS.build(:host => pim.hostname,
                                    :port => pim.port)
 

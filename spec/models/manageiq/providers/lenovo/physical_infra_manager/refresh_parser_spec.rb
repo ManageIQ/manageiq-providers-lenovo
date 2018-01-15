@@ -2,7 +2,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
   it 'will retrieve physical servers' do
     pim = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
-                             :hostname  => "https://10.243.9.123",
+                             :hostname  => "10.243.9.123",
                              :port      => "443",
                              :ipaddress => "https://10.243.9.123:443")
     auth = FactoryGirl.create(:authentication,
