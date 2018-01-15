@@ -13,7 +13,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
                                             :ems_ref => "BD775D06821111E189A3E41F13ED5A1A")
       @physical_infra_manager = FactoryGirl.create(:physical_infra,
                                                    :name      => "LXCA",
-                                                   :hostname  => "https://10.243.9.123",
+                                                   :hostname  => "10.243.9.123",
                                                    :port      => "443",
                                                    :ipaddress => "https://10.243.9.123")
       @auth = FactoryGirl.create(:authentication,
@@ -49,7 +49,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
                                             :ems_ref => "EADEBE8316174750A27FEC2E8226AC48")
       @physical_infra_manager = FactoryGirl.create(:physical_infra,
                                                    :name      => "LXCA",
-                                                   :hostname  => "https://10.243.9.123",
+                                                   :hostname  => "10.243.9.123",
                                                    :port      => "443",
                                                    :ipaddress => "https://10.243.9.123")
       @auth = FactoryGirl.create(:authentication,
@@ -127,9 +127,9 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
   it "should build the console URI" do
     @physical_infra_manager = FactoryGirl.create(:physical_infra,
                                                  :name      => "LXCA1",
-                                                 :hostname  => "10.241.5.555",
+                                                 :hostname  => "10.243.5.255",
                                                  :port      => "443",
-                                                 :ipaddress => "10.243.5.555")
+                                                 :ipaddress => "10.243.5.255")
     console_uri = URI::HTTPS.build(:host => @physical_infra_manager.hostname,
                                    :port => @physical_infra_manager.port)
 
@@ -246,7 +246,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
     before :each do
       @physical_infra_manager = FactoryGirl.create(:physical_infra,
                                                    :name     => "LXCA",
-                                                   :hostname => "https://sample.com",
+                                                   :hostname => "sample.com",
                                                    :port     => "443")
 
       @auth = FactoryGirl.create(:authentication,
@@ -264,7 +264,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
         @pattern_id = "1"
         response_body = {:status => [200, "OK"], :body => JSON.generate("uuid" => [@uuid], "restart" => "immediate")}
         WebMock.allow_net_connect!
-        stub_request(:post, File.join(@physical_infra_manager.hostname, @base_uri + @pattern_id)).to_return(response_body)
+        stub_request(:post, File.join("https://" + @physical_infra_manager.hostname, @base_uri + @pattern_id)).to_return(response_body)
       end
 
       subject do
@@ -288,7 +288,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
         @pattern_id = "2"
 
         WebMock.allow_net_connect!
-        stub_request(:post, File.join(@physical_infra_manager.hostname, @base_uri + @pattern_id)).to_return(:status => [404, "OK"])
+        stub_request(:post, File.join("https://" + @physical_infra_manager.hostname, @base_uri + @pattern_id)).to_return(:status => [404, "OK"])
       end
 
       subject do
