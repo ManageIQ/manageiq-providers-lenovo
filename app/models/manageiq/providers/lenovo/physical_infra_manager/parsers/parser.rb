@@ -94,7 +94,8 @@ module ManageIQ::Providers::Lenovo
     # Assign a physicalserver and host if server already exists and
     # some host match with physical Server's serial number
     def get_host_relationship(serial_number)
-      Host.find_by(:service_tag => serial_number)
+      Host.find_by(:service_tag => serial_number) ||
+        Host.joins(:hardware).find_by('hardwares.serial_number' => serial_number)
     end
 
     # Find the identification led state
