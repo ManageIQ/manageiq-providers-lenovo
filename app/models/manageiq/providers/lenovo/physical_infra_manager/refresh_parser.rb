@@ -108,3 +108,4 @@ module ManageIQ::Providers::Lenovo
     end
   end
 end
+# rubocop:enable Naming/AccessorMethodName
