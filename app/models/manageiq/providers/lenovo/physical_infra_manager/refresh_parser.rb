@@ -1,4 +1,4 @@
-# rubocop:disable Style/AccessorMethodName
+# rubocop:disable Naming/AccessorMethodName
 module ManageIQ::Providers::Lenovo
   class PhysicalInfraManager::RefreshParser < EmsRefresh::Parsers::Infra
     include ManageIQ::Providers::Lenovo::RefreshHelperMethods
@@ -108,3 +108,4 @@ module ManageIQ::Providers::Lenovo
     end
   end
 end
+# rubocop:enable Naming/AccessorMethodName
