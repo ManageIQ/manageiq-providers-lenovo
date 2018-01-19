@@ -76,7 +76,6 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
     end
 
     it 'will retrieve disk capacity from a physical server' do
-
       physical_server_with_disk = @result[:physical_servers][0]
       computer_system = physical_server_with_disk[:computer_system]
       hardware = computer_system[:hardware]
@@ -85,7 +84,6 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
     end
 
     it 'will try to retrieve disk capacity from a physical server without RAID information' do
-
       physical_server = @result[:physical_servers][1]
       computer_system = physical_server[:computer_system]
       hardware = computer_system[:hardware]
