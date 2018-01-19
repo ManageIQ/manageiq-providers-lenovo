@@ -327,7 +327,8 @@ module ManageIQ::Providers::Lenovo
     def get_host_relationship(node)
       # Assign a physicalserver and host if server already exists and
       # some host match with physical Server's serial number
-      Host.find_by(:service_tag => node.serialNumber)
+      Host.find_by(:service_tag => node.serialNumber) ||
+        Host.joins(:hardware).find_by('hardwares.serial_number' => node.serialNumber)
     end
 
     def all_server_resources
