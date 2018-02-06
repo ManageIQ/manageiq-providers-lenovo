@@ -5,23 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
-## Unreleased as of Sprint 74 ending 2017-11-27
-
-### Fixed
-- Supporting differents identify leds name of physical servers on refresh [(#115)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/115)
-
-## Unreleased as of Sprint 73 ending 2017-11-13
-
-### Removed
-- Removed unnecessary https protocol from hostname URI [(#97)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/97)
-
-## Unreleased as of Sprint 72 ending 2017-10-30
-
-### Added
-- Add support for applying a config pattern [(#95)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/95)
-- Adds console_supported methods to launch LXCA console [(#91)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/91)
-
-## Gaprindashvili Beta1
+## Gaprindashvili-1 - Released 2018-01-31
 
 ### Added
 - Update the uid_ems to the uuid of the endpoint [(#84)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/84)
@@ -34,12 +18,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 - Add support for onboard network devices [(#105)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/105)
 
 ### Fixed
+- Fix exception handing for credential validation on raw_connect [(#108)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/108)
+- Supporting differents identify leds name of physical servers on refresh [(#115)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/115)
 - Fix the lenovo's event_catcher [(#83)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/83)
 - Fix to switch connection type [(#79)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/79)
 - Fixed the filter of the  event catcher [(#78)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/78)
 - Fix refresh PhysicalServer subclass error [(#70)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/70)
 
 ### Removed
+- Remove old Lenovo provider objects [(#112)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/112)
 - Removed unnecessary https protocol from hostname URI [(#97)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/97)
 
 ## Fine-1
