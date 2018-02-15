@@ -8,12 +8,14 @@ module ManageIQ::Providers::Lenovo
       #
       # @return [Hash] containing the physical server information
       #
-      def parse_physical_server(node, rack = nil)
+      def parse_physical_server(node, compliance, rack = nil)
         result = parse(node, parent::ParserDictionaryConstants::PHYSICAL_SERVER)
 
         # Keep track of the rack where this server is in, if it is in any rack
         result[:physical_rack]              = rack if rack
 
+        result[:ems_compliance_name]        = compliance[:policy_name]
+        result[:ems_compliance_status]      = compliance[:status]
         result[:vendor]                     = "lenovo"
         result[:type]                       = parent::ParserDictionaryConstants::MIQ_TYPES["physical_server"]
         result[:power_state]                = parent::ParserDictionaryConstants::POWER_STATE_MAP[node.powerStatus]

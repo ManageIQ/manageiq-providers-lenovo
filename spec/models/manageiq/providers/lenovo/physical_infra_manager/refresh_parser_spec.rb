@@ -7,6 +7,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
     VCR.insert_cassette("#{vcr_path}/mock_cabinet", options)
     VCR.insert_cassette("#{vcr_path}/mock_config_patterns", options)
     VCR.insert_cassette("#{vcr_path}/mock_switches", options)
+    VCR.insert_cassette("#{vcr_path}/mock_compliance_policy", options)
   end
   after(:all) do
     while VCR.cassettes.last
@@ -145,6 +146,16 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
         asset_detail = @result[:physical_servers].first[:asset_detail]
         expect(asset_detail[attr]).to_not be(nil)
       end
+    end
+
+    it 'will retrieve compliance policy information from a physical server' do
+      ph1 = @result[:physical_servers][0]
+      ph2 = @result[:physical_servers][1]
+
+      expect(ph2[:ems_compliance_name]).to eq('No policy assigned')
+      expect(ph2[:ems_compliance_status]).to eq('None')
+      expect(ph1[:ems_compliance_name]).to eq('policy1')
+      expect(ph1[:ems_compliance_status]).to eq('Compliant')
     end
 
     it 'will retrieve the amout of memory in MB' do
