@@ -57,7 +57,9 @@ module ManageIQ::Providers::Lenovo
           {
             :device_name      => port["portName"].presence || port["port"],
             :device_type      => "physical_port",
-            :peer_mac_address => port["peerMacAddress"].presence
+            :peer_mac_address => port["peerMacAddress"].presence,
+            :vlan_key         => port["PVID"].presence,
+            :vlan_enabled     => port["PVID"].present?
           }
         end
 
