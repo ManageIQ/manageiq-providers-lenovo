@@ -48,7 +48,7 @@ module ManageIQ::Providers::Lenovo
       :model                  => 'model',
       :serial_number          => 'serialNumber',
       :field_replaceable_unit => 'FRU',
-      :asset_details          => {
+      :asset_detail           => {
         :contact          => 'contact',
         :description      => 'description',
         :location         => 'location.location',
