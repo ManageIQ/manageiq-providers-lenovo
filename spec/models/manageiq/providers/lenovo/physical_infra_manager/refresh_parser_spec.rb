@@ -63,6 +63,8 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
 
       expect(port[:peer_mac_address]).to eq("7c:d3:0a:e6:47:51")
       expect(port[:device_type]).to eq("physical_port")
+      expect(port[:vlan_enabled]).to eq(true)
+      expect(port[:vlan_key]).to eq("\"Lenovo-Network-VLAN546\"")
     end
 
     it 'will retrieve a firmware from switches' do
