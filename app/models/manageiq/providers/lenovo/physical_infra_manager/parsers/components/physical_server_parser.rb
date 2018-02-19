@@ -70,21 +70,12 @@ module ManageIQ::Providers::Lenovo
         end
 
         def get_firmwares(node)
-          node.firmware&.map { |firmware| parse_firmware(firmware) }
+          node.firmware&.map { |firmware| FirmwareParser.parse_firmware(firmware) }
         end
 
         def get_guest_devices(node)
           guest_devices = get_addin_cards(node)
           guest_devices << parse_management_device(node)
-        end
-
-        def parse_firmware(firmware)
-          {
-            :name         => "#{firmware["role"]} #{firmware["name"]}-#{firmware["status"]}",
-            :build        => firmware["build"],
-            :version      => firmware["version"],
-            :release_date => firmware["date"],
-          }
         end
 
         def get_addin_cards(node)
@@ -168,7 +159,7 @@ module ManageIQ::Providers::Lenovo
             firmware = card["firmware"]
             unless firmware.nil?
               device_fw = firmware.map do |fw|
-                parse_firmware(fw)
+                FirmwareParser.parse_firmware(fw)
               end
             end
           end

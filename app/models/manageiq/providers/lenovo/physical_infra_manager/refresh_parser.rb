@@ -32,6 +32,7 @@ module ManageIQ::Providers::Lenovo
 
       get_physical_servers
       discover_ip_physical_infra
+      get_switches
       get_config_patterns
 
       $log.info("#{log_header}...Complete")
@@ -54,6 +55,12 @@ module ManageIQ::Providers::Lenovo
         XClarityClient::Node.new node
       end
       process_collection(nodes, :physical_servers) { |node| @parser.parse_physical_server(node) }
+    end
+
+    def get_switches
+      @all_switches ||= @connection.discover_switches
+
+      process_collection(@all_switches, :switches) { |switch| @parser.parse_switch(switch) }
     end
 
     def get_config_patterns
