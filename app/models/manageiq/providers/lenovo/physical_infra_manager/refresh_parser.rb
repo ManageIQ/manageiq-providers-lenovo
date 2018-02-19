@@ -29,6 +29,7 @@ module ManageIQ::Providers::Lenovo
 
       get_all_physical_infra
       discover_ip_physical_infra
+      get_switches
       get_config_patterns
 
       $log.info("#{log_header}...Complete")

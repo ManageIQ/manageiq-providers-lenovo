@@ -648,7 +648,7 @@ http_interactions:
         Standard Time","utc_offset_w_dst":-18000000,"timezone_id":"America/New_York","parts":{"dd":8,"mm":3,"secs":59,"hours":15,"yyyy":2018,"mins":39},"uses_daylight":true,"date_time":"March
         8, 2018 3:39:59 PM EST","utc_offset_raw":-18000000},"appliance":{"status":"Normal","name":"LXCA
         - fe80:0:0:0:20c:29ff:fe85:ac49%2","uuid":"20fede5f-721f-4a73-b507-e06d823d677e","build":"162","date":"2016-11-22_06-49-00","runlevel":3,"version":"1.2.2"}}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 08 Mar 2018 20:39:59 GMT
 - request:
     method: get
@@ -1143,7 +1143,7 @@ http_interactions:
         Link","OOB PCIe","Raid Link Config","Raid Link Alert","OOB PCIe Config"],"productId":"4D4F00","hasOS":false,"lanOverUsbPortForwardingModes":[{"state":"disabled","type":"DSA","externalIPAddress":""},{"state":"disabled","type":"OSDeploy","externalIPAddress":""}],"bootMode":{"possibleValues":["UEFI
         Mode","Legacy Mode"],"currentValue":"UEFI Mode"},"ports":[{"ioModuleBay":0,"portNumber":49},{"ioModuleBay":0,"portNumber":50}],"embeddedHypervisorPresence":false,"posID":"","nist":{"possibleValues":["Compatibility","Nist_800_131A_Strict","unsupported"],"currentValue":"Compatibility"},"overallHealthState":"Warning","subType":"","partitionID":-1,"physicalID":0,"flashStorage":[],"productName":"Lenovo
         System x3850 X6"},"complexNodeUUIDs":["7936DD182C5311E3A8D6000AF7256738"],"complexID":"7936DD182C5311E3A8D6000AF7256738","itemLocationRack":"","physicalID":0,"nodeCount":1,"itemLocation":"","itemLocationRoom":""}],"placeholderList":[],"switchList":[],"room":""},{"storageList":[],"cabinetName":"solution-1","height":42,"complexList":[],"chassisList":[],"location":"","UUID":"FCD07E7C-F69F-4469-A57B-3FAF4D064C49","nodeList":[],"placeholderList":[],"switchList":[],"room":""},{"storageList":[],"cabinetName":"rack-2","height":42,"complexList":[],"chassisList":[],"location":"","UUID":"43D47624-E655-45B6-A0A7-D914BBC1D2D7","nodeList":[],"placeholderList":[],"switchList":[],"room":""}]}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 08 Mar 2018 20:39:59 GMT
 - request:
     method: get
@@ -1201,8 +1201,59 @@ http_interactions:
         created from server: DaAn-68-gui\nLearned on: Oct 25, 2017 8:28:52 PM","name":"DaAn-68-gui-config","nodeType":"sysx","type":"Server","uri":"/config/template/96"},{"id":"65","referencedBy":[],"userDefined":true,"formFactor":"rc","inUse":false,"description":"Copy
         of the 17dspncsvdm server''s settings\nPattern created from server: 17dspncsvdm\nLearned
         on: Sep 19, 2017 10:58:18 AM","name":"17dspncsvdm-config","nodeType":"sysx","type":"Server","uri":"/config/template/65"},{"id":"54","referencedBy":[],"userDefined":true,"formFactor":"r","inUse":false,"description":"Pattern
-        created from server: DaAn-68-gui\nLearned on: Aug 28, 2017 12:47:37 PM","name":"DaAn","nodeType":"sysx","type":"Server","uri":"/config/template/54"}]}
-
-'
-    http_version: 
+        created from server: DaAn-68-gui\nLearned on: Aug 28, 2017 12:47:37 PM","name":"DaAn","nodeType":"sysx","type":"Server","uri":"/config/template/54"}]}'
+    http_version:
   recorded_at: Thu, 08 Mar 2018 20:40:00 GMT
+- request:
+    method: get
+    uri: https://lxcahost/switches
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - LXCA via Ruby Client/0.5.9 (ManageIQ/master)
+      Authorization:
+      - Basic bHhjYzpQQVNTVzByRA==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 06 Feb 2018 20:20:04 GMT
+      Set-Cookie:
+      - userAuthenticationMethod=local;Path=/;Secure
+      Expires:
+      - "-1"
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Strict-Transport-Security:
+      - max-age=86400; includeSubDomains;
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Content-Security-Policy:
+      - 'default-src https:; script-src https: ''unsafe-inline'' ''unsafe-eval'';
+        style-src https: ''unsafe-inline'''
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '1'
+      Content-Type:
+      - application/com.lenovo.lxca-v1.2.2+json; charset=UTF-8
+      Vary:
+      - Accept-Encoding, User-Agent
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"switchList":[{"name":"ThinkAgile-VX-NE1032-SW03","uuid":"00000000000010008000A48CDB984B00","accessState":"Online","overallHealthState":"Non-Critical","type":"Rackswitch","hostname":"ThinkAgile-VX-NE1032-SW03","description":"32*10 GbE SFP+","dnsHostnames":[],"domainName":"","FRU":"","fruSerialNumber":"","ipv4Addresses":["10.243.4.79"],"ipv6Addresses":["fe80:0:0:0:a68c:dbff:fe98:4b00"],"macAddresses":["A4:8C:DB:98:4B:00"],"machineType":"7159","manufacturer":"LNVO","manufacturerId":"","model":"HD1","partNumber":"00YL949     ","posID":"","powerState":"On","productId":"","productName":"Lenovo ThinkSystem NE1032 RackSwitch","protectedMode":"Unknown","serialNumber":"Y056DH79E046","slots":[],"stackMode":"none","vpdID":"","backedBy":"real","cmmDisplayName":"ThinkAgile-VX-NE1032-SW03","cmmHealthState":"Non-Critical","dataHandle":1517948378929,"elapsedTimeMillisecs":"3151","errorFields":[],"firmware":[{"name":"Uboot","date":"","type":"Boot ROM","build":"","version":"10.4.2.0","role":"","status":"N/A"},{"name":"Active Image","date":"","type":"Main Image","build":"","version":"10.4.2.0","role":"","status":"Active"},{"name":"Standby Image","date":"","type":"Main Image","build":"","version":"10.4.2.0","role":"","status":"Non-Active"}],"ipInterfaces":[{"name":"unknown","label":"unknown","IPv4enabled":false,"IPv4DHCPmode":"UNKNOWN","IPv6enabled":false,"IPv6DHCPenabled":false,"IPv4assignments":[{"id":0,"subnet":"127.0.0.1","gateway":"0.0.0.0","address":"10.243.4.79","type":"UNKNOWN"}],"IPv6assignments":[{"id":1,"subnet":"127.0.0.1","gateway":"0.0.0.0","address":"fe80:0:0:0:a68c:dbff:fe98:4b00","type":"UNKNOWN"}],"IPv6statelessEnabled":false,"IPv6staticEnabled":false}],"leds":[],"ntpPushEnabled":false,"ntpPushFrequency":0,"parent":{"uuid":null,"uri":null},"portDataSetTimestamp":"03:19:35","uri":"switches/00000000000010008000A48CDB984B00","userDescription":"","userDefinedName":"ThinkAgile-VX-NE1032-SW03","securityDescriptor":{"managedAuthSupported":false,"publicAccess":false,"uri":"switches/00000000000010008000a48cdb984b00","roleGroups":[],"managedAuthEnabled":false},"applyPending":"No","contact":"","cpuUtilization":"N/A","entitleSerialNumber":"MM41940","fans":[{"fanName":"Fan 1","fanSpeed":"1782 RPM (23 PWM)","fanState":"Back-to-Front"},{"fanName":"Fan 2","fanSpeed":"1914 RPM (23 PWM)","fanState":"Back-to-Front"},{"fanName":"Fan 3","fanSpeed":"1782 RPM (23 PWM)","fanState":"Back-to-Front"},{"fanName":"Fan 4","fanSpeed":"1848 RPM (23 PWM)","fanState":"Back-to-Front"},{"fanName":"Fan 5","fanSpeed":"1782 RPM (23 PWM)","fanState":"Back-to-Front"},{"fanName":"Fan 6","fanSpeed":"1914 RPM (23 PWM)","fanState":"Back-to-Front"}],"height":1,"location":{"lowestRackUnit":0,"contact":"","location":"","rack":"","room":""},"manufacturingDate":"3817 (WWYY)","memoryUtilization":"","mgmtProcIPaddress":"10.243.4.79","panicDump":"Yes","ports":[{"configuredStatus":"up","interfaceIndex":"410001","operationalStatus":"up","peerMacAddress":"7c:d3:0a:e6:47:51","portName":"","portSpeed":"10000","portState":"up","tagPVID":"","vLAN":"trunk","port":"Ethernet1/1","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410002","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/2","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410003","operationalStatus":"up","peerMacAddress":"7c:d3:0a:e6:47:19","portName":"","portSpeed":"10000","portState":"up","tagPVID":"","vLAN":"trunk","port":"Ethernet1/3","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410004","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/4","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410005","operationalStatus":"up","peerMacAddress":"7c:d3:0a:e3:23:f1","portName":"","portSpeed":"10000","portState":"up","tagPVID":"","vLAN":"trunk","port":"Ethernet1/5","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410006","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/6","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410007","operationalStatus":"up","peerMacAddress":"7c:d3:0a:e3:2d:c9","portName":"","portSpeed":"10000","portState":"up","tagPVID":"","vLAN":"trunk","port":"Ethernet1/7","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410008","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/8","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410009","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/9","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410010","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/10","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410011","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/11","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410012","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/12","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410013","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/13","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410014","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/14","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410015","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/15","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410016","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/16","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410017","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/17","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410018","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/18","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410019","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/19","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410020","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/20","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410021","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/21","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410022","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/22","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410023","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/23","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410024","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/24","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410025","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/25","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410026","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/26","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410027","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/27","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410028","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/28","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410029","operationalStatus":"down","peerMacAddress":"","portName":"","portSpeed":"10000","portState":"down","tagPVID":"","vLAN":"trunk","port":"Ethernet1/29","PVID":"\"Lenovo-Network-VLAN546\""},{"configuredStatus":"up","interfaceIndex":"410030","operationalStatus":"up","peerMacAddress":"a4:8c:db:b3:40:00","portName":"","portSpeed":"10000","portState":"up","tagPVID":"","vLAN":"trunk","port":"Ethernet1/30","PVID":"\"ESXi-Mgmt-Network-VLAN20\""},{"configuredStatus":"up","interfaceIndex":"410031","operationalStatus":"up","peerMacAddress":"a4:8c:db:98:4c:20","portName":"","portSpeed":"10000","portState":"up","tagPVID":"","vLAN":"trunk","port":"Ethernet1/31","PVID":"\"ISL-Network-VLAN2001\""},{"configuredStatus":"up","interfaceIndex":"410032","operationalStatus":"up","peerMacAddress":"a4:8c:db:98:4c:21","portName":"","portSpeed":"10000","portState":"up","tagPVID":"","vLAN":"trunk","port":"Ethernet1/32","PVID":"\"ISL-Network-VLAN2001\""}],"powerSupply":"Power Supply 1: on;Power Supply 2: on.","resetReason":"1","savePending":"Yes","stackRole":"none","sysObjectID":"1.3.6.1.4.1.19046.1.7.32","temperatureSensors":[{"sensorName":" HotSpot2 Temp","sensorState":" 34 C"},{"sensorName":" HotSpot1 Temp","sensorState":" 37 C"},{"sensorName":" MAC Temp","sensorState":" 37 C"},{"sensorName":" Exhaust Temp","sensorState":" 34 C"},{"sensorName":"Inlet Temp","sensorState":" 31 C"}],"upTime":"19 days, 19:03:29","isConnectionTrusted":"true","OS":"CNOS"}]}'
+    http_version:
+  recorded_at: Tue, 06 Feb 2018 20:20:04 GMT

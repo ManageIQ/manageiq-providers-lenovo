@@ -30,6 +30,10 @@ module ManageIQ::Providers::Lenovo
       PhysicalRackParser.parse_physical_rack(node)
     end
 
+    def parse_switch(node)
+      Parsers::SwitchParser.parse_switch(node)
+    end
+
     def parse_physical_server(node, rack = nil)
       PhysicalServerParser.parse_physical_server(node, rack)
     end
