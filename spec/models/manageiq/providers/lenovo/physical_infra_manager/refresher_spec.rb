@@ -1,4 +1,18 @@
 describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
+  before(:all) do
+    vcr_path = File.dirname(described_class.name.underscore)
+    options = {:allow_playback_repeats => true}
+
+    VCR.insert_cassette("#{vcr_path}/mock_aicc", options)
+    VCR.insert_cassette("#{vcr_path}/mock_cabinet", options)
+    VCR.insert_cassette("#{vcr_path}/mock_config_patterns", options)
+  end
+  after(:all) do
+    while VCR.cassettes.last
+      VCR.eject_cassette
+    end
+  end
+
   let(:auth) do
     FactoryGirl.create(:authentication,
                        :userid   => 'lxcc',
@@ -8,10 +22,10 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
 
   let(:ems) do
     ems = FactoryGirl.create(:physical_infra,
-                       :name      => "LXCA",
-                       :hostname  => "10.243.9.123",
-                       :port      => "443",
-                       :ipaddress => "https://10.243.9.123:443")
+                             :name      => "LXCA",
+                             :hostname  => "10.243.9.123",
+                             :port      => "443",
+                             :ipaddress => "https://10.243.9.123:443")
     ems.authentications = [auth]
     ems
   end
@@ -21,9 +35,9 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
   let(:refresher) { described_class.new(targets) }
 
   it 'will parse the legacy inventory' do
-    result = VCR.use_cassette("#{described_class.name.underscore}_aicc") { refresher.parse_legacy_inventory(ems) }
+    result = refresher.parse_legacy_inventory(ems)
 
-    expect(result[:physical_servers].size).to eq(4)
+    expect(result[:physical_servers].size).to eq(2)
   end
 
   it 'will save the inventory' do

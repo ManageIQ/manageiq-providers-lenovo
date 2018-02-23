@@ -1,0 +1,2889 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://10.243.9.123/cabinet?status=includestandalone
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 24 Apr 2017 18:45:40 GMT
+      Set-Cookie:
+      - userAuthenticationMethod=local;Path=/;Secure
+      Expires:
+      - "-1"
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Strict-Transport-Security:
+      - max-age=86400; includeSubDomains;
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Content-Security-Policy:
+      - 'default-src https:; script-src https: ''unsafe-inline'' ''unsafe-eval'';
+        style-src https: ''unsafe-inline'''
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '1'
+      Content-Type:
+      - application/com.lenovo.lxca-v1.2.2+json; charset=UTF-8
+      Vary:
+      - Accept-Encoding, User-Agent
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{
+                 "cabinetList": [
+                   {
+                     "storageList": [],
+                     "cabinetName": "cabinet71",
+                     "height": 42,
+                     "complexList": [],
+                     "chassisList": [],
+                     "location": "",
+                     "UUID": "096F8C92-08D4-4A24-ABD8-FE56D482F8C4",
+                     "nodeList": [
+                       {
+                         "itemParentUUID": null,
+                         "itemName": "Management Controller UUID-7936DD182C5311E3A8D6000AF7256738",
+                         "complexNodeCount": 1,
+                         "itemLowerUnit": 0,
+                         "itemType": "SERVER",
+                         "itemUUID": "7936DD182C5311E3A8D6000AF7256738",
+                         "itemSubType": "",
+                         "itemHeight": 4,
+                         "itemInventory": {
+                           "accessState": "Online",
+                           "arch": "x86",
+                           "manufacturerId": " IBM(CLCN)",
+                           "location": {
+                             "lowestRackUnit": 0,
+                             "location": "",
+                             "rack": "",
+                             "room": ""
+                           },
+                           "addinCardSlots": 0,
+                           "serialNumber": "23Y6458",
+                           "driveBays": 17,
+                           "macAddress": "6C:AE:8B:4B:4F:15,6C:AE:8B:4B:4F:16",
+                           "type": "Rack-Tower Server",
+                           "lanOverUsb": "enabled",
+                           "onboardPciDevices": [
+                             {
+                               "pciSubID": "0",
+                               "firmware": [
+                                 {
+                                   "revision": "0",
+                                   "classifications": [
+                                     0
+                                   ],
+                                   "status": "Active",
+                                   "name": "PCIFirmware",
+                                   "role": "Primary",
+                                   "softwareID": "0:0",
+                                   "type": "",
+                                   "build": "0",
+                                   "date": "",
+                                   "version": ""
+                                 }
+                               ],
+                               "fodUniqueID": "",
+                               "pciRevision": "0",
+                               "isAgentless": false,
+                               "pciBusNumber": "27",
+                               "pciSubVendorID": "0",
+                               "isAddOnCard": false,
+                               "pciDeviceNumber": "0",
+                               "posID": "534",
+                               "pciFunctionNumber": "0",
+                               "name": "",
+                               "portInfo": {},
+                               "vpdID": "102b"
+                             }
+                           ],
+                           "height": 4,
+                           "leds": [
+                             {
+                               "color": "Yellow",
+                               "location": "FrontRearPanel",
+                               "name": "Fault",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Blue",
+                               "location": "FrontRearPanel",
+                               "name": "Identify",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FrontPanel",
+                               "name": "Check Log",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "LightPathCard",
+                               "name": "CNFG",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "LightPathCard",
+                               "name": "CPU",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "LightPathCard",
+                               "name": "PS",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "LightPathCard",
+                               "name": "DASD",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "LightPathCard",
+                               "name": "FAN",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "LightPathCard",
+                               "name": "MEM",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "LightPathCard",
+                               "name": "NMI",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "LightPathCard",
+                               "name": "OVER SPEC",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "LightPathCard",
+                               "name": "TEMP",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "LightPathCard",
+                               "name": "PCI",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "LightPathCard",
+                               "name": "LINK",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "FAN 1",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "FAN 2",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "FAN 3",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "FAN 4",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "FAN 5",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "FAN 6",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "FAN 7",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "FAN 8",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "FAN 9",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "FAN 10PEC",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1 DIMM 1",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1 DIMM 2",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1 DIMM 3",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1 DIMM 4",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1 DIMM 5",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1 DIMM 6",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1 DIMM 7",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1 DIMM 8",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1 DIMM 9",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1 DIMM 10Ctlr",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1 DIMM 11Ctlr",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1 DIMM 12Ctlr",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1 DIMM 13Ctlr",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1 DIMM 14Ctlr",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1 DIMM 15Ctlr",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1 DIMM 16Ctlr",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "PCI 1",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "PCI 2",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "PCI 3",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "PCI 4",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "PCI 5",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "PCI 6",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "PCI 7",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "PCI 8",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "PCI 9",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "ML2",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "PCI 11DIMM 16Ctlr",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "PCI 12DIMM 16Ctlr",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "Planar",
+                               "name": "SysBrd",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "Planar",
+                               "name": "CMOS Batt Error",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Green",
+                               "location": "FrontRearPanel",
+                               "name": "Power",
+                               "state": "Blinking"
+                             },
+                             {
+                               "color": "Green",
+                               "location": "Planar",
+                               "name": "BMC Heartbeat",
+                               "state": "Blinking"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1 DIMM 17",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1 DIMM 18",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1 DIMM 19",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1 DIMM 20",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1 DIMM 21",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1 DIMM 22",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1 DIMM 23",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 1 DIMM 24",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2 DIMM 1",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2 DIMM 2",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2 DIMM 3",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2 DIMM 4",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2 DIMM 5",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2 DIMM 6",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2 DIMM 7",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2 DIMM 8",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2 DIMM 9",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2 DIMM 10",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2 DIMM 11",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2 DIMM 12",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2 DIMM 13",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2 DIMM 14",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2 DIMM 15",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2 DIMM 16",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2 DIMM 17",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2 DIMM 18",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2 DIMM 19",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2 DIMM 20",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2 DIMM 21",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2 DIMM 22",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2 DIMM 23",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 2 DIMM 24",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3 DIMM 1",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3 DIMM 2",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3 DIMM 3",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3 DIMM 4",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3 DIMM 5",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3 DIMM 6",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3 DIMM 7",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3 DIMM 8",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3 DIMM 9",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3 DIMM 10",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3 DIMM 11",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3 DIMM 12",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3 DIMM 13",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3 DIMM 14",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3 DIMM 15",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3 DIMM 16",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3 DIMM 17",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3 DIMM 18",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3 DIMM 19",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3 DIMM 20",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3 DIMM 21",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3 DIMM 22",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3 DIMM 23",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 3 DIMM 24",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4 DIMM 1",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4 DIMM 2",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4 DIMM 3",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4 DIMM 4",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4 DIMM 5",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4 DIMM 6",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4 DIMM 7",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4 DIMM 8",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4 DIMM 9",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4 DIMM 10",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4 DIMM 11",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4 DIMM 12",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4 DIMM 13",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4 DIMM 14",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4 DIMM 15",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4 DIMM 16",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4 DIMM 17",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4 DIMM 18",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4 DIMM 19",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4 DIMM 20",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4 DIMM 21",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4 DIMM 22",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4 DIMM 23",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "CPU 4 DIMM 24",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "Book 1 Board4",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "Book 2 Board4",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "Book 3 Board4",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "Book 4 Board4",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Amber",
+                               "location": "FRU",
+                               "name": "Book 1 Attention",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Amber",
+                               "location": "FRU",
+                               "name": "Book 2 Attention",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Amber",
+                               "location": "FRU",
+                               "name": "Book 3 Attention",
+                               "state": "Off"
+                             },
+                             {
+                               "color": "Amber",
+                               "location": "FRU",
+                               "name": "Book 4 Attention",
+                               "state": "Off"
+                             }
+                           ],
+                           "description": "Chassis",
+                           "mgmtProcIPaddress": "10.243.6.17",
+                           "expansionCards": [],
+                           "errorFields": [
+                             {
+                               "FirmwareData": "NO_CONNECTOR"
+                             },
+                             {
+                               "ChassisMounted": "NO_CONNECTOR"
+                             }
+                           ],
+                           "FQDN": "cmm-dt1.labs.lenovo.com",
+                           "ipInterfaces": [
+                             {
+                               "IPv4enabled": true,
+                               "IPv4DHCPmode": "STATIC_ONLY",
+                               "IPv6enabled": true,
+                               "IPv6DHCPenabled": true,
+                               "IPv4assignments": [
+                                 {
+                                   "id": 0,
+                                   "subnet": "255.255.240.0",
+                                   "gateway": "0.0.0.0",
+                                   "address": "10.243.6.17",
+                                   "type": "INUSE"
+                                 }
+                               ],
+                               "IPv6assignments": [
+                                 {
+                                   "id": 0,
+                                   "scope": "Global",
+                                   "gateway": "0:0:0:0:0:0:0:0",
+                                   "source": "Stateless",
+                                   "address": "fd55:faaf:e1ab:2021:6eae:8bff:fe4b:4f15",
+                                   "prefix": 64,
+                                   "type": "INUSE"
+                                 },
+                                 {
+                                   "id": 0,
+                                   "scope": "LinkLocal",
+                                   "gateway": "0:0:0:0:0:0:0:0",
+                                   "source": "Other",
+                                   "address": "fe80:0:0:0:6eae:8bff:fe4b:4f15",
+                                   "prefix": 64,
+                                   "type": "INUSE"
+                                 }
+                               ],
+                               "name": "eth0",
+                               "IPv6statelessEnabled": true,
+                               "label": "unknown",
+                               "IPv6staticEnabled": false
+                             }
+                           ],
+                           "firmware": [
+                             {
+                               "status": "Active",
+                               "name": "UEFI Firmware/BIOS",
+                               "role": "Primary",
+                               "date": "2017-02-21T00:00:00Z",
+                               "type": "UEFI",
+                               "build": "A9E139GUS",
+                               "version": "4.10"
+                             },
+                             {
+                               "status": "Inactive",
+                               "name": "UEFI Backup Firmware/BIOS",
+                               "role": "Backup",
+                               "date": "2017-02-21T00:00:00Z",
+                               "type": "UEFI-Backup",
+                               "build": "A9E139GUS",
+                               "version": "4.10"
+                             },
+                             {
+                               "status": "Active",
+                               "name": "DSA Diagnostic Software",
+                               "role": "Primary",
+                               "date": "2016-06-07T00:00:00Z",
+                               "type": "DSA",
+                               "build": "DSALA7J",
+                               "version": "10.2"
+                             },
+                             {
+                               "status": "Active",
+                               "name": "IMM2 Firmware",
+                               "role": "Primary",
+                               "date": "2016-12-05T00:00:00Z",
+                               "type": "IMM2",
+                               "build": "TCOO59G",
+                               "version": "9.00"
+                             },
+                             {
+                               "status": "Inactive",
+                               "name": "IMM2 Backup Firmware",
+                               "role": "Backup",
+                               "date": "2016-12-05T00:00:00Z",
+                               "type": "IMM2-Backup",
+                               "build": "TCOO59G",
+                               "version": "9.00"
+                             }
+                           ],
+                           "bladeState": 0,
+                           "activationKeys": [],
+                           "status": {
+                             "message": "managed",
+                             "name": "MANAGED"
+                           },
+                           "powerCappingPolicy": {
+                             "cappingACorDCMode": "DC",
+                             "minimumHardCapLevel": 439100,
+                             "cappingPolicy": "OFF",
+                             "maxPowerCap": 533000,
+                             "minimumPowerCappingHotPlugLevel": 759000,
+                             "powerCappingAllocUnit": "watts*10^-3",
+                             "maximumPowerCappingHotPlugLevel": 854000,
+                             "currentPowerCap": 0,
+                             "minPowerCap": 130000
+                           },
+                           "hostname": "IMM2-6cae8b4b4f15",
+                           "powerSupplies": [
+                             {
+                               "model": "",
+                               "manufacturerId": "",
+                               "serialNumber": "Unknown",
+                               "inputVoltageIsAC": true,
+                               "inputVoltageMin": -1,
+                               "type": "PowerSupply",
+                               "dataHandle": 0,
+                               "cmmDisplayName": "Power Supply 1",
+                               "leds": [],
+                               "description": "",
+                               "name": "Power Supply 1",
+                               "userDescription": "",
+                               "manufactureDate": "",
+                               "partNumber": "Unknown",
+                               "firmware": [],
+                               "healthState": "GOOD",
+                               "machineType": "",
+                               "hardwareRevision": "",
+                               "FRU": "",
+                               "uri": "powerSupply/",
+                               "productId": "",
+                               "powerAllocation": {
+                                 "totalInputPower": 0,
+                                 "totalOutputPower": 900
+                               },
+                               "powerState": "Unknown",
+                               "posID": "",
+                               "slots": [
+                                 2
+                               ],
+                               "manufacturer": "Unknown",
+                               "vpdID": "",
+                               "uuid": "",
+                               "productName": "",
+                               "fruSerialNumber": "",
+                               "inputVoltageMax": -1
+                             },
+                             {
+                               "model": "",
+                               "manufacturerId": "",
+                               "serialNumber": "K115136V11E",
+                               "inputVoltageIsAC": true,
+                               "inputVoltageMin": -1,
+                               "type": "PowerSupply",
+                               "dataHandle": 0,
+                               "cmmDisplayName": "Power Supply 2",
+                               "leds": [],
+                               "description": "",
+                               "name": "Power Supply 2",
+                               "userDescription": "",
+                               "manufactureDate": "",
+                               "partNumber": "94Y8066",
+                               "firmware": [],
+                               "healthState": "GOOD",
+                               "machineType": "",
+                               "hardwareRevision": "",
+                               "FRU": "",
+                               "uri": "powerSupply/",
+                               "productId": "",
+                               "powerAllocation": {
+                                 "totalInputPower": 0,
+                                 "totalOutputPower": 900
+                               },
+                               "powerState": "Unknown",
+                               "posID": "",
+                               "slots": [
+                                 3
+                               ],
+                               "manufacturer": "DELT",
+                               "vpdID": "",
+                               "uuid": "",
+                               "productName": "",
+                               "fruSerialNumber": "",
+                               "inputVoltageMax": -1
+                             }
+                           ],
+                           "parentComplexID": "7936DD182C5311E3A8D6000AF7256738",
+                           "FRU": "None",
+                           "uri": "node/7936DD182C5311E3A8D6000AF7256738",
+                           "vnicMode": "disabled",
+                           "powerAllocation": {
+                             "maximumAllocatedPower": 1710,
+                             "minimumAllocatedPower": 26
+                           },
+                           "expansionProductType": "",
+                           "powerStatus": 5,
+                           "bootOrder": {
+                             "uri": "node/7936DD182C5311E3A8D6000AF7256738/bootOrder",
+                             "bootOrderList": [
+                               {
+                                 "currentBootOrderDevices": [
+                                   "None"
+                                 ],
+                                 "bootType": "SingleUse",
+                                 "possibleBootOrderDevices": [
+                                   "None",
+                                   "PXE Network",
+                                   "Hard Disk 0",
+                                   "Diagnostics",
+                                   "CD/DVD Rom",
+                                   "Boot To F1",
+                                   "Hypervisor",
+                                   "Floppy Disk"
+                                 ]
+                               },
+                               {
+                                 "currentBootOrderDevices": [
+                                   "CentOS Linux",
+                                   "Hard Disk 0",
+                                   "Windows Boot Manager",
+                                   "PXE Network",
+                                   "CD/DVD Rom"
+                                 ],
+                                 "bootType": "Permanent",
+                                 "possibleBootOrderDevices": [
+                                   "CentOS Linux",
+                                   "Hard Disk 0",
+                                   "Windows Boot Manager",
+                                   "PXE Network",
+                                   "CD/DVD Rom",
+                                   "Floppy Disk",
+                                   "Hard Disk 1",
+                                   "Hard Disk 2",
+                                   "Hard Disk 3",
+                                   "Hard Disk 4",
+                                   "USB Storage",
+                                   "Diagnostics",
+                                   "iSCSI",
+                                   "iSCSI Critical",
+                                   "Embedded Hypervisor",
+                                   "Legacy Only",
+                                   "USB0",
+                                   "USB1",
+                                   "USB2",
+                                   "USB3",
+                                   "USB4",
+                                   "USB5",
+                                   "USB6",
+                                   "USB7",
+                                   "DSA",
+                                   "Slot16",
+                                   "Slot17",
+                                   "Slot18",
+                                   "Slot19",
+                                   "Slot12",
+                                   "Slot11",
+                                   "Slot10",
+                                   "Slot1",
+                                   "Slot2",
+                                   "Slot3",
+                                   "Slot4",
+                                   "Slot5",
+                                   "Slot6",
+                                   "Slot7",
+                                   "Slot8",
+                                   "Slot9",
+                                   "IMM1",
+                                   "IMM2"
+                                 ]
+                               },
+                               {
+                                 "currentBootOrderDevices": [
+                                   "PXE Network",
+                                   "CD/DVD Rom",
+                                   "Hard Disk 0"
+                                 ],
+                                 "bootType": "WakeOnLAN",
+                                 "possibleBootOrderDevices": [
+                                   "PXE Network",
+                                   "CD/DVD Rom",
+                                   "Hard Disk 0",
+                                   "CentOS Linux",
+                                   "Windows Boot Manager",
+                                   "Floppy Disk",
+                                   "Hard Disk 1",
+                                   "Hard Disk 2",
+                                   "Hard Disk 3",
+                                   "Hard Disk 4",
+                                   "USB Storage",
+                                   "Diagnostics",
+                                   "iSCSI",
+                                   "iSCSI Critical",
+                                   "Embedded Hypervisor",
+                                   "Legacy Only",
+                                   "USB0",
+                                   "USB1",
+                                   "USB2",
+                                   "USB3",
+                                   "USB4",
+                                   "USB5",
+                                   "USB6",
+                                   "USB7",
+                                   "DSA",
+                                   "Slot16",
+                                   "Slot17",
+                                   "Slot18",
+                                   "Slot19",
+                                   "Slot12",
+                                   "Slot11",
+                                   "Slot10",
+                                   "Slot1",
+                                   "Slot2",
+                                   "Slot3",
+                                   "Slot4",
+                                   "Slot5",
+                                   "Slot6",
+                                   "Slot7",
+                                   "Slot8",
+                                   "Slot9",
+                                   "IMM1",
+                                   "IMM2"
+                                 ]
+                               }
+                             ]
+                           },
+                           "expansionProducts": [],
+                           "ipv6Addresses": [
+                             "fd55:faaf:e1ab:2021:6eae:8bff:fe4b:4f15",
+                             "fe80:0:0:0:6eae:8bff:fe4b:4f15"
+                           ],
+                           "slots": [
+                             1
+                           ],
+                           "manufacturer": " IBM(CLCN)",
+                           "addinCards": [
+                             {
+                               "pciSubID": "454",
+                               "firmware": [
+                                 {
+                                   "revision": "0",
+                                   "classifications": [
+                                     13
+                                   ],
+                                   "status": "Active",
+                                   "name": "MegaRAID Controller Firmware",
+                                   "role": "Primary",
+                                   "softwareID": "10140454",
+                                   "type": "Software Bundle",
+                                   "build": "0",
+                                   "date": "2016-07-20T00:00:00Z",
+                                   "version": "24.12.0-0033"
+                                 }
+                               ],
+                               "slotSupportsHotPlug": "false",
+                               "fodUniqueID": "N/A",
+                               "pciRevision": "2",
+                               "isAgentless": true,
+                               "pciBusNumber": "7",
+                               "pciSubVendorID": "1014",
+                               "isAddOnCard": true,
+                               "FRU": "N/A",
+                               "pciDeviceNumber": "0",
+                               "slotNumber": "12",
+                               "posID": "5d",
+                               "pciFunctionNumber": "0",
+                               "manufacturer": "IBM",
+                               "name": "ServeRAID M5210",
+                               "portInfo": {},
+                               "vpdID": "1000",
+                               "productName": "ServeRAID M5210",
+                               "partNumber": "N/A",
+                               "fruSerialNumber": "SV334P0606",
+                               "slotName": "SlotDesig7_Slot 12 (Pri Storage)"
+                             },
+                             {
+                               "pciSubID": "450",
+                               "firmware": [
+                                 {
+                                   "revision": "0",
+                                   "classifications": [
+                                     33024
+                                   ],
+                                   "status": "Active",
+                                   "name": "17.4.4.2a",
+                                   "role": "Primary",
+                                   "softwareID": "10140450",
+                                   "type": "VPD-V0",
+                                   "build": "0",
+                                   "date": "",
+                                   "version": "17.4.4.2a"
+                                 }
+                               ],
+                               "slotSupportsHotPlug": "false",
+                               "fodUniqueID": "11S90Y9372Y0502037P0ES",
+                               "pciRevision": "0",
+                               "isAgentless": true,
+                               "pciBusNumber": "145",
+                               "pciSubVendorID": "1014",
+                               "isAddOnCard": true,
+                               "FRU": "90Y9373",
+                               "pciDeviceNumber": "0",
+                               "slotNumber": "7",
+                               "posID": "165f",
+                               "pciFunctionNumber": "0",
+                               "manufacturer": "IBM",
+                               "name": "Broadcom 2-port 1GbE NIC Card for IBM",
+                               "portInfo": {
+                                 "physicalPorts": [
+                                   {
+                                     "portType": "ETHERNET",
+                                     "portNumber": 49,
+                                     "logicalPorts": [
+                                       {
+                                         "portType": "ETHERNET",
+                                         "portNumber": 1,
+                                         "logicalPortIndex": 1,
+                                         "addresses": "000AF7256738",
+                                         "vnicMode": false
+                                       }
+                                     ],
+                                     "peerBay": 0,
+                                     "physicalPortIndex": 1
+                                   }
+                                 ]
+                               },
+                               "vpdID": "14e4",
+                               "productName": "Broadcom 2-port 1GbE NIC Card for IBM",
+                               "partNumber": "90Y9372",
+                               "fruSerialNumber": "Y0502037P0ES",
+                               "slotName": "SlotDesig6_Slot 7"
+                             },
+                             {
+                               "pciSubID": "450",
+                               "firmware": [
+                                 {
+                                   "revision": "0",
+                                   "classifications": [
+                                     33024
+                                   ],
+                                   "status": "Active",
+                                   "name": "17.4.4.2a",
+                                   "role": "Primary",
+                                   "softwareID": "10140450",
+                                   "type": "VPD-V0",
+                                   "build": "0",
+                                   "date": "",
+                                   "version": "17.4.4.2a"
+                                 }
+                               ],
+                               "slotSupportsHotPlug": "false",
+                               "fodUniqueID": "11S90Y9372Y0502037P0ES",
+                               "pciRevision": "0",
+                               "isAgentless": true,
+                               "pciBusNumber": "145",
+                               "pciSubVendorID": "1014",
+                               "isAddOnCard": true,
+                               "FRU": "90Y9373",
+                               "pciDeviceNumber": "0",
+                               "slotNumber": "7",
+                               "posID": "165f",
+                               "pciFunctionNumber": "1",
+                               "manufacturer": "IBM",
+                               "name": "Broadcom 2-port 1GbE NIC Card for IBM",
+                               "portInfo": {
+                                 "physicalPorts": [
+                                   {
+                                     "portType": "ETHERNET",
+                                     "portNumber": 50,
+                                     "logicalPorts": [
+                                       {
+                                         "portType": "ETHERNET",
+                                         "portNumber": 1,
+                                         "logicalPortIndex": 1,
+                                         "addresses": "000AF7256739",
+                                         "vnicMode": false
+                                       }
+                                     ],
+                                     "peerBay": 0,
+                                     "physicalPortIndex": 2
+                                   }
+                                 ]
+                               },
+                               "vpdID": "14e4",
+                               "productName": "Broadcom 2-port 1GbE NIC Card for IBM",
+                               "partNumber": "90Y9372",
+                               "fruSerialNumber": "Y0502037P0ES",
+                               "slotName": "SlotDesig6_Slot 7"
+                             }
+                           ],
+                           "parentPartitionUUID": "",
+                           "raidSettings": [
+                             {
+                               "firmware": [
+                                 {
+                                   "revision": "0",
+                                   "classifications": [
+                                     10
+                                   ],
+                                   "status": "Active",
+                                   "name": "MegaRAID Controller Firmware",
+                                   "role": "Primary",
+                                   "type": "Firmware",
+                                   "build": "0",
+                                   "date": "2017-06-15T00:00:00Z",
+                                   "version": "24.21.0-0016",
+                                   "softwareID": "101404AC"
+                                 }
+                               ],
+                               "description": "ServeRAID M1210e",
+                               "name": "ServeRAID M1210e",
+                               "uuid": "000000000000000050050760670002AC",
+                               "diskDrives": [
+                                 {
+                                   "model": "ST300MM0006",
+                                   "healthState": "Normal",
+                                   "numberOfBlocks": 585937500,
+                                   "interfaceType": "SAS",
+                                   "serialNumber": "S0K2QNGE",
+                                   "blockSize": 512,
+                                   "mediaType": "Rotational",
+                                   "diskState": "Online",
+                                   "bay": 0,
+                                   "description": "ST300MM0006",
+                                   "manufacturer": "IBM-ESXS",
+                                   "name": "Disk 0_e",
+                                   "uuid": "",
+                                   "partNumber": "00AJ100",
+                                   "largestAvailableSize": 512,
+                                   "capacity": 300000000000,
+                                   "m2Location": "",
+                                   "softwareData": [
+                                     {
+                                       "revision": "0",
+                                       "classifications": [
+                                         10
+                                       ],
+                                       "status": "Active",
+                                       "name": "Drive",
+                                       "role": "Primary",
+                                       "type": "Firmware",
+                                       "build": "0",
+                                       "date": "",
+                                       "version": "B56T",
+                                       "softwareID": "ST300MM0006"
+                                     }
+                                   ],
+                                   "FRU": "00AJ097"
+                                 }
+                               ],
+                               "storagePools": [
+                                 {
+                                   "name": "Pool_0",
+                                   "arrayUid": "0",
+                                   "description": "000000000000000050050760670002AC_Storage Pool_M1210e_000000000000000050050760670002AC_30:Pool:0",
+                                   "arrayStatus": "Offline",
+                                   "totalManagedSpace": 298999349248,
+                                   "remainingSpace": 0,
+                                   "raidLevel": 0,
+                                   "storageVolumes": [
+                                     {
+                                       "name": "GenericR0_0",
+                                       "bootable": true,
+                                       "description": "Volume 0 000000000000000050050760670002AC_0",
+                                       "blockSize": 512,
+                                       "numberOfBlocks": 583983104,
+                                       "primaryPartition": 0,
+                                       "stripeSize": 65536,
+                                       "volumeStatus": "Dynamic Reconfig",
+                                       "volumeID": "104",
+                                       "volumeUID": "0",
+                                       "driveIndex": 0,
+                                       "removable": false,
+                                       "health": "Unknown",
+                                       "LUN": -1
+                                     }
+                                   ],
+                                   "diskDrives": [
+                                     {
+                                       "model": "ST300MM0006",
+                                       "healthState": "Normal",
+                                       "numberOfBlocks": 585937500,
+                                       "interfaceType": "SAS",
+                                       "serialNumber": "S0K2QNGE",
+                                       "blockSize": 512,
+                                       "mediaType": "Rotational",
+                                       "diskState": "Online",
+                                       "bay": 0,
+                                       "description": "ST300MM0006",
+                                       "manufacturer": "IBM-ESXS",
+                                       "name": "Disk 0_e",
+                                       "uuid": "",
+                                       "partNumber": "00AJ100",
+                                       "largestAvailableSize": 512,
+                                       "capacity": 300000000000,
+                                       "m2Location": "",
+                                       "softwareData": [
+                                         {
+                                           "revision": "0",
+                                           "classifications": [
+                                             10
+                                           ],
+                                           "status": "Active",
+                                           "name": "Drive",
+                                           "role": "Primary",
+                                           "type": "Firmware",
+                                           "build": "0",
+                                           "date": "",
+                                           "version": "B56T",
+                                           "softwareID": "ST300MM0006"
+                                         }
+                                       ],
+                                       "FRU": "00AJ097"
+                                     }
+                                   ]
+                                 }
+                               ],
+                               "batteryData": []
+                             }
+                           ],
+                           "vpdID": "",
+                           "uuid": "7936DD182C5311E3A8D6000AF7256738",
+                           "isConnectionTrusted": "true",
+                           "memoryModules": [
+                             {
+                               "model": "DDR3",
+                               "speed": 1600,
+                               "manufacturer": "Micron Technology",
+                               "capacity": 4,
+                               "serialNumber": "3AAF65F9",
+                               "displayName": "CPU 1 DIMM 9",
+                               "slot": 9,
+                               "type": "DDR3",
+                               "partNumber": "Unknown"
+                             },
+                             {
+                               "model": "DDR3",
+                               "speed": 1600,
+                               "manufacturer": "Micron Technology",
+                               "capacity": 4,
+                               "serialNumber": "3AAF65FA",
+                               "displayName": "CPU 1 DIMM 15",
+                               "slot": 15,
+                               "type": "DDR3",
+                               "partNumber": "Unknown"
+                             },
+                             {
+                               "model": "DDR3",
+                               "speed": 1600,
+                               "manufacturer": "Micron Technology",
+                               "capacity": 4,
+                               "serialNumber": "3AAF65FE",
+                               "displayName": "CPU 2 DIMM 9",
+                               "slot": 9,
+                               "type": "DDR3",
+                               "partNumber": "Unknown"
+                             },
+                             {
+                               "model": "DDR3",
+                               "speed": 1600,
+                               "manufacturer": "Micron Technology",
+                               "capacity": 4,
+                               "serialNumber": "3AAF6603",
+                               "displayName": "CPU 2 DIMM 15",
+                               "slot": 15,
+                               "type": "DDR3",
+                               "partNumber": "Unknown"
+                             }
+                           ],
+                           "partitionEnabled": false,
+                           "fruSerialNumber": "None",
+                           "secureBootMode": {
+                             "possibleValues": [
+                               "Disabled",
+                               "Enabled"
+                             ],
+                             "currentValue": "Disabled"
+                           },
+                           "encapsulation": {
+                             "encapsulationMode": "normal"
+                           },
+                           "tlsVersion": {
+                             "possibleValues": [
+                               "TLS_10",
+                               "TLS_11",
+                               "TLS_12",
+                               "unsupported"
+                             ],
+                             "currentValue": "TLS_10"
+                           },
+                           "model": "AC1",
+                           "isScalable": true,
+                           "expansionCardSlots": 0,
+                           "fans": [],
+                           "isITME": false,
+                           "hostMacAddresses": "00:0A:F7:25:67:38,00:0A:F7:25:67:39",
+                           "contact": "",
+                           "dataHandle": 1496851623453,
+                           "ipv4Addresses": [
+                             "10.243.6.17",
+                             "169.254.95.118"
+                           ],
+                           "cmmDisplayName": "Management Controller UUID-7936DD182C5311E3A8D6000AF7256738",
+                           "backedBy": "real",
+                           "complexID": 1,
+                           "name": "17dspncsvdm",
+                           "memorySlots": 0,
+                           "drives": [],
+                           "cmmHealthState": "Normal",
+                           "userDescription": "",
+                           "subSlots": [],
+                           "partNumber": "00D0188     ",
+                           "excludedHealthState": "Normal",
+                           "machineType": "6241",
+                           "isRemotePresenceEnabled": true,
+                           "pciDevices": [
+                             {
+                               "pciSubID": "454",
+                               "firmware": [
+                                 {
+                                   "revision": "0",
+                                   "classifications": [
+                                     13
+                                   ],
+                                   "status": "Active",
+                                   "name": "MegaRAID Controller Firmware",
+                                   "role": "Primary",
+                                   "softwareID": "10140454",
+                                   "type": "Software Bundle",
+                                   "build": "0",
+                                   "date": "2016-07-20T00:00:00Z",
+                                   "version": "24.12.0-0033"
+                                 }
+                               ],
+                               "slotSupportsHotPlug": "false",
+                               "fodUniqueID": "N/A",
+                               "pciRevision": "2",
+                               "isAgentless": true,
+                               "pciBusNumber": "7",
+                               "pciSubVendorID": "1014",
+                               "isAddOnCard": true,
+                               "FRU": "N/A",
+                               "pciDeviceNumber": "0",
+                               "slotNumber": "12",
+                               "posID": "5d",
+                               "pciFunctionNumber": "0",
+                               "manufacturer": "IBM",
+                               "name": "ServeRAID M5210",
+                               "portInfo": {},
+                               "vpdID": "1000",
+                               "productName": "ServeRAID M5210",
+                               "partNumber": "N/A",
+                               "fruSerialNumber": "SV334P0606",
+                               "slotName": "SlotDesig7_Slot 12 (Pri Storage)"
+                             },
+                             {
+                               "pciSubID": "0",
+                               "firmware": [
+                                 {
+                                   "revision": "0",
+                                   "classifications": [
+                                     0
+                                   ],
+                                   "status": "Active",
+                                   "name": "PCIFirmware",
+                                   "role": "Primary",
+                                   "softwareID": "0:0",
+                                   "type": "",
+                                   "build": "0",
+                                   "date": "",
+                                   "version": ""
+                                 }
+                               ],
+                               "fodUniqueID": "",
+                               "pciRevision": "0",
+                               "isAgentless": false,
+                               "pciBusNumber": "27",
+                               "pciSubVendorID": "0",
+                               "isAddOnCard": false,
+                               "pciDeviceNumber": "0",
+                               "posID": "534",
+                               "pciFunctionNumber": "0",
+                               "name": "",
+                               "portInfo": {},
+                               "vpdID": "102b"
+                             },
+                             {
+                               "pciSubID": "450",
+                               "firmware": [
+                                 {
+                                   "revision": "0",
+                                   "classifications": [
+                                     33024
+                                   ],
+                                   "status": "Active",
+                                   "name": "17.4.4.2a",
+                                   "role": "Primary",
+                                   "softwareID": "10140450",
+                                   "type": "VPD-V0",
+                                   "build": "0",
+                                   "date": "",
+                                   "version": "17.4.4.2a"
+                                 }
+                               ],
+                               "slotSupportsHotPlug": "false",
+                               "fodUniqueID": "11S90Y9372Y0502037P0ES",
+                               "pciRevision": "0",
+                               "isAgentless": true,
+                               "pciBusNumber": "145",
+                               "pciSubVendorID": "1014",
+                               "isAddOnCard": true,
+                               "FRU": "90Y9373",
+                               "pciDeviceNumber": "0",
+                               "slotNumber": "7",
+                               "posID": "165f",
+                               "pciFunctionNumber": "0",
+                               "manufacturer": "IBM",
+                               "name": "Broadcom 2-port 1GbE NIC Card for IBM",
+                               "portInfo": {
+                                 "physicalPorts": [
+                                   {
+                                     "portType": "ETHERNET",
+                                     "portNumber": 49,
+                                     "logicalPorts": [
+                                       {
+                                         "portType": "ETHERNET",
+                                         "portNumber": 1,
+                                         "logicalPortIndex": 1,
+                                         "addresses": "000AF7256738",
+                                         "vnicMode": false
+                                       }
+                                     ],
+                                     "peerBay": 0,
+                                     "physicalPortIndex": 1
+                                   }
+                                 ]
+                               },
+                               "vpdID": "14e4",
+                               "productName": "Broadcom 2-port 1GbE NIC Card for IBM",
+                               "partNumber": "90Y9372",
+                               "fruSerialNumber": "Y0502037P0ES",
+                               "slotName": "SlotDesig6_Slot 7"
+                             },
+                             {
+                               "pciSubID": "450",
+                               "firmware": [
+                                 {
+                                   "revision": "0",
+                                   "classifications": [
+                                     33024
+                                   ],
+                                   "status": "Active",
+                                   "name": "17.4.4.2a",
+                                   "role": "Primary",
+                                   "softwareID": "10140450",
+                                   "type": "VPD-V0",
+                                   "build": "0",
+                                   "date": "",
+                                   "version": "17.4.4.2a"
+                                 }
+                               ],
+                               "slotSupportsHotPlug": "false",
+                               "fodUniqueID": "11S90Y9372Y0502037P0ES",
+                               "pciRevision": "0",
+                               "isAgentless": true,
+                               "pciBusNumber": "145",
+                               "pciSubVendorID": "1014",
+                               "isAddOnCard": true,
+                               "FRU": "90Y9373",
+                               "pciDeviceNumber": "0",
+                               "slotNumber": "7",
+                               "posID": "165f",
+                               "pciFunctionNumber": "1",
+                               "manufacturer": "IBM",
+                               "name": "Broadcom 2-port 1GbE NIC Card for IBM",
+                               "portInfo": {
+                                 "physicalPorts": [
+                                   {
+                                     "portType": "ETHERNET",
+                                     "portNumber": 50,
+                                     "logicalPorts": [
+                                       {
+                                         "portType": "ETHERNET",
+                                         "portNumber": 1,
+                                         "logicalPortIndex": 1,
+                                         "addresses": "000AF7256739",
+                                         "vnicMode": false
+                                       }
+                                     ],
+                                     "peerBay": 0,
+                                     "physicalPortIndex": 2
+                                   }
+                                 ]
+                               },
+                               "vpdID": "14e4",
+                               "productName": "Broadcom 2-port 1GbE NIC Card for IBM",
+                               "partNumber": "90Y9372",
+                               "fruSerialNumber": "Y0502037P0ES",
+                               "slotName": "SlotDesig6_Slot 7"
+                             }
+                           ],
+                           "domainName": "",
+                           "processors": [
+                             {
+                               "speed": 2.2,
+                               "manufacturer": "Intel(R) Corporation",
+                               "family": "PENTIUM_R_4",
+                               "displayName": "Intel(R) Xeon(R) CPU E7-8880L v2 @ 2.20GHz",
+                               "slot": 1,
+                               "productVersion": "Intel(R) Xeon(R) CPU E7-8880L v2 @ 2.20GHz",
+                               "cores": 15
+                             },
+                             {
+                               "speed": 2.2,
+                               "manufacturer": "Intel(R) Corporation",
+                               "family": "PENTIUM_R_4",
+                               "displayName": "Intel(R) Xeon(R) CPU E7-8880L v2 @ 2.20GHz",
+                               "slot": 2,
+                               "productVersion": "Intel(R) Xeon(R) CPU E7-8880L v2 @ 2.20GHz",
+                               "cores": 15
+                             }
+                           ],
+                           "processorSlots": 0,
+                           "pciCapabilities": [
+                             "Raid Link",
+                             "OOB PCIe",
+                             "Raid Link Config",
+                             "Raid Link Alert",
+                             "OOB PCIe Config"
+                           ],
+                           "productId": "4D4F00",
+                           "hasOS": false,
+                           "lanOverUsbPortForwardingModes": [
+                             {
+                               "state": "disabled",
+                               "type": "DSA",
+                               "externalIPAddress": ""
+                             },
+                             {
+                               "state": "disabled",
+                               "type": "OSDeploy",
+                               "externalIPAddress": ""
+                             }
+                           ],
+                           "bootMode": {
+                             "possibleValues": [
+                               "UEFI Mode",
+                               "Legacy Mode"
+                             ],
+                             "currentValue": "UEFI Mode"
+                           },
+                           "ports": [
+                             {
+                               "ioModuleBay": 0,
+                               "portNumber": 49
+                             },
+                             {
+                               "ioModuleBay": 0,
+                               "portNumber": 50
+                             }
+                           ],
+                           "embeddedHypervisorPresence": false,
+                           "posID": "",
+                           "nist": {
+                             "possibleValues": [
+                               "Compatibility",
+                               "Nist_800_131A_Strict",
+                               "unsupported"
+                             ],
+                             "currentValue": "Compatibility"
+                           },
+                           "overallHealthState": "Normal",
+                           "subType": "",
+                           "partitionID": -1,
+                           "physicalID": 0,
+                           "flashStorage": [],
+                           "productName": "Lenovo System x3850 X6"
+                         },
+                         "complexNodeUUIDs": [
+                           "7936DD182C5311E3A8D6000AF7256738"
+                         ],
+                         "complexID": "7936DD182C5311E3A8D6000AF7256738",
+                         "itemLocationRack": "",
+                         "physicalID": 0,
+                         "nodeCount": 1,
+                         "itemLocation": "",
+                         "itemLocationRoom": ""
+                       }
+                     ],
+                     "placeholderList": [],
+                     "switchList": [],
+                     "room": ""
+                   },
+                   {
+                     "storageList": [],
+                     "cabinetName": "STANDALONE_OBJECT_NAME",
+                     "height": 42,
+                     "complexList": [],
+                     "chassisList": [],
+                     "location": "",
+                     "UUID": "STANDALONE_OBJECT_UUID",
+                     "nodeList": [
+                       {
+                         "itemParentUUID": null,
+                         "itemName": "SERVER-A59D5B36821111E1A9F5E41F13ED4F6A",
+                         "itemLowerUnit": 0,
+                         "itemType": "SERVER",
+                         "itemLocationRack": "",
+                         "itemSubType": "LegacyServer",
+                         "itemUUID": "A59D5B36821111E1A9F5E41F13ED4F6A",
+                         "itemInventory": {
+                           "accessState": "Pending",
+                           "arch": "x86_64",
+                           "manufacturerId": "",
+                           "location": {
+                             "lowestRackUnit": 0,
+                             "location": "",
+                             "rack": "",
+                             "room": ""
+                           },
+                           "addinCardSlots": 0,
+                           "serialNumber": "06ARFA2",
+                           "driveBays": 0,
+                           "macAddress": "e4:1f:13:ed:4f:6f",
+                           "type": "Rack-Tower Server",
+                           "lanOverUsb": "disabled",
+                           "height": 1,
+                           "leds": [
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "Front Panel",
+                               "name": "Check Log",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "Front Panel",
+                               "name": "Fault",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Attention",
+                               "color": "Blue",
+                               "location": "Front Panel",
+                               "name": "Identify",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Health",
+                               "color": "Green",
+                               "location": "Front Panel",
+                               "name": "Power",
+                               "state": "On"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "Lightpath Card",
+                               "name": "BOARD",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "Battery",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "Lightpath Card",
+                               "name": "CONFIG",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "Lightpath Card",
+                               "name": "CPU",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "CPU 1",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "CPU 2",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "DIMM 1",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "DIMM 10",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "DIMM 11",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "DIMM 12",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "DIMM 13",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "DIMM 14",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "DIMM 15",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "DIMM 16",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "DIMM 17",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "DIMM 18",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "DIMM 19",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "DIMM 2",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "DIMM 20",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "DIMM 21",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "DIMM 22",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "DIMM 23",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "DIMM 24",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "DIMM 3",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "DIMM 4",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "DIMM 5",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "DIMM 6",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "DIMM 7",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "DIMM 8",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "DIMM 9",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "Lightpath Card",
+                               "name": "FAN",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "FAN 1",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "FAN 2",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "FAN 3",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "FAN 4",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "FAN 5",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "FAN 6",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "Lightpath Card",
+                               "name": "HDD",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Health",
+                               "color": "Green",
+                               "location": "System Board",
+                               "name": "IMM2 Heartbeat",
+                               "state": "Blink"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "Internal RAID",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Health",
+                               "color": "Green",
+                               "location": "Lightpath Card",
+                               "name": "LINK",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "Lightpath Card",
+                               "name": "MEM",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "Mezz Card Error",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "Lightpath Card",
+                               "name": "NMI",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "Lightpath Card",
+                               "name": "OVER SPEC",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "Lightpath Card",
+                               "name": "PCI",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "PCI 1",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "FRU",
+                               "name": "PCI 2",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "Lightpath Card",
+                               "name": "PS",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Status",
+                               "color": "Green",
+                               "location": "FRU",
+                               "name": "Power",
+                               "state": "On"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "System Board",
+                               "name": "SysBrd Fault",
+                               "state": "Off"
+                             },
+                             {
+                               "conditions": "Warning",
+                               "color": "Yellow",
+                               "location": "Lightpath Card",
+                               "name": "TEMP",
+                               "state": "Off"
+                             }
+                           ],
+                           "description": "chassis System x3550 M4",
+                           "mgmtProcIPaddress": "10.243.9.111",
+                           "expansionCards": [],
+                           "errorFields": [],
+                           "FQDN": "ratchetimm1.labs.lenovo.com",
+                           "ipInterfaces": [],
+                           "firmware": [
+                             {
+                               "status": "ACTIVE",
+                               "name": "IMM",
+                               "role": "",
+                               "date": "",
+                               "type": "IMM",
+                               "build": "",
+                               "version": "1AOO72H-5.60"
+                             },
+                             {
+                               "status": "ACTIVE",
+                               "name": "Preboot DSA",
+                               "role": "",
+                               "date": "",
+                               "type": "Preboot DSA",
+                               "build": "",
+                               "version": "DSYTD8G-9.54"
+                             },
+                             {
+                               "status": "ACTIVE",
+                               "name": "UEFI",
+                               "role": "",
+                               "date": "",
+                               "type": "UEFI",
+                               "build": "",
+                               "version": "D7E152CUS-2.11"
+                             }
+                           ],
+                           "bladeState": 0,
+                           "activationKeys": [],
+                           "status": {
+                             "message": "managed",
+                             "name": "MANAGED"
+                           },
+                           "powerCappingPolicy": {
+                             "cappingACorDCMode": "UNKNOWN",
+                             "minimumHardCapLevel": -1,
+                             "cappingPolicy": "UNKNOWN",
+                             "maxPowerCap": -1,
+                             "minimumPowerCappingHotPlugLevel": -1,
+                             "powerCappingAllocUnit": "watts",
+                             "maximumPowerCappingHotPlugLevel": -1,
+                             "currentPowerCap": 0,
+                             "minPowerCap": -1
+                           },
+                           "hostname": "IMM-e41f13ed4f6f",
+                           "powerSupplies": [
+                             {
+                               "model": "43X3313",
+                               "manufacturerId": "EMER",
+                               "serialNumber": " K1181227068",
+                               "inputVoltageIsAC": false,
+                               "inputVoltageMin": 0,
+                               "type": "PowerSupply",
+                               "dataHandle": 0,
+                               "cmmDisplayName": null,
+                               "leds": [
+                                 {
+                                   "color": "Green",
+                                   "location": "FRU",
+                                   "name": "IN",
+                                   "state": "On"
+                                 },
+                                 {
+                                   "color": "Green",
+                                   "location": "FRU",
+                                   "name": "OUT",
+                                   "state": "On"
+                                 },
+                                 {
+                                   "color": "Amber",
+                                   "location": "FRU",
+                                   "name": "FAULT",
+                                   "state": "Off"
+                                 }
+                               ],
+                               "description": "Power Supply 1",
+                               "name": " K1181227068",
+                               "userDescription": null,
+                               "manufactureDate": "2011-12-02",
+                               "partNumber": null,
+                               "firmware": [],
+                               "healthState": "GOOD",
+                               "machineType": null,
+                               "hardwareRevision": null,
+                               "FRU": null,
+                               "uri": "powerSupply/null",
+                               "productId": null,
+                               "powerAllocation": {
+                                 "totalInputPower": 0,
+                                 "totalOutputPower": 0
+                               },
+                               "powerState": null,
+                               "posID": null,
+                               "slots": [
+                                 0
+                               ],
+                               "manufacturer": null,
+                               "vpdID": null,
+                               "uuid": null,
+                               "productName": null,
+                               "fruSerialNumber": null,
+                               "inputVoltageMax": 0
+                             }
+                           ],
+                           "FRU": "",
+                           "thinkServerFru": [],
+                           "uri": "node/A59D5B36821111E1A9F5E41F13ED4F6A",
+                           "vnicMode": "disabled",
+                           "powerAllocation": {
+                             "maximumAllocatedPower": 0,
+                             "minimumAllocatedPower": 0
+                           },
+                           "expansionProductType": "",
+                           "powerStatus": 8,
+                           "bootOrder": {
+                             "uri": "node/A59D5B36821111E1A9F5E41F13ED4F6A/bootOrder",
+                             "bootOrderList": [
+                               {
+                                 "currentBootOrderDevices": [
+                                   "default"
+                                 ],
+                                 "bootType": "SingleUse",
+                                 "possibleBootOrderDevices": [
+                                   "setup",
+                                   "network",
+                                   "hd",
+                                   "cd",
+                                   "default"
+                                 ]
+                               }
+                             ]
+                           },
+                           "expansionProducts": [],
+                           "ipv6Addresses": [
+                             "fe80::e61f:13ff:feed:4f6f"
+                           ],
+                           "slots": [
+                             1
+                           ],
+                           "manufacturer": " IBM",
+                           "raidSettings": [],
+                           "vpdID": "",
+                           "uuid": "A59D5B36821111E1A9F5E41F13ED4F6A",
+                           "isConnectionTrusted": "true",
+                           "memoryModules": [
+                             {
+                               "model": "",
+                               "voltage": null,
+                               "speed": 12800,
+                               "manufacturer": "Micron Technology",
+                               "capacity": 8,
+                               "serialNumber": "39170a03",
+                               "displayName": "DIMM 1",
+                               "slot": 1,
+                               "type": "DDR3 SDRAM",
+                               "partNumber": "36JSF1G72PZ-1G6M1 "
+                             },
+                             {
+                               "model": "",
+                               "voltage": null,
+                               "speed": 12800,
+                               "manufacturer": "Micron Technology",
+                               "capacity": 8,
+                               "serialNumber": "1a8c3c13",
+                               "displayName": "DIMM 2",
+                               "slot": 2,
+                               "type": "DDR3 SDRAM",
+                               "partNumber": "36JSF1G72PZ-1G6M1 "
+                             },
+                             {
+                               "model": "",
+                               "voltage": null,
+                               "speed": 12800,
+                               "manufacturer": "Micron Technology",
+                               "capacity": 8,
+                               "serialNumber": "d673191b",
+                               "displayName": "DIMM 4",
+                               "slot": 4,
+                               "type": "DDR3 SDRAM",
+                               "partNumber": "36JSF1G72PZ-1G6M1 "
+                             },
+                             {
+                               "model": "",
+                               "voltage": null,
+                               "speed": 12800,
+                               "manufacturer": "Micron Technology",
+                               "capacity": 8,
+                               "serialNumber": "1a8c3c0a",
+                               "displayName": "DIMM 5",
+                               "slot": 5,
+                               "type": "DDR3 SDRAM",
+                               "partNumber": "36JSF1G72PZ-1G6M1 "
+                             },
+                             {
+                               "model": "",
+                               "voltage": null,
+                               "speed": 12800,
+                               "manufacturer": "Micron Technology",
+                               "capacity": 8,
+                               "serialNumber": "354074cd",
+                               "displayName": "DIMM 8",
+                               "slot": 8,
+                               "type": "DDR3 SDRAM",
+                               "partNumber": "36JSF1G72PZ-1G6M1 "
+                             },
+                             {
+                               "model": "",
+                               "voltage": null,
+                               "speed": 12800,
+                               "manufacturer": "Micron Technology",
+                               "capacity": 8,
+                               "serialNumber": "d673192d",
+                               "displayName": "DIMM 9",
+                               "slot": 9,
+                               "type": "DDR3 SDRAM",
+                               "partNumber": "36JSF1G72PZ-1G6M1 "
+                             },
+                             {
+                               "model": "",
+                               "voltage": null,
+                               "speed": 12800,
+                               "manufacturer": "Micron Technology",
+                               "capacity": 8,
+                               "serialNumber": "d673192e",
+                               "displayName": "DIMM 11",
+                               "slot": 11,
+                               "type": "DDR3 SDRAM",
+                               "partNumber": "36JSF1G72PZ-1G6M1 "
+                             },
+                             {
+                               "model": "",
+                               "voltage": null,
+                               "speed": 12800,
+                               "manufacturer": "Micron Technology",
+                               "capacity": 8,
+                               "serialNumber": "354074c3",
+                               "displayName": "DIMM 12",
+                               "slot": 12,
+                               "type": "DDR3 SDRAM",
+                               "partNumber": "36JSF1G72PZ-1G6M1 "
+                             },
+                             {
+                               "model": "",
+                               "voltage": null,
+                               "speed": 12800,
+                               "manufacturer": "Micron Technology",
+                               "capacity": 8,
+                               "serialNumber": "354074c7",
+                               "displayName": "DIMM 13",
+                               "slot": 13,
+                               "type": "DDR3 SDRAM",
+                               "partNumber": "36JSF1G72PZ-1G6M1 "
+                             },
+                             {
+                               "model": "",
+                               "voltage": null,
+                               "speed": 12800,
+                               "manufacturer": "Micron Technology",
+                               "capacity": 8,
+                               "serialNumber": "1a8c3c82",
+                               "displayName": "DIMM 14",
+                               "slot": 14,
+                               "type": "DDR3 SDRAM",
+                               "partNumber": "36JSF1G72PZ-1G6M1 "
+                             },
+                             {
+                               "model": "",
+                               "voltage": null,
+                               "speed": 12800,
+                               "manufacturer": "Micron Technology",
+                               "capacity": 8,
+                               "serialNumber": "d67318fb",
+                               "displayName": "DIMM 16",
+                               "slot": 16,
+                               "type": "DDR3 SDRAM",
+                               "partNumber": "36JSF1G72PZ-1G6M1 "
+                             },
+                             {
+                               "model": "",
+                               "voltage": null,
+                               "speed": 12800,
+                               "manufacturer": "Micron Technology",
+                               "capacity": 8,
+                               "serialNumber": "1a8c3c75",
+                               "displayName": "DIMM 17",
+                               "slot": 17,
+                               "type": "DDR3 SDRAM",
+                               "partNumber": "36JSF1G72PZ-1G6M1 "
+                             },
+                             {
+                               "model": "",
+                               "voltage": null,
+                               "speed": 12800,
+                               "manufacturer": "Micron Technology",
+                               "capacity": 8,
+                               "serialNumber": "d67318f3",
+                               "displayName": "DIMM 20",
+                               "slot": 20,
+                               "type": "DDR3 SDRAM",
+                               "partNumber": "36JSF1G72PZ-1G6M1 "
+                             },
+                             {
+                               "model": "",
+                               "voltage": null,
+                               "speed": 12800,
+                               "manufacturer": "Micron Technology",
+                               "capacity": 8,
+                               "serialNumber": "d67318ff",
+                               "displayName": "DIMM 21",
+                               "slot": 21,
+                               "type": "DDR3 SDRAM",
+                               "partNumber": "36JSF1G72PZ-1G6M1 "
+                             },
+                             {
+                               "model": "",
+                               "voltage": null,
+                               "speed": 12800,
+                               "manufacturer": "Micron Technology",
+                               "capacity": 8,
+                               "serialNumber": "d67318ef",
+                               "displayName": "DIMM 23",
+                               "slot": 23,
+                               "type": "DDR3 SDRAM",
+                               "partNumber": "36JSF1G72PZ-1G6M1 "
+                             },
+                             {
+                               "model": "",
+                               "voltage": null,
+                               "speed": 12800,
+                               "manufacturer": "Micron Technology",
+                               "capacity": 8,
+                               "serialNumber": "35407515",
+                               "displayName": "DIMM 24",
+                               "slot": 24,
+                               "type": "DDR3 SDRAM",
+                               "partNumber": "36JSF1G72PZ-1G6M1 "
+                             }
+                           ],
+                           "fruSerialNumber": "Y015UN23X06L",
+                           "secureBootMode": {
+                             "possibleValues": [],
+                             "currentValue": ""
+                           },
+                           "tlsVersion": {
+                             "possibleValues": [
+                               "TLS_10",
+                               "TLS_11",
+                               "TLS_12",
+                               "unsupported"
+                             ],
+                             "currentValue": "unsupported"
+                           },
+                           "model": "AC1",
+                           "isScalable": false,
+                           "expansionCardSlots": 0,
+                           "fans": [],
+                           "isITME": false,
+                           "hostMacAddresses": "",
+                           "contact": "",
+                           "dataHandle": 0,
+                           "ipv4Addresses": [
+                             "10.243.9.111"
+                           ],
+                           "cmmDisplayName": "",
+                           "backedBy": "real",
+                           "complexID": -1,
+                           "name": "IMM-e41f13ed4f6f",
+                           "memorySlots": 0,
+                           "drives": [],
+                           "cmmHealthState": "Normal",
+                           "userDescription": "",
+                           "subSlots": [],
+                           "partNumber": null,
+                           "excludedHealthState": "Normal",
+                           "machineType": "7914",
+                           "isRemotePresenceEnabled": false,
+                           "pciDevices": [],
+                           "domainName": "",
+                           "processors": [
+                             {
+                               "speed": 2.7,
+                               "manufacturer": "Intel(R) Corporation",
+                               "family": "Intel(R) Xeon(R) processor",
+                               "displayName": "",
+                               "slot": 1,
+                               "productVersion": "Intel(R) Xeon(R) CPU E5-2680 0 @ 2.70GHz",
+                               "cores": 8
+                             },
+                             {
+                               "speed": 2.7,
+                               "manufacturer": "Intel(R) Corporation",
+                               "family": "Intel(R) Xeon(R) processor",
+                               "displayName": "",
+                               "slot": 2,
+                               "productVersion": "Intel(R) Xeon(R) CPU E5-2680 0 @ 2.70GHz",
+                               "cores": 8
+                             }
+                           ],
+                           "processorSlots": 0,
+                           "pciCapabilities": [],
+                           "productId": "",
+                           "hasOS": false,
+                           "bootMode": {
+                             "possibleValues": [
+                               "uefi",
+                               "bios"
+                             ],
+                             "currentValue": "unspecified"
+                           },
+                           "ports": [],
+                           "embeddedHypervisorPresence": false,
+                           "posID": "",
+                           "nist": {
+                             "possibleValues": [
+                               "Compatibility",
+                               "Nist_800_131A_Strict",
+                               "Nist_800_131A_Custom",
+                               "unsupported"
+                             ],
+                             "currentValue": "unsupported"
+                           },
+                           "overallHealthState": "Normal",
+                           "subType": "LegacyServer",
+                           "partitionID": -1,
+                           "flashStorage": [],
+                           "productName": "System x3550 M4"
+                         },
+                         "itemLocation": "",
+                         "itemHeight": 1,
+                         "itemLocationRoom": ""
+                       }
+                     ],
+                     "placeholderList": [],
+                     "switchList": [],
+                     "room": ""
+                   }
+                 ]
+               }'
+    http_version:
+  recorded_at: Mon, 24 Apr 2017 18:45:40 GMT
+recorded_with: VCR 3.0.3
