@@ -49,4 +49,31 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
   it 'will execute post_process_refresh_classes' do
     expect(refresher.post_process_refresh_classes).to eq([])
   end
+
+  it 'will perform a full refresh' do
+    # Perform the refresh twice to verify that a second run with existing data
+    # does not change anything
+    2.times do
+      EmsRefresh.refresh(ems)
+      ems.reload
+
+      assert_table_counts
+      assert_guest_table_contents
+    end
+  end
+
+  def assert_table_counts
+    expect(PhysicalServer.count).to eq(2)
+    expect(GuestDevice.count).to eq(5)
+  end
+
+  def assert_guest_table_contents
+    nic = GuestDevice.where(:device_name => "Broadcom 2-port 1GbE NIC Card for IBM").first
+    ports = nic.child_devices
+
+    expect(ports[0].device_name).to eq("Physical Port 1")
+    expect(ports[0].address).to eq("00:0A:F7:25:67:38")
+    expect(ports[1].device_name).to eq("Physical Port 2")
+    expect(ports[1].address).to eq("00:0A:F7:25:67:39")
+  end
 end
