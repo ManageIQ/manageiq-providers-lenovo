@@ -68,12 +68,16 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
   end
 
   def assert_guest_table_contents
-    nic = GuestDevice.where(:device_name => "Broadcom 2-port 1GbE NIC Card for IBM").first
+    server = PhysicalServer.find_by(:ems_ref => "7936DD182C5311E3A8D6000AF7256738")
+    nic = server.hardware.nics.first
     ports = nic.child_devices
+    port1 = ports.find_by(:device_name => "Physical Port 1")
+    port2 = ports.find_by(:device_name => "Physical Port 2")
 
-    expect(ports[0].device_name).to eq("Physical Port 1")
-    expect(ports[0].address).to eq("00:0A:F7:25:67:38")
-    expect(ports[1].device_name).to eq("Physical Port 2")
-    expect(ports[1].address).to eq("00:0A:F7:25:67:39")
+    expect(nic.device_name).to eq("Broadcom 2-port 1GbE NIC Card for IBM")
+    expect(port1.device_name).to eq("Physical Port 1")
+    expect(port1.address).to eq("00:0A:F7:25:67:38")
+    expect(port2.device_name).to eq("Physical Port 2")
+    expect(port2.address).to eq("00:0A:F7:25:67:39")
   end
 end
