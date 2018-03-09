@@ -1,0 +1,1208 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://lxcahost/aicc
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - LXCA via Ruby Client/0.5.9 (ManageIQ/master)
+      Authorization:
+      - Basic bHhjYzpQQVNTVzByRA==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 08 Mar 2018 20:39:59 GMT
+      Set-Cookie:
+      - userAuthenticationMethod=local;Path=/;Secure
+      Expires:
+      - "-1"
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Strict-Transport-Security:
+      - max-age=86400; includeSubDomains;
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Content-Security-Policy:
+      - 'default-src https:; script-src https: ''unsafe-inline'' ''unsafe-eval'';
+        style-src https: ''unsafe-inline'''
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '1'
+      Content-Type:
+      - application/com.lenovo.lxca-v1.2.2+json; charset=UTF-8
+      Vary:
+      - Accept-Encoding, User-Agent
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"ntp":{"servers":[{"v3_key_type":"","authenticated":false,"v3_key":"","v3_key_index":0,"server":"us.pool.ntp.org","version":1}]},"services":[{"id":"core","initd":"xhmc-core","state":0,"pid":2256},{"id":"keydaemon","initd":"lxca-keydaemon","state":4,"pid":-1},{"id":"watchdog","initd":"sympl-watchdog","state":0,"pid":2584},{"id":"apache","initd":"httpd","state":3,"pid":-1},{"id":"network","initd":"network","state":0,"pid":-1},{"id":"ntp","initd":"ntpd","state":0,"pid":2304},{"id":"portreserve","initd":"portreserve","state":3,"pid":-1},{"id":"slp","initd":"slpd","state":0,"pid":1665},{"id":"sftp","initd":"sshd","state":0,"pid":2288},{"id":"xcat","initd":"xcatd","state":3,"pid":-1}],"subscriptions":[{"id":1,"monitor_uri":"/aicc/network/interfaces","uri":"/netchangenotsec","submonitor_uri":""},{"id":2,"monitor_uri":"/aicc","uri":"/ntpNotification","submonitor_uri":"/ntp"},{"id":3,"monitor_uri":"/aicc/network/interfaces","uri":"/osdeployment/rest/internal/event/aicc","submonitor_uri":""}],"service_states":[{"description":"Service
+        is running","state":0},{"description":"Service is dead but PID file exists","state":1},{"description":"Service
+        is dead but lock file exists","state":2},{"description":"Service is not running","state":3},{"description":"Service
+        state is unknown","state":4},{"description":"Special purpose state used to
+        trigger restart through REST","state":191}],"network_interfaces":[{"mac_address":"00:0C:29:85:AC:49","id":"eth0","role":["management"],"ip_addresses":[{"prefix_length":64,"assign_method":"static","ip_linklocal":"true","version":6,"ip":"fe80:0:0:0:20c:29ff:fe85:ac49%2"},{"prefix_length":20,"assign_method":"static","ip_linklocal":"false","version":4,"ip":"10.243.9.123"},{"prefix_length":64,"assign_method":"dhcp","ip_linklocal":"false","version":6,"ip":"0::0%0"}],"rpf":"RFC3704Strict"},{"mac_address":"00:0C:29:85:AC:53","id":"eth1","role":["none"],"ip_addresses":[{"prefix_length":64,"assign_method":"static","ip_linklocal":"true","version":6,"ip":"fe80:0:0:0:20c:29ff:fe85:ac53%3"}],"rpf":"RFC3704Strict"}],"appliance_states":[{"description":"Halt
+        the appliance","runlevel":0},{"description":"Normal operation","runlevel":3},{"description":"Reboot
+        the appliance","runlevel":6}],"date":{"utc_offset":-18000000,"timezones":[{"id":"Etc/GMT+12","display_name":"GMT-12:00","utc_offset_w_dst":-43200000,"daylight_saves":0,"uses_daylight":false,"offset":-43200000,"utc_offset_raw":-43200000},{"id":"Etc/GMT+11","display_name":"GMT-11:00","utc_offset_w_dst":-39600000,"daylight_saves":0,"uses_daylight":false,"offset":-39600000,"utc_offset_raw":-39600000},{"id":"Pacific/Midway","display_name":"Samoa
+        Standard Time","utc_offset_w_dst":-39600000,"daylight_saves":0,"uses_daylight":false,"offset":-39600000,"utc_offset_raw":-39600000},{"id":"Pacific/Niue","display_name":"Niue
+        Time","utc_offset_w_dst":-39600000,"daylight_saves":0,"uses_daylight":false,"offset":-39600000,"utc_offset_raw":-39600000},{"id":"Pacific/Pago_Pago","display_name":"Samoa
+        Standard Time","utc_offset_w_dst":-39600000,"daylight_saves":0,"uses_daylight":false,"offset":-39600000,"utc_offset_raw":-39600000},{"id":"Pacific/Samoa","display_name":"Samoa
+        Standard Time","utc_offset_w_dst":-39600000,"daylight_saves":0,"uses_daylight":false,"offset":-39600000,"utc_offset_raw":-39600000},{"id":"US/Samoa","display_name":"Samoa
+        Standard Time","utc_offset_w_dst":-39600000,"daylight_saves":0,"uses_daylight":false,"offset":-39600000,"utc_offset_raw":-39600000},{"id":"America/Adak","display_name":"Hawaii
+        Standard Time","utc_offset_w_dst":-36000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-36000000,"utc_offset_raw":-36000000},{"id":"America/Atka","display_name":"Hawaii
+        Standard Time","utc_offset_w_dst":-36000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-36000000,"utc_offset_raw":-36000000},{"id":"Etc/GMT+10","display_name":"GMT-10:00","utc_offset_w_dst":-36000000,"daylight_saves":0,"uses_daylight":false,"offset":-36000000,"utc_offset_raw":-36000000},{"id":"HST","display_name":"Hawaii
+        Standard Time","utc_offset_w_dst":-36000000,"daylight_saves":0,"uses_daylight":false,"offset":-36000000,"utc_offset_raw":-36000000},{"id":"Pacific/Honolulu","display_name":"Hawaii
+        Standard Time","utc_offset_w_dst":-36000000,"daylight_saves":0,"uses_daylight":false,"offset":-36000000,"utc_offset_raw":-36000000},{"id":"Pacific/Johnston","display_name":"Hawaii
+        Standard Time","utc_offset_w_dst":-36000000,"daylight_saves":0,"uses_daylight":false,"offset":-36000000,"utc_offset_raw":-36000000},{"id":"Pacific/Rarotonga","display_name":"Cook
+        Is. Time","utc_offset_w_dst":-36000000,"daylight_saves":0,"uses_daylight":false,"offset":-36000000,"utc_offset_raw":-36000000},{"id":"Pacific/Tahiti","display_name":"Tahiti
+        Time","utc_offset_w_dst":-36000000,"daylight_saves":0,"uses_daylight":false,"offset":-36000000,"utc_offset_raw":-36000000},{"id":"SystemV/HST10","display_name":"Hawaii
+        Standard Time","utc_offset_w_dst":-36000000,"daylight_saves":0,"uses_daylight":false,"offset":-36000000,"utc_offset_raw":-36000000},{"id":"US/Aleutian","display_name":"Hawaii
+        Standard Time","utc_offset_w_dst":-36000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-36000000,"utc_offset_raw":-36000000},{"id":"US/Hawaii","display_name":"Hawaii
+        Standard Time","utc_offset_w_dst":-36000000,"daylight_saves":0,"uses_daylight":false,"offset":-36000000,"utc_offset_raw":-36000000},{"id":"Pacific/Marquesas","display_name":"Marquesas
+        Time","utc_offset_w_dst":-34200000,"daylight_saves":0,"uses_daylight":false,"offset":-34200000,"utc_offset_raw":-34200000},{"id":"AST","display_name":"Alaska
+        Standard Time","utc_offset_w_dst":-32400000,"daylight_saves":3600000,"uses_daylight":true,"offset":-32400000,"utc_offset_raw":-32400000},{"id":"America/Anchorage","display_name":"Alaska
+        Standard Time","utc_offset_w_dst":-32400000,"daylight_saves":3600000,"uses_daylight":true,"offset":-32400000,"utc_offset_raw":-32400000},{"id":"America/Juneau","display_name":"Alaska
+        Standard Time","utc_offset_w_dst":-32400000,"daylight_saves":3600000,"uses_daylight":true,"offset":-32400000,"utc_offset_raw":-32400000},{"id":"America/Metlakatla","display_name":"Alaska
+        Standard Time","utc_offset_w_dst":-32400000,"daylight_saves":3600000,"uses_daylight":true,"offset":-32400000,"utc_offset_raw":-32400000},{"id":"America/Nome","display_name":"Alaska
+        Standard Time","utc_offset_w_dst":-32400000,"daylight_saves":3600000,"uses_daylight":true,"offset":-32400000,"utc_offset_raw":-32400000},{"id":"America/Sitka","display_name":"Alaska
+        Standard Time","utc_offset_w_dst":-32400000,"daylight_saves":3600000,"uses_daylight":true,"offset":-32400000,"utc_offset_raw":-32400000},{"id":"America/Yakutat","display_name":"Alaska
+        Standard Time","utc_offset_w_dst":-32400000,"daylight_saves":3600000,"uses_daylight":true,"offset":-32400000,"utc_offset_raw":-32400000},{"id":"Etc/GMT+9","display_name":"GMT-09:00","utc_offset_w_dst":-32400000,"daylight_saves":0,"uses_daylight":false,"offset":-32400000,"utc_offset_raw":-32400000},{"id":"Pacific/Gambier","display_name":"Gambier
+        Time","utc_offset_w_dst":-32400000,"daylight_saves":0,"uses_daylight":false,"offset":-32400000,"utc_offset_raw":-32400000},{"id":"SystemV/YST9","display_name":"Alaska
+        Standard Time","utc_offset_w_dst":-32400000,"daylight_saves":0,"uses_daylight":false,"offset":-32400000,"utc_offset_raw":-32400000},{"id":"SystemV/YST9YDT","display_name":"Alaska
+        Standard Time","utc_offset_w_dst":-32400000,"daylight_saves":3600000,"uses_daylight":true,"offset":-32400000,"utc_offset_raw":-32400000},{"id":"US/Alaska","display_name":"Alaska
+        Standard Time","utc_offset_w_dst":-32400000,"daylight_saves":3600000,"uses_daylight":true,"offset":-32400000,"utc_offset_raw":-32400000},{"id":"America/Dawson","display_name":"Pacific
+        Standard Time","utc_offset_w_dst":-28800000,"daylight_saves":3600000,"uses_daylight":true,"offset":-28800000,"utc_offset_raw":-28800000},{"id":"America/Ensenada","display_name":"Pacific
+        Standard Time","utc_offset_w_dst":-28800000,"daylight_saves":3600000,"uses_daylight":true,"offset":-28800000,"utc_offset_raw":-28800000},{"id":"America/Los_Angeles","display_name":"Pacific
+        Standard Time","utc_offset_w_dst":-28800000,"daylight_saves":3600000,"uses_daylight":true,"offset":-28800000,"utc_offset_raw":-28800000},{"id":"America/Santa_Isabel","display_name":"Pacific
+        Standard Time","utc_offset_w_dst":-28800000,"daylight_saves":3600000,"uses_daylight":true,"offset":-28800000,"utc_offset_raw":-28800000},{"id":"America/Tijuana","display_name":"Pacific
+        Standard Time","utc_offset_w_dst":-28800000,"daylight_saves":3600000,"uses_daylight":true,"offset":-28800000,"utc_offset_raw":-28800000},{"id":"America/Vancouver","display_name":"Pacific
+        Standard Time","utc_offset_w_dst":-28800000,"daylight_saves":3600000,"uses_daylight":true,"offset":-28800000,"utc_offset_raw":-28800000},{"id":"America/Whitehorse","display_name":"Pacific
+        Standard Time","utc_offset_w_dst":-28800000,"daylight_saves":3600000,"uses_daylight":true,"offset":-28800000,"utc_offset_raw":-28800000},{"id":"Canada/Pacific","display_name":"Pacific
+        Standard Time","utc_offset_w_dst":-28800000,"daylight_saves":3600000,"uses_daylight":true,"offset":-28800000,"utc_offset_raw":-28800000},{"id":"Canada/Yukon","display_name":"Pacific
+        Standard Time","utc_offset_w_dst":-28800000,"daylight_saves":3600000,"uses_daylight":true,"offset":-28800000,"utc_offset_raw":-28800000},{"id":"Etc/GMT+8","display_name":"GMT-08:00","utc_offset_w_dst":-28800000,"daylight_saves":0,"uses_daylight":false,"offset":-28800000,"utc_offset_raw":-28800000},{"id":"Mexico/BajaNorte","display_name":"Pacific
+        Standard Time","utc_offset_w_dst":-28800000,"daylight_saves":3600000,"uses_daylight":true,"offset":-28800000,"utc_offset_raw":-28800000},{"id":"PST","display_name":"Pacific
+        Standard Time","utc_offset_w_dst":-28800000,"daylight_saves":3600000,"uses_daylight":true,"offset":-28800000,"utc_offset_raw":-28800000},{"id":"PST8PDT","display_name":"Pacific
+        Standard Time","utc_offset_w_dst":-28800000,"daylight_saves":3600000,"uses_daylight":true,"offset":-28800000,"utc_offset_raw":-28800000},{"id":"Pacific/Pitcairn","display_name":"Pitcairn
+        Standard Time","utc_offset_w_dst":-28800000,"daylight_saves":0,"uses_daylight":false,"offset":-28800000,"utc_offset_raw":-28800000},{"id":"SystemV/PST8","display_name":"Pacific
+        Standard Time","utc_offset_w_dst":-28800000,"daylight_saves":0,"uses_daylight":false,"offset":-28800000,"utc_offset_raw":-28800000},{"id":"SystemV/PST8PDT","display_name":"Pacific
+        Standard Time","utc_offset_w_dst":-28800000,"daylight_saves":3600000,"uses_daylight":true,"offset":-28800000,"utc_offset_raw":-28800000},{"id":"US/Pacific","display_name":"Pacific
+        Standard Time","utc_offset_w_dst":-28800000,"daylight_saves":3600000,"uses_daylight":true,"offset":-28800000,"utc_offset_raw":-28800000},{"id":"US/Pacific-New","display_name":"Pacific
+        Standard Time","utc_offset_w_dst":-28800000,"daylight_saves":3600000,"uses_daylight":true,"offset":-28800000,"utc_offset_raw":-28800000},{"id":"America/Boise","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":3600000,"uses_daylight":true,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"America/Cambridge_Bay","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":3600000,"uses_daylight":true,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"America/Chihuahua","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":3600000,"uses_daylight":true,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"America/Creston","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":0,"uses_daylight":false,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"America/Dawson_Creek","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":0,"uses_daylight":false,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"America/Denver","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":3600000,"uses_daylight":true,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"America/Edmonton","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":3600000,"uses_daylight":true,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"America/Fort_Nelson","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":0,"uses_daylight":false,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"America/Hermosillo","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":0,"uses_daylight":false,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"America/Inuvik","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":3600000,"uses_daylight":true,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"America/Mazatlan","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":3600000,"uses_daylight":true,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"America/Ojinaga","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":3600000,"uses_daylight":true,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"America/Phoenix","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":0,"uses_daylight":false,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"America/Shiprock","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":3600000,"uses_daylight":true,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"America/Yellowknife","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":3600000,"uses_daylight":true,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"Canada/Mountain","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":3600000,"uses_daylight":true,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"Etc/GMT+7","display_name":"GMT-07:00","utc_offset_w_dst":-25200000,"daylight_saves":0,"uses_daylight":false,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"MST","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":0,"uses_daylight":false,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"MST7MDT","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":3600000,"uses_daylight":true,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"Mexico/BajaSur","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":3600000,"uses_daylight":true,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"Navajo","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":3600000,"uses_daylight":true,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"PNT","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":0,"uses_daylight":false,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"SystemV/MST7","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":0,"uses_daylight":false,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"SystemV/MST7MDT","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":3600000,"uses_daylight":true,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"US/Arizona","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":0,"uses_daylight":false,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"US/Mountain","display_name":"Mountain
+        Standard Time","utc_offset_w_dst":-25200000,"daylight_saves":3600000,"uses_daylight":true,"offset":-25200000,"utc_offset_raw":-25200000},{"id":"America/Bahia_Banderas","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/Belize","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":0,"uses_daylight":false,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/Chicago","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/Costa_Rica","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":0,"uses_daylight":false,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/El_Salvador","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":0,"uses_daylight":false,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/Guatemala","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":0,"uses_daylight":false,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/Indiana/Knox","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/Indiana/Tell_City","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/Knox_IN","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/Managua","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":0,"uses_daylight":false,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/Matamoros","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/Menominee","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/Merida","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/Mexico_City","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/Monterrey","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/North_Dakota/Beulah","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/North_Dakota/Center","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/North_Dakota/New_Salem","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/Rainy_River","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/Rankin_Inlet","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/Regina","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":0,"uses_daylight":false,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/Resolute","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/Swift_Current","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":0,"uses_daylight":false,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/Tegucigalpa","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":0,"uses_daylight":false,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/Winnipeg","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"CST","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"CST6CDT","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"Canada/Central","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"Canada/East-Saskatchewan","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":0,"uses_daylight":false,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"Canada/Saskatchewan","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":0,"uses_daylight":false,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"Chile/EasterIsland","display_name":"Easter
+        Is. Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-21600000},{"id":"Etc/GMT+6","display_name":"GMT-06:00","utc_offset_w_dst":-21600000,"daylight_saves":0,"uses_daylight":false,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"Mexico/General","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"Pacific/Easter","display_name":"Easter
+        Is. Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-21600000},{"id":"Pacific/Galapagos","display_name":"Galapagos
+        Time","utc_offset_w_dst":-21600000,"daylight_saves":0,"uses_daylight":false,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"SystemV/CST6","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":0,"uses_daylight":false,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"SystemV/CST6CDT","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"US/Central","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"US/Indiana-Starke","display_name":"Central
+        Standard Time","utc_offset_w_dst":-21600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-21600000,"utc_offset_raw":-21600000},{"id":"America/Atikokan","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":0,"uses_daylight":false,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Bogota","display_name":"Colombia
+        Time","utc_offset_w_dst":-18000000,"daylight_saves":0,"uses_daylight":false,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Cancun","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":0,"uses_daylight":false,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Cayman","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":0,"uses_daylight":false,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Coral_Harbour","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":0,"uses_daylight":false,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Detroit","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Eirunepe","display_name":"Acre
+        Time","utc_offset_w_dst":-18000000,"daylight_saves":0,"uses_daylight":false,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Fort_Wayne","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Guayaquil","display_name":"Ecuador
+        Time","utc_offset_w_dst":-18000000,"daylight_saves":0,"uses_daylight":false,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Havana","display_name":"Cuba
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Indiana/Indianapolis","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Indiana/Marengo","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Indiana/Petersburg","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Indiana/Vevay","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Indiana/Vincennes","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Indiana/Winamac","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Indianapolis","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Iqaluit","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Jamaica","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":0,"uses_daylight":false,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Kentucky/Louisville","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Kentucky/Monticello","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Lima","display_name":"Peru
+        Time","utc_offset_w_dst":-18000000,"daylight_saves":0,"uses_daylight":false,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Louisville","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Montreal","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Nassau","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/New_York","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Nipigon","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Panama","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":0,"uses_daylight":false,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Pangnirtung","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Port-au-Prince","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":0,"uses_daylight":false,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Porto_Acre","display_name":"Acre
+        Time","utc_offset_w_dst":-18000000,"daylight_saves":0,"uses_daylight":false,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Rio_Branco","display_name":"Acre
+        Time","utc_offset_w_dst":-18000000,"daylight_saves":0,"uses_daylight":false,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Thunder_Bay","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Toronto","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"Brazil/Acre","display_name":"Acre
+        Time","utc_offset_w_dst":-18000000,"daylight_saves":0,"uses_daylight":false,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"Canada/Eastern","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"Cuba","display_name":"Cuba
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"EST","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":0,"uses_daylight":false,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"EST5EDT","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"Etc/GMT+5","display_name":"GMT-05:00","utc_offset_w_dst":-18000000,"daylight_saves":0,"uses_daylight":false,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"IET","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"Jamaica","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":0,"uses_daylight":false,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"SystemV/EST5","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":0,"uses_daylight":false,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"SystemV/EST5EDT","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"US/East-Indiana","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"US/Eastern","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"US/Michigan","display_name":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"daylight_saves":3600000,"uses_daylight":true,"offset":-18000000,"utc_offset_raw":-18000000},{"id":"America/Anguilla","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Antigua","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Aruba","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Asuncion","display_name":"Paraguay
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":3600000,"uses_daylight":true,"offset":-10800000,"utc_offset_raw":-14400000},{"id":"America/Barbados","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Blanc-Sablon","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Boa_Vista","display_name":"Amazon
+        Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Campo_Grande","display_name":"Amazon
+        Time","utc_offset_w_dst":-14400000,"daylight_saves":3600000,"uses_daylight":true,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Caracas","display_name":"Venezuela
+        Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Cuiaba","display_name":"Amazon
+        Time","utc_offset_w_dst":-14400000,"daylight_saves":3600000,"uses_daylight":true,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Curacao","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Dominica","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Glace_Bay","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":3600000,"uses_daylight":true,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Goose_Bay","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":3600000,"uses_daylight":true,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Grand_Turk","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Grenada","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Guadeloupe","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Guyana","display_name":"Guyana
+        Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Halifax","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":3600000,"uses_daylight":true,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Kralendijk","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/La_Paz","display_name":"Bolivia
+        Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Lower_Princes","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Manaus","display_name":"Amazon
+        Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Marigot","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Martinique","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Moncton","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":3600000,"uses_daylight":true,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Montserrat","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Port_of_Spain","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Porto_Velho","display_name":"Amazon
+        Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Puerto_Rico","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Santiago","display_name":"Chile
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":3600000,"uses_daylight":true,"offset":-10800000,"utc_offset_raw":-14400000},{"id":"America/Santo_Domingo","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/St_Barthelemy","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/St_Kitts","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/St_Lucia","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/St_Thomas","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/St_Vincent","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Thule","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":3600000,"uses_daylight":true,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Tortola","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/Virgin","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"Antarctica/Palmer","display_name":"Chile
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":3600000,"uses_daylight":true,"offset":-10800000,"utc_offset_raw":-14400000},{"id":"Atlantic/Bermuda","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":3600000,"uses_daylight":true,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"Brazil/West","display_name":"Amazon
+        Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"Canada/Atlantic","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":3600000,"uses_daylight":true,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"Chile/Continental","display_name":"Chile
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":3600000,"uses_daylight":true,"offset":-10800000,"utc_offset_raw":-14400000},{"id":"Etc/GMT+4","display_name":"GMT-04:00","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"PRT","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"SystemV/AST4","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":0,"uses_daylight":false,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"SystemV/AST4ADT","display_name":"Atlantic
+        Standard Time","utc_offset_w_dst":-14400000,"daylight_saves":3600000,"uses_daylight":true,"offset":-14400000,"utc_offset_raw":-14400000},{"id":"America/St_Johns","display_name":"Newfoundland
+        Standard Time","utc_offset_w_dst":-12600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-12600000,"utc_offset_raw":-12600000},{"id":"CNT","display_name":"Newfoundland
+        Standard Time","utc_offset_w_dst":-12600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-12600000,"utc_offset_raw":-12600000},{"id":"Canada/Newfoundland","display_name":"Newfoundland
+        Standard Time","utc_offset_w_dst":-12600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-12600000,"utc_offset_raw":-12600000},{"id":"AGT","display_name":"Argentine
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Araguaina","display_name":"Brasilia
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Argentina/Buenos_Aires","display_name":"Argentine
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Argentina/Catamarca","display_name":"Argentine
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Argentina/ComodRivadavia","display_name":"Argentine
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Argentina/Cordoba","display_name":"Argentine
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Argentina/Jujuy","display_name":"Argentine
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Argentina/La_Rioja","display_name":"Argentine
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Argentina/Mendoza","display_name":"Argentine
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Argentina/Rio_Gallegos","display_name":"Argentine
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Argentina/Salta","display_name":"Argentine
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Argentina/San_Juan","display_name":"Argentine
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Argentina/San_Luis","display_name":"Argentine
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Argentina/Tucuman","display_name":"Argentine
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Argentina/Ushuaia","display_name":"Argentine
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Bahia","display_name":"Brasilia
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Belem","display_name":"Brasilia
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Buenos_Aires","display_name":"Argentine
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Catamarca","display_name":"Argentine
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Cayenne","display_name":"French
+        Guiana Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Cordoba","display_name":"Argentine
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Fortaleza","display_name":"Brasilia
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Godthab","display_name":"Western
+        Greenland Time","utc_offset_w_dst":-10800000,"daylight_saves":3600000,"uses_daylight":true,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Jujuy","display_name":"Argentine
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Maceio","display_name":"Brasilia
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Mendoza","display_name":"Argentine
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Miquelon","display_name":"Pierre
+        & Miquelon Standard Time","utc_offset_w_dst":-10800000,"daylight_saves":3600000,"uses_daylight":true,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Montevideo","display_name":"Uruguay
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Paramaribo","display_name":"Suriname
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Recife","display_name":"Brasilia
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Rosario","display_name":"Argentine
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Santarem","display_name":"Brasilia
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Sao_Paulo","display_name":"Brasilia
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":3600000,"uses_daylight":true,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"Antarctica/Rothera","display_name":"Rothera
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"Atlantic/Stanley","display_name":"Falkland
+        Is. Time","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"BET","display_name":"Brasilia
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":3600000,"uses_daylight":true,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"Brazil/East","display_name":"Brasilia
+        Time","utc_offset_w_dst":-10800000,"daylight_saves":3600000,"uses_daylight":true,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"Etc/GMT+3","display_name":"GMT-03:00","utc_offset_w_dst":-10800000,"daylight_saves":0,"uses_daylight":false,"offset":-10800000,"utc_offset_raw":-10800000},{"id":"America/Noronha","display_name":"Fernando
+        de Noronha Time","utc_offset_w_dst":-7200000,"daylight_saves":0,"uses_daylight":false,"offset":-7200000,"utc_offset_raw":-7200000},{"id":"Atlantic/South_Georgia","display_name":"South
+        Georgia Standard Time","utc_offset_w_dst":-7200000,"daylight_saves":0,"uses_daylight":false,"offset":-7200000,"utc_offset_raw":-7200000},{"id":"Brazil/DeNoronha","display_name":"Fernando
+        de Noronha Time","utc_offset_w_dst":-7200000,"daylight_saves":0,"uses_daylight":false,"offset":-7200000,"utc_offset_raw":-7200000},{"id":"Etc/GMT+2","display_name":"GMT-02:00","utc_offset_w_dst":-7200000,"daylight_saves":0,"uses_daylight":false,"offset":-7200000,"utc_offset_raw":-7200000},{"id":"America/Scoresbysund","display_name":"Eastern
+        Greenland Time","utc_offset_w_dst":-3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-3600000,"utc_offset_raw":-3600000},{"id":"Atlantic/Azores","display_name":"Azores
+        Time","utc_offset_w_dst":-3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":-3600000,"utc_offset_raw":-3600000},{"id":"Atlantic/Cape_Verde","display_name":"Cape
+        Verde Time","utc_offset_w_dst":-3600000,"daylight_saves":0,"uses_daylight":false,"offset":-3600000,"utc_offset_raw":-3600000},{"id":"Etc/GMT+1","display_name":"GMT-01:00","utc_offset_w_dst":-3600000,"daylight_saves":0,"uses_daylight":false,"offset":-3600000,"utc_offset_raw":-3600000},{"id":"Africa/Abidjan","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Africa/Accra","display_name":"Ghana
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Africa/Bamako","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Africa/Banjul","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Africa/Bissau","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Africa/Casablanca","display_name":"Western
+        European Time","utc_offset_w_dst":0,"daylight_saves":3600000,"uses_daylight":true,"offset":0,"utc_offset_raw":0},{"id":"Africa/Conakry","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Africa/Dakar","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Africa/El_Aaiun","display_name":"Western
+        European Time","utc_offset_w_dst":0,"daylight_saves":3600000,"uses_daylight":true,"offset":0,"utc_offset_raw":0},{"id":"Africa/Freetown","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Africa/Lome","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Africa/Monrovia","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Africa/Nouakchott","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Africa/Ouagadougou","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Africa/Sao_Tome","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Africa/Timbuktu","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"America/Danmarkshavn","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Antarctica/Troll","display_name":"Coordinated
+        Universal Time","utc_offset_w_dst":0,"daylight_saves":7200000,"uses_daylight":true,"offset":0,"utc_offset_raw":0},{"id":"Atlantic/Canary","display_name":"Western
+        European Time","utc_offset_w_dst":0,"daylight_saves":3600000,"uses_daylight":true,"offset":0,"utc_offset_raw":0},{"id":"Atlantic/Faeroe","display_name":"Western
+        European Time","utc_offset_w_dst":0,"daylight_saves":3600000,"uses_daylight":true,"offset":0,"utc_offset_raw":0},{"id":"Atlantic/Faroe","display_name":"Western
+        European Time","utc_offset_w_dst":0,"daylight_saves":3600000,"uses_daylight":true,"offset":0,"utc_offset_raw":0},{"id":"Atlantic/Madeira","display_name":"Western
+        European Time","utc_offset_w_dst":0,"daylight_saves":3600000,"uses_daylight":true,"offset":0,"utc_offset_raw":0},{"id":"Atlantic/Reykjavik","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Atlantic/St_Helena","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Eire","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":3600000,"uses_daylight":true,"offset":0,"utc_offset_raw":0},{"id":"Etc/GMT","display_name":"GMT+00:00","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Etc/GMT+0","display_name":"GMT+00:00","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Etc/GMT-0","display_name":"GMT+00:00","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Etc/GMT0","display_name":"GMT+00:00","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Etc/Greenwich","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Etc/UCT","display_name":"Coordinated
+        Universal Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Etc/UTC","display_name":"Coordinated
+        Universal Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Etc/Universal","display_name":"Coordinated
+        Universal Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Etc/Zulu","display_name":"Coordinated
+        Universal Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Europe/Belfast","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":3600000,"uses_daylight":true,"offset":0,"utc_offset_raw":0},{"id":"Europe/Dublin","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":3600000,"uses_daylight":true,"offset":0,"utc_offset_raw":0},{"id":"Europe/Guernsey","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":3600000,"uses_daylight":true,"offset":0,"utc_offset_raw":0},{"id":"Europe/Isle_of_Man","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":3600000,"uses_daylight":true,"offset":0,"utc_offset_raw":0},{"id":"Europe/Jersey","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":3600000,"uses_daylight":true,"offset":0,"utc_offset_raw":0},{"id":"Europe/Lisbon","display_name":"Western
+        European Time","utc_offset_w_dst":0,"daylight_saves":3600000,"uses_daylight":true,"offset":0,"utc_offset_raw":0},{"id":"Europe/London","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":3600000,"uses_daylight":true,"offset":0,"utc_offset_raw":0},{"id":"GB","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":3600000,"uses_daylight":true,"offset":0,"utc_offset_raw":0},{"id":"GB-Eire","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":3600000,"uses_daylight":true,"offset":0,"utc_offset_raw":0},{"id":"GMT","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"GMT0","display_name":"GMT+00:00","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Greenwich","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Iceland","display_name":"Greenwich
+        Mean Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Portugal","display_name":"Western
+        European Time","utc_offset_w_dst":0,"daylight_saves":3600000,"uses_daylight":true,"offset":0,"utc_offset_raw":0},{"id":"UCT","display_name":"Coordinated
+        Universal Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"UTC","display_name":"Coordinated
+        Universal Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Universal","display_name":"Coordinated
+        Universal Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"WET","display_name":"Western
+        European Time","utc_offset_w_dst":0,"daylight_saves":3600000,"uses_daylight":true,"offset":0,"utc_offset_raw":0},{"id":"Zulu","display_name":"Coordinated
+        Universal Time","utc_offset_w_dst":0,"daylight_saves":0,"uses_daylight":false,"offset":0,"utc_offset_raw":0},{"id":"Africa/Algiers","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":0,"uses_daylight":false,"offset":3600000,"utc_offset_raw":3600000},{"id":"Africa/Bangui","display_name":"Western
+        African Time","utc_offset_w_dst":3600000,"daylight_saves":0,"uses_daylight":false,"offset":3600000,"utc_offset_raw":3600000},{"id":"Africa/Brazzaville","display_name":"Western
+        African Time","utc_offset_w_dst":3600000,"daylight_saves":0,"uses_daylight":false,"offset":3600000,"utc_offset_raw":3600000},{"id":"Africa/Ceuta","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Africa/Douala","display_name":"Western
+        African Time","utc_offset_w_dst":3600000,"daylight_saves":0,"uses_daylight":false,"offset":3600000,"utc_offset_raw":3600000},{"id":"Africa/Kinshasa","display_name":"Western
+        African Time","utc_offset_w_dst":3600000,"daylight_saves":0,"uses_daylight":false,"offset":3600000,"utc_offset_raw":3600000},{"id":"Africa/Lagos","display_name":"Western
+        African Time","utc_offset_w_dst":3600000,"daylight_saves":0,"uses_daylight":false,"offset":3600000,"utc_offset_raw":3600000},{"id":"Africa/Libreville","display_name":"Western
+        African Time","utc_offset_w_dst":3600000,"daylight_saves":0,"uses_daylight":false,"offset":3600000,"utc_offset_raw":3600000},{"id":"Africa/Luanda","display_name":"Western
+        African Time","utc_offset_w_dst":3600000,"daylight_saves":0,"uses_daylight":false,"offset":3600000,"utc_offset_raw":3600000},{"id":"Africa/Malabo","display_name":"Western
+        African Time","utc_offset_w_dst":3600000,"daylight_saves":0,"uses_daylight":false,"offset":3600000,"utc_offset_raw":3600000},{"id":"Africa/Ndjamena","display_name":"Western
+        African Time","utc_offset_w_dst":3600000,"daylight_saves":0,"uses_daylight":false,"offset":3600000,"utc_offset_raw":3600000},{"id":"Africa/Niamey","display_name":"Western
+        African Time","utc_offset_w_dst":3600000,"daylight_saves":0,"uses_daylight":false,"offset":3600000,"utc_offset_raw":3600000},{"id":"Africa/Porto-Novo","display_name":"Western
+        African Time","utc_offset_w_dst":3600000,"daylight_saves":0,"uses_daylight":false,"offset":3600000,"utc_offset_raw":3600000},{"id":"Africa/Tunis","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":0,"uses_daylight":false,"offset":3600000,"utc_offset_raw":3600000},{"id":"Africa/Windhoek","display_name":"Western
+        African Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":3600000},{"id":"Arctic/Longyearbyen","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Atlantic/Jan_Mayen","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"CET","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"ECT","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Etc/GMT-1","display_name":"GMT+01:00","utc_offset_w_dst":3600000,"daylight_saves":0,"uses_daylight":false,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Amsterdam","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Andorra","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Belgrade","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Berlin","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Bratislava","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Brussels","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Budapest","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Busingen","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Copenhagen","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Gibraltar","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Ljubljana","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Luxembourg","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Madrid","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Malta","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Monaco","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Oslo","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Paris","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Podgorica","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Prague","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Rome","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/San_Marino","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Sarajevo","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Skopje","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Stockholm","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Tirane","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Vaduz","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Vatican","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Vienna","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Warsaw","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Zagreb","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Europe/Zurich","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"MET","display_name":"Middle
+        Europe Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"Poland","display_name":"Central
+        European Time","utc_offset_w_dst":3600000,"daylight_saves":3600000,"uses_daylight":true,"offset":3600000,"utc_offset_raw":3600000},{"id":"ART","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":0,"uses_daylight":false,"offset":7200000,"utc_offset_raw":7200000},{"id":"Africa/Blantyre","display_name":"Central
+        African Time","utc_offset_w_dst":7200000,"daylight_saves":0,"uses_daylight":false,"offset":7200000,"utc_offset_raw":7200000},{"id":"Africa/Bujumbura","display_name":"Central
+        African Time","utc_offset_w_dst":7200000,"daylight_saves":0,"uses_daylight":false,"offset":7200000,"utc_offset_raw":7200000},{"id":"Africa/Cairo","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":0,"uses_daylight":false,"offset":7200000,"utc_offset_raw":7200000},{"id":"Africa/Gaborone","display_name":"Central
+        African Time","utc_offset_w_dst":7200000,"daylight_saves":0,"uses_daylight":false,"offset":7200000,"utc_offset_raw":7200000},{"id":"Africa/Harare","display_name":"Central
+        African Time","utc_offset_w_dst":7200000,"daylight_saves":0,"uses_daylight":false,"offset":7200000,"utc_offset_raw":7200000},{"id":"Africa/Johannesburg","display_name":"South
+        Africa Standard Time","utc_offset_w_dst":7200000,"daylight_saves":0,"uses_daylight":false,"offset":7200000,"utc_offset_raw":7200000},{"id":"Africa/Kigali","display_name":"Central
+        African Time","utc_offset_w_dst":7200000,"daylight_saves":0,"uses_daylight":false,"offset":7200000,"utc_offset_raw":7200000},{"id":"Africa/Lubumbashi","display_name":"Central
+        African Time","utc_offset_w_dst":7200000,"daylight_saves":0,"uses_daylight":false,"offset":7200000,"utc_offset_raw":7200000},{"id":"Africa/Lusaka","display_name":"Central
+        African Time","utc_offset_w_dst":7200000,"daylight_saves":0,"uses_daylight":false,"offset":7200000,"utc_offset_raw":7200000},{"id":"Africa/Maputo","display_name":"Central
+        African Time","utc_offset_w_dst":7200000,"daylight_saves":0,"uses_daylight":false,"offset":7200000,"utc_offset_raw":7200000},{"id":"Africa/Maseru","display_name":"South
+        Africa Standard Time","utc_offset_w_dst":7200000,"daylight_saves":0,"uses_daylight":false,"offset":7200000,"utc_offset_raw":7200000},{"id":"Africa/Mbabane","display_name":"South
+        Africa Standard Time","utc_offset_w_dst":7200000,"daylight_saves":0,"uses_daylight":false,"offset":7200000,"utc_offset_raw":7200000},{"id":"Africa/Tripoli","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":0,"uses_daylight":false,"offset":7200000,"utc_offset_raw":7200000},{"id":"Asia/Amman","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":7200000},{"id":"Asia/Beirut","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":7200000},{"id":"Asia/Damascus","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":7200000},{"id":"Asia/Gaza","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":7200000},{"id":"Asia/Hebron","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":7200000},{"id":"Asia/Jerusalem","display_name":"Israel
+        Standard Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":7200000},{"id":"Asia/Nicosia","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":7200000},{"id":"Asia/Tel_Aviv","display_name":"Israel
+        Standard Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":7200000},{"id":"CAT","display_name":"Central
+        African Time","utc_offset_w_dst":7200000,"daylight_saves":0,"uses_daylight":false,"offset":7200000,"utc_offset_raw":7200000},{"id":"EET","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":7200000},{"id":"Egypt","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":0,"uses_daylight":false,"offset":7200000,"utc_offset_raw":7200000},{"id":"Etc/GMT-2","display_name":"GMT+02:00","utc_offset_w_dst":7200000,"daylight_saves":0,"uses_daylight":false,"offset":7200000,"utc_offset_raw":7200000},{"id":"Europe/Athens","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":7200000},{"id":"Europe/Bucharest","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":7200000},{"id":"Europe/Chisinau","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":7200000},{"id":"Europe/Helsinki","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":7200000},{"id":"Europe/Kaliningrad","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":0,"uses_daylight":false,"offset":7200000,"utc_offset_raw":7200000},{"id":"Europe/Kiev","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":7200000},{"id":"Europe/Mariehamn","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":7200000},{"id":"Europe/Nicosia","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":7200000},{"id":"Europe/Riga","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":7200000},{"id":"Europe/Sofia","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":7200000},{"id":"Europe/Tallinn","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":7200000},{"id":"Europe/Tiraspol","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":7200000},{"id":"Europe/Uzhgorod","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":7200000},{"id":"Europe/Vilnius","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":7200000},{"id":"Europe/Zaporozhye","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":7200000},{"id":"Israel","display_name":"Israel
+        Standard Time","utc_offset_w_dst":7200000,"daylight_saves":3600000,"uses_daylight":true,"offset":7200000,"utc_offset_raw":7200000},{"id":"Libya","display_name":"Eastern
+        European Time","utc_offset_w_dst":7200000,"daylight_saves":0,"uses_daylight":false,"offset":7200000,"utc_offset_raw":7200000},{"id":"Africa/Addis_Ababa","display_name":"Eastern
+        African Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Africa/Asmara","display_name":"Eastern
+        African Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Africa/Asmera","display_name":"Eastern
+        African Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Africa/Dar_es_Salaam","display_name":"Eastern
+        African Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Africa/Djibouti","display_name":"Eastern
+        African Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Africa/Juba","display_name":"Eastern
+        African Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Africa/Kampala","display_name":"Eastern
+        African Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Africa/Khartoum","display_name":"Eastern
+        African Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Africa/Mogadishu","display_name":"Eastern
+        African Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Africa/Nairobi","display_name":"Eastern
+        African Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Antarctica/Syowa","display_name":"Syowa
+        Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Asia/Aden","display_name":"Arabia
+        Standard Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Asia/Baghdad","display_name":"Arabia
+        Standard Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Asia/Bahrain","display_name":"Arabia
+        Standard Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Asia/Istanbul","display_name":"Eastern
+        European Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Asia/Kuwait","display_name":"Arabia
+        Standard Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Asia/Qatar","display_name":"Arabia
+        Standard Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Asia/Riyadh","display_name":"Arabia
+        Standard Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"EAT","display_name":"Eastern
+        African Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Etc/GMT-3","display_name":"GMT+03:00","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Europe/Istanbul","display_name":"Eastern
+        European Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Europe/Kirov","display_name":"GMT+03:00","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Europe/Minsk","display_name":"Moscow
+        Standard Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Europe/Moscow","display_name":"Moscow
+        Standard Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Europe/Simferopol","display_name":"Moscow
+        Standard Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Europe/Volgograd","display_name":"Moscow
+        Standard Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Indian/Antananarivo","display_name":"Eastern
+        African Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Indian/Comoro","display_name":"Eastern
+        African Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Indian/Mayotte","display_name":"Eastern
+        African Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Turkey","display_name":"Eastern
+        European Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"W-SU","display_name":"Moscow
+        Standard Time","utc_offset_w_dst":10800000,"daylight_saves":0,"uses_daylight":false,"offset":10800000,"utc_offset_raw":10800000},{"id":"Asia/Tehran","display_name":"Iran
+        Standard Time","utc_offset_w_dst":12600000,"daylight_saves":3600000,"uses_daylight":true,"offset":12600000,"utc_offset_raw":12600000},{"id":"Iran","display_name":"Iran
+        Standard Time","utc_offset_w_dst":12600000,"daylight_saves":3600000,"uses_daylight":true,"offset":12600000,"utc_offset_raw":12600000},{"id":"Asia/Baku","display_name":"Azerbaijan
+        Time","utc_offset_w_dst":14400000,"daylight_saves":0,"uses_daylight":false,"offset":14400000,"utc_offset_raw":14400000},{"id":"Asia/Dubai","display_name":"Gulf
+        Standard Time","utc_offset_w_dst":14400000,"daylight_saves":0,"uses_daylight":false,"offset":14400000,"utc_offset_raw":14400000},{"id":"Asia/Muscat","display_name":"Gulf
+        Standard Time","utc_offset_w_dst":14400000,"daylight_saves":0,"uses_daylight":false,"offset":14400000,"utc_offset_raw":14400000},{"id":"Asia/Tbilisi","display_name":"Georgia
+        Time","utc_offset_w_dst":14400000,"daylight_saves":0,"uses_daylight":false,"offset":14400000,"utc_offset_raw":14400000},{"id":"Asia/Yerevan","display_name":"Armenia
+        Time","utc_offset_w_dst":14400000,"daylight_saves":0,"uses_daylight":false,"offset":14400000,"utc_offset_raw":14400000},{"id":"Etc/GMT-4","display_name":"GMT+04:00","utc_offset_w_dst":14400000,"daylight_saves":0,"uses_daylight":false,"offset":14400000,"utc_offset_raw":14400000},{"id":"Europe/Astrakhan","display_name":"GMT+04:00","utc_offset_w_dst":14400000,"daylight_saves":0,"uses_daylight":false,"offset":14400000,"utc_offset_raw":14400000},{"id":"Europe/Samara","display_name":"Samara
+        Time","utc_offset_w_dst":14400000,"daylight_saves":0,"uses_daylight":false,"offset":14400000,"utc_offset_raw":14400000},{"id":"Europe/Ulyanovsk","display_name":"GMT+04:00","utc_offset_w_dst":14400000,"daylight_saves":0,"uses_daylight":false,"offset":14400000,"utc_offset_raw":14400000},{"id":"Indian/Mahe","display_name":"Seychelles
+        Time","utc_offset_w_dst":14400000,"daylight_saves":0,"uses_daylight":false,"offset":14400000,"utc_offset_raw":14400000},{"id":"Indian/Mauritius","display_name":"Mauritius
+        Time","utc_offset_w_dst":14400000,"daylight_saves":0,"uses_daylight":false,"offset":14400000,"utc_offset_raw":14400000},{"id":"Indian/Reunion","display_name":"Reunion
+        Time","utc_offset_w_dst":14400000,"daylight_saves":0,"uses_daylight":false,"offset":14400000,"utc_offset_raw":14400000},{"id":"NET","display_name":"Armenia
+        Time","utc_offset_w_dst":14400000,"daylight_saves":0,"uses_daylight":false,"offset":14400000,"utc_offset_raw":14400000},{"id":"Asia/Kabul","display_name":"Afghanistan
+        Time","utc_offset_w_dst":16200000,"daylight_saves":0,"uses_daylight":false,"offset":16200000,"utc_offset_raw":16200000},{"id":"Antarctica/Mawson","display_name":"Mawson
+        Time","utc_offset_w_dst":18000000,"daylight_saves":0,"uses_daylight":false,"offset":18000000,"utc_offset_raw":18000000},{"id":"Asia/Aqtau","display_name":"Aqtau
+        Time","utc_offset_w_dst":18000000,"daylight_saves":0,"uses_daylight":false,"offset":18000000,"utc_offset_raw":18000000},{"id":"Asia/Aqtobe","display_name":"Aqtobe
+        Time","utc_offset_w_dst":18000000,"daylight_saves":0,"uses_daylight":false,"offset":18000000,"utc_offset_raw":18000000},{"id":"Asia/Ashgabat","display_name":"Turkmenistan
+        Time","utc_offset_w_dst":18000000,"daylight_saves":0,"uses_daylight":false,"offset":18000000,"utc_offset_raw":18000000},{"id":"Asia/Ashkhabad","display_name":"Turkmenistan
+        Time","utc_offset_w_dst":18000000,"daylight_saves":0,"uses_daylight":false,"offset":18000000,"utc_offset_raw":18000000},{"id":"Asia/Dushanbe","display_name":"Tajikistan
+        Time","utc_offset_w_dst":18000000,"daylight_saves":0,"uses_daylight":false,"offset":18000000,"utc_offset_raw":18000000},{"id":"Asia/Karachi","display_name":"Pakistan
+        Time","utc_offset_w_dst":18000000,"daylight_saves":0,"uses_daylight":false,"offset":18000000,"utc_offset_raw":18000000},{"id":"Asia/Oral","display_name":"Oral
+        Time","utc_offset_w_dst":18000000,"daylight_saves":0,"uses_daylight":false,"offset":18000000,"utc_offset_raw":18000000},{"id":"Asia/Samarkand","display_name":"Uzbekistan
+        Time","utc_offset_w_dst":18000000,"daylight_saves":0,"uses_daylight":false,"offset":18000000,"utc_offset_raw":18000000},{"id":"Asia/Tashkent","display_name":"Uzbekistan
+        Time","utc_offset_w_dst":18000000,"daylight_saves":0,"uses_daylight":false,"offset":18000000,"utc_offset_raw":18000000},{"id":"Asia/Yekaterinburg","display_name":"Yekaterinburg
+        Time","utc_offset_w_dst":18000000,"daylight_saves":0,"uses_daylight":false,"offset":18000000,"utc_offset_raw":18000000},{"id":"Etc/GMT-5","display_name":"GMT+05:00","utc_offset_w_dst":18000000,"daylight_saves":0,"uses_daylight":false,"offset":18000000,"utc_offset_raw":18000000},{"id":"Indian/Kerguelen","display_name":"French
+        Southern & Antarctic Lands Time","utc_offset_w_dst":18000000,"daylight_saves":0,"uses_daylight":false,"offset":18000000,"utc_offset_raw":18000000},{"id":"Indian/Maldives","display_name":"Maldives
+        Time","utc_offset_w_dst":18000000,"daylight_saves":0,"uses_daylight":false,"offset":18000000,"utc_offset_raw":18000000},{"id":"PLT","display_name":"Pakistan
+        Time","utc_offset_w_dst":18000000,"daylight_saves":0,"uses_daylight":false,"offset":18000000,"utc_offset_raw":18000000},{"id":"Asia/Calcutta","display_name":"India
+        Standard Time","utc_offset_w_dst":19800000,"daylight_saves":0,"uses_daylight":false,"offset":19800000,"utc_offset_raw":19800000},{"id":"Asia/Colombo","display_name":"India
+        Standard Time","utc_offset_w_dst":19800000,"daylight_saves":0,"uses_daylight":false,"offset":19800000,"utc_offset_raw":19800000},{"id":"Asia/Kolkata","display_name":"India
+        Standard Time","utc_offset_w_dst":19800000,"daylight_saves":0,"uses_daylight":false,"offset":19800000,"utc_offset_raw":19800000},{"id":"IST","display_name":"India
+        Standard Time","utc_offset_w_dst":19800000,"daylight_saves":0,"uses_daylight":false,"offset":19800000,"utc_offset_raw":19800000},{"id":"Asia/Kathmandu","display_name":"Nepal
+        Time","utc_offset_w_dst":20700000,"daylight_saves":0,"uses_daylight":false,"offset":20700000,"utc_offset_raw":20700000},{"id":"Asia/Katmandu","display_name":"Nepal
+        Time","utc_offset_w_dst":20700000,"daylight_saves":0,"uses_daylight":false,"offset":20700000,"utc_offset_raw":20700000},{"id":"Antarctica/Vostok","display_name":"Vostok
+        Time","utc_offset_w_dst":21600000,"daylight_saves":0,"uses_daylight":false,"offset":21600000,"utc_offset_raw":21600000},{"id":"Asia/Almaty","display_name":"Alma-Ata
+        Time","utc_offset_w_dst":21600000,"daylight_saves":0,"uses_daylight":false,"offset":21600000,"utc_offset_raw":21600000},{"id":"Asia/Bishkek","display_name":"Kirgizstan
+        Time","utc_offset_w_dst":21600000,"daylight_saves":0,"uses_daylight":false,"offset":21600000,"utc_offset_raw":21600000},{"id":"Asia/Dacca","display_name":"Bangladesh
+        Time","utc_offset_w_dst":21600000,"daylight_saves":0,"uses_daylight":false,"offset":21600000,"utc_offset_raw":21600000},{"id":"Asia/Dhaka","display_name":"Bangladesh
+        Time","utc_offset_w_dst":21600000,"daylight_saves":0,"uses_daylight":false,"offset":21600000,"utc_offset_raw":21600000},{"id":"Asia/Kashgar","display_name":"Xinjiang
+        Standard Time","utc_offset_w_dst":21600000,"daylight_saves":0,"uses_daylight":false,"offset":21600000,"utc_offset_raw":21600000},{"id":"Asia/Omsk","display_name":"Omsk
+        Time","utc_offset_w_dst":21600000,"daylight_saves":0,"uses_daylight":false,"offset":21600000,"utc_offset_raw":21600000},{"id":"Asia/Qyzylorda","display_name":"Qyzylorda
+        Time","utc_offset_w_dst":21600000,"daylight_saves":0,"uses_daylight":false,"offset":21600000,"utc_offset_raw":21600000},{"id":"Asia/Thimbu","display_name":"Bhutan
+        Time","utc_offset_w_dst":21600000,"daylight_saves":0,"uses_daylight":false,"offset":21600000,"utc_offset_raw":21600000},{"id":"Asia/Thimphu","display_name":"Bhutan
+        Time","utc_offset_w_dst":21600000,"daylight_saves":0,"uses_daylight":false,"offset":21600000,"utc_offset_raw":21600000},{"id":"Asia/Urumqi","display_name":"Xinjiang
+        Standard Time","utc_offset_w_dst":21600000,"daylight_saves":0,"uses_daylight":false,"offset":21600000,"utc_offset_raw":21600000},{"id":"BST","display_name":"Bangladesh
+        Time","utc_offset_w_dst":21600000,"daylight_saves":0,"uses_daylight":false,"offset":21600000,"utc_offset_raw":21600000},{"id":"Etc/GMT-6","display_name":"GMT+06:00","utc_offset_w_dst":21600000,"daylight_saves":0,"uses_daylight":false,"offset":21600000,"utc_offset_raw":21600000},{"id":"Indian/Chagos","display_name":"Indian
+        Ocean Territory Time","utc_offset_w_dst":21600000,"daylight_saves":0,"uses_daylight":false,"offset":21600000,"utc_offset_raw":21600000},{"id":"Asia/Rangoon","display_name":"Myanmar
+        Time","utc_offset_w_dst":23400000,"daylight_saves":0,"uses_daylight":false,"offset":23400000,"utc_offset_raw":23400000},{"id":"Asia/Yangon","display_name":"Myanmar
+        Time","utc_offset_w_dst":23400000,"daylight_saves":0,"uses_daylight":false,"offset":23400000,"utc_offset_raw":23400000},{"id":"Indian/Cocos","display_name":"Cocos
+        Islands Time","utc_offset_w_dst":23400000,"daylight_saves":0,"uses_daylight":false,"offset":23400000,"utc_offset_raw":23400000},{"id":"Antarctica/Davis","display_name":"Davis
+        Time","utc_offset_w_dst":25200000,"daylight_saves":0,"uses_daylight":false,"offset":25200000,"utc_offset_raw":25200000},{"id":"Asia/Bangkok","display_name":"Indochina
+        Time","utc_offset_w_dst":25200000,"daylight_saves":0,"uses_daylight":false,"offset":25200000,"utc_offset_raw":25200000},{"id":"Asia/Barnaul","display_name":"GMT+07:00","utc_offset_w_dst":25200000,"daylight_saves":0,"uses_daylight":false,"offset":25200000,"utc_offset_raw":25200000},{"id":"Asia/Ho_Chi_Minh","display_name":"Indochina
+        Time","utc_offset_w_dst":25200000,"daylight_saves":0,"uses_daylight":false,"offset":25200000,"utc_offset_raw":25200000},{"id":"Asia/Hovd","display_name":"Hovd
+        Time","utc_offset_w_dst":25200000,"daylight_saves":3600000,"uses_daylight":true,"offset":25200000,"utc_offset_raw":25200000},{"id":"Asia/Jakarta","display_name":"West
+        Indonesia Time","utc_offset_w_dst":25200000,"daylight_saves":0,"uses_daylight":false,"offset":25200000,"utc_offset_raw":25200000},{"id":"Asia/Krasnoyarsk","display_name":"Krasnoyarsk
+        Time","utc_offset_w_dst":25200000,"daylight_saves":0,"uses_daylight":false,"offset":25200000,"utc_offset_raw":25200000},{"id":"Asia/Novokuznetsk","display_name":"Krasnoyarsk
+        Time","utc_offset_w_dst":25200000,"daylight_saves":0,"uses_daylight":false,"offset":25200000,"utc_offset_raw":25200000},{"id":"Asia/Novosibirsk","display_name":"Novosibirsk
+        Time","utc_offset_w_dst":25200000,"daylight_saves":0,"uses_daylight":false,"offset":25200000,"utc_offset_raw":25200000},{"id":"Asia/Phnom_Penh","display_name":"Indochina
+        Time","utc_offset_w_dst":25200000,"daylight_saves":0,"uses_daylight":false,"offset":25200000,"utc_offset_raw":25200000},{"id":"Asia/Pontianak","display_name":"West
+        Indonesia Time","utc_offset_w_dst":25200000,"daylight_saves":0,"uses_daylight":false,"offset":25200000,"utc_offset_raw":25200000},{"id":"Asia/Saigon","display_name":"Indochina
+        Time","utc_offset_w_dst":25200000,"daylight_saves":0,"uses_daylight":false,"offset":25200000,"utc_offset_raw":25200000},{"id":"Asia/Tomsk","display_name":"GMT+07:00","utc_offset_w_dst":25200000,"daylight_saves":0,"uses_daylight":false,"offset":25200000,"utc_offset_raw":25200000},{"id":"Asia/Vientiane","display_name":"Indochina
+        Time","utc_offset_w_dst":25200000,"daylight_saves":0,"uses_daylight":false,"offset":25200000,"utc_offset_raw":25200000},{"id":"Etc/GMT-7","display_name":"GMT+07:00","utc_offset_w_dst":25200000,"daylight_saves":0,"uses_daylight":false,"offset":25200000,"utc_offset_raw":25200000},{"id":"Indian/Christmas","display_name":"Christmas
+        Island Time","utc_offset_w_dst":25200000,"daylight_saves":0,"uses_daylight":false,"offset":25200000,"utc_offset_raw":25200000},{"id":"VST","display_name":"Indochina
+        Time","utc_offset_w_dst":25200000,"daylight_saves":0,"uses_daylight":false,"offset":25200000,"utc_offset_raw":25200000},{"id":"Antarctica/Casey","display_name":"Australian
+        Western Standard Time","utc_offset_w_dst":28800000,"daylight_saves":0,"uses_daylight":false,"offset":28800000,"utc_offset_raw":28800000},{"id":"Asia/Brunei","display_name":"Brunei
+        Time","utc_offset_w_dst":28800000,"daylight_saves":0,"uses_daylight":false,"offset":28800000,"utc_offset_raw":28800000},{"id":"Asia/Choibalsan","display_name":"Choibalsan
+        Time","utc_offset_w_dst":28800000,"daylight_saves":3600000,"uses_daylight":true,"offset":28800000,"utc_offset_raw":28800000},{"id":"Asia/Chongqing","display_name":"China
+        Standard Time","utc_offset_w_dst":28800000,"daylight_saves":0,"uses_daylight":false,"offset":28800000,"utc_offset_raw":28800000},{"id":"Asia/Chungking","display_name":"China
+        Standard Time","utc_offset_w_dst":28800000,"daylight_saves":0,"uses_daylight":false,"offset":28800000,"utc_offset_raw":28800000},{"id":"Asia/Harbin","display_name":"China
+        Standard Time","utc_offset_w_dst":28800000,"daylight_saves":0,"uses_daylight":false,"offset":28800000,"utc_offset_raw":28800000},{"id":"Asia/Hong_Kong","display_name":"Hong
+        Kong Time","utc_offset_w_dst":28800000,"daylight_saves":0,"uses_daylight":false,"offset":28800000,"utc_offset_raw":28800000},{"id":"Asia/Irkutsk","display_name":"Irkutsk
+        Time","utc_offset_w_dst":28800000,"daylight_saves":0,"uses_daylight":false,"offset":28800000,"utc_offset_raw":28800000},{"id":"Asia/Kuala_Lumpur","display_name":"Malaysia
+        Time","utc_offset_w_dst":28800000,"daylight_saves":0,"uses_daylight":false,"offset":28800000,"utc_offset_raw":28800000},{"id":"Asia/Kuching","display_name":"Malaysia
+        Time","utc_offset_w_dst":28800000,"daylight_saves":0,"uses_daylight":false,"offset":28800000,"utc_offset_raw":28800000},{"id":"Asia/Macao","display_name":"China
+        Standard Time","utc_offset_w_dst":28800000,"daylight_saves":0,"uses_daylight":false,"offset":28800000,"utc_offset_raw":28800000},{"id":"Asia/Macau","display_name":"China
+        Standard Time","utc_offset_w_dst":28800000,"daylight_saves":0,"uses_daylight":false,"offset":28800000,"utc_offset_raw":28800000},{"id":"Asia/Makassar","display_name":"Central
+        Indonesia Time","utc_offset_w_dst":28800000,"daylight_saves":0,"uses_daylight":false,"offset":28800000,"utc_offset_raw":28800000},{"id":"Asia/Manila","display_name":"Philippines
+        Time","utc_offset_w_dst":28800000,"daylight_saves":0,"uses_daylight":false,"offset":28800000,"utc_offset_raw":28800000},{"id":"Asia/Shanghai","display_name":"China
+        Standard Time","utc_offset_w_dst":28800000,"daylight_saves":0,"uses_daylight":false,"offset":28800000,"utc_offset_raw":28800000},{"id":"Asia/Singapore","display_name":"Singapore
+        Time","utc_offset_w_dst":28800000,"daylight_saves":0,"uses_daylight":false,"offset":28800000,"utc_offset_raw":28800000},{"id":"Asia/Taipei","display_name":"China
+        Standard Time","utc_offset_w_dst":28800000,"daylight_saves":0,"uses_daylight":false,"offset":28800000,"utc_offset_raw":28800000},{"id":"Asia/Ujung_Pandang","display_name":"Central
+        Indonesia Time","utc_offset_w_dst":28800000,"daylight_saves":0,"uses_daylight":false,"offset":28800000,"utc_offset_raw":28800000},{"id":"Asia/Ulaanbaatar","display_name":"Ulaanbaatar
+        Time","utc_offset_w_dst":28800000,"daylight_saves":3600000,"uses_daylight":true,"offset":28800000,"utc_offset_raw":28800000},{"id":"Asia/Ulan_Bator","display_name":"Ulaanbaatar
+        Time","utc_offset_w_dst":28800000,"daylight_saves":3600000,"uses_daylight":true,"offset":28800000,"utc_offset_raw":28800000},{"id":"Australia/Perth","display_name":"Australian
+        Western Standard Time","utc_offset_w_dst":28800000,"daylight_saves":0,"uses_daylight":false,"offset":28800000,"utc_offset_raw":28800000},{"id":"Australia/West","display_name":"Australian
+        Western Standard Time","utc_offset_w_dst":28800000,"daylight_saves":0,"uses_daylight":false,"offset":28800000,"utc_offset_raw":28800000},{"id":"CTT","display_name":"China
+        Standard Time","utc_offset_w_dst":28800000,"daylight_saves":0,"uses_daylight":false,"offset":28800000,"utc_offset_raw":28800000},{"id":"Etc/GMT-8","display_name":"GMT+08:00","utc_offset_w_dst":28800000,"daylight_saves":0,"uses_daylight":false,"offset":28800000,"utc_offset_raw":28800000},{"id":"Hongkong","display_name":"Hong
+        Kong Time","utc_offset_w_dst":28800000,"daylight_saves":0,"uses_daylight":false,"offset":28800000,"utc_offset_raw":28800000},{"id":"PRC","display_name":"China
+        Standard Time","utc_offset_w_dst":28800000,"daylight_saves":0,"uses_daylight":false,"offset":28800000,"utc_offset_raw":28800000},{"id":"Singapore","display_name":"Singapore
+        Time","utc_offset_w_dst":28800000,"daylight_saves":0,"uses_daylight":false,"offset":28800000,"utc_offset_raw":28800000},{"id":"Asia/Pyongyang","display_name":"Korea
+        Standard Time","utc_offset_w_dst":30600000,"daylight_saves":0,"uses_daylight":false,"offset":30600000,"utc_offset_raw":30600000},{"id":"Australia/Eucla","display_name":"Australian
+        Central Western Standard Time","utc_offset_w_dst":31500000,"daylight_saves":0,"uses_daylight":false,"offset":31500000,"utc_offset_raw":31500000},{"id":"Asia/Chita","display_name":"Yakutsk
+        Time","utc_offset_w_dst":32400000,"daylight_saves":0,"uses_daylight":false,"offset":32400000,"utc_offset_raw":32400000},{"id":"Asia/Dili","display_name":"Timor-Leste
+        Time","utc_offset_w_dst":32400000,"daylight_saves":0,"uses_daylight":false,"offset":32400000,"utc_offset_raw":32400000},{"id":"Asia/Jayapura","display_name":"East
+        Indonesia Time","utc_offset_w_dst":32400000,"daylight_saves":0,"uses_daylight":false,"offset":32400000,"utc_offset_raw":32400000},{"id":"Asia/Khandyga","display_name":"Khandyga
+        Time","utc_offset_w_dst":32400000,"daylight_saves":0,"uses_daylight":false,"offset":32400000,"utc_offset_raw":32400000},{"id":"Asia/Seoul","display_name":"Korea
+        Standard Time","utc_offset_w_dst":32400000,"daylight_saves":0,"uses_daylight":false,"offset":32400000,"utc_offset_raw":32400000},{"id":"Asia/Tokyo","display_name":"Japan
+        Standard Time","utc_offset_w_dst":32400000,"daylight_saves":0,"uses_daylight":false,"offset":32400000,"utc_offset_raw":32400000},{"id":"Asia/Yakutsk","display_name":"Yakutsk
+        Time","utc_offset_w_dst":32400000,"daylight_saves":0,"uses_daylight":false,"offset":32400000,"utc_offset_raw":32400000},{"id":"Etc/GMT-9","display_name":"GMT+09:00","utc_offset_w_dst":32400000,"daylight_saves":0,"uses_daylight":false,"offset":32400000,"utc_offset_raw":32400000},{"id":"JST","display_name":"Japan
+        Standard Time","utc_offset_w_dst":32400000,"daylight_saves":0,"uses_daylight":false,"offset":32400000,"utc_offset_raw":32400000},{"id":"Japan","display_name":"Japan
+        Standard Time","utc_offset_w_dst":32400000,"daylight_saves":0,"uses_daylight":false,"offset":32400000,"utc_offset_raw":32400000},{"id":"Pacific/Palau","display_name":"Palau
+        Time","utc_offset_w_dst":32400000,"daylight_saves":0,"uses_daylight":false,"offset":32400000,"utc_offset_raw":32400000},{"id":"ROK","display_name":"Korea
+        Standard Time","utc_offset_w_dst":32400000,"daylight_saves":0,"uses_daylight":false,"offset":32400000,"utc_offset_raw":32400000},{"id":"ACT","display_name":"Australian
+        Central Standard Time (Northern Territory)","utc_offset_w_dst":34200000,"daylight_saves":0,"uses_daylight":false,"offset":34200000,"utc_offset_raw":34200000},{"id":"Australia/Adelaide","display_name":"Australian
+        Central Standard Time (South Australia)","utc_offset_w_dst":37800000,"daylight_saves":3600000,"uses_daylight":true,"offset":37800000,"utc_offset_raw":34200000},{"id":"Australia/Broken_Hill","display_name":"Australian
+        Central Standard Time (South Australia/New South Wales)","utc_offset_w_dst":37800000,"daylight_saves":3600000,"uses_daylight":true,"offset":37800000,"utc_offset_raw":34200000},{"id":"Australia/Darwin","display_name":"Australian
+        Central Standard Time (Northern Territory)","utc_offset_w_dst":34200000,"daylight_saves":0,"uses_daylight":false,"offset":34200000,"utc_offset_raw":34200000},{"id":"Australia/North","display_name":"Australian
+        Central Standard Time (Northern Territory)","utc_offset_w_dst":34200000,"daylight_saves":0,"uses_daylight":false,"offset":34200000,"utc_offset_raw":34200000},{"id":"Australia/South","display_name":"Australian
+        Central Standard Time (South Australia)","utc_offset_w_dst":37800000,"daylight_saves":3600000,"uses_daylight":true,"offset":37800000,"utc_offset_raw":34200000},{"id":"Australia/Yancowinna","display_name":"Australian
+        Central Standard Time (South Australia/New South Wales)","utc_offset_w_dst":37800000,"daylight_saves":3600000,"uses_daylight":true,"offset":37800000,"utc_offset_raw":34200000},{"id":"AET","display_name":"Australian
+        Eastern Standard Time (New South Wales)","utc_offset_w_dst":39600000,"daylight_saves":3600000,"uses_daylight":true,"offset":39600000,"utc_offset_raw":36000000},{"id":"Antarctica/DumontDUrville","display_name":"Dumont-d''Urville
+        Time","utc_offset_w_dst":36000000,"daylight_saves":0,"uses_daylight":false,"offset":36000000,"utc_offset_raw":36000000},{"id":"Asia/Ust-Nera","display_name":"Ust-Nera
+        Time","utc_offset_w_dst":36000000,"daylight_saves":0,"uses_daylight":false,"offset":36000000,"utc_offset_raw":36000000},{"id":"Asia/Vladivostok","display_name":"Vladivostok
+        Time","utc_offset_w_dst":36000000,"daylight_saves":0,"uses_daylight":false,"offset":36000000,"utc_offset_raw":36000000},{"id":"Australia/ACT","display_name":"Australian
+        Eastern Standard Time (New South Wales)","utc_offset_w_dst":39600000,"daylight_saves":3600000,"uses_daylight":true,"offset":39600000,"utc_offset_raw":36000000},{"id":"Australia/Brisbane","display_name":"Australian
+        Eastern Standard Time (Queensland)","utc_offset_w_dst":36000000,"daylight_saves":0,"uses_daylight":false,"offset":36000000,"utc_offset_raw":36000000},{"id":"Australia/Canberra","display_name":"Australian
+        Eastern Standard Time (New South Wales)","utc_offset_w_dst":39600000,"daylight_saves":3600000,"uses_daylight":true,"offset":39600000,"utc_offset_raw":36000000},{"id":"Australia/Currie","display_name":"Australian
+        Eastern Standard Time (New South Wales)","utc_offset_w_dst":39600000,"daylight_saves":3600000,"uses_daylight":true,"offset":39600000,"utc_offset_raw":36000000},{"id":"Australia/Hobart","display_name":"Australian
+        Eastern Standard Time (Tasmania)","utc_offset_w_dst":39600000,"daylight_saves":3600000,"uses_daylight":true,"offset":39600000,"utc_offset_raw":36000000},{"id":"Australia/Lindeman","display_name":"Australian
+        Eastern Standard Time (Queensland)","utc_offset_w_dst":36000000,"daylight_saves":0,"uses_daylight":false,"offset":36000000,"utc_offset_raw":36000000},{"id":"Australia/Melbourne","display_name":"Australian
+        Eastern Standard Time (Victoria)","utc_offset_w_dst":39600000,"daylight_saves":3600000,"uses_daylight":true,"offset":39600000,"utc_offset_raw":36000000},{"id":"Australia/NSW","display_name":"Australian
+        Eastern Standard Time (New South Wales)","utc_offset_w_dst":39600000,"daylight_saves":3600000,"uses_daylight":true,"offset":39600000,"utc_offset_raw":36000000},{"id":"Australia/Queensland","display_name":"Australian
+        Eastern Standard Time (Queensland)","utc_offset_w_dst":36000000,"daylight_saves":0,"uses_daylight":false,"offset":36000000,"utc_offset_raw":36000000},{"id":"Australia/Sydney","display_name":"Australian
+        Eastern Standard Time (New South Wales)","utc_offset_w_dst":39600000,"daylight_saves":3600000,"uses_daylight":true,"offset":39600000,"utc_offset_raw":36000000},{"id":"Australia/Tasmania","display_name":"Australian
+        Eastern Standard Time (Tasmania)","utc_offset_w_dst":39600000,"daylight_saves":3600000,"uses_daylight":true,"offset":39600000,"utc_offset_raw":36000000},{"id":"Australia/Victoria","display_name":"Australian
+        Eastern Standard Time (Victoria)","utc_offset_w_dst":39600000,"daylight_saves":3600000,"uses_daylight":true,"offset":39600000,"utc_offset_raw":36000000},{"id":"Etc/GMT-10","display_name":"GMT+10:00","utc_offset_w_dst":36000000,"daylight_saves":0,"uses_daylight":false,"offset":36000000,"utc_offset_raw":36000000},{"id":"Pacific/Chuuk","display_name":"Chuuk
+        Time","utc_offset_w_dst":36000000,"daylight_saves":0,"uses_daylight":false,"offset":36000000,"utc_offset_raw":36000000},{"id":"Pacific/Guam","display_name":"Chamorro
+        Standard Time","utc_offset_w_dst":36000000,"daylight_saves":0,"uses_daylight":false,"offset":36000000,"utc_offset_raw":36000000},{"id":"Pacific/Port_Moresby","display_name":"Papua
+        New Guinea Time","utc_offset_w_dst":36000000,"daylight_saves":0,"uses_daylight":false,"offset":36000000,"utc_offset_raw":36000000},{"id":"Pacific/Saipan","display_name":"Chamorro
+        Standard Time","utc_offset_w_dst":36000000,"daylight_saves":0,"uses_daylight":false,"offset":36000000,"utc_offset_raw":36000000},{"id":"Pacific/Truk","display_name":"Chuuk
+        Time","utc_offset_w_dst":36000000,"daylight_saves":0,"uses_daylight":false,"offset":36000000,"utc_offset_raw":36000000},{"id":"Pacific/Yap","display_name":"Chuuk
+        Time","utc_offset_w_dst":36000000,"daylight_saves":0,"uses_daylight":false,"offset":36000000,"utc_offset_raw":36000000},{"id":"Australia/LHI","display_name":"Lord
+        Howe Standard Time","utc_offset_w_dst":39600000,"daylight_saves":1800000,"uses_daylight":true,"offset":39600000,"utc_offset_raw":37800000},{"id":"Australia/Lord_Howe","display_name":"Lord
+        Howe Standard Time","utc_offset_w_dst":39600000,"daylight_saves":1800000,"uses_daylight":true,"offset":39600000,"utc_offset_raw":37800000},{"id":"Antarctica/Macquarie","display_name":"Macquarie
+        Island Standard Time","utc_offset_w_dst":39600000,"daylight_saves":0,"uses_daylight":false,"offset":39600000,"utc_offset_raw":39600000},{"id":"Asia/Magadan","display_name":"Magadan
+        Time","utc_offset_w_dst":39600000,"daylight_saves":0,"uses_daylight":false,"offset":39600000,"utc_offset_raw":39600000},{"id":"Asia/Sakhalin","display_name":"Sakhalin
+        Time","utc_offset_w_dst":39600000,"daylight_saves":0,"uses_daylight":false,"offset":39600000,"utc_offset_raw":39600000},{"id":"Asia/Srednekolymsk","display_name":"Srednekolymsk
+        Time","utc_offset_w_dst":39600000,"daylight_saves":0,"uses_daylight":false,"offset":39600000,"utc_offset_raw":39600000},{"id":"Etc/GMT-11","display_name":"GMT+11:00","utc_offset_w_dst":39600000,"daylight_saves":0,"uses_daylight":false,"offset":39600000,"utc_offset_raw":39600000},{"id":"Pacific/Bougainville","display_name":"Bougainville
+        Standard Time","utc_offset_w_dst":39600000,"daylight_saves":0,"uses_daylight":false,"offset":39600000,"utc_offset_raw":39600000},{"id":"Pacific/Efate","display_name":"Vanuatu
+        Time","utc_offset_w_dst":39600000,"daylight_saves":0,"uses_daylight":false,"offset":39600000,"utc_offset_raw":39600000},{"id":"Pacific/Guadalcanal","display_name":"Solomon
+        Is. Time","utc_offset_w_dst":39600000,"daylight_saves":0,"uses_daylight":false,"offset":39600000,"utc_offset_raw":39600000},{"id":"Pacific/Kosrae","display_name":"Kosrae
+        Time","utc_offset_w_dst":39600000,"daylight_saves":0,"uses_daylight":false,"offset":39600000,"utc_offset_raw":39600000},{"id":"Pacific/Norfolk","display_name":"Norfolk
+        Time","utc_offset_w_dst":39600000,"daylight_saves":0,"uses_daylight":false,"offset":39600000,"utc_offset_raw":39600000},{"id":"Pacific/Noumea","display_name":"New
+        Caledonia Time","utc_offset_w_dst":39600000,"daylight_saves":0,"uses_daylight":false,"offset":39600000,"utc_offset_raw":39600000},{"id":"Pacific/Pohnpei","display_name":"Pohnpei
+        Time","utc_offset_w_dst":39600000,"daylight_saves":0,"uses_daylight":false,"offset":39600000,"utc_offset_raw":39600000},{"id":"Pacific/Ponape","display_name":"Pohnpei
+        Time","utc_offset_w_dst":39600000,"daylight_saves":0,"uses_daylight":false,"offset":39600000,"utc_offset_raw":39600000},{"id":"SST","display_name":"Solomon
+        Is. Time","utc_offset_w_dst":39600000,"daylight_saves":0,"uses_daylight":false,"offset":39600000,"utc_offset_raw":39600000},{"id":"Antarctica/McMurdo","display_name":"New
+        Zealand Standard Time","utc_offset_w_dst":46800000,"daylight_saves":3600000,"uses_daylight":true,"offset":46800000,"utc_offset_raw":43200000},{"id":"Antarctica/South_Pole","display_name":"New
+        Zealand Standard Time","utc_offset_w_dst":46800000,"daylight_saves":3600000,"uses_daylight":true,"offset":46800000,"utc_offset_raw":43200000},{"id":"Asia/Anadyr","display_name":"Anadyr
+        Time","utc_offset_w_dst":43200000,"daylight_saves":0,"uses_daylight":false,"offset":43200000,"utc_offset_raw":43200000},{"id":"Asia/Kamchatka","display_name":"Petropavlovsk-Kamchatski
+        Time","utc_offset_w_dst":43200000,"daylight_saves":0,"uses_daylight":false,"offset":43200000,"utc_offset_raw":43200000},{"id":"Etc/GMT-12","display_name":"GMT+12:00","utc_offset_w_dst":43200000,"daylight_saves":0,"uses_daylight":false,"offset":43200000,"utc_offset_raw":43200000},{"id":"Kwajalein","display_name":"Marshall
+        Islands Time","utc_offset_w_dst":43200000,"daylight_saves":0,"uses_daylight":false,"offset":43200000,"utc_offset_raw":43200000},{"id":"NST","display_name":"New
+        Zealand Standard Time","utc_offset_w_dst":46800000,"daylight_saves":3600000,"uses_daylight":true,"offset":46800000,"utc_offset_raw":43200000},{"id":"NZ","display_name":"New
+        Zealand Standard Time","utc_offset_w_dst":46800000,"daylight_saves":3600000,"uses_daylight":true,"offset":46800000,"utc_offset_raw":43200000},{"id":"Pacific/Auckland","display_name":"New
+        Zealand Standard Time","utc_offset_w_dst":46800000,"daylight_saves":3600000,"uses_daylight":true,"offset":46800000,"utc_offset_raw":43200000},{"id":"Pacific/Fiji","display_name":"Fiji
+        Time","utc_offset_w_dst":43200000,"daylight_saves":3600000,"uses_daylight":true,"offset":43200000,"utc_offset_raw":43200000},{"id":"Pacific/Funafuti","display_name":"Tuvalu
+        Time","utc_offset_w_dst":43200000,"daylight_saves":0,"uses_daylight":false,"offset":43200000,"utc_offset_raw":43200000},{"id":"Pacific/Kwajalein","display_name":"Marshall
+        Islands Time","utc_offset_w_dst":43200000,"daylight_saves":0,"uses_daylight":false,"offset":43200000,"utc_offset_raw":43200000},{"id":"Pacific/Majuro","display_name":"Marshall
+        Islands Time","utc_offset_w_dst":43200000,"daylight_saves":0,"uses_daylight":false,"offset":43200000,"utc_offset_raw":43200000},{"id":"Pacific/Nauru","display_name":"Nauru
+        Time","utc_offset_w_dst":43200000,"daylight_saves":0,"uses_daylight":false,"offset":43200000,"utc_offset_raw":43200000},{"id":"Pacific/Tarawa","display_name":"Gilbert
+        Is. Time","utc_offset_w_dst":43200000,"daylight_saves":0,"uses_daylight":false,"offset":43200000,"utc_offset_raw":43200000},{"id":"Pacific/Wake","display_name":"Wake
+        Time","utc_offset_w_dst":43200000,"daylight_saves":0,"uses_daylight":false,"offset":43200000,"utc_offset_raw":43200000},{"id":"Pacific/Wallis","display_name":"Wallis
+        & Futuna Time","utc_offset_w_dst":43200000,"daylight_saves":0,"uses_daylight":false,"offset":43200000,"utc_offset_raw":43200000},{"id":"NZ-CHAT","display_name":"Chatham
+        Standard Time","utc_offset_w_dst":49500000,"daylight_saves":3600000,"uses_daylight":true,"offset":49500000,"utc_offset_raw":45900000},{"id":"Pacific/Chatham","display_name":"Chatham
+        Standard Time","utc_offset_w_dst":49500000,"daylight_saves":3600000,"uses_daylight":true,"offset":49500000,"utc_offset_raw":45900000},{"id":"Etc/GMT-13","display_name":"GMT+13:00","utc_offset_w_dst":46800000,"daylight_saves":0,"uses_daylight":false,"offset":46800000,"utc_offset_raw":46800000},{"id":"MIT","display_name":"West
+        Samoa Standard Time","utc_offset_w_dst":50400000,"daylight_saves":3600000,"uses_daylight":true,"offset":50400000,"utc_offset_raw":46800000},{"id":"Pacific/Apia","display_name":"West
+        Samoa Standard Time","utc_offset_w_dst":50400000,"daylight_saves":3600000,"uses_daylight":true,"offset":50400000,"utc_offset_raw":46800000},{"id":"Pacific/Enderbury","display_name":"Phoenix
+        Is. Time","utc_offset_w_dst":46800000,"daylight_saves":0,"uses_daylight":false,"offset":46800000,"utc_offset_raw":46800000},{"id":"Pacific/Fakaofo","display_name":"Tokelau
+        Time","utc_offset_w_dst":46800000,"daylight_saves":0,"uses_daylight":false,"offset":46800000,"utc_offset_raw":46800000},{"id":"Pacific/Tongatapu","display_name":"Tonga
+        Time","utc_offset_w_dst":46800000,"daylight_saves":0,"uses_daylight":false,"offset":46800000,"utc_offset_raw":46800000},{"id":"Etc/GMT-14","display_name":"GMT+14:00","utc_offset_w_dst":50400000,"daylight_saves":0,"uses_daylight":false,"offset":50400000,"utc_offset_raw":50400000},{"id":"Pacific/Kiritimati","display_name":"Line
+        Is. Time","utc_offset_w_dst":50400000,"daylight_saves":0,"uses_daylight":false,"offset":50400000,"utc_offset_raw":50400000}],"timezone":"Eastern
+        Standard Time","utc_offset_w_dst":-18000000,"timezone_id":"America/New_York","parts":{"dd":8,"mm":3,"secs":59,"hours":15,"yyyy":2018,"mins":39},"uses_daylight":true,"date_time":"March
+        8, 2018 3:39:59 PM EST","utc_offset_raw":-18000000},"appliance":{"status":"Normal","name":"LXCA
+        - fe80:0:0:0:20c:29ff:fe85:ac49%2","uuid":"20fede5f-721f-4a73-b507-e06d823d677e","build":"162","date":"2016-11-22_06-49-00","runlevel":3,"version":"1.2.2"}}'
+    http_version: 
+  recorded_at: Thu, 08 Mar 2018 20:39:59 GMT
+- request:
+    method: get
+    uri: https://lxcahost/cabinet?status=includestandalone
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - LXCA via Ruby Client/0.5.9 (ManageIQ/master)
+      Authorization:
+      - Basic bHhjYzpQQVNTVzByRA==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 08 Mar 2018 20:39:59 GMT
+      Set-Cookie:
+      - userAuthenticationMethod=local;Path=/;Secure
+      Expires:
+      - "-1"
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Strict-Transport-Security:
+      - max-age=86400; includeSubDomains;
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Content-Security-Policy:
+      - 'default-src https:; script-src https: ''unsafe-inline'' ''unsafe-eval'';
+        style-src https: ''unsafe-inline'''
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '1'
+      Content-Type:
+      - application/com.lenovo.lxca-v1.2.2+json; charset=UTF-8
+      Vary:
+      - Accept-Encoding, User-Agent
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"cabinetList":[{"storageList":[],"cabinetName":"cabinet71","height":42,"complexList":[],"chassisList":[],"location":"","UUID":"096F8C92-08D4-4A24-ABD8-FE56D482F8C4","nodeList":[{"itemParentUUID":null,"itemName":"IMM2-e41f13ed5a1e","itemLowerUnit":42,"itemType":"SERVER","itemLocationRack":"cabinet71","itemSubType":"LegacyServer","itemUUID":"BD775D06821111E189A3E41F13ED5A1A","itemInventory":{"accessState":"Online","arch":"x86_64","manufacturerId":"","location":{"lowestRackUnit":42,"location":"","rack":"cabinet71","room":""},"addinCardSlots":0,"serialNumber":"06AREZ9","driveBays":0,"macAddress":"e4:1f:13:ed:5a:1f","type":"Rack-Tower
+        Server","lanOverUsb":"disabled","height":1,"leds":[{"conditions":"Warning","color":"Yellow","location":"Front
+        Panel","name":"Check Log","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Front
+        Panel","name":"Fault","state":"Off"},{"conditions":"Attention","color":"Blue","location":"Front
+        Panel","name":"Identify","state":"Off"},{"conditions":"Health","color":"Green","location":"Front
+        Panel","name":"Power","state":"On"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"BOARD","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"Battery","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"CONFIG","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"CPU","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"CPU 1","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"CPU 2","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 1","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 10","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 11","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 12","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 13","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 14","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 15","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 16","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 17","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 18","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 19","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 2","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 20","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 21","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 22","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 23","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 24","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 3","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 4","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 5","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 6","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 7","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 8","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"DIMM 9","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"FAN","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"FAN 1","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"FAN 2","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"FAN 3","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"FAN 4","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"FAN 5","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"FAN 6","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"HDD","state":"Off"},{"conditions":"Health","color":"Green","location":"System
+        Board","name":"IMM2 Heartbeat","state":"Blink"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"Internal RAID","state":"Off"},{"conditions":"Health","color":"Green","location":"Lightpath
+        Card","name":"LINK","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"MEM","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"Mezz Card Error","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"NMI","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"OVER SPEC","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"PCI","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"FRU","name":"PCI
+        1","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"FRU","name":"PCI
+        2","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"PS","state":"Off"},{"conditions":"Status","color":"Green","location":"FRU","name":"Power","state":"On"},{"conditions":"Warning","color":"Yellow","location":"System
+        Board","name":"SysBrd Fault","state":"Off"},{"conditions":"Warning","color":"Yellow","location":"Lightpath
+        Card","name":"TEMP","state":"Off"}],"description":"chassis System x3550 M4","mgmtProcIPaddress":"10.243.9.112","expansionCards":[],"errorFields":[],"FQDN":"ratchetimm2.labs.lenovo.com","ipInterfaces":[],"firmware":[{"status":"ACTIVE","name":"IMM","role":"","date":"","type":"IMM","build":"","version":"1AOO72H-5.60"},{"status":"ACTIVE","name":"Preboot
+        DSA","role":"","date":"","type":"Preboot DSA","build":"","version":"DSYTD8G-9.54"},{"status":"ACTIVE","name":"UEFI","role":"","date":"","type":"UEFI","build":"","version":"D7E152CUS-2.11"}],"bladeState":0,"activationKeys":[],"status":{"message":"managed","name":"MANAGED"},"powerCappingPolicy":{"cappingACorDCMode":"UNKNOWN","minimumHardCapLevel":-1,"cappingPolicy":"UNKNOWN","maxPowerCap":-1,"minimumPowerCappingHotPlugLevel":-1,"powerCappingAllocUnit":"watts","maximumPowerCappingHotPlugLevel":-1,"currentPowerCap":0,"minPowerCap":-1},"parent":{"uuid":"096F8C92-08D4-4A24-ABD8-FE56D482F8C4","uri":"cabinet/096F8C92-08D4-4A24-ABD8-FE56D482F8C4"},"hostname":"IMM2-e41f13ed5a1e","powerSupplies":[{"model":"43X3313","manufacturerId":"EMER","serialNumber":"
+        K118122706D","inputVoltageIsAC":false,"inputVoltageMin":0,"type":"PowerSupply","dataHandle":0,"cmmDisplayName":null,"leds":[{"color":"Green","location":"FRU","name":"IN","state":"On"},{"color":"Green","location":"FRU","name":"OUT","state":"On"},{"color":"Amber","location":"FRU","name":"FAULT","state":"Off"}],"description":"Power
+        Supply 1","name":" K118122706D","userDescription":null,"manufactureDate":"2011-12-02","partNumber":null,"firmware":[],"healthState":"GOOD","machineType":null,"hardwareRevision":null,"FRU":null,"uri":"powerSupply/null","productId":null,"powerAllocation":{"totalInputPower":0,"totalOutputPower":0},"powerState":null,"posID":null,"slots":[0],"manufacturer":null,"vpdID":null,"uuid":null,"productName":null,"fruSerialNumber":null,"inputVoltageMax":0}],"FRU":"","thinkServerFru":[],"uri":"node/BD775D06821111E189A3E41F13ED5A1A","vnicMode":"disabled","powerAllocation":{"maximumAllocatedPower":0,"minimumAllocatedPower":0},"expansionProductType":"","powerStatus":8,"bootOrder":{"uri":"node/BD775D06821111E189A3E41F13ED5A1A/bootOrder","bootOrderList":[{"currentBootOrderDevices":["default"],"bootType":"SingleUse","possibleBootOrderDevices":["setup","network","hd","cd","default"]}]},"expansionProducts":[],"ipv6Addresses":["fe80::e61f:13ff:feed:5a1f"],"slots":[1],"manufacturer":"
+        IBM","raidSettings":[],"vpdID":"","uuid":"BD775D06821111E189A3E41F13ED5A1A","isConnectionTrusted":"true","memoryModules":[{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"d95bfb8c","displayName":"DIMM 1","slot":1,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"1a8c3c7d","displayName":"DIMM 2","slot":2,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"3540750c","displayName":"DIMM 4","slot":4,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"1a8c3c8e","displayName":"DIMM 5","slot":5,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"35407521","displayName":"DIMM 8","slot":8,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"d67318ee","displayName":"DIMM 9","slot":9,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"3540751c","displayName":"DIMM 11","slot":11,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"3540753b","displayName":"DIMM 12","slot":12,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"3540751e","displayName":"DIMM 13","slot":13,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"1a8c3c39","displayName":"DIMM 14","slot":14,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"3540750b","displayName":"DIMM 16","slot":16,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"1a8c3c4c","displayName":"DIMM 17","slot":17,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"3540753d","displayName":"DIMM 20","slot":20,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Hyundai
+        Electronics","capacity":8,"serialNumber":"44c11b68","displayName":"DIMM 21","slot":21,"type":"DDR3
+        SDRAM","partNumber":"HMT31GR7CFR4C-PB  "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"354074be","displayName":"DIMM 23","slot":23,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "},{"model":"","voltage":null,"speed":12800,"manufacturer":"Micron
+        Technology","capacity":8,"serialNumber":"354074c0","displayName":"DIMM 24","slot":24,"type":"DDR3
+        SDRAM","partNumber":"36JSF1G72PZ-1G6M1 "}],"fruSerialNumber":"Y015UN23X13P","secureBootMode":{"possibleValues":[],"currentValue":""},"tlsVersion":{"possibleValues":["TLS_10","TLS_11","TLS_12","unsupported"],"currentValue":"unsupported"},"model":"AC1","isScalable":false,"expansionCardSlots":0,"fans":[],"isITME":false,"hostMacAddresses":"","contact":"","dataHandle":0,"ipv4Addresses":["10.243.9.112"],"cmmDisplayName":"","backedBy":"real","complexID":-1,"name":"IMM2-e41f13ed5a1e","memorySlots":0,"drives":[],"cmmHealthState":"Normal","userDescription":"","subSlots":[],"partNumber":null,"excludedHealthState":"Normal","machineType":"7914","isRemotePresenceEnabled":false,"pciDevices":[],"domainName":"","processors":[{"speed":2.7,"manufacturer":"Intel(R)
+        Corporation","family":"Intel(R) Xeon(R) processor","displayName":"","slot":1,"productVersion":"Intel(R)
+        Xeon(R) CPU E5-2680 0 @ 2.70GHz","cores":8},{"speed":2.7,"manufacturer":"Intel(R)
+        Corporation","family":"Intel(R) Xeon(R) processor","displayName":"","slot":2,"productVersion":"Intel(R)
+        Xeon(R) CPU E5-2680 0 @ 2.70GHz","cores":8}],"processorSlots":0,"pciCapabilities":[],"productId":"","hasOS":false,"bootMode":{"possibleValues":["uefi","bios"],"currentValue":"unspecified"},"ports":[],"embeddedHypervisorPresence":false,"posID":"","nist":{"possibleValues":["Compatibility","Nist_800_131A_Strict","Nist_800_131A_Custom","unsupported"],"currentValue":"unsupported"},"overallHealthState":"Normal","subType":"LegacyServer","partitionID":-1,"flashStorage":[],"productName":"System
+        x3550 M4"},"itemLocation":"","itemHeight":1,"itemLocationRoom":""}],"placeholderList":[],"switchList":[],"room":""},{"storageList":[],"cabinetName":"STANDALONE_OBJECT_NAME","height":42,"complexList":[{"partition":[],"orphanNodes":[{"accessState":"Offline","arch":"x86","manufacturerId":"
+        IBM(CLCN)","location":{"lowestRackUnit":0,"location":"","rack":"","room":""},"addinCardSlots":0,"serialNumber":"23Y6458","driveBays":17,"macAddress":"6C:AE:8B:4B:4F:15,6C:AE:8B:4B:4F:16","type":"Rack-Tower
+        Server","lanOverUsb":"enabled","onboardPciDevices":[{"pciSubID":"0","firmware":[{"revision":"0","classifications":[0],"status":"Active","name":"PCIFirmware","role":"Primary","softwareID":"0:0","type":"","build":"0","date":"","version":""}],"fodUniqueID":"","pciRevision":"0","isAgentless":false,"pciBusNumber":"27","pciSubVendorID":"0","isAddOnCard":false,"pciDeviceNumber":"0","posID":"534","pciFunctionNumber":"0","name":"","portInfo":{},"vpdID":"102b"}],"height":4,"leds":[{"color":"Yellow","location":"FrontRearPanel","name":"Fault","state":"Off"},{"color":"Blue","location":"FrontRearPanel","name":"Identify","state":"Off"},{"color":"Yellow","location":"FrontPanel","name":"Check
+        Log","state":"Off"},{"color":"Yellow","location":"LightPathCard","name":"CNFG","state":"Off"},{"color":"Yellow","location":"LightPathCard","name":"CPU","state":"Off"},{"color":"Yellow","location":"LightPathCard","name":"PS","state":"Off"},{"color":"Yellow","location":"LightPathCard","name":"DASD","state":"Off"},{"color":"Yellow","location":"LightPathCard","name":"FAN","state":"Off"},{"color":"Yellow","location":"LightPathCard","name":"MEM","state":"Off"},{"color":"Yellow","location":"LightPathCard","name":"NMI","state":"Off"},{"color":"Yellow","location":"LightPathCard","name":"OVER
+        SPEC","state":"Off"},{"color":"Yellow","location":"LightPathCard","name":"TEMP","state":"Off"},{"color":"Yellow","location":"LightPathCard","name":"PCI","state":"Off"},{"color":"Yellow","location":"LightPathCard","name":"LINK","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        1","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        3","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4","state":"Off"},{"color":"Yellow","location":"FRU","name":"FAN
+        1","state":"Off"},{"color":"Yellow","location":"FRU","name":"FAN 2","state":"Off"},{"color":"Yellow","location":"FRU","name":"FAN
+        3","state":"Off"},{"color":"Yellow","location":"FRU","name":"FAN 4","state":"Off"},{"color":"Yellow","location":"FRU","name":"FAN
+        5","state":"Off"},{"color":"Yellow","location":"FRU","name":"FAN 6","state":"Off"},{"color":"Yellow","location":"FRU","name":"FAN
+        7","state":"Off"},{"color":"Yellow","location":"FRU","name":"FAN 8","state":"Off"},{"color":"Yellow","location":"FRU","name":"FAN
+        9","state":"Off"},{"color":"Yellow","location":"FRU","name":"FAN 10PEC","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        1 DIMM 1","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1
+        DIMM 2","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1 DIMM
+        3","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1 DIMM 4","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        1 DIMM 5","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1
+        DIMM 6","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1 DIMM
+        7","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1 DIMM 8","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        1 DIMM 9","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1
+        DIMM 10Ctlr","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        1 DIMM 11Ctlr","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        1 DIMM 12Ctlr","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        1 DIMM 13Ctlr","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        1 DIMM 14Ctlr","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        1 DIMM 15Ctlr","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        1 DIMM 16Ctlr","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI
+        1","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI 2","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI
+        3","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI 4","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI
+        5","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI 6","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI
+        7","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI 8","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI
+        9","state":"Off"},{"color":"Yellow","location":"FRU","name":"ML2","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI
+        11DIMM 16Ctlr","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI
+        12DIMM 16Ctlr","state":"Off"},{"color":"Yellow","location":"Planar","name":"SysBrd","state":"Off"},{"color":"Yellow","location":"Planar","name":"CMOS
+        Batt Error","state":"Off"},{"color":"Green","location":"FrontRearPanel","name":"Power","state":"On"},{"color":"Green","location":"Planar","name":"BMC
+        Heartbeat","state":"Blinking"},{"color":"Yellow","location":"FRU","name":"CPU
+        1 DIMM 17","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1
+        DIMM 18","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1 DIMM
+        19","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1 DIMM 20","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        1 DIMM 21","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1
+        DIMM 22","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1 DIMM
+        23","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1 DIMM 24","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        2 DIMM 1","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2
+        DIMM 2","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2 DIMM
+        3","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2 DIMM 4","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        2 DIMM 5","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2
+        DIMM 6","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2 DIMM
+        7","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2 DIMM 8","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        2 DIMM 9","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2
+        DIMM 10","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2 DIMM
+        11","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2 DIMM 12","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        2 DIMM 13","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2
+        DIMM 14","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2 DIMM
+        15","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2 DIMM 16","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        2 DIMM 17","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2
+        DIMM 18","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2 DIMM
+        19","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2 DIMM 20","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        2 DIMM 21","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2
+        DIMM 22","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2 DIMM
+        23","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2 DIMM 24","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        3 DIMM 1","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3
+        DIMM 2","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3 DIMM
+        3","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3 DIMM 4","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        3 DIMM 5","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3
+        DIMM 6","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3 DIMM
+        7","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3 DIMM 8","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        3 DIMM 9","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3
+        DIMM 10","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3 DIMM
+        11","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3 DIMM 12","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        3 DIMM 13","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3
+        DIMM 14","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3 DIMM
+        15","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3 DIMM 16","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        3 DIMM 17","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3
+        DIMM 18","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3 DIMM
+        19","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3 DIMM 20","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        3 DIMM 21","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3
+        DIMM 22","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3 DIMM
+        23","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3 DIMM 24","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        4 DIMM 1","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4
+        DIMM 2","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4 DIMM
+        3","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4 DIMM 4","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        4 DIMM 5","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4
+        DIMM 6","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4 DIMM
+        7","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4 DIMM 8","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        4 DIMM 9","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4
+        DIMM 10","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4 DIMM
+        11","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4 DIMM 12","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        4 DIMM 13","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4
+        DIMM 14","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4 DIMM
+        15","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4 DIMM 16","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        4 DIMM 17","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4
+        DIMM 18","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4 DIMM
+        19","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4 DIMM 20","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        4 DIMM 21","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4
+        DIMM 22","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4 DIMM
+        23","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4 DIMM 24","state":"Off"},{"color":"Yellow","location":"FRU","name":"Book
+        1 Board4","state":"Off"},{"color":"Yellow","location":"FRU","name":"Book 2
+        Board4","state":"Off"},{"color":"Yellow","location":"FRU","name":"Book 3 Board4","state":"Off"},{"color":"Yellow","location":"FRU","name":"Book
+        4 Board4","state":"Off"},{"color":"Amber","location":"FRU","name":"Book 1
+        Attention","state":"Off"},{"color":"Amber","location":"FRU","name":"Book 2
+        Attention","state":"Off"},{"color":"Amber","location":"FRU","name":"Book 3
+        Attention","state":"Off"},{"color":"Amber","location":"FRU","name":"Book 4
+        Attention","state":"Off"}],"description":"Chassis","mgmtProcIPaddress":"10.243.6.17","expansionCards":[],"errorFields":[],"FQDN":"cmm-dt1.labs.lenovo.com","ipInterfaces":[{"IPv4enabled":true,"IPv4DHCPmode":"STATIC_ONLY","IPv6enabled":true,"IPv6DHCPenabled":true,"IPv4assignments":[{"id":0,"subnet":"255.255.240.0","gateway":"0.0.0.0","address":"10.243.6.17","type":"INUSE"}],"IPv6assignments":[{"id":0,"scope":"Global","gateway":"0:0:0:0:0:0:0:0","source":"Stateless","address":"fd55:faaf:e1ab:2021:6eae:8bff:fe4b:4f15","prefix":64,"type":"INUSE"},{"id":0,"scope":"LinkLocal","gateway":"0:0:0:0:0:0:0:0","source":"Other","address":"fe80:0:0:0:6eae:8bff:fe4b:4f15","prefix":64,"type":"INUSE"}],"name":"eth0","IPv6statelessEnabled":true,"label":"unknown","IPv6staticEnabled":false}],"firmware":[{"status":"Active","name":"UEFI
+        Firmware/BIOS","role":"Primary","date":"2018-01-26T00:00:00Z","type":"UEFI","build":"A9E143HUS","version":"4.30"},{"status":"Inactive","name":"UEFI
+        Backup Firmware/BIOS","role":"Backup","date":"2017-02-21T00:00:00Z","type":"UEFI-Backup","build":"A9E139GUS","version":"4.10"},{"status":"Active","name":"DSA
+        Diagnostic Software","role":"Primary","date":"2017-10-11T00:00:00Z","type":"DSA","build":"DSALB1A","version":"10.2"},{"status":"Active","name":"IMM2
+        Firmware","role":"Primary","date":"2018-01-19T00:00:00Z","type":"IMM2","build":"TCOO39A","version":"4.70"},{"status":"Inactive","name":"IMM2
+        Backup Firmware","role":"Backup","date":"2016-12-05T00:00:00Z","type":"IMM2-Backup","build":"TCOO59G","version":"9.00"}],"bladeState":0,"activationKeys":[],"status":{"message":"managed","name":"MANAGED"},"powerCappingPolicy":{"cappingACorDCMode":"DC","minimumHardCapLevel":434300,"cappingPolicy":"OFF","maxPowerCap":535000,"minimumPowerCappingHotPlugLevel":754000,"powerCappingAllocUnit":"watts*10^-3","maximumPowerCappingHotPlugLevel":856000,"currentPowerCap":0,"minPowerCap":130000},"hostname":"IMM2-6cae8b4b4f15","powerSupplies":[{"model":"","manufacturerId":"","serialNumber":"K115136V11E","inputVoltageIsAC":true,"inputVoltageMin":-1,"type":"PowerSupply","dataHandle":0,"cmmDisplayName":"Power
+        Supply 1","leds":[],"description":"","name":"Power Supply 1","userDescription":"","manufactureDate":"","partNumber":"94Y8066","firmware":[],"healthState":"GOOD","machineType":"","hardwareRevision":"","FRU":"","uri":"powerSupply/","productId":"","powerAllocation":{"totalInputPower":0,"totalOutputPower":900},"powerState":"Unknown","posID":"","slots":[2],"manufacturer":"DELT","vpdID":"","uuid":"","productName":"","fruSerialNumber":"","inputVoltageMax":-1},{"model":"","manufacturerId":"","serialNumber":"K115136V11L","inputVoltageIsAC":true,"inputVoltageMin":-1,"type":"PowerSupply","dataHandle":0,"cmmDisplayName":"Power
+        Supply 2","leds":[],"description":"","name":"Power Supply 2","userDescription":"","manufactureDate":"","partNumber":"94Y8066","firmware":[],"healthState":"GOOD","machineType":"","hardwareRevision":"","FRU":"","uri":"powerSupply/","productId":"","powerAllocation":{"totalInputPower":0,"totalOutputPower":900},"powerState":"Unknown","posID":"","slots":[3],"manufacturer":"DELT","vpdID":"","uuid":"","productName":"","fruSerialNumber":"","inputVoltageMax":-1}],"parentComplexID":"7936DD182C5311E3A8D6000AF7256738","FRU":"None","uri":"node/7936DD182C5311E3A8D6000AF7256738","vnicMode":"disabled","powerAllocation":{"maximumAllocatedPower":1710,"minimumAllocatedPower":26},"expansionProductType":"","powerStatus":8,"bootOrder":{"uri":"node/7936DD182C5311E3A8D6000AF7256738/bootOrder","bootOrderList":[{"currentBootOrderDevices":["None"],"bootType":"SingleUse","possibleBootOrderDevices":["None","PXE
+        Network","Hard Disk 0","Diagnostics","CD/DVD Rom","Boot To F1","Hypervisor","Floppy
+        Disk"]},{"currentBootOrderDevices":["Hard Disk 0","CentOS Linux","Windows
+        Boot Manager","PXE Network","CD/DVD Rom"],"bootType":"Permanent","possibleBootOrderDevices":["Hard
+        Disk 0","CentOS Linux","Windows Boot Manager","PXE Network","CD/DVD Rom","Floppy
+        Disk","Hard Disk 1","Hard Disk 2","Hard Disk 3","Hard Disk 4","USB Storage","Diagnostics","iSCSI","iSCSI
+        Critical","Embedded Hypervisor","Legacy Only","USB0","USB1","USB2","USB3","USB4","USB5","USB6","USB7","DSA","Slot16","Slot17","Slot18","Slot19","Slot12","Slot11","Slot10","Slot1","Slot2","Slot3","Slot4","Slot5","Slot6","Slot7","Slot8","Slot9","IMM1","IMM2"]},{"currentBootOrderDevices":["PXE
+        Network","CD/DVD Rom","Hard Disk 0"],"bootType":"WakeOnLAN","possibleBootOrderDevices":["PXE
+        Network","CD/DVD Rom","Hard Disk 0","CentOS Linux","Windows Boot Manager","Floppy
+        Disk","Hard Disk 1","Hard Disk 2","Hard Disk 3","Hard Disk 4","USB Storage","Diagnostics","iSCSI","iSCSI
+        Critical","Embedded Hypervisor","Legacy Only","USB0","USB1","USB2","USB3","USB4","USB5","USB6","USB7","DSA","Slot16","Slot17","Slot18","Slot19","Slot12","Slot11","Slot10","Slot1","Slot2","Slot3","Slot4","Slot5","Slot6","Slot7","Slot8","Slot9","IMM1","IMM2"]}]},"expansionProducts":[],"ipv6Addresses":["fd55:faaf:e1ab:2021:6eae:8bff:fe4b:4f15","fe80:0:0:0:6eae:8bff:fe4b:4f15"],"slots":[1],"manufacturer":"
+        IBM(CLCN)","addinCards":[{"pciSubID":"454","firmware":[{"revision":"0","classifications":[13],"status":"Active","name":"MegaRAID
+        Controller Firmware","role":"Primary","softwareID":"10140454","type":"Software
+        Bundle","build":"0","date":"2017-09-07T00:00:00Z","version":"24.21.0-0020"}],"slotSupportsHotPlug":"false","fodUniqueID":"N/A","pciRevision":"2","isAgentless":true,"pciBusNumber":"7","pciSubVendorID":"1014","isAddOnCard":true,"FRU":"N/A","pciDeviceNumber":"0","slotNumber":"12","posID":"5d","pciFunctionNumber":"0","manufacturer":"IBM","name":"ServeRAID
+        M5210","portInfo":{},"vpdID":"1000","productName":"ServeRAID M5210","partNumber":"N/A","fruSerialNumber":"SV334P0606","slotName":"SlotDesig7_Slot
+        12 (Pri Storage)"},{"pciSubID":"450","firmware":[{"revision":"0","classifications":[33024],"status":"Active","name":"17.4.4.8-c","role":"Primary","softwareID":"10140450","type":"VPD-V0","build":"0","date":"","version":"17.4.4.8-c"}],"slotSupportsHotPlug":"false","fodUniqueID":"11S90Y9372Y0502037P0ES","pciRevision":"0","isAgentless":true,"pciBusNumber":"145","pciSubVendorID":"1014","isAddOnCard":true,"FRU":"90Y9373","pciDeviceNumber":"0","slotNumber":"7","posID":"165f","pciFunctionNumber":"0","manufacturer":"IBM","name":"Broadcom
+        2-port 1GbE NIC Card for IBM","portInfo":{"physicalPorts":[{"portType":"ETHERNET","portNumber":49,"logicalPorts":[{"portType":"ETHERNET","portNumber":1,"logicalPortIndex":1,"addresses":"000AF7256738","vnicMode":false}],"peerBay":0,"physicalPortIndex":1}]},"vpdID":"14e4","productName":"Broadcom
+        2-port 1GbE NIC Card for IBM","partNumber":"90Y9372","fruSerialNumber":"Y0502037P0ES","slotName":"SlotDesig6_Slot
+        7"},{"pciSubID":"450","firmware":[{"revision":"0","classifications":[33024],"status":"Active","name":"17.4.4.8-c","role":"Primary","softwareID":"10140450","type":"VPD-V0","build":"0","date":"","version":"17.4.4.8-c"}],"slotSupportsHotPlug":"false","fodUniqueID":"11S90Y9372Y0502037P0ES","pciRevision":"0","isAgentless":true,"pciBusNumber":"145","pciSubVendorID":"1014","isAddOnCard":true,"FRU":"90Y9373","pciDeviceNumber":"0","slotNumber":"7","posID":"165f","pciFunctionNumber":"1","manufacturer":"IBM","name":"Broadcom
+        2-port 1GbE NIC Card for IBM","portInfo":{"physicalPorts":[{"portType":"ETHERNET","portNumber":50,"logicalPorts":[{"portType":"ETHERNET","portNumber":1,"logicalPortIndex":1,"addresses":"000AF7256739","vnicMode":false}],"peerBay":0,"physicalPortIndex":2}]},"vpdID":"14e4","productName":"Broadcom
+        2-port 1GbE NIC Card for IBM","partNumber":"90Y9372","fruSerialNumber":"Y0502037P0ES","slotName":"SlotDesig6_Slot
+        7"}],"parentPartitionUUID":"","raidSettings":[{"firmware":[{"revision":"0","classifications":[10],"status":"Active","name":"MegaRAID
+        Controller Firmware","role":"Primary","softwareID":"10140454","type":"Firmware","build":"0","date":"2017-09-07T00:00:00Z","version":"24.21.0-0020"}],"description":"ServeRAID
+        M5210","name":"ServeRAID M5210","uuid":"0000000000000000500605B006E6ED5B","storagePools":[{"raidLevel":0,"description":"0000000000000000500605B006E6ED5B_Storage
+        Pool_M5210_0000000000000000500605B006E6ED5B_c:Pool:0","storageVolumes":[{"bootable":true,"volumeUID":"0","primaryPartition":0,"volumeID":"6","numberOfBlocks":583983104,"volumeStatus":"Dynamic
+        Reconfig","description":"Volume 0 0000000000000000500605B006E6ED5B_0","stripeSize":65536,"name":"GenericR0_0","blockSize":512,"health":"Unknown"}],"name":"Pool_0","totalManagedSpace":298999349248,"remainingSpace":0,"arrayUid":"0","arrayStatus":"Offline","diskDrives":[{"model":"ST300MM0006","healthState":"Normal","numberOfBlocks":585937500,"interfaceType":"SAS","serialNumber":"S0K09V6W","blockSize":512,"FRU":"42D0628","mediaType":"Rotational","diskState":"Online","bay":0,"description":"ST300MM0006","manufacturer":"IBM-ESXS","name":"Disk
+        0_0","uuid":"","partNumber":"42D0631"}]}],"diskDrives":[{"model":"ST300MM0006","healthState":"Normal","numberOfBlocks":585937500,"interfaceType":"SAS","serialNumber":"S0K09V6W","blockSize":512,"FRU":"42D0628","mediaType":"Rotational","diskState":"Online","bay":0,"description":"ST300MM0006","manufacturer":"IBM-ESXS","name":"Disk
+        0_0","uuid":"","partNumber":"42D0631"}]}],"vpdID":"","uuid":"7936DD182C5311E3A8D6000AF7256738","isConnectionTrusted":"false","memoryModules":[{"model":"DDR3","speed":1600,"manufacturer":"Micron
+        Technology","capacity":4,"serialNumber":"3AAF65F9","displayName":"CPU 1 DIMM
+        9,12800 MB/s","slot":9,"type":"DDR3","partNumber":"Unknown"},{"model":"DDR3","speed":1600,"manufacturer":"Micron
+        Technology","capacity":4,"serialNumber":"3AAF65FA","displayName":"CPU 1 DIMM
+        15,12800 MB/s","slot":15,"type":"DDR3","partNumber":"Unknown"},{"model":"DDR3","speed":1600,"manufacturer":"Micron
+        Technology","capacity":4,"serialNumber":"3AAF65FE","displayName":"CPU 2 DIMM
+        9,12800 MB/s","slot":9,"type":"DDR3","partNumber":"Unknown"},{"model":"DDR3","speed":1600,"manufacturer":"Micron
+        Technology","capacity":4,"serialNumber":"3AAF6603","displayName":"CPU 2 DIMM
+        15,12800 MB/s","slot":15,"type":"DDR3","partNumber":"Unknown"}],"partitionEnabled":false,"fruSerialNumber":"None","secureBootMode":{"possibleValues":["Disabled","Enabled"],"currentValue":"Disabled"},"encapsulation":{"encapsulationMode":"normal"},"tlsVersion":{"possibleValues":["TLS_10","TLS_11","TLS_12","unsupported"],"currentValue":"TLS_12"},"model":"AC1","isScalable":true,"expansionCardSlots":0,"fans":[{"healthState":"Normal","status":"OK","speed":3440,"description":"Logical
+        Device for fan / cooling device 1","slots":1,"name":"Fan 1"},{"healthState":"Normal","status":"OK","speed":3440,"description":"Logical
+        Device for fan / cooling device 2","slots":2,"name":"Fan 2"},{"healthState":"Normal","status":"OK","speed":3440,"description":"Logical
+        Device for fan / cooling device 3","slots":3,"name":"Fan 3"},{"healthState":"Normal","status":"OK","speed":3440,"description":"Logical
+        Device for fan / cooling device 4","slots":4,"name":"Fan 4"},{"healthState":"Warning","status":"Degraded","speed":3440,"description":"Logical
+        Device for fan / cooling device 5","slots":5,"name":"Fan 5"},{"healthState":"Warning","status":"Degraded","speed":3440,"description":"Logical
+        Device for fan / cooling device 6","slots":6,"name":"Fan 6"},{"healthState":"Warning","status":"Degraded","speed":3440,"description":"Logical
+        Device for fan / cooling device 7","slots":7,"name":"Fan 7"},{"healthState":"Warning","status":"Degraded","speed":3440,"description":"Logical
+        Device for fan / cooling device 8","slots":8,"name":"Fan 8"},{"healthState":"Normal","status":"OK","speed":3440,"description":"Logical
+        Device for fan / cooling device 9","slots":9,"name":"Fan 9"},{"healthState":"Normal","status":"OK","speed":3440,"description":"Logical
+        Device for fan / cooling device 10","slots":10,"name":"Fan 10"}],"isITME":false,"hostMacAddresses":"00:0A:F7:25:67:38,00:0A:F7:25:67:39","contact":"","dataHandle":1518063984527,"ipv4Addresses":["10.243.6.17","169.254.95.118"],"cmmDisplayName":"Management
+        Controller UUID-7936DD182C5311E3A8D6000AF7256738","backedBy":"real","complexID":1,"name":"cmm-dt1.labs.lenovo.com","memorySlots":0,"drives":[],"cmmHealthState":"Normal","userDescription":"","subSlots":[],"partNumber":"00D0188     ","excludedHealthState":"Warning","machineType":"6241","isRemotePresenceEnabled":true,"pciDevices":[{"pciSubID":"454","firmware":[{"revision":"0","classifications":[13],"status":"Active","name":"MegaRAID
+        Controller Firmware","role":"Primary","softwareID":"10140454","type":"Software
+        Bundle","build":"0","date":"2017-09-07T00:00:00Z","version":"24.21.0-0020"}],"slotSupportsHotPlug":"false","fodUniqueID":"N/A","pciRevision":"2","isAgentless":true,"pciBusNumber":"7","pciSubVendorID":"1014","isAddOnCard":true,"FRU":"N/A","pciDeviceNumber":"0","slotNumber":"12","posID":"5d","pciFunctionNumber":"0","manufacturer":"IBM","name":"ServeRAID
+        M5210","portInfo":{},"vpdID":"1000","productName":"ServeRAID M5210","partNumber":"N/A","fruSerialNumber":"SV334P0606","slotName":"SlotDesig7_Slot
+        12 (Pri Storage)"},{"pciSubID":"0","firmware":[{"revision":"0","classifications":[0],"status":"Active","name":"PCIFirmware","role":"Primary","softwareID":"0:0","type":"","build":"0","date":"","version":""}],"fodUniqueID":"","pciRevision":"0","isAgentless":false,"pciBusNumber":"27","pciSubVendorID":"0","isAddOnCard":false,"pciDeviceNumber":"0","posID":"534","pciFunctionNumber":"0","name":"","portInfo":{},"vpdID":"102b"},{"pciSubID":"450","firmware":[{"revision":"0","classifications":[33024],"status":"Active","name":"17.4.4.8-c","role":"Primary","softwareID":"10140450","type":"VPD-V0","build":"0","date":"","version":"17.4.4.8-c"}],"slotSupportsHotPlug":"false","fodUniqueID":"11S90Y9372Y0502037P0ES","pciRevision":"0","isAgentless":true,"pciBusNumber":"145","pciSubVendorID":"1014","isAddOnCard":true,"FRU":"90Y9373","pciDeviceNumber":"0","slotNumber":"7","posID":"165f","pciFunctionNumber":"0","manufacturer":"IBM","name":"Broadcom
+        2-port 1GbE NIC Card for IBM","portInfo":{"physicalPorts":[{"portType":"ETHERNET","portNumber":49,"logicalPorts":[{"portType":"ETHERNET","portNumber":1,"logicalPortIndex":1,"addresses":"000AF7256738","vnicMode":false}],"peerBay":0,"physicalPortIndex":1}]},"vpdID":"14e4","productName":"Broadcom
+        2-port 1GbE NIC Card for IBM","partNumber":"90Y9372","fruSerialNumber":"Y0502037P0ES","slotName":"SlotDesig6_Slot
+        7"},{"pciSubID":"450","firmware":[{"revision":"0","classifications":[33024],"status":"Active","name":"17.4.4.8-c","role":"Primary","softwareID":"10140450","type":"VPD-V0","build":"0","date":"","version":"17.4.4.8-c"}],"slotSupportsHotPlug":"false","fodUniqueID":"11S90Y9372Y0502037P0ES","pciRevision":"0","isAgentless":true,"pciBusNumber":"145","pciSubVendorID":"1014","isAddOnCard":true,"FRU":"90Y9373","pciDeviceNumber":"0","slotNumber":"7","posID":"165f","pciFunctionNumber":"1","manufacturer":"IBM","name":"Broadcom
+        2-port 1GbE NIC Card for IBM","portInfo":{"physicalPorts":[{"portType":"ETHERNET","portNumber":50,"logicalPorts":[{"portType":"ETHERNET","portNumber":1,"logicalPortIndex":1,"addresses":"000AF7256739","vnicMode":false}],"peerBay":0,"physicalPortIndex":2}]},"vpdID":"14e4","productName":"Broadcom
+        2-port 1GbE NIC Card for IBM","partNumber":"90Y9372","fruSerialNumber":"Y0502037P0ES","slotName":"SlotDesig6_Slot
+        7"}],"domainName":"mm-dt1.labs.lenovo.com","processors":[{"speed":2.2,"manufacturer":"Intel(R)
+        Corporation","family":"PENTIUM_R_4","displayName":"Intel(R) Xeon(R) CPU E7-8880L
+        v2 @ 2.20GHz","slot":1,"productVersion":"Intel(R) Xeon(R) CPU E7-8880L v2
+        @ 2.20GHz","cores":15},{"speed":2.2,"manufacturer":"Intel(R) Corporation","family":"PENTIUM_R_4","displayName":"Intel(R)
+        Xeon(R) CPU E7-8880L v2 @ 2.20GHz","slot":2,"productVersion":"Intel(R) Xeon(R)
+        CPU E7-8880L v2 @ 2.20GHz","cores":15}],"processorSlots":0,"pciCapabilities":["Raid
+        Link","OOB PCIe","Raid Link Config","Raid Link Alert","OOB PCIe Config"],"productId":"4D4F00","hasOS":false,"lanOverUsbPortForwardingModes":[{"state":"disabled","type":"DSA","externalIPAddress":""},{"state":"disabled","type":"OSDeploy","externalIPAddress":""}],"bootMode":{"possibleValues":["UEFI
+        Mode","Legacy Mode"],"currentValue":"UEFI Mode"},"ports":[{"ioModuleBay":0,"portNumber":49},{"ioModuleBay":0,"portNumber":50}],"embeddedHypervisorPresence":false,"posID":"","nist":{"possibleValues":["Compatibility","Nist_800_131A_Strict","unsupported"],"currentValue":"Compatibility"},"overallHealthState":"Warning","subType":"","partitionID":-1,"physicalID":0,"flashStorage":[],"productName":"Lenovo
+        System x3850 X6"}],"location":{"lowestRackUnit":0,"location":"","rack":"","room":""},"complexID":"7936DD182C5311E3A8D6000AF7256738","partitionCount":0,"uuid":"7936DD182C5311E3A8D6000AF7256738","nodeCount":1}],"chassisList":[],"location":"","UUID":"STANDALONE_OBJECT_UUID","nodeList":[{"itemParentUUID":null,"itemName":"Management
+        Controller UUID-7936DD182C5311E3A8D6000AF7256738","complexNodeCount":1,"itemLowerUnit":0,"itemType":"SERVER","itemUUID":"7936DD182C5311E3A8D6000AF7256738","itemSubType":"","itemHeight":4,"itemInventory":{"accessState":"Offline","arch":"x86","manufacturerId":"
+        IBM(CLCN)","location":{"lowestRackUnit":0,"location":"","rack":"","room":""},"addinCardSlots":0,"serialNumber":"23Y6458","driveBays":17,"macAddress":"6C:AE:8B:4B:4F:15,6C:AE:8B:4B:4F:16","type":"Rack-Tower
+        Server","lanOverUsb":"enabled","onboardPciDevices":[{"pciSubID":"0","firmware":[{"revision":"0","classifications":[0],"status":"Active","name":"PCIFirmware","role":"Primary","softwareID":"0:0","type":"","build":"0","date":"","version":""}],"fodUniqueID":"","pciRevision":"0","isAgentless":false,"pciBusNumber":"27","pciSubVendorID":"0","isAddOnCard":false,"pciDeviceNumber":"0","posID":"534","pciFunctionNumber":"0","name":"","portInfo":{},"vpdID":"102b"}],"height":4,"leds":[{"color":"Yellow","location":"FrontRearPanel","name":"Fault","state":"Off"},{"color":"Blue","location":"FrontRearPanel","name":"Identify","state":"Off"},{"color":"Yellow","location":"FrontPanel","name":"Check
+        Log","state":"Off"},{"color":"Yellow","location":"LightPathCard","name":"CNFG","state":"Off"},{"color":"Yellow","location":"LightPathCard","name":"CPU","state":"Off"},{"color":"Yellow","location":"LightPathCard","name":"PS","state":"Off"},{"color":"Yellow","location":"LightPathCard","name":"DASD","state":"Off"},{"color":"Yellow","location":"LightPathCard","name":"FAN","state":"Off"},{"color":"Yellow","location":"LightPathCard","name":"MEM","state":"Off"},{"color":"Yellow","location":"LightPathCard","name":"NMI","state":"Off"},{"color":"Yellow","location":"LightPathCard","name":"OVER
+        SPEC","state":"Off"},{"color":"Yellow","location":"LightPathCard","name":"TEMP","state":"Off"},{"color":"Yellow","location":"LightPathCard","name":"PCI","state":"Off"},{"color":"Yellow","location":"LightPathCard","name":"LINK","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        1","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        3","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4","state":"Off"},{"color":"Yellow","location":"FRU","name":"FAN
+        1","state":"Off"},{"color":"Yellow","location":"FRU","name":"FAN 2","state":"Off"},{"color":"Yellow","location":"FRU","name":"FAN
+        3","state":"Off"},{"color":"Yellow","location":"FRU","name":"FAN 4","state":"Off"},{"color":"Yellow","location":"FRU","name":"FAN
+        5","state":"Off"},{"color":"Yellow","location":"FRU","name":"FAN 6","state":"Off"},{"color":"Yellow","location":"FRU","name":"FAN
+        7","state":"Off"},{"color":"Yellow","location":"FRU","name":"FAN 8","state":"Off"},{"color":"Yellow","location":"FRU","name":"FAN
+        9","state":"Off"},{"color":"Yellow","location":"FRU","name":"FAN 10PEC","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        1 DIMM 1","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1
+        DIMM 2","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1 DIMM
+        3","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1 DIMM 4","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        1 DIMM 5","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1
+        DIMM 6","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1 DIMM
+        7","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1 DIMM 8","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        1 DIMM 9","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1
+        DIMM 10Ctlr","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        1 DIMM 11Ctlr","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        1 DIMM 12Ctlr","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        1 DIMM 13Ctlr","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        1 DIMM 14Ctlr","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        1 DIMM 15Ctlr","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        1 DIMM 16Ctlr","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI
+        1","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI 2","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI
+        3","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI 4","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI
+        5","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI 6","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI
+        7","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI 8","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI
+        9","state":"Off"},{"color":"Yellow","location":"FRU","name":"ML2","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI
+        11DIMM 16Ctlr","state":"Off"},{"color":"Yellow","location":"FRU","name":"PCI
+        12DIMM 16Ctlr","state":"Off"},{"color":"Yellow","location":"Planar","name":"SysBrd","state":"Off"},{"color":"Yellow","location":"Planar","name":"CMOS
+        Batt Error","state":"Off"},{"color":"Green","location":"FrontRearPanel","name":"Power","state":"On"},{"color":"Green","location":"Planar","name":"BMC
+        Heartbeat","state":"Blinking"},{"color":"Yellow","location":"FRU","name":"CPU
+        1 DIMM 17","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1
+        DIMM 18","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1 DIMM
+        19","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1 DIMM 20","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        1 DIMM 21","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1
+        DIMM 22","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1 DIMM
+        23","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 1 DIMM 24","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        2 DIMM 1","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2
+        DIMM 2","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2 DIMM
+        3","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2 DIMM 4","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        2 DIMM 5","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2
+        DIMM 6","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2 DIMM
+        7","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2 DIMM 8","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        2 DIMM 9","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2
+        DIMM 10","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2 DIMM
+        11","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2 DIMM 12","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        2 DIMM 13","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2
+        DIMM 14","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2 DIMM
+        15","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2 DIMM 16","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        2 DIMM 17","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2
+        DIMM 18","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2 DIMM
+        19","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2 DIMM 20","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        2 DIMM 21","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2
+        DIMM 22","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2 DIMM
+        23","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 2 DIMM 24","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        3 DIMM 1","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3
+        DIMM 2","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3 DIMM
+        3","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3 DIMM 4","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        3 DIMM 5","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3
+        DIMM 6","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3 DIMM
+        7","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3 DIMM 8","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        3 DIMM 9","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3
+        DIMM 10","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3 DIMM
+        11","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3 DIMM 12","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        3 DIMM 13","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3
+        DIMM 14","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3 DIMM
+        15","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3 DIMM 16","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        3 DIMM 17","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3
+        DIMM 18","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3 DIMM
+        19","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3 DIMM 20","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        3 DIMM 21","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3
+        DIMM 22","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3 DIMM
+        23","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 3 DIMM 24","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        4 DIMM 1","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4
+        DIMM 2","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4 DIMM
+        3","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4 DIMM 4","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        4 DIMM 5","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4
+        DIMM 6","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4 DIMM
+        7","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4 DIMM 8","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        4 DIMM 9","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4
+        DIMM 10","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4 DIMM
+        11","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4 DIMM 12","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        4 DIMM 13","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4
+        DIMM 14","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4 DIMM
+        15","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4 DIMM 16","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        4 DIMM 17","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4
+        DIMM 18","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4 DIMM
+        19","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4 DIMM 20","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU
+        4 DIMM 21","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4
+        DIMM 22","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4 DIMM
+        23","state":"Off"},{"color":"Yellow","location":"FRU","name":"CPU 4 DIMM 24","state":"Off"},{"color":"Yellow","location":"FRU","name":"Book
+        1 Board4","state":"Off"},{"color":"Yellow","location":"FRU","name":"Book 2
+        Board4","state":"Off"},{"color":"Yellow","location":"FRU","name":"Book 3 Board4","state":"Off"},{"color":"Yellow","location":"FRU","name":"Book
+        4 Board4","state":"Off"},{"color":"Amber","location":"FRU","name":"Book 1
+        Attention","state":"Off"},{"color":"Amber","location":"FRU","name":"Book 2
+        Attention","state":"Off"},{"color":"Amber","location":"FRU","name":"Book 3
+        Attention","state":"Off"},{"color":"Amber","location":"FRU","name":"Book 4
+        Attention","state":"Off"}],"description":"Chassis","mgmtProcIPaddress":"10.243.6.17","expansionCards":[],"errorFields":[],"FQDN":"cmm-dt1.labs.lenovo.com","ipInterfaces":[{"IPv4enabled":true,"IPv4DHCPmode":"STATIC_ONLY","IPv6enabled":true,"IPv6DHCPenabled":true,"IPv4assignments":[{"id":0,"subnet":"255.255.240.0","gateway":"0.0.0.0","address":"10.243.6.17","type":"INUSE"}],"IPv6assignments":[{"id":0,"scope":"Global","gateway":"0:0:0:0:0:0:0:0","source":"Stateless","address":"fd55:faaf:e1ab:2021:6eae:8bff:fe4b:4f15","prefix":64,"type":"INUSE"},{"id":0,"scope":"LinkLocal","gateway":"0:0:0:0:0:0:0:0","source":"Other","address":"fe80:0:0:0:6eae:8bff:fe4b:4f15","prefix":64,"type":"INUSE"}],"name":"eth0","IPv6statelessEnabled":true,"label":"unknown","IPv6staticEnabled":false}],"firmware":[{"status":"Active","name":"UEFI
+        Firmware/BIOS","role":"Primary","date":"2018-01-26T00:00:00Z","type":"UEFI","build":"A9E143HUS","version":"4.30"},{"status":"Inactive","name":"UEFI
+        Backup Firmware/BIOS","role":"Backup","date":"2017-02-21T00:00:00Z","type":"UEFI-Backup","build":"A9E139GUS","version":"4.10"},{"status":"Active","name":"DSA
+        Diagnostic Software","role":"Primary","date":"2017-10-11T00:00:00Z","type":"DSA","build":"DSALB1A","version":"10.2"},{"status":"Active","name":"IMM2
+        Firmware","role":"Primary","date":"2018-01-19T00:00:00Z","type":"IMM2","build":"TCOO39A","version":"4.70"},{"status":"Inactive","name":"IMM2
+        Backup Firmware","role":"Backup","date":"2016-12-05T00:00:00Z","type":"IMM2-Backup","build":"TCOO59G","version":"9.00"}],"bladeState":0,"activationKeys":[],"status":{"message":"managed","name":"MANAGED"},"powerCappingPolicy":{"cappingACorDCMode":"DC","minimumHardCapLevel":434300,"cappingPolicy":"OFF","maxPowerCap":535000,"minimumPowerCappingHotPlugLevel":754000,"powerCappingAllocUnit":"watts*10^-3","maximumPowerCappingHotPlugLevel":856000,"currentPowerCap":0,"minPowerCap":130000},"hostname":"IMM2-6cae8b4b4f15","powerSupplies":[{"model":"","manufacturerId":"","serialNumber":"K115136V11E","inputVoltageIsAC":true,"inputVoltageMin":-1,"type":"PowerSupply","dataHandle":0,"cmmDisplayName":"Power
+        Supply 1","leds":[],"description":"","name":"Power Supply 1","userDescription":"","manufactureDate":"","partNumber":"94Y8066","firmware":[],"healthState":"GOOD","machineType":"","hardwareRevision":"","FRU":"","uri":"powerSupply/","productId":"","powerAllocation":{"totalInputPower":0,"totalOutputPower":900},"powerState":"Unknown","posID":"","slots":[2],"manufacturer":"DELT","vpdID":"","uuid":"","productName":"","fruSerialNumber":"","inputVoltageMax":-1},{"model":"","manufacturerId":"","serialNumber":"K115136V11L","inputVoltageIsAC":true,"inputVoltageMin":-1,"type":"PowerSupply","dataHandle":0,"cmmDisplayName":"Power
+        Supply 2","leds":[],"description":"","name":"Power Supply 2","userDescription":"","manufactureDate":"","partNumber":"94Y8066","firmware":[],"healthState":"GOOD","machineType":"","hardwareRevision":"","FRU":"","uri":"powerSupply/","productId":"","powerAllocation":{"totalInputPower":0,"totalOutputPower":900},"powerState":"Unknown","posID":"","slots":[3],"manufacturer":"DELT","vpdID":"","uuid":"","productName":"","fruSerialNumber":"","inputVoltageMax":-1}],"parentComplexID":"7936DD182C5311E3A8D6000AF7256738","FRU":"None","uri":"node/7936DD182C5311E3A8D6000AF7256738","vnicMode":"disabled","powerAllocation":{"maximumAllocatedPower":1710,"minimumAllocatedPower":26},"expansionProductType":"","powerStatus":8,"bootOrder":{"uri":"node/7936DD182C5311E3A8D6000AF7256738/bootOrder","bootOrderList":[{"currentBootOrderDevices":["None"],"bootType":"SingleUse","possibleBootOrderDevices":["None","PXE
+        Network","Hard Disk 0","Diagnostics","CD/DVD Rom","Boot To F1","Hypervisor","Floppy
+        Disk"]},{"currentBootOrderDevices":["Hard Disk 0","CentOS Linux","Windows
+        Boot Manager","PXE Network","CD/DVD Rom"],"bootType":"Permanent","possibleBootOrderDevices":["Hard
+        Disk 0","CentOS Linux","Windows Boot Manager","PXE Network","CD/DVD Rom","Floppy
+        Disk","Hard Disk 1","Hard Disk 2","Hard Disk 3","Hard Disk 4","USB Storage","Diagnostics","iSCSI","iSCSI
+        Critical","Embedded Hypervisor","Legacy Only","USB0","USB1","USB2","USB3","USB4","USB5","USB6","USB7","DSA","Slot16","Slot17","Slot18","Slot19","Slot12","Slot11","Slot10","Slot1","Slot2","Slot3","Slot4","Slot5","Slot6","Slot7","Slot8","Slot9","IMM1","IMM2"]},{"currentBootOrderDevices":["PXE
+        Network","CD/DVD Rom","Hard Disk 0"],"bootType":"WakeOnLAN","possibleBootOrderDevices":["PXE
+        Network","CD/DVD Rom","Hard Disk 0","CentOS Linux","Windows Boot Manager","Floppy
+        Disk","Hard Disk 1","Hard Disk 2","Hard Disk 3","Hard Disk 4","USB Storage","Diagnostics","iSCSI","iSCSI
+        Critical","Embedded Hypervisor","Legacy Only","USB0","USB1","USB2","USB3","USB4","USB5","USB6","USB7","DSA","Slot16","Slot17","Slot18","Slot19","Slot12","Slot11","Slot10","Slot1","Slot2","Slot3","Slot4","Slot5","Slot6","Slot7","Slot8","Slot9","IMM1","IMM2"]}]},"expansionProducts":[],"ipv6Addresses":["fd55:faaf:e1ab:2021:6eae:8bff:fe4b:4f15","fe80:0:0:0:6eae:8bff:fe4b:4f15"],"slots":[1],"manufacturer":"
+        IBM(CLCN)","addinCards":[{"pciSubID":"454","firmware":[{"revision":"0","classifications":[13],"status":"Active","name":"MegaRAID
+        Controller Firmware","role":"Primary","softwareID":"10140454","type":"Software
+        Bundle","build":"0","date":"2017-09-07T00:00:00Z","version":"24.21.0-0020"}],"slotSupportsHotPlug":"false","fodUniqueID":"N/A","pciRevision":"2","isAgentless":true,"pciBusNumber":"7","pciSubVendorID":"1014","isAddOnCard":true,"FRU":"N/A","pciDeviceNumber":"0","slotNumber":"12","posID":"5d","pciFunctionNumber":"0","manufacturer":"IBM","name":"ServeRAID
+        M5210","portInfo":{},"vpdID":"1000","productName":"ServeRAID M5210","partNumber":"N/A","fruSerialNumber":"SV334P0606","slotName":"SlotDesig7_Slot
+        12 (Pri Storage)"},{"pciSubID":"450","firmware":[{"revision":"0","classifications":[33024],"status":"Active","name":"17.4.4.8-c","role":"Primary","softwareID":"10140450","type":"VPD-V0","build":"0","date":"","version":"17.4.4.8-c"}],"slotSupportsHotPlug":"false","fodUniqueID":"11S90Y9372Y0502037P0ES","pciRevision":"0","isAgentless":true,"pciBusNumber":"145","pciSubVendorID":"1014","isAddOnCard":true,"FRU":"90Y9373","pciDeviceNumber":"0","slotNumber":"7","posID":"165f","pciFunctionNumber":"0","manufacturer":"IBM","name":"Broadcom
+        2-port 1GbE NIC Card for IBM","portInfo":{"physicalPorts":[{"portType":"ETHERNET","portNumber":49,"logicalPorts":[{"portType":"ETHERNET","portNumber":1,"logicalPortIndex":1,"addresses":"000AF7256738","vnicMode":false}],"peerBay":0,"physicalPortIndex":1}]},"vpdID":"14e4","productName":"Broadcom
+        2-port 1GbE NIC Card for IBM","partNumber":"90Y9372","fruSerialNumber":"Y0502037P0ES","slotName":"SlotDesig6_Slot
+        7"},{"pciSubID":"450","firmware":[{"revision":"0","classifications":[33024],"status":"Active","name":"17.4.4.8-c","role":"Primary","softwareID":"10140450","type":"VPD-V0","build":"0","date":"","version":"17.4.4.8-c"}],"slotSupportsHotPlug":"false","fodUniqueID":"11S90Y9372Y0502037P0ES","pciRevision":"0","isAgentless":true,"pciBusNumber":"145","pciSubVendorID":"1014","isAddOnCard":true,"FRU":"90Y9373","pciDeviceNumber":"0","slotNumber":"7","posID":"165f","pciFunctionNumber":"1","manufacturer":"IBM","name":"Broadcom
+        2-port 1GbE NIC Card for IBM","portInfo":{"physicalPorts":[{"portType":"ETHERNET","portNumber":50,"logicalPorts":[{"portType":"ETHERNET","portNumber":1,"logicalPortIndex":1,"addresses":"000AF7256739","vnicMode":false}],"peerBay":0,"physicalPortIndex":2}]},"vpdID":"14e4","productName":"Broadcom
+        2-port 1GbE NIC Card for IBM","partNumber":"90Y9372","fruSerialNumber":"Y0502037P0ES","slotName":"SlotDesig6_Slot
+        7"}],"parentPartitionUUID":"","raidSettings":[{"firmware":[{"revision":"0","classifications":[10],"status":"Active","name":"MegaRAID
+        Controller Firmware","role":"Primary","softwareID":"10140454","type":"Firmware","build":"0","date":"2017-09-07T00:00:00Z","version":"24.21.0-0020"}],"description":"ServeRAID
+        M5210","name":"ServeRAID M5210","uuid":"0000000000000000500605B006E6ED5B","storagePools":[{"raidLevel":0,"description":"0000000000000000500605B006E6ED5B_Storage
+        Pool_M5210_0000000000000000500605B006E6ED5B_c:Pool:0","storageVolumes":[{"bootable":true,"volumeUID":"0","primaryPartition":0,"volumeID":"6","numberOfBlocks":583983104,"volumeStatus":"Dynamic
+        Reconfig","description":"Volume 0 0000000000000000500605B006E6ED5B_0","stripeSize":65536,"name":"GenericR0_0","blockSize":512,"health":"Unknown"}],"name":"Pool_0","totalManagedSpace":298999349248,"remainingSpace":0,"arrayUid":"0","arrayStatus":"Offline","diskDrives":[{"model":"ST300MM0006","healthState":"Normal","numberOfBlocks":585937500,"interfaceType":"SAS","serialNumber":"S0K09V6W","blockSize":512,"FRU":"42D0628","mediaType":"Rotational","diskState":"Online","bay":0,"description":"ST300MM0006","manufacturer":"IBM-ESXS","name":"Disk
+        0_0","uuid":"","partNumber":"42D0631"}]}],"diskDrives":[{"model":"ST300MM0006","healthState":"Normal","numberOfBlocks":585937500,"interfaceType":"SAS","serialNumber":"S0K09V6W","blockSize":512,"FRU":"42D0628","mediaType":"Rotational","diskState":"Online","bay":0,"description":"ST300MM0006","manufacturer":"IBM-ESXS","name":"Disk
+        0_0","uuid":"","partNumber":"42D0631"}]}],"vpdID":"","uuid":"7936DD182C5311E3A8D6000AF7256738","isConnectionTrusted":"false","memoryModules":[{"model":"DDR3","speed":1600,"manufacturer":"Micron
+        Technology","capacity":4,"serialNumber":"3AAF65F9","displayName":"CPU 1 DIMM
+        9,12800 MB/s","slot":9,"type":"DDR3","partNumber":"Unknown"},{"model":"DDR3","speed":1600,"manufacturer":"Micron
+        Technology","capacity":4,"serialNumber":"3AAF65FA","displayName":"CPU 1 DIMM
+        15,12800 MB/s","slot":15,"type":"DDR3","partNumber":"Unknown"},{"model":"DDR3","speed":1600,"manufacturer":"Micron
+        Technology","capacity":4,"serialNumber":"3AAF65FE","displayName":"CPU 2 DIMM
+        9,12800 MB/s","slot":9,"type":"DDR3","partNumber":"Unknown"},{"model":"DDR3","speed":1600,"manufacturer":"Micron
+        Technology","capacity":4,"serialNumber":"3AAF6603","displayName":"CPU 2 DIMM
+        15,12800 MB/s","slot":15,"type":"DDR3","partNumber":"Unknown"}],"partitionEnabled":false,"fruSerialNumber":"None","secureBootMode":{"possibleValues":["Disabled","Enabled"],"currentValue":"Disabled"},"encapsulation":{"encapsulationMode":"normal"},"tlsVersion":{"possibleValues":["TLS_10","TLS_11","TLS_12","unsupported"],"currentValue":"TLS_12"},"model":"AC1","isScalable":true,"expansionCardSlots":0,"fans":[{"healthState":"Normal","status":"OK","speed":3440,"description":"Logical
+        Device for fan / cooling device 1","slots":1,"name":"Fan 1"},{"healthState":"Normal","status":"OK","speed":3440,"description":"Logical
+        Device for fan / cooling device 2","slots":2,"name":"Fan 2"},{"healthState":"Normal","status":"OK","speed":3440,"description":"Logical
+        Device for fan / cooling device 3","slots":3,"name":"Fan 3"},{"healthState":"Normal","status":"OK","speed":3440,"description":"Logical
+        Device for fan / cooling device 4","slots":4,"name":"Fan 4"},{"healthState":"Warning","status":"Degraded","speed":3440,"description":"Logical
+        Device for fan / cooling device 5","slots":5,"name":"Fan 5"},{"healthState":"Warning","status":"Degraded","speed":3440,"description":"Logical
+        Device for fan / cooling device 6","slots":6,"name":"Fan 6"},{"healthState":"Warning","status":"Degraded","speed":3440,"description":"Logical
+        Device for fan / cooling device 7","slots":7,"name":"Fan 7"},{"healthState":"Warning","status":"Degraded","speed":3440,"description":"Logical
+        Device for fan / cooling device 8","slots":8,"name":"Fan 8"},{"healthState":"Normal","status":"OK","speed":3440,"description":"Logical
+        Device for fan / cooling device 9","slots":9,"name":"Fan 9"},{"healthState":"Normal","status":"OK","speed":3440,"description":"Logical
+        Device for fan / cooling device 10","slots":10,"name":"Fan 10"}],"isITME":false,"hostMacAddresses":"00:0A:F7:25:67:38,00:0A:F7:25:67:39","contact":"","dataHandle":1518063984527,"ipv4Addresses":["10.243.6.17","169.254.95.118"],"cmmDisplayName":"Management
+        Controller UUID-7936DD182C5311E3A8D6000AF7256738","backedBy":"real","complexID":1,"name":"cmm-dt1.labs.lenovo.com","memorySlots":0,"drives":[],"cmmHealthState":"Normal","userDescription":"","subSlots":[],"partNumber":"00D0188     ","excludedHealthState":"Warning","machineType":"6241","isRemotePresenceEnabled":true,"pciDevices":[{"pciSubID":"454","firmware":[{"revision":"0","classifications":[13],"status":"Active","name":"MegaRAID
+        Controller Firmware","role":"Primary","softwareID":"10140454","type":"Software
+        Bundle","build":"0","date":"2017-09-07T00:00:00Z","version":"24.21.0-0020"}],"slotSupportsHotPlug":"false","fodUniqueID":"N/A","pciRevision":"2","isAgentless":true,"pciBusNumber":"7","pciSubVendorID":"1014","isAddOnCard":true,"FRU":"N/A","pciDeviceNumber":"0","slotNumber":"12","posID":"5d","pciFunctionNumber":"0","manufacturer":"IBM","name":"ServeRAID
+        M5210","portInfo":{},"vpdID":"1000","productName":"ServeRAID M5210","partNumber":"N/A","fruSerialNumber":"SV334P0606","slotName":"SlotDesig7_Slot
+        12 (Pri Storage)"},{"pciSubID":"0","firmware":[{"revision":"0","classifications":[0],"status":"Active","name":"PCIFirmware","role":"Primary","softwareID":"0:0","type":"","build":"0","date":"","version":""}],"fodUniqueID":"","pciRevision":"0","isAgentless":false,"pciBusNumber":"27","pciSubVendorID":"0","isAddOnCard":false,"pciDeviceNumber":"0","posID":"534","pciFunctionNumber":"0","name":"","portInfo":{},"vpdID":"102b"},{"pciSubID":"450","firmware":[{"revision":"0","classifications":[33024],"status":"Active","name":"17.4.4.8-c","role":"Primary","softwareID":"10140450","type":"VPD-V0","build":"0","date":"","version":"17.4.4.8-c"}],"slotSupportsHotPlug":"false","fodUniqueID":"11S90Y9372Y0502037P0ES","pciRevision":"0","isAgentless":true,"pciBusNumber":"145","pciSubVendorID":"1014","isAddOnCard":true,"FRU":"90Y9373","pciDeviceNumber":"0","slotNumber":"7","posID":"165f","pciFunctionNumber":"0","manufacturer":"IBM","name":"Broadcom
+        2-port 1GbE NIC Card for IBM","portInfo":{"physicalPorts":[{"portType":"ETHERNET","portNumber":49,"logicalPorts":[{"portType":"ETHERNET","portNumber":1,"logicalPortIndex":1,"addresses":"000AF7256738","vnicMode":false}],"peerBay":0,"physicalPortIndex":1}]},"vpdID":"14e4","productName":"Broadcom
+        2-port 1GbE NIC Card for IBM","partNumber":"90Y9372","fruSerialNumber":"Y0502037P0ES","slotName":"SlotDesig6_Slot
+        7"},{"pciSubID":"450","firmware":[{"revision":"0","classifications":[33024],"status":"Active","name":"17.4.4.8-c","role":"Primary","softwareID":"10140450","type":"VPD-V0","build":"0","date":"","version":"17.4.4.8-c"}],"slotSupportsHotPlug":"false","fodUniqueID":"11S90Y9372Y0502037P0ES","pciRevision":"0","isAgentless":true,"pciBusNumber":"145","pciSubVendorID":"1014","isAddOnCard":true,"FRU":"90Y9373","pciDeviceNumber":"0","slotNumber":"7","posID":"165f","pciFunctionNumber":"1","manufacturer":"IBM","name":"Broadcom
+        2-port 1GbE NIC Card for IBM","portInfo":{"physicalPorts":[{"portType":"ETHERNET","portNumber":50,"logicalPorts":[{"portType":"ETHERNET","portNumber":1,"logicalPortIndex":1,"addresses":"000AF7256739","vnicMode":false}],"peerBay":0,"physicalPortIndex":2}]},"vpdID":"14e4","productName":"Broadcom
+        2-port 1GbE NIC Card for IBM","partNumber":"90Y9372","fruSerialNumber":"Y0502037P0ES","slotName":"SlotDesig6_Slot
+        7"}],"domainName":"mm-dt1.labs.lenovo.com","processors":[{"speed":2.2,"manufacturer":"Intel(R)
+        Corporation","family":"PENTIUM_R_4","displayName":"Intel(R) Xeon(R) CPU E7-8880L
+        v2 @ 2.20GHz","slot":1,"productVersion":"Intel(R) Xeon(R) CPU E7-8880L v2
+        @ 2.20GHz","cores":15},{"speed":2.2,"manufacturer":"Intel(R) Corporation","family":"PENTIUM_R_4","displayName":"Intel(R)
+        Xeon(R) CPU E7-8880L v2 @ 2.20GHz","slot":2,"productVersion":"Intel(R) Xeon(R)
+        CPU E7-8880L v2 @ 2.20GHz","cores":15}],"processorSlots":0,"pciCapabilities":["Raid
+        Link","OOB PCIe","Raid Link Config","Raid Link Alert","OOB PCIe Config"],"productId":"4D4F00","hasOS":false,"lanOverUsbPortForwardingModes":[{"state":"disabled","type":"DSA","externalIPAddress":""},{"state":"disabled","type":"OSDeploy","externalIPAddress":""}],"bootMode":{"possibleValues":["UEFI
+        Mode","Legacy Mode"],"currentValue":"UEFI Mode"},"ports":[{"ioModuleBay":0,"portNumber":49},{"ioModuleBay":0,"portNumber":50}],"embeddedHypervisorPresence":false,"posID":"","nist":{"possibleValues":["Compatibility","Nist_800_131A_Strict","unsupported"],"currentValue":"Compatibility"},"overallHealthState":"Warning","subType":"","partitionID":-1,"physicalID":0,"flashStorage":[],"productName":"Lenovo
+        System x3850 X6"},"complexNodeUUIDs":["7936DD182C5311E3A8D6000AF7256738"],"complexID":"7936DD182C5311E3A8D6000AF7256738","itemLocationRack":"","physicalID":0,"nodeCount":1,"itemLocation":"","itemLocationRoom":""}],"placeholderList":[],"switchList":[],"room":""},{"storageList":[],"cabinetName":"solution-1","height":42,"complexList":[],"chassisList":[],"location":"","UUID":"FCD07E7C-F69F-4469-A57B-3FAF4D064C49","nodeList":[],"placeholderList":[],"switchList":[],"room":""},{"storageList":[],"cabinetName":"rack-2","height":42,"complexList":[],"chassisList":[],"location":"","UUID":"43D47624-E655-45B6-A0A7-D914BBC1D2D7","nodeList":[],"placeholderList":[],"switchList":[],"room":""}]}'
+    http_version: 
+  recorded_at: Thu, 08 Mar 2018 20:39:59 GMT
+- request:
+    method: get
+    uri: https://lxcahost/patterns
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - LXCA via Ruby Client/0.5.9 (ManageIQ/master)
+      Authorization:
+      - Basic bHhjYzpQQVNTVzByRA==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 08 Mar 2018 20:40:00 GMT
+      Set-Cookie:
+      - userAuthenticationMethod=local;Path=/;Secure
+      Expires:
+      - "-1"
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Strict-Transport-Security:
+      - max-age=86400; includeSubDomains;
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Content-Security-Policy:
+      - 'default-src https:; script-src https: ''unsafe-inline'' ''unsafe-eval'';
+        style-src https: ''unsafe-inline'''
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '1'
+      Content-Type:
+      - application/com.lenovo.lxca-v1.2.2+json; charset=UTF-8
+      Vary:
+      - Accept-Encoding, User-Agent
+      Content-Length:
+      - '1162'
+    body:
+      encoding: UTF-8
+      string: '{"identifier":"id","label":"name","items":[{"id":"77","referencedBy":[],"userDefined":true,"formFactor":"r","inUse":false,"description":"Pattern
+        generated from 10.243.6.71\nPattern created from server: XinYi-71\nLearned
+        on: Oct 19, 2017 2:38:29 PM","name":"XinYi-71-config","nodeType":"sysx","type":"Server","uri":"/config/template/77"},{"id":"96","referencedBy":[],"userDefined":true,"formFactor":"r","inUse":true,"description":"Pattern
+        created from server: DaAn-68-gui\nLearned on: Oct 25, 2017 8:28:52 PM","name":"DaAn-68-gui-config","nodeType":"sysx","type":"Server","uri":"/config/template/96"},{"id":"65","referencedBy":[],"userDefined":true,"formFactor":"rc","inUse":false,"description":"Copy
+        of the 17dspncsvdm server''s settings\nPattern created from server: 17dspncsvdm\nLearned
+        on: Sep 19, 2017 10:58:18 AM","name":"17dspncsvdm-config","nodeType":"sysx","type":"Server","uri":"/config/template/65"},{"id":"54","referencedBy":[],"userDefined":true,"formFactor":"r","inUse":false,"description":"Pattern
+        created from server: DaAn-68-gui\nLearned on: Aug 28, 2017 12:47:37 PM","name":"DaAn","nodeType":"sysx","type":"Server","uri":"/config/template/54"}]}
+
+'
+    http_version: 
+  recorded_at: Thu, 08 Mar 2018 20:40:00 GMT

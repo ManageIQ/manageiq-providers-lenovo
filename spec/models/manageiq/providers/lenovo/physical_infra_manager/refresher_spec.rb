@@ -6,6 +6,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
     VCR.insert_cassette("#{vcr_path}/mock_aicc", options)
     VCR.insert_cassette("#{vcr_path}/mock_cabinet", options)
     VCR.insert_cassette("#{vcr_path}/mock_config_patterns", options)
+    VCR.insert_cassette("#{vcr_path}/full_refresh", options)
   end
   after(:all) do
     while VCR.cassettes.last
@@ -28,6 +29,19 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
                              :ipaddress => "https://10.243.9.123:443")
     ems.authentications = [auth]
     ems
+  end
+
+  let(:ems2) do
+    # Note: The hostname below cannot be an IP address because it will
+    #       cause the full refresh test to fail when being executed
+    #       on the Travis CI site.
+    ems2 = FactoryGirl.create(:physical_infra,
+                              :name      => "LXCA2",
+                              :hostname  => "lxcahost",
+                              :port      => "443",
+                              :ipaddress => "https://10.243.9.123:443")
+    ems2.authentications = [auth]
+    ems2
   end
 
   let(:targets) { [ems] }
@@ -54,8 +68,8 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
     # Perform the refresh twice to verify that a second run with existing data
     # does not change anything
     2.times do
-      EmsRefresh.refresh(ems)
-      ems.reload
+      EmsRefresh.refresh(ems2)
+      ems2.reload
 
       assert_table_counts
       assert_guest_table_contents
