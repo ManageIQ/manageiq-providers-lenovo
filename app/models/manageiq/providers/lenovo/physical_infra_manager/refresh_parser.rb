@@ -7,7 +7,7 @@ module ManageIQ::Providers::Lenovo
     require_relative './parsers/parser_dictionary_constants'
 
     def self.miq_template_type
-      ManageIQ::Providers::Lenovo::ParserDictionaryConstants::MIQ_TYPES["template"]
+      ManageIQ::Providers::Lenovo::Parsers::ParserDictionaryConstants::MIQ_TYPES["template"]
     end
 
     def initialize(ems, options = nil)
