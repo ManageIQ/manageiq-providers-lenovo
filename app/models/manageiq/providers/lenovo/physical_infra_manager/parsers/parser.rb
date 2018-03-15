@@ -125,7 +125,8 @@ module ManageIQ::Providers::Lenovo
     end
 
     def get_memory_info(node)
-      node.memoryModules&.reduce(0) { |total, mem| total + mem['capacity'] }
+      total_memory_gigabytes = node.memoryModules&.reduce(0) { |total, mem| total + mem['capacity'] }
+      total_memory_gigabytes * 1024 # convert to megabytes
     end
 
     def get_total_cores(node)

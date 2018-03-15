@@ -66,6 +66,12 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       expect(child_device[:device_name]).to eq("Physical Port 1")
     end
 
+    it 'will retrieve the amout of memory in MB' do
+      physical_server = @result[:physical_servers][0]
+      memory_amount = physical_server[:computer_system][:hardware][:memory_mb]
+      expect(memory_amount).to eq(16_384)
+    end
+
     it 'will retrieve disk capacity from a physical server' do
       physical_server_with_disk = @result[:physical_servers][0]
 
