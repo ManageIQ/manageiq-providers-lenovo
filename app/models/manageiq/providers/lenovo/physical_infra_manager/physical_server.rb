@@ -1,5 +1,7 @@
 module ManageIQ::Providers
   class Lenovo::PhysicalInfraManager::PhysicalServer < ::PhysicalServer
+    include_concern 'RemoteConsole'
+
     delegate :product_name,
              :product_name=,
              :manufacturer,
