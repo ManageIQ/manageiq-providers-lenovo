@@ -66,6 +66,26 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       expect(child_device[:device_name]).to eq("Physical Port 1")
     end
 
+    %i(
+      product_name
+      manufacturer
+      machine_type
+      model
+      serial_number
+      field_replaceable_unit
+      contact
+      description
+      location
+      room
+      rack_name
+      lowest_rack_unit
+    ).each do |attr|
+      it "will retrieve #{attr} of asset detail" do
+        asset_detail = @result[:physical_servers].first[:asset_detail]
+        expect(asset_detail[attr]).to_not be(nil)
+      end
+    end
+
     it 'will retrieve the amout of memory in MB' do
       physical_server = @result[:physical_servers][0]
       memory_amount = physical_server[:computer_system][:hardware][:memory_mb]
