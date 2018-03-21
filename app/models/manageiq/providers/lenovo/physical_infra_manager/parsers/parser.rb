@@ -28,6 +28,10 @@ module ManageIQ::Providers::Lenovo
       parser.new
     end
 
+    def parse_switch(node)
+      Parsers::SwitchParser.parse_switch(node)
+    end
+
     def parse_physical_server(node)
       Parsers::PhysicalServerParser.parse_physical_server(node)
     end

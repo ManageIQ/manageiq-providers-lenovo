@@ -25,6 +25,7 @@ module ManageIQ::Providers::Lenovo
 
       MIQ_TYPES = {
         "physical_server" => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer",
+        "switch"          => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::Switch",
         "template"        => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::Template",
       }.freeze
 
@@ -38,6 +39,24 @@ module ManageIQ::Providers::Lenovo
       # and your values (string) corresponds to the attributes of the
       # source object who the value will be set as value of the key of result hash.
       # see +ManageIQ::Providers::Lenovo::Parse#parse+
+      SWITCH = {
+        :name          => 'name',
+        :uid_ems       => 'uuid',
+        :switch_uuid   => 'uuid',
+        :health_state  => 'overallHealthState',
+        :power_state   => 'powerState',
+        :product_name  => 'productName',
+        :part_number   => 'partNumber',
+        :serial_number => 'serialNumber',
+        :description   => 'description',
+        :manufacturer  => 'manufacturer',
+      }.freeze
+
+      SWITCH_NETWORK = {
+        :subnet_mask     => 'subnet',
+        :default_gateway => 'gateway',
+      }.freeze
+
       PHYSICAL_SERVER = {
         :name                   => 'name',
         :ems_ref                => 'uuid',
