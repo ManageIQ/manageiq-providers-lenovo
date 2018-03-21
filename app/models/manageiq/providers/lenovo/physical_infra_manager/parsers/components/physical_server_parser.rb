@@ -57,7 +57,7 @@ module ManageIQ::Providers::Lenovo
               total_disk_cap += disk['capacity'] unless disk['capacity'].nil?
             end
           end
-          total_disk_cap
+          total_disk_cap.positive? ? total_disk_cap : nil
         end
 
         def get_memory_info(node)

@@ -86,7 +86,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       computer_system = physical_server[:computer_system]
       hardware = computer_system[:hardware]
 
-      expect(hardware[:disk_capacity]).to eq(0)
+      expect(hardware[:disk_capacity]).to be_nil
     end
   end
 
