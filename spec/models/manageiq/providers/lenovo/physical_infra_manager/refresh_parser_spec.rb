@@ -37,28 +37,28 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
     expect(described_class.miq_template_type).to eq("ManageIQ::Providers::Lenovo::PhysicalInfraManager::Template")
   end
 
-  context "parse switches" do
+  context "parse physical switches" do
     before do
       @result = ems_inv_to_hashes
     end
 
-    it 'will retrieve switches' do
-      expect(@result[:switches].size).to eq(1)
+    it 'will retrieve physical switches' do
+      expect(@result[:physical_switches].size).to eq(1)
     end
 
-    it 'will retrieve switch details from switches' do
-      switch = @result[:switches].first
+    it 'will retrieve switch details from physical switches' do
+      switch = @result[:physical_switches].first
 
       expect(switch[:name]).to eq("ThinkAgile-VX-NE1032-SW03")
       expect(switch[:uid_ems]).to eq("00000000000010008000A48CDB984B00")
       expect(switch[:switch_uuid]).to eq("00000000000010008000A48CDB984B00")
-      expect(switch[:health_state]).to eq("Non-Critical")
-      expect(switch[:power_state]).to eq("On")
-      expect(switch[:product_name]).to eq("Lenovo ThinkSystem NE1032 RackSwitch")
+      expect(switch[:health_state]).to eq("Valid")
+      expect(switch[:power_state]).to eq("on")
+      expect(switch[:asset_detail][:product_name]).to eq("Lenovo ThinkSystem NE1032 RackSwitch")
     end
 
-    it 'will retrieve a port from switches' do
-      switch = @result[:switches].first
+    it 'will retrieve a port from physical switches' do
+      switch = @result[:physical_switches].first
       port   = switch[:hardware][:guest_devices].first
 
       expect(port[:peer_mac_address]).to eq("7c:d3:0a:e6:47:51")
@@ -67,16 +67,16 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       expect(port[:vlan_key]).to eq("\"Lenovo-Network-VLAN546\"")
     end
 
-    it 'will retrieve a firmware from switches' do
-      switch   = @result[:switches].first
+    it 'will retrieve a firmware from physical switches' do
+      switch   = @result[:physical_switches].first
       firmware = switch[:hardware][:firmwares].first
 
       expect(firmware[:name]).to eq("Uboot-N/A")
       expect(firmware[:version]).to eq("10.4.2.0")
     end
 
-    it 'will retrieve network details from switches' do
-      switch       = @result[:switches].first
+    it 'will retrieve network details from physical switches' do
+      switch       = @result[:physical_switches].first
       hardware     = switch[:hardware]
       network_ipv4 = hardware[:networks].first
       network_ipv6 = hardware[:networks].second

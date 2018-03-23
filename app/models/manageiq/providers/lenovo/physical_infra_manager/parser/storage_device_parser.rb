@@ -1,5 +1,3 @@
-require_relative 'component_parser'
-
 module ManageIQ::Providers::Lenovo
   class PhysicalInfraManager::Parser::StorageDeviceParser < PhysicalInfraManager::Parser::ComponentParser
     class << self

@@ -70,22 +70,13 @@ module ManageIQ::Providers::Lenovo
       end
 
       def get_firmwares(node)
-        node.firmware&.map { |firmware| parse_firmware(firmware) }
+        node.firmware&.map { |firmware| parent::FirmwareParser.parse_firmware(firmware) }
       end
 
       def get_guest_devices(node)
         guest_devices = parent::NetworkDeviceParser.parse_network_devices(node)
         guest_devices.concat(parent::StorageDeviceParser.parse_storage_device(node))
         guest_devices << parse_management_device(node)
-      end
-
-      def parse_firmware(firmware)
-        {
-          :name         => "#{firmware["role"]} #{firmware["name"]}-#{firmware["status"]}",
-          :build        => firmware["build"],
-          :version      => firmware["version"],
-          :release_date => firmware["date"],
-        }
       end
 
       def parse_management_device(node)
