@@ -89,6 +89,9 @@ module ManageIQ::Providers::Lenovo
 
         def get_addin_cards(node)
           parsed_addin_cards = []
+
+          cards_to_parse = select_cards_to_parse(node)
+
           # For each of the node's addin cards, parse the addin card and then see
           # if it is already in the list of parsed addin cards. If it is, see if
           # all of its ports are already in the existing parsed addin card entry.
@@ -97,7 +100,7 @@ module ManageIQ::Providers::Lenovo
           # This is needed because xclarity_client seems to represent each port
           # as a separate addin card. The code below ensures that each addin
           # card is represented by a single addin card with multiple ports.
-          node.addinCards&.each do |node_addin_card|
+          cards_to_parse.each do |node_addin_card|
             next unless get_device_type(node_addin_card) == "ethernet"
 
             add_card = true
@@ -109,6 +112,7 @@ module ManageIQ::Providers::Lenovo
 
               parsed_node_addin_card[:child_devices].each do |parsed_port|
                 card_found = false
+                add_card = false
                 addin_card[:child_devices].each do |port|
                   if parsed_port[:device_name] == port[:device_name]
                     card_found = true
@@ -116,7 +120,6 @@ module ManageIQ::Providers::Lenovo
                 end
                 unless card_found
                   addin_card[:child_devices].push(parsed_port)
-                  add_card = false
                 end
               end
             end
@@ -129,12 +132,22 @@ module ManageIQ::Providers::Lenovo
           parsed_addin_cards
         end
 
+        def select_cards_to_parse(component)
+          pci_devices = component.try(:pciDevices)
+          addin_cards = component.try(:addinCards)
+
+          devices = []
+          devices.concat(pci_devices) if pci_devices.present?
+          devices.concat(addin_cards) if addin_cards.present?
+          devices
+        end
+
         def get_device_type(card)
           device_type = ""
 
           unless card["name"].nil?
             card_name = card["name"].downcase
-            if card_name.include?("nic") || card_name.include?("ethernet")
+            if card["class"] == "Network controller" || card_name.include?("nic") || card_name.include?("ethernet")
               device_type = "ethernet"
             end
           end
