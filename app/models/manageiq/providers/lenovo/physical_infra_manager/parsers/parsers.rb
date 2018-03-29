@@ -9,3 +9,4 @@ end
 
 require_relative 'components/physical_server_parser'
 require_relative 'components/config_pattern_parser'
+require_relative 'components/physical_rack_parser'

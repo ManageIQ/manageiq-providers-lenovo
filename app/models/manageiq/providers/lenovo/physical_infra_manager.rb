@@ -1,6 +1,4 @@
 class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::PhysicalInfraManager
-  has_many :physical_servers, :foreign_key => "ems_id", :class_name => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer", :dependent => :destroy
-
   include ManageIQ::Providers::Lenovo::ManagerMixin
   include_concern 'Operations'
 

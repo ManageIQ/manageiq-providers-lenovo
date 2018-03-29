@@ -65,6 +65,12 @@ module ManageIQ::Providers::Lenovo
         },
       }.freeze
 
+      PHYSICAL_RACK = {
+        :name    => 'cabinetName',
+        :uid_ems => 'UUID',
+        :ems_ref => 'UUID',
+      }.freeze
+
       CONFIG_PATTERNS = {
         :manager_ref  => 'id',
         :name         => 'name',
