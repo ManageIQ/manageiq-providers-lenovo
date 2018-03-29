@@ -53,7 +53,8 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
   it 'will parse the legacy inventory' do
     result = refresher.parse_legacy_inventory(ems)
 
-    expect(result[:physical_servers].size).to eq(2)
+    expect(result[:physical_servers].size).to eq(3)
+    expect(result[:physical_chassis].size).to eq(1)
     expect(result[:physical_racks].size).to eq(1)
   end
 

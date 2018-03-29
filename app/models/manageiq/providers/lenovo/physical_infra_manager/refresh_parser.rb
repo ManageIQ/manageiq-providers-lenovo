@@ -48,68 +48,61 @@ module ManageIQ::Providers::Lenovo
     # Retrieve all physical infrastructure that can be obtained from the LXCA (racks, chassis, servers, switches)
     # as XClarity objects and add it to the +@data+ as a hash.
     def get_all_physical_infra
-      cabinets = get_physical_racks
+      @data[:physical_racks]   = []
+      @data[:physical_chassis] = []
+      @data[:physical_servers] = []
 
-      # Retrieve the standalone rack (mock of a rack) so it is possible to retrieve all components
-      # from it and associate with the provider instead a mock rack.
-      standalone = nil
-      cabinets.reverse_each do |cab|
-        if cab.UUID == 'STANDALONE_OBJECT_UUID'
-          standalone = cabinets.delete(cab)
-          break
-        end
-      end
-
-      physical_servers = []
-      process_collection(cabinets, :physical_racks) do |cab|
-        rack_uid, rack = @parser.parse_physical_rack(cab)
-
-        get_physical_servers(cab) do |node|
-          _, parsed = @parser.parse_physical_server(node, find_compliance(node), rack)
-          physical_servers << parsed
+      racks = get_plain_physical_racks
+      racks.each do |rack|
+        parsed_rack = nil
+        # One of the API's racks is a mock to indicate physical chassis and servers that are not inside any rack.
+        # This rack has the UUID equals to 'STANDALONE_OBJECT_UUID'
+        if rack.UUID != 'STANDALONE_OBJECT_UUID'
+          _, parsed_rack = @parser.parse_physical_rack(rack)
+          @data[:physical_racks] << parsed_rack
         end
 
-        next rack_uid, rack
-      end
+        # Retrieve and parse the servers that are inside the rack, but not inside any chassis.
+        rack_servers = get_plain_physical_servers_inside_rack(rack)
+        rack_servers.each do |server|
+          _, parsed_server = @parser.parse_physical_server(server, find_compliance(server), parsed_rack)
+          @data[:physical_servers] << parsed_server
+        end
 
-      nodes = get_physical_servers(standalone)
-      process_collection(nodes, :physical_servers) do |node|
-        @parser.parse_physical_server(node, find_compliance(node))
-      end
+        # Retrieve and parse the chassis that are inside the rack.
+        rack_chassis = get_plain_physical_chassis_inside_rack(rack)
+        rack_chassis.each do |chassis|
+          _, parsed_chassis = @parser.parse_physical_chassis(chassis, parsed_rack)
+          @data[:physical_chassis] << parsed_chassis
 
-      @data[:physical_servers].concat(physical_servers)
+          # Retrieve and parse the servers that are inside the chassi.
+          chassis_servers = get_plain_physical_servers_inside_chassis(chassis)
+          chassis_servers.each do |server|
+            _, parsed_server = @parser.parse_physical_server(server, find_compliance(server), parsed_rack, parsed_chassis)
+            @data[:physical_servers] << parsed_server
+          end
+        end
+      end
     end
 
     # Returns all physical rack from the api.
-    def get_physical_racks
+    def get_plain_physical_racks
       @connection.discover_cabinet(:status => "includestandalone")
     end
 
-    # Create a XClarity Node object for every node in a rack.
-    #
-    # @param cabinet [PhysicalRack] The rack from where it will retrieve the physical servers.
-    #
-    # Yields a XClarity Node object.
-    # @return [Hash] a parsed hash for every PhysicalServer that belongs to the cabinet.
-    def get_physical_servers(cabinet)
-      return if cabinet.nil?
-      chassis = cabinet.chassisList
+    # Returns physical servers that are inside a rack but not inside a chassis.
+    def get_plain_physical_servers_inside_rack(rack)
+      rack.nodeList.map { |node| node["itemInventory"] }
+    end
 
-      nodes_chassis = chassis.map do |chassi|
-        chassi["itemInventory"]["nodes"]
-      end.flatten
-      nodes_chassis = nodes_chassis.reject { |node| node["type"] == "SCU" }
+    # Returns physical chassis that are inside a rack.
+    def get_plain_physical_chassis_inside_rack(rack)
+      rack.chassisList.map { |chassis| chassis["itemInventory"] }
+    end
 
-      nodes = cabinet.nodeList
-      nodes = nodes.map { |node| node["itemInventory"] }
-
-      nodes += nodes_chassis
-
-      nodes.map do |node|
-        xc_node = XClarityClient::Node.new(node)
-        yield(xc_node) if block_given?
-        xc_node
-      end
+    # Returns physical servers that are inside a chassis.
+    def get_plain_physical_servers_inside_chassis(chassis)
+      chassis["nodes"].reject { |node| node["type"] == "SCU" }
     end
 
     def get_physical_switches
@@ -123,7 +116,7 @@ module ManageIQ::Providers::Lenovo
     def find_compliance(node)
       @compliance_policies ||= @connection.fetch_compliance_policies
       @compliance_policies_parsed ||= @parser.parse_compliance_policy(@compliance_policies)
-      @compliance_policies_parsed[node.uuid] || create_default_compliance
+      @compliance_policies_parsed[node["uuid"]] || create_default_compliance
     end
 
     def create_default_compliance

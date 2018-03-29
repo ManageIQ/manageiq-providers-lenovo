@@ -23,9 +23,10 @@ module ManageIQ::Providers::Lenovo
     }.freeze
 
     MIQ_TYPES = {
-      "physical_server" => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer",
-      "physical_switch" => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalSwitch",
-      "template"        => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::Template",
+      "physical_server"  => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer",
+      "physical_switch"  => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalSwitch",
+      "physical_chassis" => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalChassis",
+      "template"         => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::Template",
     }.freeze
 
     PROPERTIES_MAP = {
@@ -61,6 +62,40 @@ module ManageIQ::Providers::Lenovo
     PHYSICAL_SWITCH_PORT = {
       :peer_mac_address => 'peerMacAddress',
       :vlan_key         => 'PVID',
+    }.freeze
+
+    PHYSICAL_CHASSIS = {
+      :name                         => 'name',
+      :uid_ems                      => 'uuid',
+      :ems_ref                      => 'uuid',
+      :overall_health_state         => 'overallHealthState',
+      :management_module_slot_count => 'mmSlots',
+      :switch_slot_count            => 'switchSlots',
+      :fan_slot_count               => 'fanSlots',
+      :blade_slot_count             => 'bladeSlots',
+      :powersupply_slot_count       => 'powerSupplySlots',
+      :asset_detail                 => {
+        :product_name     => 'productName',
+        :manufacturer     => 'manufacturer',
+        :machine_type     => 'machineType',
+        :model            => 'model',
+        :serial_number    => 'serialNumber',
+        :contact          => 'contact',
+        :description      => 'description',
+        :location         => 'location.location',
+        :room             => 'location.room',
+        :rack_name        => 'location.rack',
+        :lowest_rack_unit => 'location.lowestRackUnit',
+      },
+      :computer_system              => {
+        :hardware => {
+          :guest_devices => '',
+        },
+      },
+    }.freeze
+
+    PHYSICAL_CHASSIS_NETWORK = {
+      :ipaddress => 'mgmtProcIPaddress',
     }.freeze
 
     PHYSICAL_SERVER = {

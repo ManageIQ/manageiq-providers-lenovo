@@ -4,16 +4,19 @@ module ManageIQ::Providers::Lenovo
       #
       # parse a node object to a hash with physical servers data
       #
-      # @param [XClarityClient::Node] node - object containing physical server data
+      # @param [Hash] node_hash - hash containing physical server raw data
+      # @param [Hash] rack - parsed physical rack data
+      # @param [Hash] chassis - parsed physical chassis data
       #
       # @return [Hash] containing the physical server information
       #
-      def parse_physical_server(node, compliance, rack = nil)
+      def parse_physical_server(node_hash, compliance, rack = nil, chassis = nil)
+        node = XClarityClient::Node.new(node_hash)
         result = parse(node, parent::ParserDictionaryConstants::PHYSICAL_SERVER)
 
         # Keep track of the rack where this server is in, if it is in any rack
         result[:physical_rack]              = rack if rack
-
+        result[:physical_chassis]           = chassis if chassis
         result[:ems_compliance_name]        = compliance[:policy_name]
         result[:ems_compliance_status]      = compliance[:status]
         result[:vendor]                     = "lenovo"

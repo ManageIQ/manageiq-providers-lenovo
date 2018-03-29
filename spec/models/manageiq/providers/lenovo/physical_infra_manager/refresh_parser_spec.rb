@@ -89,16 +89,85 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
     end
   end
 
+  context 'parse physical chassis' do
+    let(:result) do
+      VCR.use_cassette("#{described_class.name.underscore}_ems_inv_to_hashes") do
+        ems_inv_to_hashes
+      end
+    end
+
+    it 'will retrieve all physical chassis' do
+      expect(result[:physical_chassis].size).to eq(1)
+    end
+
+    it 'will parse physical chassis fields' do
+      physical_chassis = result[:physical_chassis][0]
+
+      expect(physical_chassis[:name]).to eq("SN#Y034BG16E02C")
+      expect(physical_chassis[:uid_ems]).to eq("9841028B07714FD09D9297C6D1A4943E")
+      expect(physical_chassis[:ems_ref]).to eq("9841028B07714FD09D9297C6D1A4943E")
+      expect(physical_chassis[:overall_health_state]).to eq("Warning")
+      expect(physical_chassis[:management_module_slot_count]).to eq(2)
+      expect(physical_chassis[:switch_slot_count]).to eq(4)
+      expect(physical_chassis[:fan_slot_count]).to eq(10)
+      expect(physical_chassis[:blade_slot_count]).to eq(14)
+      expect(physical_chassis[:powersupply_slot_count]).to eq(6)
+      expect(physical_chassis[:health_state]).to eq("Valid")
+      expected_type = "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalChassis"
+      expect(physical_chassis[:type]).to eq(expected_type)
+      expect(physical_chassis[:location_led_state]).to be_nil
+    end
+
+    it 'will parse physical chassis asset detail data' do
+      physical_chassis = result[:physical_chassis][0]
+      asset_detail = physical_chassis[:asset_detail]
+      expect(asset_detail[:product_name]).to eq("IBM Chassis Midplane")
+      expect(asset_detail[:manufacturer]).to eq("IBM")
+      expect(asset_detail[:machine_type]).to eq("7893")
+      expect(asset_detail[:model]).to eq("92X")
+      expect(asset_detail[:serial_number]).to eq("100080A")
+      expect(asset_detail[:contact]).to eq("No Contact Configured")
+      expect(asset_detail[:description]).to eq("Lenovo Flex System Chassis")
+      expect(asset_detail[:location]).to eq("No Location Configured")
+      expect(asset_detail[:room]).to be_nil
+      expect(asset_detail[:rack_name]).to be_nil
+      expect(asset_detail[:lowest_rack_unit]).to eq(0)
+    end
+
+    it 'will parse physical chassis hardware data' do
+      physical_chassis = result[:physical_chassis][0]
+      computer_system = physical_chassis[:computer_system]
+      expect(computer_system).to_not be_nil
+
+      hardware = computer_system[:hardware]
+      expect(hardware).to_not be_nil
+      expect(hardware[:guest_devices]).to_not be_nil
+      expect(hardware[:guest_devices]).to be_kind_of(Array)
+      expect(hardware[:guest_devices].size).to eq(1)
+
+      guest_device = hardware[:guest_devices][0]
+      expect(guest_device[:device_type]).to eq("management")
+      expect(guest_device[:network][:ipaddress]).to eq("10.243.14.175")
+    end
+
+    it 'will have a reference to the physical rack where the chassis is inside' do
+      physical_rack = result[:physical_racks][0]
+      physical_chassis = result[:physical_chassis][0]
+
+      expect(physical_chassis[:physical_rack]).to eq(physical_rack)
+    end
+  end
+
   context 'parse physical servers' do
     before do
       @result = ems_inv_to_hashes
-      physical_server = @result[:physical_servers].second
+      physical_server = @result[:physical_servers][0]
       computer_system = physical_server[:computer_system]
       @hardware = computer_system[:hardware]
     end
 
     it 'will retrieve physical servers' do
-      expect(@result[:physical_servers].size).to eq(2)
+      expect(@result[:physical_servers].size).to eq(3)
     end
 
     it 'will retrieve addin cards on the physical servers' do
@@ -136,7 +205,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       rack_name
     ).each do |attr|
       it "will retrieve nil for #{attr} if parsed data is an empty string" do
-        asset_detail = @result[:physical_servers].first[:asset_detail]
+        asset_detail = @result[:physical_servers][2][:asset_detail]
         expect(asset_detail[attr]).to be(nil)
       end
     end
@@ -151,13 +220,13 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       lowest_rack_unit
     ).each do |attr|
       it "will retrieve #{attr} of asset detail" do
-        asset_detail = @result[:physical_servers].first[:asset_detail]
+        asset_detail = @result[:physical_servers][0][:asset_detail]
         expect(asset_detail[attr]).to_not be(nil)
       end
     end
 
     it 'will retrieve compliance policy information from a physical server' do
-      ph1 = @result[:physical_servers][0]
+      ph1 = @result[:physical_servers][2]
       ph2 = @result[:physical_servers][1]
 
       expect(ph2[:ems_compliance_name]).to eq('No policy assigned')
@@ -167,13 +236,14 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
     end
 
     it 'will retrieve the amout of memory in MB' do
-      physical_server = @result[:physical_servers][1]
+      physical_server = @result[:physical_servers][0]
       memory_amount = physical_server[:computer_system][:hardware][:memory_mb]
       expect(memory_amount).to eq(16_384)
     end
 
     it 'will retrieve disk capacity from a physical server' do
-      physical_server_with_disk = @result[:physical_servers][1]
+      physical_server_with_disk = @result[:physical_servers][0]
+
       computer_system = physical_server_with_disk[:computer_system]
       hardware = computer_system[:hardware]
 
@@ -181,11 +251,24 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
     end
 
     it 'will try to retrieve disk capacity from a physical server without RAID information' do
-      physical_server = @result[:physical_servers][0]
+      physical_server = @result[:physical_servers][1]
       computer_system = physical_server[:computer_system]
       hardware = computer_system[:hardware]
 
       expect(hardware[:disk_capacity]).to be_nil
+    end
+
+    it 'will have a reference to the physical chassis where the server is inside' do
+      physical_server = @result[:physical_servers][1]
+      physical_chassis = @result[:physical_chassis][0]
+
+      expect(physical_server[:physical_chassis]).to eq(physical_chassis)
+    end
+
+    it 'will be ok to have no reference to a physical chassis' do
+      physical_server = @result[:physical_servers][0]
+
+      expect(physical_server[:physical_chassis]).to be_nil
     end
   end
 
