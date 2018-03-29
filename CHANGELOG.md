@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
+## Unreleased as of Sprint 82 - 2018-03-26
+
+### Added
+- Leaving the disk capacity blank if the LXCA doesn't provide this information [(#141)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/141)
+
 ## Unreleased as of Sprint 80 - 2018-02-26
 
 ### Fixed
