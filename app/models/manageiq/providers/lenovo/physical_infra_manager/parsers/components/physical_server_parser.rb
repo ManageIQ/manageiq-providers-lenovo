@@ -11,8 +11,11 @@ module ManageIQ::Providers::Lenovo
         #
         # @return [Hash] containing the physical server information
         #
-        def parse_physical_server(node)
+        def parse_physical_server(node, rack = nil)
           result = parse(node, ParserDictionaryConstants::PHYSICAL_SERVER)
+
+          # Keep track of the rack where this server is in, if it is in any rack
+          result[:physical_rack]              = rack if rack
 
           result[:vendor]                     = "lenovo"
           result[:type]                       = ParserDictionaryConstants::MIQ_TYPES["physical_server"]

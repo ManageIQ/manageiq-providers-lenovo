@@ -52,6 +52,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
     result = refresher.parse_legacy_inventory(ems)
 
     expect(result[:physical_servers].size).to eq(2)
+    expect(result[:physical_racks].size).to eq(1)
   end
 
   it 'will save the inventory' do
@@ -72,11 +73,32 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
       ems2.reload
 
       assert_table_counts
+      assert_specific_rack
+      assert_specific_server
       assert_guest_table_contents
     end
   end
 
+  def assert_specific_rack
+    rack = PhysicalRack.find_by(:ems_ref => "096F8C92-08D4-4A24-ABD8-FE56D482F8C4")
+
+    expect(rack.name).to eq("cabinet71")
+    expect(rack.ems_id).to be_truthy
+  end
+
+  def assert_specific_server
+    server = PhysicalServer.find_by(:ems_ref => "BD775D06821111E189A3E41F13ED5A1A")
+
+    expect(server.name).to eq("IMM2-e41f13ed5a1e")
+    expect(server.health_state).to eq("Valid")
+    expect(server.power_state).to eq("on")
+    expect(server.vendor).to eq("lenovo")
+    expect(server.ems_id).to be_truthy
+    expect(server.physical_rack_id).to be_truthy
+  end
+
   def assert_table_counts
+    expect(PhysicalRack.count).to eq(3)
     expect(PhysicalServer.count).to eq(2)
     expect(GuestDevice.count).to eq(5)
   end

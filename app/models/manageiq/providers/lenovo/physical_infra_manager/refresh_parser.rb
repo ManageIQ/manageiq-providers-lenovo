@@ -30,7 +30,7 @@ module ManageIQ::Providers::Lenovo
 
       $log.info("#{log_header}...")
 
-      get_physical_servers
+      get_all_physical_infra
       discover_ip_physical_infra
       get_config_patterns
 
@@ -47,40 +47,76 @@ module ManageIQ::Providers::Lenovo
       ManageIQ::Providers::Lenovo::Parser.get_instance(version)
     end
 
-    def get_physical_servers
-      nodes = all_server_resources
+    # Retrieve all physical infrastructure that can be obtained from the LXCA (racks, chassis, servers, switches)
+    # as XClarity objects and add it to the +@data+ as a hash.
+    def get_all_physical_infra
+      cabinets = get_physical_racks
 
-      nodes = nodes.map do |node|
-        XClarityClient::Node.new node
+      # Retrieve the standalone rack (mock of a rack) so it is possible to retrieve all components
+      # from it and associate with the provider instead a mock rack.
+      standalone = nil
+      cabinets.reverse_each do |cab|
+        if cab.UUID == 'STANDALONE_OBJECT_UUID'
+          standalone = cabinets.delete(cab)
+          break
+        end
       end
-      process_collection(nodes, :physical_servers) { |node| @parser.parse_physical_server(node) }
+
+      physical_servers = []
+      process_collection(cabinets, :physical_racks) do |cab|
+        rack_uid, rack = @parser.parse_physical_rack(cab)
+
+        get_physical_servers(cab) do |node|
+          _, parsed = @parser.parse_physical_server(node, rack)
+          physical_servers << parsed
+        end
+
+        next rack_uid, rack
+      end
+
+      nodes = get_physical_servers(standalone)
+      process_collection(nodes, :physical_servers) do |node|
+        @parser.parse_physical_server(node)
+      end
+
+      @data[:physical_servers].concat(physical_servers)
+    end
+
+    # Returns all physical rack from the api.
+    def get_physical_racks
+      @connection.discover_cabinet(:status => "includestandalone")
+    end
+
+    # Create a XClarity Node object for every node in a rack.
+    #
+    # @param cabinet [PhysicalRack] The rack from where it will retrieve the physical servers.
+    #
+    # Yields a XClarity Node object.
+    # @return [Hash] a parsed hash for every PhysicalServer that belongs to the cabinet.
+    def get_physical_servers(cabinet)
+      return if cabinet.nil?
+      chassis = cabinet.chassisList
+
+      nodes_chassis = chassis.map do |chassi|
+        chassi["itemInventory"]["nodes"]
+      end.flatten
+      nodes_chassis = nodes_chassis.reject { |node| node["type"] == "SCU" }
+
+      nodes = cabinet.nodeList
+      nodes = nodes.map { |node| node["itemInventory"] }
+
+      nodes += nodes_chassis
+
+      nodes.map do |node|
+        xc_node = XClarityClient::Node.new(node)
+        yield(xc_node) if block_given?
+        xc_node
+      end
     end
 
     def get_config_patterns
       config_patterns = @connection.discover_config_pattern
       process_collection(config_patterns, :customization_scripts) { |config_pattern| @parser.parse_config_pattern(config_pattern) }
-    end
-
-    def all_server_resources
-      return @all_server_resources if @all_server_resources
-
-      cabinets = @connection.discover_cabinet(:status => "includestandalone")
-
-      nodes = cabinets.map(&:nodeList).flatten
-      nodes = nodes.map do |node|
-        node["itemInventory"]
-      end.flatten
-
-      chassis = cabinets.map(&:chassisList).flatten
-
-      nodes_chassis = chassis.map do |chassi|
-        chassi["itemInventory"]["nodes"]
-      end.flatten
-      nodes_chassis = nodes_chassis.select { |node| node["type"] != "SCU" }
-
-      nodes += nodes_chassis
-
-      @all_server_resources = nodes
     end
 
     def discover_ip_physical_infra

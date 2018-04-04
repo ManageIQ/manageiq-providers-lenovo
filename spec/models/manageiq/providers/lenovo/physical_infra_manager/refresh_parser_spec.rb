@@ -46,7 +46,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
     end
 
     it 'will retrieve addin cards on the physical servers' do
-      physical_server = @result[:physical_servers][0]
+      physical_server = @result[:physical_servers][1]
       computer_system = physical_server[:computer_system]
       hardware = computer_system[:hardware]
       guest_device = hardware[:guest_devices][0]
@@ -87,26 +87,52 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
     end
 
     it 'will retrieve the amout of memory in MB' do
-      physical_server = @result[:physical_servers][0]
+      physical_server = @result[:physical_servers][1]
       memory_amount = physical_server[:computer_system][:hardware][:memory_mb]
       expect(memory_amount).to eq(16_384)
     end
 
     it 'will retrieve disk capacity from a physical server' do
-      physical_server_with_disk = @result[:physical_servers][0]
-
+      physical_server_with_disk = @result[:physical_servers][1]
       computer_system = physical_server_with_disk[:computer_system]
       hardware = computer_system[:hardware]
 
-      expect(hardware[:disk_capacity]).to eq(3_000_000_000_00)
+      expect(hardware[:disk_capacity]).to eq(300_000_000_000)
     end
 
     it 'will try to retrieve disk capacity from a physical server without RAID information' do
-      physical_server = @result[:physical_servers][1]
+      physical_server = @result[:physical_servers][0]
       computer_system = physical_server[:computer_system]
       hardware = computer_system[:hardware]
 
       expect(hardware[:disk_capacity]).to be_nil
+    end
+  end
+
+  context 'retrieve physical rack info' do
+    let(:result) do
+      VCR.use_cassette("#{described_class.name.underscore}_ems_inv_to_hashes") do
+        ems_inv_to_hashes
+      end
+    end
+
+    it 'will retrieve physical racks' do
+      expect(result[:physical_racks].size).to eq(1)
+    end
+
+    it 'will retrieve physical racks fields' do
+      physical_rack = result[:physical_racks].first
+
+      expect(physical_rack[:uid_ems]).to eq('096F8C92-08D4-4A24-ABD8-FE56D482F8C4')
+      expect(physical_rack[:name]).to eq('cabinet71')
+    end
+
+    it 'will retrieve physical server with rack' do
+      physical_rack = result[:physical_racks].first
+      physical_server = result[:physical_servers][1]
+
+      expect(physical_server[:physical_rack]).to be_truthy
+      expect(physical_server[:physical_rack][:ems_ref]).to eq(physical_rack[:ems_ref])
     end
   end
 

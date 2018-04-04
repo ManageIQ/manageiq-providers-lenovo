@@ -28,8 +28,12 @@ module ManageIQ::Providers::Lenovo
       parser.new
     end
 
-    def parse_physical_server(node)
-      Parsers::PhysicalServerParser.parse_physical_server(node)
+    def parse_physical_rack(node)
+      Parsers::PhysicalRackParser.parse_physical_rack(node)
+    end
+
+    def parse_physical_server(node, rack = nil)
+      Parsers::PhysicalServerParser.parse_physical_server(node, rack)
     end
 
     def parse_config_pattern(config_pattern)
