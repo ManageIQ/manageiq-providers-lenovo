@@ -39,6 +39,9 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
   context 'parse physical servers' do
     before do
       @result = ems_inv_to_hashes
+      physical_server = @result[:physical_servers].second
+      computer_system = physical_server[:computer_system]
+      @hardware = computer_system[:hardware]
     end
 
     it 'will retrieve physical servers' do
@@ -46,10 +49,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
     end
 
     it 'will retrieve addin cards on the physical servers' do
-      physical_server = @result[:physical_servers][1]
-      computer_system = physical_server[:computer_system]
-      hardware = computer_system[:hardware]
-      guest_device = hardware[:guest_devices][0]
+      guest_device = @hardware[:guest_devices][0]
 
       expect(guest_device[:device_name]).to eq("Broadcom 2-port 1GbE NIC Card for IBM")
       expect(guest_device[:device_type]).to eq("ethernet")
@@ -64,6 +64,15 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       expect(child_device[:address]).to eq("00:0A:F7:25:67:38")
       expect(child_device[:device_type]).to eq("physical_port")
       expect(child_device[:device_name]).to eq("Physical Port 1")
+    end
+
+    it 'will retrieve storage device' do
+      storage_device = @hardware[:guest_devices].second
+
+      expect(storage_device[:device_name]).to eq("ServeRAID M5210")
+      expect(storage_device[:device_type]).to eq("storage")
+      expect(storage_device[:manufacturer]).to eq("IBM")
+      expect(storage_device[:location]).to eq("Bay 12")
     end
 
     %i(

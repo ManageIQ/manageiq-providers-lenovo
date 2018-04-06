@@ -1,5 +1,6 @@
 require_relative 'component_parser'
 require_relative 'network_device_parser'
+require_relative 'storage_device_parser'
 
 module ManageIQ::Providers::Lenovo
   module Parsers
@@ -79,6 +80,7 @@ module ManageIQ::Providers::Lenovo
 
         def get_guest_devices(node)
           guest_devices = NetworkDeviceParser.parse_network_devices(node)
+          guest_devices.concat(StorageDeviceParser.parse_storage_device(node))
           guest_devices << parse_management_device(node)
         end
 

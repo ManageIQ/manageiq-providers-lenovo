@@ -100,7 +100,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
   def assert_table_counts
     expect(PhysicalRack.count).to eq(3)
     expect(PhysicalServer.count).to eq(2)
-    expect(GuestDevice.count).to eq(5)
+    expect(GuestDevice.count).to eq(6)
   end
 
   def assert_guest_table_contents
