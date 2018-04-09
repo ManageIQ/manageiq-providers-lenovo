@@ -79,6 +79,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
       assert_specific_rack
       assert_specific_server
       assert_guest_table_contents
+      assert_physical_network_ports_table_content
     end
   end
 
@@ -103,20 +104,26 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
   def assert_table_counts
     expect(PhysicalRack.count).to eq(3)
     expect(PhysicalServer.count).to eq(2)
-    expect(GuestDevice.count).to eq(38)
+    expect(GuestDevice.count).to eq(4)
+    expect(PhysicalNetworkPort.count).to eq(34)
   end
 
   def assert_guest_table_contents
     server = PhysicalServer.find_by(:ems_ref => "7936DD182C5311E3A8D6000AF7256738")
     nic = server.hardware.nics.first
-    ports = nic.child_devices
-    port1 = ports.find_by(:device_name => "Physical Port 1")
-    port2 = ports.find_by(:device_name => "Physical Port 2")
-
     expect(nic.device_name).to eq("Broadcom 2-port 1GbE NIC Card for IBM")
-    expect(port1.device_name).to eq("Physical Port 1")
-    expect(port1.address).to eq("00:0A:F7:25:67:38")
-    expect(port2.device_name).to eq("Physical Port 2")
-    expect(port2.address).to eq("00:0A:F7:25:67:39")
+  end
+
+  def assert_physical_network_ports_table_content
+    server = PhysicalServer.find_by(:ems_ref => "7936DD182C5311E3A8D6000AF7256738")
+    ports = server.hardware.nics.first.physical_network_ports
+
+    port1 = ports.find_by(:port_name => "Physical Port 1")
+    port2 = ports.find_by(:port_name => "Physical Port 2")
+
+    expect(port1.port_name).to eq("Physical Port 1")
+    expect(port1.mac_address).to eq("00:0A:F7:25:67:38")
+    expect(port2.port_name).to eq("Physical Port 2")
+    expect(port2.mac_address).to eq("00:0A:F7:25:67:39")
   end
 end

@@ -18,6 +18,8 @@ module ManageIQ::Providers::Lenovo
         result[:health_state] = parent::ParserDictionaryConstants::HEALTH_STATE_MAP[physical_switch.overallHealthState.nil? ? physical_switch.overallHealthState : physical_switch.overallHealthState.downcase]
         result[:hardware]     = get_hardwares(physical_switch)
 
+        result[:physical_network_ports] = parent::PhysicalNetworkPortsParser.parse_physical_switch_ports(physical_switch)
+
         return physical_switch.uuid, result
       end
 
@@ -26,13 +28,8 @@ module ManageIQ::Providers::Lenovo
       def get_hardwares(physical_switch)
         {
           :firmwares     => get_firmwares(physical_switch),
-          :guest_devices => get_ports(physical_switch),
           :networks      => get_networks(physical_switch)
         }
-      end
-
-      def get_ports(physical_switch)
-        physical_switch.ports&.map { |port| parse_port(port) }
       end
 
       def get_networks(physical_switch)
@@ -60,16 +57,6 @@ module ManageIQ::Providers::Lenovo
 
         result[:ipaddress]   = assignment['address'] unless is_ipv6
         result[:ipv6address] = assignment['address'] if is_ipv6
-
-        result
-      end
-
-      def parse_port(port)
-        result = parse(port, parent::ParserDictionaryConstants::PHYSICAL_SWITCH_PORT)
-
-        result[:device_name]  = port["portName"].presence || port["port"]
-        result[:device_type]  = "physical_port"
-        result[:vlan_enabled] = port["PVID"].present?
 
         result
       end
