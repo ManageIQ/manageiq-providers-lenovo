@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
+## Unreleased as of Sprint 83 - 2018-04-09
+
+### Added
+- Parsing physical rack [(#147)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/147)
+
 ## Unreleased as of Sprint 82 - 2018-03-26
 
 ### Added
