@@ -38,11 +38,11 @@ module ManageIQ::Providers::Lenovo
     # source object who the value will be set as value of the key of result hash.
     # see +ManageIQ::Providers::Lenovo::Parse#parse+
     PHYSICAL_SERVER = {
-      :name                   => 'name',
-      :ems_ref                => 'uuid',
-      :uid_ems                => 'uuid',
-      :hostname               => 'hostname',
-      :asset_detail           => {
+      :name            => 'name',
+      :ems_ref         => 'uuid',
+      :uid_ems         => 'uuid',
+      :hostname        => 'hostname',
+      :asset_detail    => {
         :product_name           => 'productName',
         :manufacturer           => 'manufacturer',
         :machine_type           => 'machineType',
@@ -56,7 +56,7 @@ module ManageIQ::Providers::Lenovo
         :rack_name              => 'location.rack',
         :lowest_rack_unit       => 'location.lowestRackUnit'
       },
-      :computer_system        => {
+      :computer_system => {
         :hardware => {
           :guest_devices => '',
           :firmwares     => ''
