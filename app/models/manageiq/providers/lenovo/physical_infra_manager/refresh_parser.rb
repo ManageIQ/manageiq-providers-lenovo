@@ -3,11 +3,8 @@ module ManageIQ::Providers::Lenovo
   class PhysicalInfraManager::RefreshParser < EmsRefresh::Parsers::Infra
     include ManageIQ::Providers::Lenovo::RefreshHelperMethods
 
-    require_relative './parsers/parser'
-    require_relative './parsers/parser_dictionary_constants'
-
     def self.miq_template_type
-      ManageIQ::Providers::Lenovo::Parsers::ParserDictionaryConstants::MIQ_TYPES["template"]
+      parent::Parser::ParserDictionaryConstants::MIQ_TYPES["template"]
     end
 
     def initialize(ems, options = nil)
@@ -44,7 +41,7 @@ module ManageIQ::Providers::Lenovo
     # returns the specific parser based on the version of the appliance
     def init_parser(connection)
       version = connection.discover_aicc.first.appliance['version'] # getting the appliance version
-      ManageIQ::Providers::Lenovo::Parser.get_instance(version)
+      self.class.parent::Parser.get_instance(version)
     end
 
     # Retrieve all physical infrastructure that can be obtained from the LXCA (racks, chassis, servers, switches)

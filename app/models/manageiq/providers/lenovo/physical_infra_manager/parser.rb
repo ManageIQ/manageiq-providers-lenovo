@@ -9,14 +9,12 @@ module ManageIQ::Providers::Lenovo
   # create a subclass overriding the old with the new parse strategy, and bind this subclass
   # on +VERSION_PARSERS+ constant.
   #
-  class Parser
-    require_relative 'parsers'
-
+  class PhysicalInfraManager::Parser
     # Suported API versions.
     # To support a new version with some subclass, update this constant like this:
     # '<version>' => ManageIQ::Providers::Lenovo::<Class>
     VERSION_PARSERS = {
-      'default' => ManageIQ::Providers::Lenovo::Parser,
+      'default' => ManageIQ::Providers::Lenovo::PhysicalInfraManager::Parser,
     }.freeze
 
     # returns the parser of api version request
@@ -29,15 +27,15 @@ module ManageIQ::Providers::Lenovo
     end
 
     def parse_physical_rack(node)
-      Parsers::PhysicalRackParser.parse_physical_rack(node)
+      PhysicalRackParser.parse_physical_rack(node)
     end
 
     def parse_physical_server(node, rack = nil)
-      Parsers::PhysicalServerParser.parse_physical_server(node, rack)
+      PhysicalServerParser.parse_physical_server(node, rack)
     end
 
     def parse_config_pattern(config_pattern)
-      Parsers::ConfigPatternParser.parse_config_pattern(config_pattern)
+      ConfigPatternParser.parse_config_pattern(config_pattern)
     end
   end
 end
