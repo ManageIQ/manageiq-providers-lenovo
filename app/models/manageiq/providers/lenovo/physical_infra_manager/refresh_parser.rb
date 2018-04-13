@@ -135,6 +135,7 @@ module ManageIQ::Providers::Lenovo
           if get_device_type(node_device) == "ethernet"
             add_device = true
             parsed_node_device = yield(node_device)
+            parsed_node_device[:uid_ems] = mount_network_device_uuid(node_device)
 
             parsed_devices.each do |device|
               if parsed_node_device[:device_name] == device[:device_name]
@@ -191,6 +192,7 @@ module ManageIQ::Providers::Lenovo
             parsed_physical_port = parse_physical_port(physical_port)
             logical_ports = physical_port["logicalPorts"]
             parsed_logical_port = parse_logical_port(logical_ports[0])
+            parsed_logical_port[:uid_ems] = mount_network_device_uuid(device, true, physical_port['physicalPortIndex'])
             device_ports.push(parsed_logical_port.merge(parsed_physical_port))
           end
         end
@@ -392,6 +394,12 @@ module ManageIQ::Providers::Lenovo
       $log.info("EMS ID: #{ems.id}" + " Resolved ip address successfully.")
     rescue => err
       $log.warn("EMS ID: #{ems.id}" + " It's not possible resolve ip address of the physical infra, #{err}.")
+    end
+
+    def mount_network_device_uuid(device, child_device = false, port_number = nil)
+      uuid = device["uuid"] || "#{device['pciBusNumber']}#{device['pciDeviceNumber']}"
+      return uuid + port_number.to_s if child_device
+      uuid
     end
   end
 end
