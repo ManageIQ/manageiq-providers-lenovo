@@ -80,18 +80,12 @@ module ManageIQ::Providers::Lenovo
       end
 
       def parse_management_device(node)
-        {
-          :device_type => "management",
-          :network     => parse_management_network(node),
-          :address     => node.macAddress
-        }
-      end
+        result = parse(node, parent::ParserDictionaryConstants::MANAGEMENT_DEVICE)
 
-      def parse_management_network(node)
-        {
-          :ipaddress   => node.mgmtProcIPaddress,
-          :ipv6address => node.ipv6Addresses.nil? ? node.ipv6Addresses : node.ipv6Addresses.join(", ")
-        }
+        result[:device_type] = "management"
+        result[:network][:ipv6address] = node.ipv6Addresses.nil? ? node.ipv6Addresses : node.ipv6Addresses.join(", ")
+
+        result
       end
     end
   end

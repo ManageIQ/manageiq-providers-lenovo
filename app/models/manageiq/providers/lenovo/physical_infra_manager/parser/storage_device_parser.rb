@@ -20,16 +20,15 @@ module ManageIQ::Providers::Lenovo
       # @param [Hash] device - a hash containing the storage device informations
       #
       def parse_device(device)
-        {
-          :uid_ems                => mount_uuid(device),
-          :device_name            => device["productName"] ? device["productName"] : device["name"],
-          :device_type            => "storage",
-          :firmwares              => parse_device_firmware(device),
-          :manufacturer           => device["manufacturer"],
-          :field_replaceable_unit => device["FRU"],
-          :location               => device['slotNumber'] ? "Bay #{device['slotNumber']}" : nil,
-          :controller_type        => device["class"],
-        }
+        result = parse(device, parent::ParserDictionaryConstants::GUEST_DEVICE)
+
+        result[:uid_ems]     = mount_uuid(device)
+        result[:device_name] = device["productName"] ? device["productName"] : device["name"]
+        result[:device_type] = "storage"
+        result[:firmwares]   = parse_device_firmware(device)
+        result[:location]    = device['slotNumber'] ? "Bay #{device['slotNumber']}" : nil
+
+        result
       end
 
       #

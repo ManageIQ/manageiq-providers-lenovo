@@ -18,9 +18,6 @@ module ManageIQ::Providers::Lenovo
         result[:health_state] = parent::ParserDictionaryConstants::HEALTH_STATE_MAP[physical_switch.overallHealthState.nil? ? physical_switch.overallHealthState : physical_switch.overallHealthState.downcase]
         result[:hardware]     = get_hardwares(physical_switch)
 
-        result[:asset_detail][:part_number]            = physical_switch.partNumber.presence&.strip
-        result[:asset_detail][:field_replaceable_unit] = physical_switch.FRU.presence&.strip
-
         return physical_switch.uuid, result
       end
 
@@ -68,13 +65,13 @@ module ManageIQ::Providers::Lenovo
       end
 
       def parse_port(port)
-        {
-          :device_name      => port["portName"].presence || port["port"],
-          :device_type      => "physical_port",
-          :peer_mac_address => port["peerMacAddress"].presence,
-          :vlan_key         => port["PVID"].presence,
-          :vlan_enabled     => port["PVID"].present?
-        }
+        result = parse(port, parent::ParserDictionaryConstants::PHYSICAL_SWITCH_PORT)
+
+        result[:device_name]  = port["portName"].presence || port["port"]
+        result[:device_type]  = "physical_port"
+        result[:vlan_enabled] = port["PVID"].present?
+
+        result
       end
 
       def get_firmwares(physical_switch)

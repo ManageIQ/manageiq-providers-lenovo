@@ -128,17 +128,25 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
     end
 
     %i(
+      field_replaceable_unit
+      contact
+      location
+      room
+      rack_name
+    ).each do |attr|
+      it "will retrieve nil for #{attr} if parsed data is an empty string" do
+        asset_detail = @result[:physical_servers].first[:asset_detail]
+        expect(asset_detail[attr]).to be(nil)
+      end
+    end
+
+    %i(
       product_name
       manufacturer
       machine_type
       model
       serial_number
-      field_replaceable_unit
-      contact
       description
-      location
-      room
-      rack_name
       lowest_rack_unit
     ).each do |attr|
       it "will retrieve #{attr} of asset detail" do

@@ -29,7 +29,7 @@ module ManageIQ::Providers::Lenovo
               source_value = source_value[source_key]
             end
           end
-          result[key] = source_value
+          result[key] = source_value.kind_of?(String) ? source_value.strip.presence : source_value
         elsif value.kind_of?(Hash)
           result[key] = parse(source, dictionary[key])
         end
