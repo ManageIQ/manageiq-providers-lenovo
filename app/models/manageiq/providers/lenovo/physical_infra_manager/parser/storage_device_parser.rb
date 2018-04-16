@@ -61,20 +61,11 @@ module ManageIQ::Providers::Lenovo
         firmware = device["firmware"]
         unless firmware.nil?
           device_fw = firmware.map do |fw|
-            parse_firmware(fw)
+            parent::FirmwareParser.parse_firmware(fw)
           end
         end
 
         device_fw
-      end
-
-      def parse_firmware(firmware)
-        {
-          :name         => "#{firmware["role"]} #{firmware["name"]}-#{firmware["status"]}",
-          :build        => firmware["build"],
-          :version      => firmware["version"],
-          :release_date => firmware["date"],
-        }
       end
 
       def mount_uuid(device)
