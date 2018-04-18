@@ -110,7 +110,9 @@ module ManageIQ::Providers::Lenovo
 
       def parse_logical_port(port)
         {
-          :address => format_mac_address(port["addresses"])
+          :address      => format_mac_address(port["addresses"]),
+          :vlan_enabled => port["vnicMode"],
+          :vlan_key     => port["logicalPortIndex"],
         }
       end
 
