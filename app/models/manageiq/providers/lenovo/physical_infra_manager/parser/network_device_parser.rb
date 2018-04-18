@@ -51,15 +51,15 @@ module ManageIQ::Providers::Lenovo
       end
 
       def parse_device(device)
-        {
-          :uid_ems                => mount_uuid(device),
-          :device_name            => device["productName"] ? device["productName"] : device["name"],
-          :device_type            => "ethernet",
-          :firmwares              => parse_device_firmware(device),
-          :manufacturer           => device["manufacturer"],
-          :field_replaceable_unit => device["FRU"],
-          :location               => device['slotNumber'] ? "Bay #{device['slotNumber']}" : nil,
-        }
+        result = parse(device, parent::ParserDictionaryConstants::GUEST_DEVICE)
+
+        result[:uid_ems]     = mount_uuid(device)
+        result[:device_name] = device["productName"] ? device["productName"] : device["name"]
+        result[:device_type] = "ethernet"
+        result[:firmwares]   = parse_device_firmware(device)
+        result[:location]    = device['slotNumber'] ? "Bay #{device['slotNumber']}" : nil
+
+        result
       end
 
       def parse_device_firmware(device)
