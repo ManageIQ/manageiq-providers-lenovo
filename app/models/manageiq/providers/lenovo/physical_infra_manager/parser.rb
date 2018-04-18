@@ -34,12 +34,16 @@ module ManageIQ::Providers::Lenovo
       PhysicalSwitchParser.parse_physical_switch(switch)
     end
 
-    def parse_physical_server(node, rack = nil)
-      PhysicalServerParser.parse_physical_server(node, rack)
+    def parse_physical_server(node, compliance, rack = nil)
+      PhysicalServerParser.parse_physical_server(node, compliance, rack)
     end
 
     def parse_config_pattern(config_pattern)
       ConfigPatternParser.parse_config_pattern(config_pattern)
+    end
+
+    def parse_compliance_policy(compliance_policies)
+      CompliancePolicyParser.parse_compliance_policy(compliance_policies)
     end
   end
 end

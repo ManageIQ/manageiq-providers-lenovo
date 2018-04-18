@@ -65,7 +65,7 @@ module ManageIQ::Providers::Lenovo
         rack_uid, rack = @parser.parse_physical_rack(cab)
 
         get_physical_servers(cab) do |node|
-          _, parsed = @parser.parse_physical_server(node, rack)
+          _, parsed = @parser.parse_physical_server(node, find_compliance(node), rack)
           physical_servers << parsed
         end
 
@@ -74,7 +74,7 @@ module ManageIQ::Providers::Lenovo
 
       nodes = get_physical_servers(standalone)
       process_collection(nodes, :physical_servers) do |node|
-        @parser.parse_physical_server(node)
+        @parser.parse_physical_server(node, find_compliance(node))
       end
 
       @data[:physical_servers].concat(physical_servers)
@@ -118,6 +118,19 @@ module ManageIQ::Providers::Lenovo
       process_collection(@all_physical_switches, :physical_switches) do |physical_switch|
         @parser.parse_physical_switch(physical_switch)
       end
+    end
+
+    def find_compliance(node)
+      @compliance_policies ||= @connection.fetch_compliance_policies
+      @compliance_policies_parsed ||= @parser.parse_compliance_policy(@compliance_policies)
+      @compliance_policies_parsed[node.uuid] || create_default_compliance
+    end
+
+    def create_default_compliance
+      {
+        :policy_name => PhysicalInfraManager::Parser::CompliancePolicyParser::COMPLIANCE_NAME,
+        :status      => PhysicalInfraManager::Parser::CompliancePolicyParser::COMPLIANCE_STATUS['']
+      }
     end
 
     def get_config_patterns

@@ -7,6 +7,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
     VCR.insert_cassette("#{vcr_path}/mock_cabinet", options)
     VCR.insert_cassette("#{vcr_path}/mock_config_patterns", options)
     VCR.insert_cassette("#{vcr_path}/mock_switches", options)
+    VCR.insert_cassette("#{vcr_path}/mock_compliance_policy", options)
     VCR.insert_cassette("#{vcr_path}/full_refresh", options)
   end
   after(:all) do
