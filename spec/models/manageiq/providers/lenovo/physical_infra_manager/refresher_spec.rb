@@ -6,6 +6,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
     VCR.insert_cassette("#{vcr_path}/mock_aicc", options)
     VCR.insert_cassette("#{vcr_path}/mock_cabinet", options)
     VCR.insert_cassette("#{vcr_path}/mock_config_patterns", options)
+    VCR.insert_cassette("#{vcr_path}/mock_switches", options)
     VCR.insert_cassette("#{vcr_path}/full_refresh", options)
   end
   after(:all) do
@@ -100,7 +101,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
   def assert_table_counts
     expect(PhysicalRack.count).to eq(3)
     expect(PhysicalServer.count).to eq(2)
-    expect(GuestDevice.count).to eq(6)
+    expect(GuestDevice.count).to eq(38)
   end
 
   def assert_guest_table_contents

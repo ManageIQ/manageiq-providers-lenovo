@@ -29,6 +29,7 @@ module ManageIQ::Providers::Lenovo
 
       get_all_physical_infra
       discover_ip_physical_infra
+      get_physical_switches
       get_config_patterns
 
       $log.info("#{log_header}...Complete")
@@ -108,6 +109,14 @@ module ManageIQ::Providers::Lenovo
         xc_node = XClarityClient::Node.new(node)
         yield(xc_node) if block_given?
         xc_node
+      end
+    end
+
+    def get_physical_switches
+      @all_physical_switches ||= @connection.discover_switches
+
+      process_collection(@all_physical_switches, :physical_switches) do |physical_switch|
+        @parser.parse_physical_switch(physical_switch)
       end
     end
 
