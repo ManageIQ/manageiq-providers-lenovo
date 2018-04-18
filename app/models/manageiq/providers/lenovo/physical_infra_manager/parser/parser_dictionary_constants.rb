@@ -67,6 +67,7 @@ module ManageIQ::Providers::Lenovo
         :machine_type           => 'machineType',
         :model                  => 'model',
         :serial_number          => 'serialNumber',
+        :part_number            => 'partNumber',
         :field_replaceable_unit => 'FRU',
         :contact                => 'contact',
         :description            => 'description',
