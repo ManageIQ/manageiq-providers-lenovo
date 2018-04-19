@@ -5,7 +5,6 @@ module ManageIQ::Providers::Lenovo
       # Parse a rack object to a hash with its data
       #
       # @param cab [XClarity::PhysicalRack] a rack object
-      # @param physical_servers [Hash] a already parsed physical_servers that belong to cab
       #
       # @return [Integer, Hash] PhysicalRack UUID and a parsed hash from PhysicalRack and every components inside it
       #
