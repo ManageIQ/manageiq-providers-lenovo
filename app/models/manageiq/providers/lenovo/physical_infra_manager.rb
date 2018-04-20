@@ -9,6 +9,8 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::P
   require_nested :EventParser
   require_nested :RefreshWorker
 
+  supports :change_password
+
   def self.ems_type
     @ems_type ||= "lenovo_ph_infra".freeze
   end
