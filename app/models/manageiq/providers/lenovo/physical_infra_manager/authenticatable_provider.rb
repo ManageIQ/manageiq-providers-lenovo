@@ -2,7 +2,7 @@
 # An Authenticatable Provider must be able to do some operations with its credentials
 #
 module ManageIQ::Providers::Lenovo::PhysicalInfraManager::AuthenticatableProvider
-  # (see ManageIQ::Providers::PhysicalInfraManager#raw_change_password)
+  # (see AuthenticationMixin#raw_change_password)
   def raw_change_password(current_password, new_password)
     _log.info("Password change requested for physical provider '#{name}' and userId #{authentication_userid}")
 
