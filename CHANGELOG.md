@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
+## Unreleased as of Sprint 84 - 2018-04-23
+
+### Added
+- Using firmware parser at storage parser [(#158)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/158)
+- Moving strings to dictionary and cleaning up empty and malformatted strings [(#157)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/157)
+- Parsing partNumber for Physical Servers [(#156)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/156)
+- Parse Physical Chassis [(#149)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/149)
+- Parsing pci_device and vlan info to ports [(#142)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/142)
+- Adding parsing steps for switches [(#132)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/132)
+- Migrate model display names from locale/en.yml to plugin [(#126)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/126)
+
 ## Unreleased as of Sprint 83 - 2018-04-09
 
 ### Added
