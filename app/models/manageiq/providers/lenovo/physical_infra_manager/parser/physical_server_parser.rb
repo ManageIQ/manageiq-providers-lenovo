@@ -51,7 +51,8 @@ module ManageIQ::Providers::Lenovo
           :memory_mb       => get_memory_info(node),
           :cpu_total_cores => get_total_cores(node),
           :firmwares       => get_firmwares(node),
-          :guest_devices   => get_guest_devices(node)
+          :guest_devices   => get_guest_devices(node),
+          :networks        => get_networks(node),
         }
       end
 
@@ -81,16 +82,35 @@ module ManageIQ::Providers::Lenovo
       def get_guest_devices(node)
         guest_devices = parent::NetworkDeviceParser.parse_network_devices(node)
         guest_devices.concat(parent::StorageDeviceParser.parse_storage_device(node))
-        guest_devices << parse_management_device(node)
       end
 
-      def parse_management_device(node)
-        result = parse(node, parent::ParserDictionaryConstants::MANAGEMENT_DEVICE)
+      def parse_network(assignment, is_ipv6 = false)
+        result = parse(assignment, parent::ParserDictionaryConstants::PHYSICAL_SERVER_NETWORK)
 
-        result[:device_type] = "management"
-        result[:network][:ipv6address] = node.ipv6Addresses.nil? ? node.ipv6Addresses : node.ipv6Addresses.join(", ")
+        result[:ipaddress]   = assignment['address'] unless is_ipv6
+        result[:ipv6address] = assignment['address'] if is_ipv6
 
         result
+      end
+
+      def get_networks(node)
+        get_parsed_switch_ip_interfaces_by_key(
+          node.ipInterfaces,
+          'IPv4assignments',
+          node.ipv4Addresses,
+          false
+        ) + get_parsed_switch_ip_interfaces_by_key(
+          node.ipInterfaces,
+          'IPv6assignments',
+          node.ipv6Addresses,
+          true
+        )
+      end
+
+      def get_parsed_switch_ip_interfaces_by_key(ip_interfaces, key, address_list, is_ipv6 = false)
+        ip_interfaces&.flat_map { |interface| interface[key] }
+          .select { |assignment| address_list.include?(assignment['address']) }
+          .map { |assignment| parse_network(assignment, is_ipv6) }
       end
     end
   end
