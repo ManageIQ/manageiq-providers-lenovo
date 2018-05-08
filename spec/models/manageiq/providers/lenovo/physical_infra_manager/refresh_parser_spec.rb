@@ -60,10 +60,10 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
 
     it 'will retrieve a port from physical switches' do
       switch = @result[:physical_switches].first
-      port   = switch[:hardware][:guest_devices].first
+      port   = switch[:physical_network_ports].first
 
       expect(port[:peer_mac_address]).to eq("7c:d3:0a:e6:47:51")
-      expect(port[:device_type]).to eq("physical_port")
+      expect(port[:port_type]).to eq("physical_port")
       expect(port[:vlan_enabled]).to eq(true)
       expect(port[:vlan_key]).to eq("\"Lenovo-Network-VLAN546\"")
     end
@@ -180,12 +180,17 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       expect(guest_device[:manufacturer]).to eq("IBM")
       expect(guest_device[:field_replaceable_unit]).to eq("90Y9373")
       expect(guest_device[:location]).to eq("Bay 7")
+    end
 
-      child_device = guest_device[:child_devices][0]
+    it 'will retrieve physical network ports' do
+      ports = @hardware[:guest_devices].first[:physical_network_ports]
+      port1 = ports.first
+      port2 = ports.second
 
-      expect(child_device[:address]).to eq("00:0A:F7:25:67:38")
-      expect(child_device[:device_type]).to eq("physical_port")
-      expect(child_device[:device_name]).to eq("Physical Port 1")
+      expect(port1[:uid_ems]).to_not be_nil
+      expect(port1[:mac_address]).to eq("00:0A:F7:25:67:38")
+      expect(port2[:uid_ems]).to_not be_nil
+      expect(port2[:mac_address]).to eq("00:0A:F7:25:67:39")
     end
 
     it 'will retrieve storage device' do

@@ -11,7 +11,7 @@ module ManageIQ::Providers::Lenovo
 
         distinct_devices.map do |device|
           parsed_device = parse_device(device)
-          parsed_device[:child_devices] = parse_child_devices(device, all_devices)
+          parsed_device[:physical_network_ports] = parse_physical_network_ports(device, all_devices)
           parsed_device
         end
       end
@@ -75,49 +75,10 @@ module ManageIQ::Providers::Lenovo
         device_fw
       end
 
-      def parse_child_devices(device, all_devices)
-        ports = all_devices.select { |device_with_port| device["pciSubID"] == device_with_port["pciSubID"] }
+      def parse_physical_network_ports(device, all_devices)
+        ports = all_devices.select { |device_with_port| mount_uuid(device) == mount_uuid(device_with_port) }
 
-        parsed_ports = []
-
-        ports.each do |port|
-          device_parced_ports = parse_ports(port)
-          parsed_ports.concat(device_parced_ports) if device_parced_ports.present?
-        end
-
-        parsed_ports.uniq { |port| port[:device_name] }
-      end
-
-      def parse_ports(port)
-        port_info = port["portInfo"]
-        physical_ports = port_info["physicalPorts"]
-        physical_ports&.map do |physical_port|
-          parsed_physical_port = parse_physical_port(physical_port)
-          logical_ports = physical_port["logicalPorts"]
-          parsed_logical_port = parse_logical_port(logical_ports[0])
-          parsed_logical_port[:uid_ems] = mount_uuid(port, true, physical_port['physicalPortIndex'])
-          parsed_logical_port.merge!(parsed_physical_port)
-          parsed_logical_port
-        end
-      end
-
-      def parse_physical_port(port)
-        {
-          :device_type => "physical_port",
-          :device_name => "Physical Port #{port['physicalPortIndex']}"
-        }
-      end
-
-      def parse_logical_port(port)
-        {
-          :address      => format_mac_address(port["addresses"]),
-          :vlan_enabled => port["vnicMode"],
-          :vlan_key     => port["logicalPortIndex"],
-        }
-      end
-
-      def format_mac_address(mac_address)
-        mac_address.scan(/\w{2}/).join(":")
+        parent::PhysicalNetworkPortsParser.parse_network_device_ports(ports)
       end
 
       #
@@ -128,10 +89,8 @@ module ManageIQ::Providers::Lenovo
       # @param child_device - if the device is a child device, it uuid will be the same
       # @param port_number  - number of the port of the child device that will be concat to the uuid
       #
-      def mount_uuid(device, child_device = false, port_number = nil)
-        uuid = device["uuid"] || "#{device['pciBusNumber']}#{device['pciDeviceNumber']}"
-        return uuid + port_number.to_s if child_device
-        uuid
+      def mount_uuid(device)
+        device["uuid"] || "#{device['pciBusNumber']}#{device['pciDeviceNumber']}"
       end
     end
   end
