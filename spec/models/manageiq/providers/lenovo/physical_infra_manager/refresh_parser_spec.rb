@@ -89,6 +89,65 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
     end
   end
 
+  context 'parse physical storages' do
+    before do
+      @result = ems_inv_to_hashes
+    end
+
+    it 'will retrieve physical storages' do
+      expect(@result[:physical_storages].size).to eq(1)
+    end
+
+    it 'will parse physical storage fields' do
+      physical_storage = @result[:physical_storages][0]
+      expected_type = "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalStorage"
+
+      expect(physical_storage[:name]).to eq("S3200-1")
+      expect(physical_storage[:uid_ems]).to eq("208000C0FF2683AF")
+      expect(physical_storage[:ems_ref]).to eq("208000C0FF2683AF")
+      expect(physical_storage[:access_state]).to eq("Online")
+      expect(physical_storage[:access_state]).to eq("Online")
+      expect(physical_storage[:health_state]).to eq("Critical")
+      expect(physical_storage[:overall_health_state]).to eq("Critical")
+      expect(physical_storage[:type]).to eq(expected_type)
+      expect(physical_storage[:drive_bays]).to eq(12)
+      expect(physical_storage[:enclosures]).to eq(1)
+      expect(physical_storage[:canister_slots]).to eq(2)
+    end
+
+    it 'will parse physical storage asset detail data' do
+      physical_storage = @result[:physical_storages][0]
+      asset_detail = physical_storage[:asset_detail]
+
+      expect(asset_detail[:product_name]).to eq("S3200")
+      expect(asset_detail[:machine_type]).to eq("6411")
+      expect(asset_detail[:model]).to eq("S3200")
+      expect(asset_detail[:serial_number]).to eq("2683AF")
+      expect(asset_detail[:contact]).to eq("Bay Nguyen")
+      expect(asset_detail[:description]).to eq("RTP_S3200_1")
+      expect(asset_detail[:location]).to be_nil
+      expect(asset_detail[:room]).to be_nil
+      expect(asset_detail[:rack_name]).to be_nil
+      expect(asset_detail[:lowest_rack_unit]).to eq(0)
+    end
+
+    it 'will parse physical storage hardware data' do
+      physical_storage = @result[:physical_storages][0]
+      computer_system = physical_storage[:computer_system]
+      expect(computer_system).to_not be_nil
+
+      hardware = computer_system[:hardware]
+      expect(hardware).to_not be_nil
+      expect(hardware[:guest_devices]).to_not be_nil
+      expect(hardware[:guest_devices]).to be_kind_of(Array)
+      expect(hardware[:guest_devices].size).to eq(1)
+
+      guest_device = hardware[:guest_devices][0]
+      expect(guest_device[:device_type]).to eq("management")
+      expect(guest_device[:network][:ipaddress]).to eq("10.243.5.61")
+    end
+  end
+
   context 'parse physical chassis' do
     let(:result) do
       VCR.use_cassette("#{described_class.name.underscore}_ems_inv_to_hashes") do

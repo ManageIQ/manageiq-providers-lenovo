@@ -54,6 +54,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
     result = refresher.parse_legacy_inventory(ems)
 
     expect(result[:physical_servers].size).to eq(3)
+    expect(result[:physical_storages].size).to eq(1)
     expect(result[:physical_chassis].size).to eq(1)
     expect(result[:physical_racks].size).to eq(1)
   end
@@ -78,6 +79,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
       assert_table_counts
       assert_specific_rack
       assert_specific_server
+      assert_specific_storage
       assert_guest_table_contents
       assert_physical_network_ports_table_content
     end
@@ -101,10 +103,27 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
     expect(server.physical_rack_id).to be_truthy
   end
 
+  def assert_specific_storage
+    storage = PhysicalStorage.find_by(:ems_ref => "208000C0FF2683AF")
+
+    expect(storage.name).to eq("S3200-1")
+    expect(storage.uid_ems).to eq("208000C0FF2683AF")
+    expect(storage.ems_ref).to eq("208000C0FF2683AF")
+    expect(storage.access_state).to eq("Online")
+    expect(storage.access_state).to eq("Online")
+    expect(storage.health_state).to eq("Critical")
+    expect(storage.overall_health_state).to eq("Critical")
+    expect(storage.type).to eq("ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalStorage")
+    expect(storage.drive_bays).to eq(12)
+    expect(storage.enclosures).to eq(1)
+    expect(storage.canister_slots).to eq(2)
+  end
+
   def assert_table_counts
     expect(PhysicalRack.count).to eq(3)
     expect(PhysicalServer.count).to eq(2)
-    expect(GuestDevice.count).to eq(4)
+    expect(PhysicalStorage.count).to eq(1)
+    expect(GuestDevice.count).to eq(5)
     expect(PhysicalNetworkPort.count).to eq(34)
   end
 

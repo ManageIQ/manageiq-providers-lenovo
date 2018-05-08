@@ -46,12 +46,14 @@ module ManageIQ::Providers::Lenovo
       self.class.parent::Parser.get_instance(version)
     end
 
-    # Retrieve all physical infrastructure that can be obtained from the LXCA (racks, chassis, servers, switches)
-    # as XClarity objects and add it to the +@data+ as a hash.
+    # Retrieve all physical infrastructure that can be obtained from the
+    # LXCA (racks, chassis, servers, switches) as XClarity objects and
+    # add it to the +@data+ as a hash.
     def get_all_physical_infra
-      @data[:physical_racks]   = []
-      @data[:physical_chassis] = []
-      @data[:physical_servers] = []
+      @data[:physical_racks]    = []
+      @data[:physical_chassis]  = []
+      @data[:physical_storages] = []
+      @data[:physical_servers]  = []
 
       racks = get_plain_physical_racks
       racks.each do |rack|
@@ -83,6 +85,13 @@ module ManageIQ::Providers::Lenovo
             @data[:physical_servers] << parsed_server
           end
         end
+
+        # Retrieve and parse storages that are inside the rack.
+        rack_storages = get_plain_physical_storages_inside_rack(rack)
+        rack_storages.each do |storage|
+          _, parsed_storage = @parser.parse_physical_storage(storage, parsed_rack)
+          @data[:physical_storages] << parsed_storage
+        end
       end
     end
 
@@ -99,6 +108,11 @@ module ManageIQ::Providers::Lenovo
     # Returns physical chassis that are inside a rack.
     def get_plain_physical_chassis_inside_rack(rack)
       rack.chassisList.map { |chassis| chassis["itemInventory"] }
+    end
+
+    # Returns physical storages that are inside a rack.
+    def get_plain_physical_storages_inside_rack(rack)
+      rack.storageList.map { |storage| storage["itemInventory"] }
     end
 
     # Returns physical servers that are inside a chassis.
