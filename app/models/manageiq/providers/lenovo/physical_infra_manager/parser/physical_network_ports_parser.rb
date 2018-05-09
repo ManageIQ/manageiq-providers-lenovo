@@ -29,7 +29,7 @@ module ManageIQ::Providers::Lenovo
 
       def parse_physical_server_ports(port)
         port_info = port["portInfo"]
-        physical_ports = port_info["physicalPorts"]
+        physical_ports = port_info&.dig('physicalPorts')
         physical_ports&.map do |physical_port|
           parsed_physical_port = parse_physical_port(physical_port)
           logical_ports = physical_port["logicalPorts"]
