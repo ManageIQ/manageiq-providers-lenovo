@@ -20,7 +20,7 @@ module ManageIQ::Providers::Lenovo
         result[:location_led_state]         = find_loc_led_state(chassis.leds)
         result[:computer_system][:hardware] = get_hardwares(chassis)
 
-        return chassis.uuid, result
+        result
       end
 
       private

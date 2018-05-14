@@ -10,7 +10,7 @@ module ManageIQ::Providers::Lenovo
       # @return [Hash] containing the config pattern informations
       #
       def parse_config_pattern(config_pattern)
-        return config_pattern.id, parse(config_pattern, parent::ParserDictionaryConstants::CONFIG_PATTERNS)
+        parse(config_pattern, parent::ParserDictionaryConstants::CONFIG_PATTERNS)
       end
     end
   end
