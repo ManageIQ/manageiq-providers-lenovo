@@ -28,7 +28,6 @@ module ManageIQ::Providers::Lenovo
       $log.info("#{log_header}...")
 
       get_all_physical_infra
-      discover_ip_physical_infra
       get_physical_switches
       get_config_patterns
 
@@ -129,30 +128,6 @@ module ManageIQ::Providers::Lenovo
     def get_config_patterns
       config_patterns = @connection.discover_config_pattern
       process_collection(config_patterns, :customization_scripts) { |config_pattern| @parser.parse_config_pattern(config_pattern) }
-    end
-
-    def discover_ip_physical_infra
-      hostname = URI.parse(@ems.hostname).host || URI.parse(@ems.hostname).path
-      if @ems.ipaddress.blank?
-        resolve_ip_address(hostname, @ems)
-      end
-      if @ems.hostname_ipaddress?(hostname)
-        resolve_hostname(hostname, @ems)
-      end
-    end
-
-    def resolve_hostname(ipaddress, ems)
-      ems.hostname = Resolv.getname(ipaddress)
-      $log.info("EMS ID: #{ems.id}" + " Resolved hostname successfully.")
-    rescue => err
-      $log.warn("EMS ID: #{ems.id}" + " It's not possible resolve hostname of the physical infra, #{err}.")
-    end
-
-    def resolve_ip_address(hostname, ems)
-      ems.ipaddress = Resolv.getaddress(hostname)
-      $log.info("EMS ID: #{ems.id}" + " Resolved ip address successfully.")
-    rescue => err
-      $log.warn("EMS ID: #{ems.id}" + " It's not possible resolve ip address of the physical infra, #{err}.")
     end
   end
 end

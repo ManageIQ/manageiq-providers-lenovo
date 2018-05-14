@@ -20,10 +20,32 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::P
     @description ||= "Lenovo XClarity"
   end
 
-  def hostname_ipaddress?(hostname)
-    IPAddr.new(hostname)
-    return true
-  rescue
-    return false
+  # Updates the value of the ipaddress if only a hostname was given
+  def update_ipaddress
+    if @ipaddress.blank?
+      host = host_or_ipaddress
+      @ipaddress = Resolv.getaddress(host)
+      $log.info("EMS ID: #{@id}" + " Resolved ip address successfully.")
+    end
+  rescue StandardError => err
+    $log.warn("EMS ID: #{@id}" + " It's not possible resolve ip address of the physical infra, #{err}.")
+  end
+ 
+  # Updates the value of the hostname if only an ipaddress was given
+  def update_hostname
+    ipaddress = host_or_ipaddress
+    if IPAddr.new(ipaddress)
+      @hostname = Resolv.getname(ipaddress)
+      $log.info("EMS ID: #{@id}" + " Resolved hostname successfully.")
+    end
+  rescue StandardError => err
+    $log.warn("EMS ID: #{@id}" + " It's not possible resolve hostname of the physical infra, #{err}.")
+  end
+ 
+  private
+ 
+  # Gets the current value of the hostname field without schema parts (can be a hostname or just an IP address)
+  def host_or_ipaddress
+    URI.parse(@hostname).host || URI.parse(@hostname).path
   end
 end
