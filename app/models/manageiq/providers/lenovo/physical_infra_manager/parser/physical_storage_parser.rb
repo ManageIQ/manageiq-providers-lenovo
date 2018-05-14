@@ -18,7 +18,7 @@ module ManageIQ::Providers::Lenovo
         result[:health_state]               = parent::ParserDictionaryConstants::HEALTH_STATE_MAP[storage.cmmHealthState.nil? ? storage.cmmHealthState : storage.cmmHealthState.downcase]
         result[:computer_system][:hardware] = get_hardwares(storage)
 
-        return storage.uuid, result
+        result
       end
 
       private
