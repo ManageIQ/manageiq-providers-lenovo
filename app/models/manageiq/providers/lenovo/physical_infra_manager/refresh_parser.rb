@@ -1,25 +1,19 @@
 # rubocop:disable Naming/AccessorMethodName
 module ManageIQ::Providers::Lenovo
   class PhysicalInfraManager::RefreshParser < EmsRefresh::Parsers::Infra
-    include ManageIQ::Providers::Lenovo::RefreshHelperMethods
-
     def self.miq_template_type
       parent::Parser::ParserDictionaryConstants::MIQ_TYPES["template"]
     end
 
-    def initialize(ems, options = nil)
+    def initialize(ems)
       ems_auth = ems.authentications.first
 
-      @ems               = ems
-      @connection        = ems.connect(:user => ems_auth.userid,
-                                       :pass => ems_auth.password,
-                                       :host => ems.endpoints.first.hostname,
-                                       :port => ems.endpoints.first.port)
-      @options           = options || {}
-      @data              = {}
-      @data_index        = {}
-      @host_hash_by_name = {}
-      @parser            = init_parser(@connection)
+      @ems        = ems
+      @connection = ems.connect(:user => ems_auth.userid,
+                                        :pass => ems_auth.password,
+                                        :host => ems.endpoints.first.hostname,
+                                        :port => ems.endpoints.first.port)
+      @parser     = init_parser(@connection)
     end
 
     def ems_inv_to_hashes

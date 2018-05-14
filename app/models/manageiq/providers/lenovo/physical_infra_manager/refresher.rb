@@ -11,7 +11,7 @@ module ManageIQ::Providers::Lenovo
       ems.update_ipaddress
       ems.update_hostname
 
-      ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser.ems_inv_to_hashes(ems, refresher_options)
+      ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser.new(ems).ems_inv_to_hashes
     end
   end
 end
