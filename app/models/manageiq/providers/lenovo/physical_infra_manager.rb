@@ -19,11 +19,4 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::P
   def self.description
     @description ||= "Lenovo XClarity"
   end
-
-  def hostname_ipaddress?(hostname)
-    IPAddr.new(hostname)
-    return true
-  rescue
-    return false
-  end
 end
