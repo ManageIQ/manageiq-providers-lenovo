@@ -95,7 +95,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
 
     expect(server.name).to eq("IMM2-e41f13ed5a1e")
     expect(server.health_state).to eq("Valid")
-    expect(server.power_state).to eq("on")
+    expect(server.power_state).to eq("On")
     expect(server.vendor).to eq("lenovo")
     expect(server.ems_id).to be_truthy
     expect(server.physical_rack_id).to be_truthy

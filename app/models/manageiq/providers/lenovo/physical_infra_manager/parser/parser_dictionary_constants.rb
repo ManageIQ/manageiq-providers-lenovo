@@ -3,8 +3,8 @@ module ManageIQ::Providers::Lenovo
   # 1.3
   class PhysicalInfraManager::Parser::ParserDictionaryConstants
     POWER_STATE_MAP = {
-      8  => "on",
-      5  => "off",
+      8  => "On",
+      5  => "Off",
       18 => "Standby",
       0  => "Unknown",
     }.freeze
