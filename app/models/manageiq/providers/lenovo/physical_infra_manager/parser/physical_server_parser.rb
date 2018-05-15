@@ -1,6 +1,42 @@
 module ManageIQ::Providers::Lenovo
   class PhysicalInfraManager::Parser::PhysicalServerParser < PhysicalInfraManager::Parser::ComponentParser
     class << self
+      # Mapping between fields inside a [XClarityClient::Node] to a [Hash] with symbols of PhysicalServer fields
+      PHYSICAL_SERVER = {
+        :name            => 'name',
+        :ems_ref         => 'uuid',
+        :uid_ems         => 'uuid',
+        :hostname        => 'hostname',
+        :asset_detail    => {
+          :product_name           => 'productName',
+          :manufacturer           => 'manufacturer',
+          :machine_type           => 'machineType',
+          :model                  => 'model',
+          :serial_number          => 'serialNumber',
+          :part_number            => 'partNumber',
+          :field_replaceable_unit => 'FRU',
+          :contact                => 'contact',
+          :description            => 'description',
+          :location               => 'location.location',
+          :room                   => 'location.room',
+          :rack_name              => 'location.rack',
+          :lowest_rack_unit       => 'location.lowestRackUnit',
+        },
+        :computer_system => {
+          :hardware => {
+            :guest_devices => '',
+            :firmwares     => '',
+          },
+        },
+      }.freeze
+
+      MANAGEMENT_DEVICE = {
+        :address => 'macAddress',
+        :network => {
+          :ipaddress => 'mgmtProcIPaddress',
+        },
+      }.freeze
+
       #
       # parse a node object to a hash with physical servers data
       #
@@ -12,7 +48,7 @@ module ManageIQ::Providers::Lenovo
       #
       def parse_physical_server(node_hash, compliance, rack = nil, chassis = nil)
         node = XClarityClient::Node.new(node_hash)
-        result = parse(node, parent::ParserDictionaryConstants::PHYSICAL_SERVER)
+        result = parse(node, PHYSICAL_SERVER)
 
         # Keep track of the rack where this server is in, if it is in any rack
         result[:physical_rack]              = rack if rack
@@ -85,7 +121,7 @@ module ManageIQ::Providers::Lenovo
       end
 
       def parse_management_device(node)
-        result = parse(node, parent::ParserDictionaryConstants::MANAGEMENT_DEVICE)
+        result = parse(node, MANAGEMENT_DEVICE)
 
         result[:device_type] = 'management'
         result[:network][:ipv6address] = node.ipv6Addresses.nil? ? node.ipv6Addresses : node.ipv6Addresses.join(', ')
