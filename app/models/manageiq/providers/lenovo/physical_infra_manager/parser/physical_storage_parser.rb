@@ -30,10 +30,6 @@ module ManageIQ::Providers::Lenovo
         },
       }.freeze
 
-      PHYSICAL_STORAGE_NETWORK = {
-        :ipaddress => 'mgmtProcIPaddress',
-      }.freeze
-
       #
       # Parse a storage into a hash
       #
@@ -59,12 +55,12 @@ module ManageIQ::Providers::Lenovo
       private
 
       def get_hardwares(storage)
-        parsed_storage_network = parse(storage, PHYSICAL_STORAGE_NETWORK)
-
         {
           :guest_devices => [{
             :device_type => "management",
-            :network     => parsed_storage_network
+            :network     => {
+              :ipaddress => storage.mgmtProcIPaddress
+            }
           }]
         }
       end
