@@ -43,7 +43,7 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations
     change_resource_state(server, :power_restart_node_controller)
   end
 
-  def apply_config_pattern(args, options = {})
+  def apply_config_pattern(_args, options = {})
     $lenovo_log.info("Entering apply_config_pattern with pattern ID: #{options[:id]} and UUID: #{options[:uuid]}")
 
     # Retrieve a connection to the LXCA instance

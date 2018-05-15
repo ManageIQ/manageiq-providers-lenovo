@@ -74,7 +74,7 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
 
     def connection_rescue_block
       yield
-    rescue => err
+    rescue StandardError => err
       miq_exception = translate_exception(err)
       raise unless miq_exception
 
@@ -116,7 +116,7 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
         _log.info("Created EMS: #{new_ems.name} with id: #{new_ems.id}")
       end
 
-      EmsRefresh.queue_refresh(new_ems) unless new_ems.blank?
+      EmsRefresh.queue_refresh(new_ems) if new_ems.present?
     end
 
     def discover_queue(ip_address, port, zone = nil)
