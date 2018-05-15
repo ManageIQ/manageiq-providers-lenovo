@@ -2,37 +2,6 @@ module ManageIQ::Providers::Lenovo
   # dictionary homologated for versions:
   # 1.3
   class PhysicalInfraManager::Parser::ParserDictionaryConstants
-    POWER_STATE_MAP = {
-      8  => 'On',
-      5  => 'Off',
-      18 => 'Standby',
-      0  => 'Unknown'
-    }.freeze
-
-    HEALTH_STATE_MAP = {
-      'normal'          => 'Valid',
-      'non-critical'    => 'Valid',
-      'warning'         => 'Warning',
-      'critical'        => 'Critical',
-      'unknown'         => 'None',
-      'minor-failure'   => 'Critical',
-      'major-failure'   => 'Critical',
-      'non-recoverable' => 'Critical',
-      'fatal'           => 'Critical',
-      nil               => 'Unknown'
-    }.freeze
-
-    MIQ_TYPES = {
-      'physical_server'  => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer',
-      'physical_switch'  => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalSwitch',
-      'physical_storage' => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalStorage',
-      'physical_chassis' => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalChassis'
-    }.freeze
-
-    PROPERTIES_MAP = {
-      :led_identify_name => %w(Identification Identify)
-    }.freeze
-
     # TRANSLATE HASHES BEGIN
     # The translate hashes are used to parse an object to a hash
     # where the translate hash keys are set as object hash keys
@@ -169,12 +138,6 @@ module ManageIQ::Providers::Lenovo
       :network => {
         :ipaddress => 'mgmtProcIPaddress'
       }
-    }.freeze
-
-    GUEST_DEVICE = {
-      :manufacturer           => 'manufacturer',
-      :field_replaceable_unit => 'FRU',
-      :controller_type        => 'class'
     }.freeze
 
     FIRMWARE = {
