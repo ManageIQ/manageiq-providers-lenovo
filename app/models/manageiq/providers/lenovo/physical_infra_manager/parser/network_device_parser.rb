@@ -51,7 +51,7 @@ module ManageIQ::Providers::Lenovo
       end
 
       def parse_device(device)
-        result = parse(device, parent::ParserDictionaryConstants::GUEST_DEVICE)
+        result = parse(device, GUEST_DEVICE)
 
         result[:uid_ems]     = mount_uuid(device)
         result[:device_name] = device['productName'] ? device['productName'] : device['name']

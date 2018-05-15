@@ -5,6 +5,48 @@ module ManageIQ::Providers::Lenovo
   #
   class PhysicalInfraManager::Parser::ComponentParser
     class << self
+      GUEST_DEVICE = {
+        :manufacturer           => 'manufacturer',
+        :field_replaceable_unit => 'FRU',
+        :controller_type        => 'class',
+      }.freeze
+
+      HEALTH_STATE_MAP = {
+        'normal'          => 'Valid',
+        'non-critical'    => 'Valid',
+        'warning'         => 'Warning',
+        'critical'        => 'Critical',
+        'unknown'         => 'None',
+        'minor-failure'   => 'Critical',
+        'major-failure'   => 'Critical',
+        'non-recoverable' => 'Critical',
+        'fatal'           => 'Critical',
+        nil               => 'Unknown',
+      }.freeze
+
+      MIQ_TYPES = {
+        'physical_server'  => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer',
+        'physical_switch'  => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalSwitch',
+        'physical_chassis' => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalChassis',
+      }.freeze
+
+      POWER_STATE_MAP = {
+        8  => 'On',
+        5  => 'Off',
+        18 => 'Standby',
+        0  => 'Unknown',
+      }.freeze
+
+      PROPERTIES_MAP = {
+        :led_identify_name => %w(Identification Identify),
+      }.freeze
+
+      private_constant :GUEST_DEVICE
+      private_constant :HEALTH_STATE_MAP
+      private_constant :MIQ_TYPES
+      private_constant :POWER_STATE_MAP
+      private_constant :PROPERTIES_MAP
+
       #
       # Returns a hash containing the structure described on dictionary
       # and with the values in the source.
