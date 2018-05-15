@@ -5,27 +5,15 @@ module ManageIQ::Providers::Lenovo
       parent::Parser::ParserDictionaryConstants::MIQ_TYPES["template"]
     end
 
-    def initialize(ems)
-      ems_auth = ems.authentications.first
-
-      @ems        = ems
-      @connection = ems.connect(:user => ems_auth.userid,
-                                        :pass => ems_auth.password,
-                                        :host => ems.endpoints.first.hostname,
-                                        :port => ems.endpoints.first.port)
-      @parser     = init_parser(@connection)
+    def initialize(connection)
+      @connection = connection
+      @parser     = init_parser
     end
 
     def ems_inv_to_hashes
-      log_header = "MIQ(#{self.class.name}.#{__method__}) Collecting data for EMS : [#{@ems.name}] id: [#{@ems.id} ref: #{@ems.uid_ems}]"
-
-      $log.info("#{log_header}...")
-
       inventory                         = get_all_physical_infra
       inventory[:physical_switches]     = get_physical_switches
       inventory[:customization_scripts] = get_config_patterns
-
-      $log.info("#{log_header}...Complete")
 
       inventory
     end
@@ -33,8 +21,8 @@ module ManageIQ::Providers::Lenovo
     private
 
     # returns the specific parser based on the version of the appliance
-    def init_parser(connection)
-      version = connection.discover_aicc.first.appliance['version'] # getting the appliance version
+    def init_parser
+      version = @connection.discover_aicc.first.appliance['version'] # getting the appliance version
       self.class.parent::Parser.get_instance(version)
     end
 

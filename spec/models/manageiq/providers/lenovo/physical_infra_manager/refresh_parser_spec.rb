@@ -22,17 +22,17 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
                        :authtype => "default")
   end
 
-  let(:ems) do
+  let(:connection) do
     ems = FactoryGirl.create(:physical_infra,
                              :name      => "LXCA",
                              :hostname  => "10.243.9.123",
                              :port      => "443",
                              :ipaddress => "https://10.243.9.123/443")
     ems.authentications = [auth]
-    ems
+    ems.connection
   end
 
-  let(:ems_inv_to_hashes) { described_class.new(ems).ems_inv_to_hashes }
+  let(:ems_inv_to_hashes) { described_class.new(connection).ems_inv_to_hashes }
 
   it 'will return its miq_template_type' do
     expect(described_class.miq_template_type).to eq("ManageIQ::Providers::Lenovo::PhysicalInfraManager::Template")

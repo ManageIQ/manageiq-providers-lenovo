@@ -20,6 +20,14 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::P
     @description ||= "Lenovo XClarity"
   end
 
+  # Returns a new connection to the LXCA
+  def connection
+    self.connect(:user => authentications.first.userid,
+                 :pass => authentications.first.password,
+                 :host => endpoints.first.hostname,
+                 :port => endpoints.first.port)
+  end
+
   # Updates the value of the ipaddress if only a hostname was given
   def update_ipaddress
     if @ipaddress.blank?
