@@ -3,35 +3,35 @@ module ManageIQ::Providers::Lenovo
   # 1.3
   class PhysicalInfraManager::Parser::ParserDictionaryConstants
     POWER_STATE_MAP = {
-      8  => "On",
-      5  => "Off",
-      18 => "Standby",
-      0  => "Unknown",
+      8  => 'On',
+      5  => 'Off',
+      18 => 'Standby',
+      0  => 'Unknown'
     }.freeze
 
     HEALTH_STATE_MAP = {
-      "normal"          => "Valid",
-      "non-critical"    => "Valid",
-      "warning"         => "Warning",
-      "critical"        => "Critical",
-      "unknown"         => "None",
-      "minor-failure"   => "Critical",
-      "major-failure"   => "Critical",
-      "non-recoverable" => "Critical",
-      "fatal"           => "Critical",
-      nil               => "Unknown",
+      'normal'          => 'Valid',
+      'non-critical'    => 'Valid',
+      'warning'         => 'Warning',
+      'critical'        => 'Critical',
+      'unknown'         => 'None',
+      'minor-failure'   => 'Critical',
+      'major-failure'   => 'Critical',
+      'non-recoverable' => 'Critical',
+      'fatal'           => 'Critical',
+      nil               => 'Unknown'
     }.freeze
 
     MIQ_TYPES = {
-      "physical_server"  => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer",
-      "physical_switch"  => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalSwitch",
-      "physical_storage" => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalStorage",
-      "physical_chassis" => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalChassis",
-      "template"         => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::Template",
+      'physical_server'  => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer',
+      'physical_switch'  => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalSwitch',
+      'physical_storage' => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalStorage',
+      'physical_chassis' => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalChassis',
+      'template'         => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::Template',
     }.freeze
 
     PROPERTIES_MAP = {
-      :led_identify_name => %w(Identification Identify),
+      :led_identify_name => %w(Identification Identify)
     }.freeze
 
     # TRANSLATE HASHES BEGIN
@@ -51,18 +51,18 @@ module ManageIQ::Providers::Lenovo
         :part_number            => 'partNumber',
         :field_replaceable_unit => 'FRU',
         :description            => 'description',
-        :manufacturer           => 'manufacturer',
-      },
+        :manufacturer           => 'manufacturer'
+      }
     }.freeze
 
     PHYSICAL_SWITCH_NETWORK = {
       :subnet_mask     => 'subnet',
-      :default_gateway => 'gateway',
+      :default_gateway => 'gateway'
     }.freeze
 
     PHYSICAL_SWITCH_PORT = {
       :peer_mac_address => 'peerMacAddress',
-      :vlan_key         => 'PVID',
+      :vlan_key         => 'PVID'
     }.freeze
 
     PHYSICAL_STORAGE = {
@@ -118,17 +118,17 @@ module ManageIQ::Providers::Lenovo
         :location         => 'location.location',
         :room             => 'location.room',
         :rack_name        => 'location.rack',
-        :lowest_rack_unit => 'location.lowestRackUnit',
+        :lowest_rack_unit => 'location.lowestRackUnit'
       },
       :computer_system              => {
         :hardware => {
-          :guest_devices => '',
-        },
-      },
+          :guest_devices => ''
+        }
+      }
     }.freeze
 
     PHYSICAL_CHASSIS_NETWORK = {
-      :ipaddress => 'mgmtProcIPaddress',
+      :ipaddress => 'mgmtProcIPaddress'
     }.freeze
 
     PHYSICAL_SERVER = {
@@ -149,39 +149,39 @@ module ManageIQ::Providers::Lenovo
         :location               => 'location.location',
         :room                   => 'location.room',
         :rack_name              => 'location.rack',
-        :lowest_rack_unit       => 'location.lowestRackUnit',
+        :lowest_rack_unit       => 'location.lowestRackUnit'
       },
       :computer_system => {
         :hardware => {
           :guest_devices => '',
-          :firmwares     => '',
-        },
-      },
+          :firmwares     => ''
+        }
+      }
     }.freeze
 
     PHYSICAL_RACK = {
       :name    => 'cabinetName',
       :uid_ems => 'UUID',
-      :ems_ref => 'UUID',
+      :ems_ref => 'UUID'
     }.freeze
 
     MANAGEMENT_DEVICE = {
       :address => 'macAddress',
       :network => {
-        :ipaddress => 'mgmtProcIPaddress',
-      },
+        :ipaddress => 'mgmtProcIPaddress'
+      }
     }.freeze
 
     GUEST_DEVICE = {
       :manufacturer           => 'manufacturer',
       :field_replaceable_unit => 'FRU',
-      :controller_type        => 'class',
+      :controller_type        => 'class'
     }.freeze
 
     FIRMWARE = {
       :build        => 'build',
       :version      => 'version',
-      :release_date => 'date',
+      :release_date => 'date'
     }.freeze
 
     CONFIG_PATTERNS = {
@@ -189,7 +189,7 @@ module ManageIQ::Providers::Lenovo
       :name         => 'name',
       :description  => 'description',
       :user_defined => 'userDefined',
-      :in_use       => 'inUse',
+      :in_use       => 'inUse'
     }.freeze
     # TRANSLATE HASH END
   end

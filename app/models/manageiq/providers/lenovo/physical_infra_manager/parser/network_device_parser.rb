@@ -46,16 +46,16 @@ module ManageIQ::Providers::Lenovo
       # Verifies if a device is a network device by it name or it class
       #
       def network_device?(device)
-        device_name = (device["productName"] ? device["productName"] : device["name"]).try(:downcase)
-        device["class"] == "Network controller" || device_name =~ /nic/ || device_name =~ /ethernet/
+        device_name = (device['productName'] ? device['productName'] : device['name']).try(:downcase)
+        device['class'] == 'Network controller' || device_name =~ /nic/ || device_name =~ /ethernet/
       end
 
       def parse_device(device)
         result = parse(device, parent::ParserDictionaryConstants::GUEST_DEVICE)
 
         result[:uid_ems]     = mount_uuid(device)
-        result[:device_name] = device["productName"] ? device["productName"] : device["name"]
-        result[:device_type] = "ethernet"
+        result[:device_name] = device['productName'] ? device['productName'] : device['name']
+        result[:device_type] = 'ethernet'
         result[:firmwares]   = parse_device_firmware(device)
         result[:location]    = device['slotNumber'] ? "Bay #{device['slotNumber']}" : nil
 
@@ -65,7 +65,7 @@ module ManageIQ::Providers::Lenovo
       def parse_device_firmware(device)
         device_fw = []
 
-        firmware = device["firmware"]
+        firmware = device['firmware']
         unless firmware.nil?
           device_fw = firmware.map do |fw|
             parent::FirmwareParser.parse_firmware(fw)
@@ -90,7 +90,7 @@ module ManageIQ::Providers::Lenovo
       # @param port_number  - number of the port of the child device that will be concat to the uuid
       #
       def mount_uuid(device)
-        device["uuid"] || "#{device['pciBusNumber']}#{device['pciDeviceNumber']}"
+        device['uuid'] || "#{device['pciBusNumber']}#{device['pciDeviceNumber']}"
       end
     end
   end

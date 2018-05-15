@@ -19,7 +19,7 @@ module ManageIQ::Providers::Lenovo
           policy_name = result['policyName']
           data = {
             :policy_name => policy_name.empty? ? COMPLIANCE_NAME : policy_name,
-            :status      => "#{COMPLIANCE_STATUS[result['endpointCompliant']]} #{result['message'].join(', ')}".strip,
+            :status      => "#{COMPLIANCE_STATUS[result['endpointCompliant']]} #{result['message'].join(', ')}".strip
           }
           # Return a tuple [key, value] for each result
           [result['uuid'], data]

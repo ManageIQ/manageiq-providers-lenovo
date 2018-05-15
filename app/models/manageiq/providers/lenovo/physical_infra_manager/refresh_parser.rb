@@ -2,7 +2,7 @@
 module ManageIQ::Providers::Lenovo
   class PhysicalInfraManager::RefreshParser < EmsRefresh::Parsers::Infra
     def self.miq_template_type
-      parent::Parser::ParserDictionaryConstants::MIQ_TYPES["template"]
+      parent::Parser::ParserDictionaryConstants::MIQ_TYPES['template']
     end
 
     def initialize(connection)
@@ -80,27 +80,27 @@ module ManageIQ::Providers::Lenovo
 
     # Returns all physical rack from the api.
     def get_plain_physical_racks
-      @connection.discover_cabinet(:status => "includestandalone")
+      @connection.discover_cabinet(:status => 'includestandalone')
     end
 
     # Returns physical servers that are inside a rack but not inside a chassis.
     def get_plain_physical_servers_inside_rack(rack)
-      rack.nodeList.map { |node| node["itemInventory"] }
+      rack.nodeList.map { |node| node['itemInventory'] }
     end
 
     # Returns physical chassis that are inside a rack.
     def get_plain_physical_chassis_inside_rack(rack)
-      rack.chassisList.map { |chassis| chassis["itemInventory"] }
+      rack.chassisList.map { |chassis| chassis['itemInventory'] }
     end
 
     # Returns physical storages that are inside a rack.
     def get_plain_physical_storages_inside_rack(rack)
-      rack.storageList.map { |storage| storage["itemInventory"] }
+      rack.storageList.map { |storage| storage['itemInventory'] }
     end
 
     # Returns physical servers that are inside a chassis.
     def get_plain_physical_servers_inside_chassis(chassis)
-      chassis["nodes"].reject { |node| node["type"] == "SCU" }
+      chassis['nodes'].reject { |node| node['type'] == 'SCU' }
     end
 
     def get_physical_switches
@@ -111,7 +111,7 @@ module ManageIQ::Providers::Lenovo
     def find_compliance(node)
       @compliance_policies ||= @connection.fetch_compliance_policies
       @compliance_policies_parsed ||= @parser.parse_compliance_policy(@compliance_policies)
-      @compliance_policies_parsed[node["uuid"]] || create_default_compliance
+      @compliance_policies_parsed[node['uuid']] || create_default_compliance
     end
 
     def create_default_compliance

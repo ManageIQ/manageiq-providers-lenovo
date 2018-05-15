@@ -1,2 +1,2 @@
-require "manageiq/providers/lenovo/engine"
-require "manageiq/providers/lenovo/version"
+require 'manageiq/providers/lenovo/engine'
+require 'manageiq/providers/lenovo/version'

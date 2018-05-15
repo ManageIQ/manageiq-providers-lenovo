@@ -13,7 +13,7 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::AuthenticatableProvide
       raise MiqException::Error, _(response[:message])
     end
 
-    _log.info("Password change request was successfully completed")
+    _log.info('Password change request was successfully completed')
     true
   end
 end

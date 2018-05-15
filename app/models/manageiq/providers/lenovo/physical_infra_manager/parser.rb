@@ -14,7 +14,7 @@ module ManageIQ::Providers::Lenovo
     # To support a new version with some subclass, update this constant like this:
     # '<version>' => ManageIQ::Providers::Lenovo::<Class>
     VERSION_PARSERS = {
-      'default' => ManageIQ::Providers::Lenovo::PhysicalInfraManager::Parser,
+      'default' => ManageIQ::Providers::Lenovo::PhysicalInfraManager::Parser
     }.freeze
 
     # returns the parser of api version request
