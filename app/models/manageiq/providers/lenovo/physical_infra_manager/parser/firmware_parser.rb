@@ -11,7 +11,7 @@ module ManageIQ::Providers::Lenovo
       def parse_firmware(firmware)
         result = parse(firmware, parent::ParserDictionaryConstants::FIRMWARE)
 
-        result[:name] = "#{firmware["role"]} #{firmware["name"]}-#{firmware["status"]}".strip
+        result[:name] = "#{firmware['role']} #{firmware['name']}-#{firmware['status']}".strip
 
         result
       end

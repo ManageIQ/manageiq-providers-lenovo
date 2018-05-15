@@ -13,19 +13,19 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::P
   supports :change_password
 
   def self.ems_type
-    @ems_type ||= "lenovo_ph_infra".freeze
+    @ems_type ||= 'lenovo_ph_infra'.freeze
   end
 
   def self.description
-    @description ||= "Lenovo XClarity"
+    @description ||= 'Lenovo XClarity'
   end
 
   # Returns a new connection to the LXCA
   def connection
-    self.connect(:user => authentications.first.userid,
-                 :pass => authentications.first.password,
-                 :host => endpoints.first.hostname,
-                 :port => endpoints.first.port)
+    connect(:user => authentications.first.userid,
+            :pass => authentications.first.password,
+            :host => endpoints.first.hostname,
+            :port => endpoints.first.port)
   end
 
   # Updates the value of the ipaddress if only a hostname was given
@@ -33,25 +33,25 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::P
     if @ipaddress.blank?
       host = host_or_ipaddress
       @ipaddress = Resolv.getaddress(host)
-      $log.info("EMS ID: #{@id}" + " Resolved ip address successfully.")
+      $log.info("EMS ID: #{@id} Resolved ip address successfully.")
     end
   rescue StandardError => err
-    $log.warn("EMS ID: #{@id}" + " It's not possible resolve ip address of the physical infra, #{err}.")
+    $log.warn("EMS ID: #{@id} It's not possible resolve ip address of the physical infra, #{err}.")
   end
- 
+
   # Updates the value of the hostname if only an ipaddress was given
   def update_hostname
     ipaddress = host_or_ipaddress
     if IPAddr.new(ipaddress)
       @hostname = Resolv.getname(ipaddress)
-      $log.info("EMS ID: #{@id}" + " Resolved hostname successfully.")
+      $log.info("EMS ID: #{@id} Resolved hostname successfully.")
     end
   rescue StandardError => err
-    $log.warn("EMS ID: #{@id}" + " It's not possible resolve hostname of the physical infra, #{err}.")
+    $log.warn("EMS ID: #{@id} It's not possible resolve hostname of the physical infra, #{err}.")
   end
- 
+
   private
- 
+
   # Gets the current value of the hostname field without schema parts (can be a hostname or just an IP address)
   def host_or_ipaddress
     URI.parse(@hostname).host || URI.parse(@hostname).path

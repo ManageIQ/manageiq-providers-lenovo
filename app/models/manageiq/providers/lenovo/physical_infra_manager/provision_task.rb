@@ -5,7 +5,7 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::ProvisionTask < MiqProv
   SUCCESS = 200
 
   def description
-    "Apply configuration pattern"
+    'Apply configuration pattern'
   end
 
   def self.request_class
@@ -17,7 +17,7 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::ProvisionTask < MiqProv
   end
 
   def deliver_to_automate
-    super("physical_server_provision", my_zone)
+    super('physical_server_provision', my_zone)
   end
 
   def do_request
@@ -25,10 +25,10 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::ProvisionTask < MiqProv
     response = physical_server.apply_config_pattern(pattern_id)
 
     if response.status == SUCCESS
-      update_and_notify_parent(:state => "finished", :status => "Ok", :message => "#{request_class::TASK_DESCRIPTION} complete")
+      update_and_notify_parent(:state => 'finished', :status => 'Ok', :message => "#{request_class::TASK_DESCRIPTION} complete")
     else
-      msg = JSON.parse(response.body)["message"]
-      update_and_notify_parent(:state => "finished", :status => "Error", :message => "Error: #{msg}")
+      msg = JSON.parse(response.body)['message']
+      update_and_notify_parent(:state => 'finished', :status => 'Error', :message => "Error: #{msg}")
     end
   end
 end

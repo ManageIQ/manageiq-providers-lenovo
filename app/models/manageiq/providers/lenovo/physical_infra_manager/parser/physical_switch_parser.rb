@@ -14,7 +14,7 @@ module ManageIQ::Providers::Lenovo
         unless result[:power_state].nil?
           result[:power_state] = result[:power_state].downcase if %w(on off).include?(result[:power_state].downcase)
         end
-        result[:type]         = parent::ParserDictionaryConstants::MIQ_TYPES["physical_switch"]
+        result[:type]         = parent::ParserDictionaryConstants::MIQ_TYPES['physical_switch']
         result[:health_state] = parent::ParserDictionaryConstants::HEALTH_STATE_MAP[physical_switch.overallHealthState.nil? ? physical_switch.overallHealthState : physical_switch.overallHealthState.downcase]
         result[:hardware]     = get_hardwares(physical_switch)
 
@@ -27,8 +27,8 @@ module ManageIQ::Providers::Lenovo
 
       def get_hardwares(physical_switch)
         {
-          :firmwares     => get_firmwares(physical_switch),
-          :networks      => get_networks(physical_switch)
+          :firmwares => get_firmwares(physical_switch),
+          :networks  => get_networks(physical_switch)
         }
       end
 

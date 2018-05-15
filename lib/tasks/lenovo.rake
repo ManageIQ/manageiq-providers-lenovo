@@ -1,4 +1,4 @@
-#namespace :manageiq do
+# namespace :manageiq do
 #  namespace :providers do
 #    namespace :lenovo do
 #      desc "Explaining what the task does"
@@ -7,4 +7,4 @@
 #      end
 #    end
 #  end
-#end
+# end

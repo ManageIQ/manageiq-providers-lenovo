@@ -3,30 +3,30 @@ module ManageIQ::Providers::Lenovo
   # 1.3
   class PhysicalInfraManager::Parser::ParserDictionaryConstants
     POWER_STATE_MAP = {
-      8  => "On",
-      5  => "Off",
-      18 => "Standby",
-      0  => "Unknown",
+      8  => 'On',
+      5  => 'Off',
+      18 => 'Standby',
+      0  => 'Unknown',
     }.freeze
 
     HEALTH_STATE_MAP = {
-      "normal"          => "Valid",
-      "non-critical"    => "Valid",
-      "warning"         => "Warning",
-      "critical"        => "Critical",
-      "unknown"         => "None",
-      "minor-failure"   => "Critical",
-      "major-failure"   => "Critical",
-      "non-recoverable" => "Critical",
-      "fatal"           => "Critical",
-      nil               => "Unknown",
+      'normal'          => 'Valid',
+      'non-critical'    => 'Valid',
+      'warning'         => 'Warning',
+      'critical'        => 'Critical',
+      'unknown'         => 'None',
+      'minor-failure'   => 'Critical',
+      'major-failure'   => 'Critical',
+      'non-recoverable' => 'Critical',
+      'fatal'           => 'Critical',
+      nil               => 'Unknown',
     }.freeze
 
     MIQ_TYPES = {
-      "physical_server"  => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer",
-      "physical_switch"  => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalSwitch",
-      "physical_chassis" => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalChassis",
-      "template"         => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::Template",
+      'physical_server'  => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer',
+      'physical_switch'  => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalSwitch',
+      'physical_chassis' => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalChassis',
+      'template'         => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::Template',
     }.freeze
 
     PROPERTIES_MAP = {

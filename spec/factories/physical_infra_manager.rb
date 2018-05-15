@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :physical_infra,
-          :class => "ManageIQ::Providers::Lenovo::PhysicalInfraManager" do
+          :class => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager' do
   end
 
   factory :physical_infra_with_authentication,
