@@ -17,11 +17,6 @@ module ManageIQ::Providers::Lenovo
         },
       }.freeze
 
-      PHYSICAL_SWITCH_NETWORK = {
-        :subnet_mask     => 'subnet',
-        :default_gateway => 'gateway',
-      }.freeze
-
       #
       # Parses a switch into a Hash
       #
@@ -74,12 +69,12 @@ module ManageIQ::Providers::Lenovo
       end
 
       def parse_network(assignment, is_ipv6 = false)
-        result = parse(assignment, PHYSICAL_SWITCH_NETWORK)
-
-        result[:ipaddress]   = assignment['address'] unless is_ipv6
-        result[:ipv6address] = assignment['address'] if is_ipv6
-
-        result
+        {
+          :subnet_mask     => assignment['subnet'],
+          :default_gateway => assignment['gateway'],
+          :ipaddress       => (assignment['address'] unless is_ipv6),
+          :ipv6address     => (assignment['address'] if is_ipv6),
+        }
       end
 
       def get_firmwares(physical_switch)
