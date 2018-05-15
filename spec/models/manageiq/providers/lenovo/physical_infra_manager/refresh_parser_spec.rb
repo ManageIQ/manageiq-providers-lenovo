@@ -34,10 +34,6 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
 
   let(:ems_inv_to_hashes) { described_class.new(connection).ems_inv_to_hashes }
 
-  it 'will return its miq_template_type' do
-    expect(described_class.miq_template_type).to eq('ManageIQ::Providers::Lenovo::PhysicalInfraManager::Template')
-  end
-
   context 'parse physical switches' do
     before do
       @result = ems_inv_to_hashes

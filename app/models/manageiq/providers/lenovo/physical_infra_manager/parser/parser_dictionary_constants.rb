@@ -26,7 +26,6 @@ module ManageIQ::Providers::Lenovo
       'physical_server'  => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer',
       'physical_switch'  => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalSwitch',
       'physical_chassis' => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalChassis',
-      'template'         => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::Template',
     }.freeze
 
     PROPERTIES_MAP = {

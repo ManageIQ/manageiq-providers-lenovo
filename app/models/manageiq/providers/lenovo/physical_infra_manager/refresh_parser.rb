@@ -1,10 +1,6 @@
 # rubocop:disable Naming/AccessorMethodName
 module ManageIQ::Providers::Lenovo
   class PhysicalInfraManager::RefreshParser < EmsRefresh::Parsers::Infra
-    def self.miq_template_type
-      parent::Parser::ParserDictionaryConstants::MIQ_TYPES['template']
-    end
-
     def initialize(connection)
       @connection = connection
       @parser     = init_parser
