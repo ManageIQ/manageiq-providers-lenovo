@@ -39,7 +39,7 @@ module ManageIQ::Providers::Lenovo
         result[:health_state] = HEALTH_STATE_MAP[physical_switch.overallHealthState.nil? ? physical_switch.overallHealthState : physical_switch.overallHealthState.downcase]
         result[:hardware]     = get_hardwares(physical_switch)
 
-        result[:physical_network_ports] = parent::PhysicalNetworkPortsParser.parse_physical_switch_ports(physical_switch)
+        result[:physical_network_ports] = parent::PhysicalSwitchPortsParser.parse_physical_switch_ports(physical_switch)
 
         result
       end
