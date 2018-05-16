@@ -1,9 +1,9 @@
 describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream do
   let(:ems) do
     FactoryGirl.create(:physical_infra_with_authentication,
-                       :name     => "LXCA",
-                       :hostname => "10.243.9.123",
-                       :port     => "443")
+                       :name     => 'LXCA',
+                       :hostname => '10.243.9.123',
+                       :port     => '443')
   end
 
   let(:stream) { described_class.new(ems) }
@@ -12,8 +12,8 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
     stream.stop
   end
 
-  context "#each_batch" do
-    it "yields a valid event" do
+  context '#each_batch' do
+    it 'yields a valid event' do
       VCR.use_cassette(described_class.name.underscore.to_s) do
         result = []
         stream.each_batch do |events|

@@ -7,7 +7,7 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Runner < 
 
   def monitor_events
     $log.info('Starting LXCA event catcher ...')
-    raise "LXCA event_monitor_handle is nil" if event_monitor_handle.nil?
+    raise 'LXCA event_monitor_handle is nil' if event_monitor_handle.nil?
     event_monitor_handle.each_batch do |events|
       event_monitor_running
       $log.info("Quantity of new LXCA events: #{events.size}")
@@ -28,7 +28,7 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Runner < 
   private
 
   def filtered?(event)
-    filtered_events.include?(event["messageType"])
+    filtered_events.include?(event['messageType'])
   end
 
   def event_monitor_handle

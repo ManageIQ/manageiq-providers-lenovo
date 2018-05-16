@@ -1,6 +1,29 @@
 module ManageIQ::Providers::Lenovo
   class PhysicalInfraManager::Parser::PhysicalSwitchParser < PhysicalInfraManager::Parser::ComponentParser
     class << self
+      # Mapping between fields inside a [XClarityClient::Switch] to a [Hash] with symbols of PhysicalSwitch fields
+      PHYSICAL_SWITCH = {
+        :name                   => 'name',
+        :uid_ems                => 'uuid',
+        :switch_uuid            => 'uuid',
+        :power_state            => :power_state,
+        :type                   => :type,
+        :health_state           => :health_state,
+        :physical_network_ports => :physical_network_ports,
+        :hardware               => {
+          :firmwares => :firmwares,
+          :networks  => :networks,
+        },
+        :asset_detail           => {
+          :product_name           => 'productName',
+          :serial_number          => 'serialNumber',
+          :part_number            => 'partNumber',
+          :field_replaceable_unit => 'FRU',
+          :description            => 'description',
+          :manufacturer           => 'manufacturer',
+        },
+      }.freeze
+
       #
       # Parses a switch into a Hash
       #
@@ -9,30 +32,37 @@ module ManageIQ::Providers::Lenovo
       # @return [Hash] the switch data as required by the application
       #
       def parse_physical_switch(physical_switch)
-        result = parse(physical_switch, parent::ParserDictionaryConstants::PHYSICAL_SWITCH)
-
-        unless result[:power_state].nil?
-          result[:power_state] = result[:power_state].downcase if %w(on off).include?(result[:power_state].downcase)
-        end
-        result[:type]         = parent::ParserDictionaryConstants::MIQ_TYPES["physical_switch"]
-        result[:health_state] = parent::ParserDictionaryConstants::HEALTH_STATE_MAP[physical_switch.overallHealthState.nil? ? physical_switch.overallHealthState : physical_switch.overallHealthState.downcase]
-        result[:hardware]     = get_hardwares(physical_switch)
-
-        result[:physical_network_ports] = parent::PhysicalNetworkPortsParser.parse_physical_switch_ports(physical_switch)
-
-        return physical_switch.uuid, result
+        parse(physical_switch, PHYSICAL_SWITCH)
       end
 
       private
 
-      def get_hardwares(physical_switch)
-        {
-          :firmwares     => get_firmwares(physical_switch),
-          :networks      => get_networks(physical_switch)
-        }
+      def power_state(switch)
+        state = switch.powerState
+        if !state.nil? && %w(on off).include?(state.downcase)
+          state.downcase
+        else
+          state
+        end
       end
 
-      def get_networks(physical_switch)
+      def type(_switch)
+        'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalSwitch'
+      end
+
+      def health_state(switch)
+        HEALTH_STATE_MAP[switch.overallHealthState.nil? ? switch.overallHealthState : switch.overallHealthState.downcase]
+      end
+
+      def physical_network_ports(switch)
+        parent::PhysicalSwitchPortsParser.parse_physical_switch_ports(switch)
+      end
+
+      def firmwares(physical_switch)
+        physical_switch.firmware&.map { |firmware| parent::FirmwareParser.parse_firmware(firmware) }
+      end
+
+      def networks(physical_switch)
         get_parsed_switch_ip_interfaces_by_key(
           physical_switch.ipInterfaces,
           'IPv4assignments',
@@ -53,16 +83,12 @@ module ManageIQ::Providers::Lenovo
       end
 
       def parse_network(assignment, is_ipv6 = false)
-        result = parse(assignment, parent::ParserDictionaryConstants::PHYSICAL_SWITCH_NETWORK)
-
-        result[:ipaddress]   = assignment['address'] unless is_ipv6
-        result[:ipv6address] = assignment['address'] if is_ipv6
-
-        result
-      end
-
-      def get_firmwares(physical_switch)
-        physical_switch.firmware&.map { |firmware| parent::FirmwareParser.parse_firmware(firmware) }
+        {
+          :subnet_mask     => assignment['subnet'],
+          :default_gateway => assignment['gateway'],
+          :ipaddress       => (assignment['address'] unless is_ipv6),
+          :ipv6address     => (assignment['address'] if is_ipv6),
+        }
       end
     end
   end

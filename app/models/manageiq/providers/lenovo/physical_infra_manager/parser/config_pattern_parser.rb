@@ -1,6 +1,15 @@
 module ManageIQ::Providers::Lenovo
   class PhysicalInfraManager::Parser::ConfigPatternParser < PhysicalInfraManager::Parser::ComponentParser
     class << self
+      # Mapping between fields inside [XClarityClient::ConfigPattern] to a [Hash] with symbols of ConfigPattern fields
+      CONFIG_PATTERNS = {
+        :manager_ref  => 'id',
+        :name         => 'name',
+        :description  => 'description',
+        :user_defined => 'userDefined',
+        :in_use       => 'inUse',
+      }.freeze
+
       #
       # Parses the config pattern object into a Hash
       #
@@ -10,7 +19,7 @@ module ManageIQ::Providers::Lenovo
       # @return [Hash] containing the config pattern informations
       #
       def parse_config_pattern(config_pattern)
-        return config_pattern.id, parse(config_pattern, parent::ParserDictionaryConstants::CONFIG_PATTERNS)
+        parse(config_pattern, CONFIG_PATTERNS)
       end
     end
   end

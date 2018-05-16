@@ -9,11 +9,11 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
   }.freeze
 
   def description
-    "Lenovo XClarity"
+    'Lenovo XClarity'
   end
 
   def connect(options = {})
-    # raise "no credentials defined" if missing_credentials?(options[:auth_type])
+    # raise 'no credentials defined' if missing_credentials?(options[:auth_type])
 
     username   = options[:user] || authentication_userid(options[:auth_type])
     password   = options[:pass] || authentication_password(options[:auth_type])
@@ -28,7 +28,7 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
   end
 
   def verify_credentials(auth_type = nil, options = {})
-    raise MiqException::MiqHostError, "No credentials defined" if missing_credentials?(auth_type)
+    raise MiqException::MiqHostError, 'No credentials defined' if missing_credentials?(auth_type)
     options[:auth_type] = auth_type.nil? ? 'default' : auth_type.to_s
 
     self.class.connection_rescue_block do
@@ -74,7 +74,7 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
 
     def connection_rescue_block
       yield
-    rescue => err
+    rescue StandardError => err
       miq_exception = translate_exception(err)
       raise unless miq_exception
 
@@ -116,13 +116,13 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
         _log.info("Created EMS: #{new_ems.name} with id: #{new_ems.id}")
       end
 
-      EmsRefresh.queue_refresh(new_ems) unless new_ems.blank?
+      EmsRefresh.queue_refresh(new_ems) if new_ems.present?
     end
 
     def discover_queue(ip_address, port, zone = nil)
       MiqQueue.put(
         :class_name  => name,
-        :method_name => "discover_from_queue",
+        :method_name => 'discover_from_queue',
         :args        => [ip_address, port],
         :zone        => zone
       )

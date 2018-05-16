@@ -1,21 +1,21 @@
-$:.push File.expand_path("../lib", __FILE__)
+$LOAD_PATH.push(File.expand_path('lib', __dir__))
 
-require "manageiq/providers/lenovo/version"
+require 'manageiq/providers/lenovo/version'
 
 Gem::Specification.new do |s|
-  s.name        = "manageiq-providers-lenovo"
+  s.name        = 'manageiq-providers-lenovo'
   s.version     = ManageIQ::Providers::Lenovo::VERSION
-  s.authors     = ["ManageIQ Developers"]
-  s.homepage    = "https://github.com/ManageIQ/manageiq-providers-lenovo"
-  s.summary     = "Lenovo Provider for ManageIQ"
-  s.description = "Lenovo Provider for ManageIQ"
-  s.licenses    = ["Apache-2.0"]
+  s.authors     = ['ManageIQ Developers']
+  s.homepage    = 'https://github.com/ManageIQ/manageiq-providers-lenovo'
+  s.summary     = 'Lenovo Provider for ManageIQ'
+  s.description = 'Lenovo Provider for ManageIQ'
+  s.licenses    = ['Apache-2.0']
 
-  s.files = Dir["{app,config,lib}/**/*"]
+  s.files = Dir['{app,config,lib}/**/*']
 
-  s.add_dependency "xclarity_client", "~> 0.6.0"
-  s.add_development_dependency "codeclimate-test-reporter", "~> 1.0.0"
-  s.add_development_dependency "webmock", "~> 2.1.0"
-  s.add_development_dependency "simplecov"
-  s.add_development_dependency "faker", "= 1.8.3"
+  s.add_development_dependency('codeclimate-test-reporter', '~> 1.0.0')
+  s.add_development_dependency('faker', '= 1.8.3')
+  s.add_development_dependency('simplecov')
+  s.add_development_dependency('webmock', '~> 2.1.0')
+  s.add_dependency('xclarity_client', '~> 0.6.0')
 end
