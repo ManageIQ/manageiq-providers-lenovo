@@ -6,6 +6,7 @@ module ManageIQ::Providers::Lenovo
         :build        => 'build',
         :version      => 'version',
         :release_date => 'date',
+        :name         => :name,
       }.freeze
 
       #
@@ -16,11 +17,11 @@ module ManageIQ::Providers::Lenovo
       # @return [Hash] the firmware as required by the application
       #
       def parse_firmware(firmware)
-        result = parse(firmware, FIRMWARE)
+        parse(firmware, FIRMWARE)
+      end
 
-        result[:name] = "#{firmware['role']} #{firmware['name']}-#{firmware['status']}".strip
-
-        result
+      def name(firmware)
+        "#{firmware['role']} #{firmware['name']}-#{firmware['status']}".strip
       end
     end
   end

@@ -3,11 +3,26 @@ module ManageIQ::Providers::Lenovo
     class << self
       # Mapping between fields inside a [XClarityClient::Node] to a [Hash] with symbols of PhysicalServer fields
       PHYSICAL_SERVER = {
-        :name            => 'name',
-        :ems_ref         => 'uuid',
-        :uid_ems         => 'uuid',
-        :hostname        => 'hostname',
-        :asset_detail    => {
+        :name               => 'name',
+        :ems_ref            => 'uuid',
+        :uid_ems            => 'uuid',
+        :hostname           => 'hostname',
+        :vendor             => :vendor,
+        :type               => :type,
+        :power_state        => :power_state,
+        :health_state       => :health_state,
+        :host               => :host,
+        :location_led_state => :location_led_state,
+        :computer_system    => {
+          :hardware => {
+            :disk_capacity   => :disk_capacity,
+            :memory_mb       => :memory_info,
+            :cpu_total_cores => :total_cores,
+            :firmwares       => :firmwares,
+            :guest_devices   => :guest_devices
+          },
+        },
+        :asset_detail       => {
           :product_name           => 'productName',
           :manufacturer           => 'manufacturer',
           :machine_type           => 'machineType',
@@ -22,20 +37,15 @@ module ManageIQ::Providers::Lenovo
           :rack_name              => 'location.rack',
           :lowest_rack_unit       => 'location.lowestRackUnit',
         },
-        :computer_system => {
-          :hardware => {
-            :guest_devices => '',
-            :firmwares     => '',
-          },
-        },
       }.freeze
 
       #
       # parse a node object to a hash with physical servers data
       #
-      # @param [Hash] node_hash - hash containing physical server raw data
-      # @param [Hash] rack - parsed physical rack data
-      # @param [Hash] chassis - parsed physical chassis data
+      # @param [Hash] node_hash  - hash containing physical server raw data
+      # @param [Hash] compliance - parsed compliance applied to this physical server
+      # @param [Hash] rack       - parsed physical rack data
+      # @param [Hash] chassis    - parsed physical chassis data
       #
       # @return [Hash] containing the physical server information
       #
@@ -48,43 +58,43 @@ module ManageIQ::Providers::Lenovo
         result[:physical_chassis]           = chassis if chassis
         result[:ems_compliance_name]        = compliance[:policy_name]
         result[:ems_compliance_status]      = compliance[:status]
-        result[:vendor]                     = 'lenovo'
-        result[:type]                       = MIQ_TYPES['physical_server']
-        result[:power_state]                = POWER_STATE_MAP[node.powerStatus]
-        result[:health_state]               = HEALTH_STATE_MAP[node.cmmHealthState.nil? ? node.cmmHealthState : node.cmmHealthState.downcase]
-        result[:host]                       = get_host_relationship(node.serialNumber)
-        result[:location_led_state]         = find_loc_led_state(node.leds)
-        result[:computer_system][:hardware] = get_hardwares(node)
 
         result
       end
 
       private
 
+      def vendor(_node)
+        'lenovo'
+      end
+
+      def type(_node)
+        'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer'
+      end
+
+      def power_state(node)
+        POWER_STATE_MAP[node.powerStatus]
+      end
+
+      def health_state(node)
+        HEALTH_STATE_MAP[node.cmmHealthState.nil? ? node.cmmHealthState : node.cmmHealthState.downcase]
+      end
+
       # Assign a physicalserver and host if server already exists and
       # some host match with physical Server's serial number
-      def get_host_relationship(serial_number)
+      def host(node)
+        serial_number = node.serialNumber
         Host.find_by(:service_tag => serial_number) ||
           Host.joins(:hardware).find_by('hardwares.serial_number' => serial_number)
       end
 
       # Find the identification led state
-      def find_loc_led_state(leds)
-        identification_led = leds.to_a.find { |led| PROPERTIES_MAP[:led_identify_name].include?(led['name']) }
+      def location_led_state(node)
+        identification_led = node.leds.to_a.find { |led| PROPERTIES_MAP[:led_identify_name].include?(led['name']) }
         identification_led.try(:[], 'state')
       end
 
-      def get_hardwares(node)
-        {
-          :disk_capacity   => get_disk_capacity(node),
-          :memory_mb       => get_memory_info(node),
-          :cpu_total_cores => get_total_cores(node),
-          :firmwares       => get_firmwares(node),
-          :guest_devices   => get_guest_devices(node)
-        }
-      end
-
-      def get_disk_capacity(node)
+      def disk_capacity(node)
         total_disk_cap = 0
         node.raidSettings&.each do |storage|
           storage['diskDrives']&.each do |disk|
@@ -94,20 +104,20 @@ module ManageIQ::Providers::Lenovo
         total_disk_cap.positive? ? total_disk_cap : nil
       end
 
-      def get_memory_info(node)
+      def memory_info(node)
         total_memory_gigabytes = node.memoryModules&.reduce(0) { |total, mem| total + mem['capacity'] }
         total_memory_gigabytes * 1024 # convert to megabytes
       end
 
-      def get_total_cores(node)
+      def total_cores(node)
         node.processors&.reduce(0) { |total, pr| total + pr['cores'] }
       end
 
-      def get_firmwares(node)
+      def firmwares(node)
         node.firmware&.map { |firmware| parent::FirmwareParser.parse_firmware(firmware) }
       end
 
-      def get_guest_devices(node)
+      def guest_devices(node)
         guest_devices = parent::NetworkDeviceParser.parse_network_devices(node)
         guest_devices.concat(parent::StorageDeviceParser.parse_storage_device(node))
         guest_devices << parent::ManagementDeviceParser.parse_management_device(node)
