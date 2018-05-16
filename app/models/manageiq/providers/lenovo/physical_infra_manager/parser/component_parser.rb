@@ -5,12 +5,6 @@ module ManageIQ::Providers::Lenovo
   #
   class PhysicalInfraManager::Parser::ComponentParser
     class << self
-      GUEST_DEVICE = {
-        :manufacturer           => 'manufacturer',
-        :field_replaceable_unit => 'FRU',
-        :controller_type        => 'class',
-      }.freeze
-
       HEALTH_STATE_MAP = {
         'normal'          => 'Valid',
         'non-critical'    => 'Valid',
@@ -35,7 +29,6 @@ module ManageIQ::Providers::Lenovo
         :led_identify_name => %w(Identification Identify),
       }.freeze
 
-      private_constant :GUEST_DEVICE
       private_constant :HEALTH_STATE_MAP
       private_constant :POWER_STATE_MAP
       private_constant :PROPERTIES_MAP
