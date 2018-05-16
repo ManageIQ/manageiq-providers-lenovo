@@ -1,5 +1,5 @@
 module ManageIQ::Providers::Lenovo
-  class PhysicalInfraManager::Parser::NetworkDeviceParser < PhysicalInfraManager::Parser::ComponentParser
+  class PhysicalInfraManager::Parser::NetworkDeviceParser < PhysicalInfraManager::Parser::GuestDeviceParser
     class << self
       #
       # @param component - component that has network devices to be parseds
@@ -10,7 +10,7 @@ module ManageIQ::Providers::Lenovo
         distinct_devices = distinct_network_devices(all_devices)
 
         distinct_devices.map do |device|
-          parsed_device = parse_device(device)
+          parsed_device = parse_guest_device(device)
           parsed_device[:physical_network_ports] = parse_physical_network_ports(device, all_devices)
           parsed_device
         end
@@ -39,58 +39,25 @@ module ManageIQ::Providers::Lenovo
       # Distincts the network devices by pciSubID property (remove duplicated entries)
       #
       def distinct_network_devices(devices)
-        devices.uniq { |device| mount_uuid(device) }
+        devices.uniq { |device| uid_ems(device) }
       end
 
       #
       # Verifies if a device is a network device by it name or it class
       #
       def network_device?(device)
-        device_name = (device["productName"] ? device["productName"] : device["name"]).try(:downcase)
-        device["class"] == "Network controller" || device_name =~ /nic/ || device_name =~ /ethernet/
-      end
-
-      def parse_device(device)
-        result = parse(device, GUEST_DEVICE)
-
-        result[:uid_ems]     = mount_uuid(device)
-        result[:device_name] = device["productName"] ? device["productName"] : device["name"]
-        result[:device_type] = "ethernet"
-        result[:firmwares]   = parse_device_firmware(device)
-        result[:location]    = device['slotNumber'] ? "Bay #{device['slotNumber']}" : nil
-
-        result
-      end
-
-      def parse_device_firmware(device)
-        device_fw = []
-
-        firmware = device["firmware"]
-        unless firmware.nil?
-          device_fw = firmware.map do |fw|
-            parent::FirmwareParser.parse_firmware(fw)
-          end
-        end
-
-        device_fw
+        device_name = (device['productName'] ? device['productName'] : device['name']).try(:downcase)
+        device['class'] == 'Network controller' || device_name =~ /nic/ || device_name =~ /ethernet/
       end
 
       def parse_physical_network_ports(device, all_devices)
-        ports = all_devices.select { |device_with_port| mount_uuid(device) == mount_uuid(device_with_port) }
+        ports = all_devices.select { |device_with_port| uid_ems(device) == uid_ems(device_with_port) }
 
         parent::PhysicalNetworkPortsParser.parse_network_device_ports(ports)
       end
 
-      #
-      # Mounts the uuid for the devices
-      #   For those devices that hasn't an uuid this method uses others properties to mount one
-      #
-      # @param device       - device that needs an uuid
-      # @param child_device - if the device is a child device, it uuid will be the same
-      # @param port_number  - number of the port of the child device that will be concat to the uuid
-      #
-      def mount_uuid(device)
-        device["uuid"] || "#{device['pciBusNumber']}#{device['pciDeviceNumber']}"
+      def device_type(_device)
+        'ethernet'
       end
     end
   end
