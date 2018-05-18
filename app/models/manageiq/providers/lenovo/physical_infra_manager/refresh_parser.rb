@@ -41,7 +41,8 @@ module ManageIQ::Providers::Lenovo
 
     # returns the specific parser based on the version of the appliance
     def init_parser(connection)
-      version = connection.discover_aicc.first.appliance['version'] # getting the appliance version
+      aicc = connection.discover_aicc
+      version = aicc.first.appliance['version'] if aicc.present? # getting the appliance version
       self.class.parent::Parser.get_instance(version)
     end
 

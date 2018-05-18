@@ -20,9 +20,8 @@ module ManageIQ::Providers::Lenovo
     # returns the parser of api version request
     # see the +VERSION_PARSERS+ to know what versions are supporteds
     def self.get_instance(version)
-      version_parser = version.match(/^(?:(\d+)\.?(\d+))/).to_s # getting just major and minor version
-      parser = VERSION_PARSERS[version_parser] # getting the class that supports the version
-      parser ||= VERSION_PARSERS['default']
+      version_parser = version.match(/^(?:(\d+)\.?(\d+))/).to_s if version.present? # getting just major and minor version
+      parser = VERSION_PARSERS[version_parser] || VERSION_PARSERS['default'] # getting the class that supports the version
       parser.new
     end
 
