@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://10.243.9.123/switches/27997dba5dba11e89c2dfa7ae01bbebc
+    body:
+      encoding: UTF-8
+      string: '{"powerState":"powerCycleSoft"}'
+    headers:
+      User-Agent:
+      - LXCA via Ruby Client/0.5.8 (ManageIQ/master)
+      Authorization:
+      - Basic Y2hnX3Bhc3M6dmFsaWRAMTIz
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 22 May 2018 18:07:50 GMT
+      Set-Cookie:
+      - userAuthenticationMethod=local;Path=/;Secure
+      Expires:
+      - "-1"
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Strict-Transport-Security:
+      - max-age=15550200; includeSubDomains;
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Security-Policy:
+      - default-src 'self' ; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src
+        'self' 'unsafe-inline'; worker-src 'self' blob:; child-src 'self' blob:; img-src
+        'self' data:;
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/com.lenovo.lxca-v2.0.0+json; charset=UTF-8
+      Content-Language:
+      - en-US
+      Location:
+      - "/jobs/2893"
+      Jobids:
+      - '2893'
+      Vary:
+      - Accept-Encoding, User-Agent
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: "{}"
+    http_version:
+  recorded_at: Tue, 22 May 2018 18:07:26 GMT
+recorded_with: VCR 3.0.3
