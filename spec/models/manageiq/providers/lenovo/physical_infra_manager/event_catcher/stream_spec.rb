@@ -22,7 +22,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
           expect($log).to receive(:info).with(/Stopping collect of LXCA events .../)
         end
         expect(result.count).to be == 20
-        expect(result.all? { |item| item[:full_data]['eventClass'] == 400 }).to be true
+        expect(result.all? { |item| item[:full_data][:severity] == 200 }).to be true
       end
     end
   end

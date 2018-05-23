@@ -15,7 +15,7 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
   def each_batch
     $log.info('Starting collect of LXCA events ...')
     while @collect_events
-      yield(events.collect { |e| ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventParser.event_to_hash(e, @ems.id) })
+      yield(parse_events(events))
     end
     $log.info('Stopping collect of LXCA events ...')
   end
@@ -27,10 +27,17 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
       { :operation => 'NOT', :field => 'eventClass', :value => '200' },
       { :operation => 'NOT', :field => 'eventClass', :value => '800' }
     ]
-    last_cn_event = get_last_cnn_from_events(@ems.id)
+    last_cn_event = get_last_ems_ref(@ems.id)
     cn_operation = { :operation => 'GT', :field => 'cn', :value => last_cn_event.to_s }
     fields.push(cn_operation) unless last_cn_event.nil?
     fields
+  end
+
+  def parse_events(events)
+    events.collect do |data|
+      event = ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Event.new(data).to_hash
+      ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventParser.event_to_hash(event, @ems.id)
+    end
   end
 
   def events
@@ -54,7 +61,7 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
                 :port => ems.endpoints.first.port)
   end
 
-  def get_last_cnn_from_events(ems_id)
-    EventStream.where(:ems_id => ems_id).maximum('ems_ref') || 1
+  def get_last_ems_ref(ems_id)
+    EventStream.where(:ems_id => ems_id).maximum('CAST(ems_ref AS int)') || 1
   end
 end

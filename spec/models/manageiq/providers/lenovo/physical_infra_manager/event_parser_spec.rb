@@ -13,7 +13,10 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventParser do
     }
   end
 
-  let(:event1) { XClarityClient::Event.new(event_attrs1) }
+  let(:event1) do
+    data = XClarityClient::Event.new(event_attrs1)
+    ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Event.new(data).to_hash
+  end
 
   it 'will parse events' do
     event_hash = described_class.event_to_hash(event1, 3)
