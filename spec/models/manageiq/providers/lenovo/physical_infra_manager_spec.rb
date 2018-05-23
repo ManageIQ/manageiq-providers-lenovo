@@ -189,7 +189,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
       end
 
       it "should raise MiqHostError with correctly translated message" do
-        expect { subject }.to raise_error(MiqException::MiqHostError, "Login failed due to a bad username or password.")
+        expect { subject }.to raise_error(MiqException::MiqInvalidCredentialsError, "Login failed due to a bad username or password.")
       end
     end
 
@@ -201,7 +201,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager do
       end
 
       it "should raise MiqHostError with correctly translated message" do
-        expect { subject }.to raise_error(MiqException::MiqHostError, "Execution expired or invalid port.")
+        expect { subject }.to raise_error(MiqException::MiqUnreachableError, "Execution expired or invalid port.")
       end
     end
 
