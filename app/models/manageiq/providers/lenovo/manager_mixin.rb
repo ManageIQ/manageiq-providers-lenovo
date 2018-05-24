@@ -83,9 +83,9 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
     def translate_exception(err)
       case err
       when XClarityClient::Error::AuthenticationError
-        MiqException::MiqHostError.new('Login failed due to a bad username or password.')
+        MiqException::MiqInvalidCredentialsError.new('Login failed due to a bad username or password.')
       when XClarityClient::Error::ConnectionFailed
-        MiqException::MiqHostError.new('Execution expired or invalid port.')
+        MiqException::MiqUnreachableError.new('Execution expired or invalid port.')
       when XClarityClient::Error::ConnectionRefused
         MiqException::MiqHostError.new('Connection refused, invalid host.')
       when XClarityClient::Error::HostnameUnknown
