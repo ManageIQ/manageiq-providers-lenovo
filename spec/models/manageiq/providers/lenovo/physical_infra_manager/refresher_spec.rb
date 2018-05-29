@@ -82,6 +82,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
       assert_specific_storage
       assert_guest_table_contents
       assert_physical_network_ports_table_content
+      assert_physical_network_ports_connection
     end
   end
 
@@ -144,5 +145,13 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
     expect(port1.mac_address).to eq("00:0A:F7:25:67:38")
     expect(port2.port_name).to eq("Physical Port 2")
     expect(port2.mac_address).to eq("00:0A:F7:25:67:39")
+  end
+
+  def assert_physical_network_ports_connection
+    port1 = PhysicalNetworkPort.find_by(:mac_address => "00:0A:F7:25:67:39")
+    port2 = PhysicalNetworkPort.find_by(:peer_mac_address => "00:0A:F7:25:67:39")
+
+    expect(port1.connected_port).to eq(port2)
+    expect(port2.connected_port).to eq(port1)
   end
 end
