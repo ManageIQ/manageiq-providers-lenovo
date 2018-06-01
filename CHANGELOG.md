@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
+## Unreleased as of Sprint 86 - 2018-05-21
+
+### Fixed
+- Fixing error while trying to refresh a provider with invalid credentials [(#176)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/176)
+- camelize the power state column [(#171)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/171)
+- Fix bug when portInfo was null [(#168)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/168)
+
+## Gaprindashvili-3 released 2018-05-15
+
+### Fixed
+- Fixing the network devices and ports parser [(#155)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/155)
+- searches the hardware resource for a relationship [(#93)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/93)
+
 ## Unreleased as of Sprint 84 - 2018-04-23
 
 ### Added
