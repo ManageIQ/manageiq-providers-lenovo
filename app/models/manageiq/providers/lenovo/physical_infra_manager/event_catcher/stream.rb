@@ -4,6 +4,7 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
   def initialize(ems)
     @ems = ems
     @collect_events = true
+    @last_event_ems_ref = last_event_ems_ref(@ems.id)
   end
 
   # Stop capturing events
@@ -27,17 +28,24 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
       { :operation => 'NOT', :field => 'eventClass', :value => '200' },
       { :operation => 'NOT', :field => 'eventClass', :value => '800' }
     ]
-    last_cn_event = get_last_ems_ref(@ems.id)
-    cn_operation = { :operation => 'GT', :field => 'cn', :value => last_cn_event.to_s }
-    fields.push(cn_operation) unless last_cn_event.nil?
+
+    unless @last_event_ems_ref.nil?
+      cn_operation = { :operation => 'GT', :field => 'cn', :value => @last_event_ems_ref.to_s }
+      fields.push(cn_operation)
+    end
     fields
   end
 
   def parse_events(events)
-    events.collect do |data|
-      event = ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Event.new(data).to_hash
+    return if events.blank?
+
+    parsed_events = events.sort { |x, y| Integer(x.cn) <=> Integer(y.cn) }.collect do |event|
       ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventParser.event_to_hash(event, @ems.id)
     end
+
+    # Update the @last_event_ems_ref with the new last ems_ref if to exist new events
+    @last_event_ems_ref = parsed_events.last[:ems_ref]
+    parsed_events
   end
 
   def events
@@ -61,7 +69,7 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
                 :port => ems.endpoints.first.port)
   end
 
-  def get_last_ems_ref(ems_id)
-    EventStream.where(:ems_id => ems_id).maximum('CAST(ems_ref AS int)') || 1
+  def last_event_ems_ref(ems_id)
+    EventStream.where(:ems_id => ems_id).maximum('CAST(ems_ref AS int)')
   end
 end
