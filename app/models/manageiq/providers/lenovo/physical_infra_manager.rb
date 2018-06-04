@@ -12,6 +12,10 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::P
 
   supports :change_password
 
+  def image_name
+    'lenovo'
+  end
+
   def self.ems_type
     @ems_type ||= "lenovo_ph_infra".freeze
   end
