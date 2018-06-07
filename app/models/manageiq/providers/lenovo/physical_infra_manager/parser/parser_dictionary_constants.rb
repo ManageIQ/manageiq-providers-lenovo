@@ -132,11 +132,9 @@ module ManageIQ::Providers::Lenovo
       :ems_ref => 'UUID',
     }.freeze
 
-    MANAGEMENT_DEVICE = {
-      :address => 'macAddress',
-      :network => {
-        :ipaddress => 'mgmtProcIPaddress',
-      },
+    PHYSICAL_SERVER_NETWORK = {
+      :subnet_mask     => 'subnet',
+      :default_gateway => 'gateway',
     }.freeze
 
     GUEST_DEVICE = {
