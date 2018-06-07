@@ -25,6 +25,7 @@ module ManageIQ::Providers::Lenovo
     MIQ_TYPES = {
       "physical_server"  => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer",
       "physical_switch"  => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalSwitch",
+      "physical_storage" => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalStorage",
       "physical_chassis" => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalChassis",
       "template"         => "ManageIQ::Providers::Lenovo::PhysicalInfraManager::Template",
     }.freeze
@@ -62,6 +63,38 @@ module ManageIQ::Providers::Lenovo
     PHYSICAL_SWITCH_PORT = {
       :peer_mac_address => 'peerMacAddress',
       :vlan_key         => 'PVID',
+    }.freeze
+
+    PHYSICAL_STORAGE = {
+      :name                 => 'name',
+      :uid_ems              => 'uuid',
+      :ems_ref              => 'uuid',
+      :access_state         => 'accessState',
+      :overall_health_state => 'overallHealthState',
+      :drive_bays           => 'driveBays',
+      :enclosures           => 'enclosureCount',
+      :canister_slots       => 'canisterSlots',
+      :asset_detail         => {
+        :product_name     => 'productName',
+        :machine_type     => 'machineType',
+        :model            => 'model',
+        :serial_number    => 'serialNumber',
+        :contact          => 'contact',
+        :description      => 'description',
+        :location         => 'location.location',
+        :room             => 'location.room',
+        :rack_name        => 'location.rack',
+        :lowest_rack_unit => 'location.lowestRackUnit',
+      },
+      :computer_system      => {
+        :hardware => {
+          :guest_devices => '',
+        },
+      },
+    }.freeze
+
+    PHYSICAL_STORAGE_NETWORK = {
+      :ipaddress => 'mgmtProcIPaddress',
     }.freeze
 
     PHYSICAL_CHASSIS = {
