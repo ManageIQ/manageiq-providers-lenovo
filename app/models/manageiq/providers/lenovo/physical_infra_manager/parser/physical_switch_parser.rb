@@ -1,6 +1,27 @@
 module ManageIQ::Providers::Lenovo
   class PhysicalInfraManager::Parser::PhysicalSwitchParser < PhysicalInfraManager::Parser::ComponentParser
     class << self
+      # Mapping between fields inside a [XClarityClient::Switch] to a [Hash] with symbols of PhysicalSwitch fields
+      PHYSICAL_SWITCH = {
+        :name         => 'name',
+        :uid_ems      => 'uuid',
+        :switch_uuid  => 'uuid',
+        :power_state  => 'powerState',
+        :asset_detail => {
+          :product_name           => 'productName',
+          :serial_number          => 'serialNumber',
+          :part_number            => 'partNumber',
+          :field_replaceable_unit => 'FRU',
+          :description            => 'description',
+          :manufacturer           => 'manufacturer'
+        }
+      }.freeze
+
+      PHYSICAL_SWITCH_NETWORK = {
+        :subnet_mask     => 'subnet',
+        :default_gateway => 'gateway'
+      }.freeze
+
       #
       # Parses a switch into a Hash
       #
@@ -9,26 +30,26 @@ module ManageIQ::Providers::Lenovo
       # @return [Hash] the switch data as required by the application
       #
       def parse_physical_switch(physical_switch)
-        result = parse(physical_switch, parent::ParserDictionaryConstants::PHYSICAL_SWITCH)
+        result = parse(physical_switch, PHYSICAL_SWITCH)
 
         unless result[:power_state].nil?
           result[:power_state] = result[:power_state].downcase if %w(on off).include?(result[:power_state].downcase)
         end
-        result[:type]         = parent::ParserDictionaryConstants::MIQ_TYPES["physical_switch"]
-        result[:health_state] = parent::ParserDictionaryConstants::HEALTH_STATE_MAP[physical_switch.overallHealthState.nil? ? physical_switch.overallHealthState : physical_switch.overallHealthState.downcase]
+        result[:type]         = MIQ_TYPES['physical_switch']
+        result[:health_state] = HEALTH_STATE_MAP[physical_switch.overallHealthState.nil? ? physical_switch.overallHealthState : physical_switch.overallHealthState.downcase]
         result[:hardware]     = get_hardwares(physical_switch)
 
-        result[:physical_network_ports] = parent::PhysicalNetworkPortsParser.parse_physical_switch_ports(physical_switch)
+        result[:physical_network_ports] = parent::PhysicalSwitchPortsParser.parse_physical_switch_ports(physical_switch)
 
-        return physical_switch.uuid, result
+        result
       end
 
       private
 
       def get_hardwares(physical_switch)
         {
-          :firmwares     => get_firmwares(physical_switch),
-          :networks      => get_networks(physical_switch)
+          :firmwares => get_firmwares(physical_switch),
+          :networks  => get_networks(physical_switch)
         }
       end
 
@@ -53,7 +74,7 @@ module ManageIQ::Providers::Lenovo
       end
 
       def parse_network(assignment, is_ipv6 = false)
-        result = parse(assignment, parent::ParserDictionaryConstants::PHYSICAL_SWITCH_NETWORK)
+        result = parse(assignment, PHYSICAL_SWITCH_NETWORK)
 
         result[:ipaddress]   = assignment['address'] unless is_ipv6
         result[:ipv6address] = assignment['address'] if is_ipv6

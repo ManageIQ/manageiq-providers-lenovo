@@ -1,6 +1,42 @@
 module ManageIQ::Providers::Lenovo
   class PhysicalInfraManager::Parser::PhysicalServerParser < PhysicalInfraManager::Parser::ComponentParser
     class << self
+      # Mapping between fields inside a [XClarityClient::Node] to a [Hash] with symbols of PhysicalServer fields
+      PHYSICAL_SERVER = {
+        :name            => 'name',
+        :ems_ref         => 'uuid',
+        :uid_ems         => 'uuid',
+        :hostname        => 'hostname',
+        :asset_detail    => {
+          :product_name           => 'productName',
+          :manufacturer           => 'manufacturer',
+          :machine_type           => 'machineType',
+          :model                  => 'model',
+          :serial_number          => 'serialNumber',
+          :part_number            => 'partNumber',
+          :field_replaceable_unit => 'FRU',
+          :contact                => 'contact',
+          :description            => 'description',
+          :location               => 'location.location',
+          :room                   => 'location.room',
+          :rack_name              => 'location.rack',
+          :lowest_rack_unit       => 'location.lowestRackUnit'
+        },
+        :computer_system => {
+          :hardware => {
+            :guest_devices => '',
+            :firmwares     => ''
+          }
+        }
+      }.freeze
+
+      MANAGEMENT_DEVICE = {
+        :address => 'macAddress',
+        :network => {
+          :ipaddress => 'mgmtProcIPaddress'
+        }
+      }.freeze
+
       #
       # parse a node object to a hash with physical servers data
       #
@@ -12,22 +48,22 @@ module ManageIQ::Providers::Lenovo
       #
       def parse_physical_server(node_hash, compliance, rack = nil, chassis = nil)
         node = XClarityClient::Node.new(node_hash)
-        result = parse(node, parent::ParserDictionaryConstants::PHYSICAL_SERVER)
+        result = parse(node, PHYSICAL_SERVER)
 
         # Keep track of the rack where this server is in, if it is in any rack
         result[:physical_rack]              = rack if rack
         result[:physical_chassis]           = chassis if chassis
         result[:ems_compliance_name]        = compliance[:policy_name]
         result[:ems_compliance_status]      = compliance[:status]
-        result[:vendor]                     = "lenovo"
-        result[:type]                       = parent::ParserDictionaryConstants::MIQ_TYPES["physical_server"]
-        result[:power_state]                = parent::ParserDictionaryConstants::POWER_STATE_MAP[node.powerStatus]
-        result[:health_state]               = parent::ParserDictionaryConstants::HEALTH_STATE_MAP[node.cmmHealthState.nil? ? node.cmmHealthState : node.cmmHealthState.downcase]
+        result[:vendor]                     = 'lenovo'
+        result[:type]                       = MIQ_TYPES['physical_server']
+        result[:power_state]                = POWER_STATE_MAP[node.powerStatus]
+        result[:health_state]               = HEALTH_STATE_MAP[node.cmmHealthState.nil? ? node.cmmHealthState : node.cmmHealthState.downcase]
         result[:host]                       = get_host_relationship(node.serialNumber)
         result[:location_led_state]         = find_loc_led_state(node.leds)
         result[:computer_system][:hardware] = get_hardwares(node)
 
-        return node.uuid, result
+        result
       end
 
       private
@@ -41,8 +77,8 @@ module ManageIQ::Providers::Lenovo
 
       # Find the identification led state
       def find_loc_led_state(leds)
-        identification_led = leds.to_a.find { |led| parent::ParserDictionaryConstants::PROPERTIES_MAP[:led_identify_name].include?(led["name"]) }
-        identification_led.try(:[], "state")
+        identification_led = leds.to_a.find { |led| PROPERTIES_MAP[:led_identify_name].include?(led['name']) }
+        identification_led.try(:[], 'state')
       end
 
       def get_hardwares(node)
@@ -85,10 +121,10 @@ module ManageIQ::Providers::Lenovo
       end
 
       def parse_management_device(node)
-        result = parse(node, parent::ParserDictionaryConstants::MANAGEMENT_DEVICE)
+        result = parse(node, MANAGEMENT_DEVICE)
 
-        result[:device_type] = "management"
-        result[:network][:ipv6address] = node.ipv6Addresses.nil? ? node.ipv6Addresses : node.ipv6Addresses.join(", ")
+        result[:device_type] = 'management'
+        result[:network][:ipv6address] = node.ipv6Addresses.nil? ? node.ipv6Addresses : node.ipv6Addresses.join(', ')
 
         result
       end

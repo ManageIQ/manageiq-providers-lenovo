@@ -25,10 +25,10 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
 
   let(:ems) do
     ems = FactoryGirl.create(:physical_infra,
-                             :name      => "LXCA",
-                             :hostname  => "10.243.9.123",
-                             :port      => "443",
-                             :ipaddress => "https://10.243.9.123:443")
+                             :name      => 'LXCA',
+                             :hostname  => '10.243.9.123',
+                             :port      => '443',
+                             :ipaddress => 'https://10.243.9.123:443')
     ems.authentications = [auth]
     ems
   end
@@ -38,10 +38,10 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
     #       cause the full refresh test to fail when being executed
     #       on the Travis CI site.
     ems2 = FactoryGirl.create(:physical_infra,
-                              :name      => "LXCA2",
-                              :hostname  => "lxcahost",
-                              :port      => "443",
-                              :ipaddress => "https://10.243.9.123:443")
+                              :name      => 'LXCA2',
+                              :hostname  => 'lxcahost',
+                              :port      => '443',
+                              :ipaddress => 'https://10.243.9.123:443')
     ems2.authentications = [auth]
     ems2
   end
@@ -86,34 +86,34 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
   end
 
   def assert_specific_rack
-    rack = PhysicalRack.find_by(:ems_ref => "096F8C92-08D4-4A24-ABD8-FE56D482F8C4")
+    rack = PhysicalRack.find_by(:ems_ref => '096F8C92-08D4-4A24-ABD8-FE56D482F8C4')
 
-    expect(rack.name).to eq("cabinet71")
+    expect(rack.name).to eq('cabinet71')
     expect(rack.ems_id).to be_truthy
   end
 
   def assert_specific_server
-    server = PhysicalServer.find_by(:ems_ref => "BD775D06821111E189A3E41F13ED5A1A")
+    server = PhysicalServer.find_by(:ems_ref => 'BD775D06821111E189A3E41F13ED5A1A')
 
-    expect(server.name).to eq("IMM2-e41f13ed5a1e")
-    expect(server.health_state).to eq("Valid")
-    expect(server.power_state).to eq("On")
-    expect(server.vendor).to eq("lenovo")
+    expect(server.name).to eq('IMM2-e41f13ed5a1e')
+    expect(server.health_state).to eq('Valid')
+    expect(server.power_state).to eq('On')
+    expect(server.vendor).to eq('lenovo')
     expect(server.ems_id).to be_truthy
     expect(server.physical_rack_id).to be_truthy
   end
 
   def assert_specific_storage
-    storage = PhysicalStorage.find_by(:ems_ref => "208000C0FF2683AF")
+    storage = PhysicalStorage.find_by(:ems_ref => '208000C0FF2683AF')
 
-    expect(storage.name).to eq("S3200-1")
-    expect(storage.uid_ems).to eq("208000C0FF2683AF")
-    expect(storage.ems_ref).to eq("208000C0FF2683AF")
-    expect(storage.access_state).to eq("Online")
-    expect(storage.access_state).to eq("Online")
-    expect(storage.health_state).to eq("Critical")
-    expect(storage.overall_health_state).to eq("Critical")
-    expect(storage.type).to eq("ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalStorage")
+    expect(storage.name).to eq('S3200-1')
+    expect(storage.uid_ems).to eq('208000C0FF2683AF')
+    expect(storage.ems_ref).to eq('208000C0FF2683AF')
+    expect(storage.access_state).to eq('Online')
+    expect(storage.access_state).to eq('Online')
+    expect(storage.health_state).to eq('Critical')
+    expect(storage.overall_health_state).to eq('Critical')
+    expect(storage.type).to eq('ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalStorage')
     expect(storage.drive_bays).to eq(12)
     expect(storage.enclosures).to eq(1)
     expect(storage.canister_slots).to eq(2)
@@ -128,21 +128,21 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
   end
 
   def assert_guest_table_contents
-    server = PhysicalServer.find_by(:ems_ref => "7936DD182C5311E3A8D6000AF7256738")
+    server = PhysicalServer.find_by(:ems_ref => '7936DD182C5311E3A8D6000AF7256738')
     nic = server.hardware.nics.first
-    expect(nic.device_name).to eq("Broadcom 2-port 1GbE NIC Card for IBM")
+    expect(nic.device_name).to eq('Broadcom 2-port 1GbE NIC Card for IBM')
   end
 
   def assert_physical_network_ports_table_content
-    server = PhysicalServer.find_by(:ems_ref => "7936DD182C5311E3A8D6000AF7256738")
+    server = PhysicalServer.find_by(:ems_ref => '7936DD182C5311E3A8D6000AF7256738')
     ports = server.hardware.nics.first.physical_network_ports
 
-    port1 = ports.find_by(:port_name => "Physical Port 1")
-    port2 = ports.find_by(:port_name => "Physical Port 2")
+    port1 = ports.find_by(:port_name => 'Physical Port 1')
+    port2 = ports.find_by(:port_name => 'Physical Port 2')
 
-    expect(port1.port_name).to eq("Physical Port 1")
-    expect(port1.mac_address).to eq("00:0A:F7:25:67:38")
-    expect(port2.port_name).to eq("Physical Port 2")
-    expect(port2.mac_address).to eq("00:0A:F7:25:67:39")
+    expect(port1.port_name).to eq('Physical Port 1')
+    expect(port1.mac_address).to eq('00:0A:F7:25:67:38')
+    expect(port2.port_name).to eq('Physical Port 2')
+    expect(port2.mac_address).to eq('00:0A:F7:25:67:39')
   end
 end

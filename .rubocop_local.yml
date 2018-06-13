@@ -3,3 +3,14 @@ GlobalVars:
   # Loggers
   - $lenovo_log
   - $log
+
+# Ignores the file at lib folder that needs to have a naming with dashes.
+AllCops:
+  Exclude:
+  - lib/manageiq-providers-lenovo.rb
+
+# Forcing Single-quote string literals except in interpolations
+Style/StringLiterals:
+  Enabled: true
+Style/StringLiteralsInInterpolation:
+  Enabled: true
