@@ -9,9 +9,7 @@ module ManageIQ::Providers::Lenovo
       # @return [Integer, Hash] PhysicalRack UUID and a parsed hash from PhysicalRack and every components inside it
       #
       def parse_physical_rack(cab)
-        result = parse(cab, parent::ParserDictionaryConstants::PHYSICAL_RACK)
-
-        return cab.UUID, result
+        parse(cab, parent::ParserDictionaryConstants::PHYSICAL_RACK)
       end
     end
   end

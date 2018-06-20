@@ -20,7 +20,7 @@ module ManageIQ::Providers::Lenovo
 
         result[:physical_network_ports] = parent::PhysicalNetworkPortsParser.parse_physical_switch_ports(physical_switch)
 
-        return physical_switch.uuid, result
+        result
       end
 
       private
