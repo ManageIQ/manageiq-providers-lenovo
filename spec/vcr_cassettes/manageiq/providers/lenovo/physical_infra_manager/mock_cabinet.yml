@@ -3681,7 +3681,1161 @@ http_interactions:
                           "uuid": "",
                           "uri": "cabinet/"
                         },
-                        "nodes": [{
+                        "nodes": [
+                          {
+                              "encapsulation": {
+                                  "encapsulationMode": "notSupported"
+                              },
+                              "parent": {
+                                  "uuid": "E053C9508C244F549011B2518DB71236",
+                                  "uri": "chassis/E053C9508C244F549011B2518DB71236"
+                              },
+                              "pciDevices": [],
+                              "canisters": [
+                                  {
+                                      "encapsulation": {
+                                          "encapsulationMode": "notSupported"
+                                      },
+                                      "parent": {
+                                          "uuid": "B8106786386411E19AE3EF8BCD385476",
+                                          "uri": "nodes/B8106786386411E19AE3EF8BCD385476"
+                                      },
+                                      "pciDevices": [],
+                                      "lanOverUsbPortForwardingModes": [],
+                                      "bladeState": 1,
+                                      "FRU": "90Y7691",
+                                      "processors": [],
+                                      "type": "ITE",
+                                      "expansionCardSlots": 2,
+                                      "pciCapabilities": [],
+                                      "productName": "PRODUCT DESCRIPTION STORAGE ITE PRODUCT DESCRIPTION STORAGE ITE PRODUCT DESCRIPTION STORAGE ITE",
+                                      "mgmtProcIPaddress": "10.240.72.69",
+                                      "hostname": "",
+                                      "powerStatus": 8,
+                                      "isScalable": false,
+                                      "logicalID": -1,
+                                      "powerAllocation": {
+                                          "minimumAllocatedPower": 0,
+                                          "maximumAllocatedPower": 0
+                                      },
+                                      "hasOS": false,
+                                      "model": "A49",
+                                      "errorFields": [
+                                          {
+                                              "HostAndDomain": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "PhysicalAndLocation": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "Encapsulation": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "Memory": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "ServerFirmwareData": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "RackCPU": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "ServerOnboardPciDevices": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "BootMode": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "BootOrder": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "FlashDimm": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "HostMacAddress": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "VnicMode": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "RemotePresenceEnabled": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "ActivationKey": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "LanOverUsbMode": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "ServerStaticMetrics": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "ScalableComplexPartitionUUIDData": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "ActiveAlerts": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "PFAConfiguration": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "ServerIPaddresses": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "FaceplateInfo": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "IOCompatibilityData": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "LanOverUsbPortForwardingModes": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "ServerConfigFiles": "NO_CONNECTOR"
+                                          }
+                                      ],
+                                      "processorSlots": 1,
+                                      "powerSupplies": [],
+                                      "productId": "374",
+                                      "tlsVersion": {
+                                          "possibleValues": [
+                                              "unsupported",
+                                              "TLS_12",
+                                              "TLS_11",
+                                              "TLS_10"
+                                          ],
+                                          "currentValue": "Unknown"
+                                      },
+                                      "memoryModules": [],
+                                      "isConnectionTrusted": "false",
+                                      "posID": "3",
+                                      "drives": [],
+                                      "raidSettings": [],
+                                      "vpdID": "384",
+                                      "dataHandle": 1529428905501,
+                                      "driveBays": 0,
+                                      "embeddedHypervisorPresence": false,
+                                      "subType": "SRC",
+                                      "addinCardSlots": 0,
+                                      "status": {
+                                          "name": "MANAGED",
+                                          "message": "managed"
+                                      },
+                                      "primary": false,
+                                      "accessState": "Partial",
+                                      "securityDescriptor": {
+                                          "managedAuthSupported": false,
+                                          "publicAccess": false,
+                                          "uri": "nodes/457784225ba511e18290b4f27bd253a5",
+                                          "roleGroups": [],
+                                          "managedAuthEnabled": false
+                                      },
+                                      "partitionID": -1,
+                                      "mgmtProcType": "IMM2",
+                                      "expansionProductType": "",
+                                      "ports": [],
+                                      "bootMode": {
+                                          "possibleValues": [],
+                                          "currentValue": ""
+                                      },
+                                      "manufacturer": "IBM",
+                                      "memorySlots": 2,
+                                      "isRemotePresenceEnabled": false,
+                                      "flashStorage": [],
+                                      "osInfo": {
+                                          "hostname": "",
+                                          "description": "",
+                                          "storedCredential": ""
+                                      },
+                                      "dnsHostnames": [
+                                          "10.240.72.69",
+                                          "fd55:faaf:e1ab:2021:5ef3:fcff:fe6f:bcc",
+                                          "fd6d:8bc2:3ad4:0:5ef3:fcff:fe6f:bcc"
+                                      ],
+                                      "bootOrder": {
+                                          "uri": "nodes/457784225BA511E18290B4F27BD253A5/bootOrder",
+                                          "bootOrderList": []
+                                      },
+                                      "firmware": [],
+                                      "secureBootMode": {
+                                          "possibleValues": [],
+                                          "currentValue": ""
+                                      },
+                                      "ipv4Addresses": [
+                                          "10.240.72.69"
+                                      ],
+                                      "userDescription": "",
+                                      "onboardPciDevices": [],
+                                      "manufacturerId": "20301",
+                                      "uri": "nodes/457784225BA511E18290B4F27BD253A5",
+                                      "nist": {
+                                          "possibleValues": [
+                                              "Nist_800_131A_Strict",
+                                              "unsupported",
+                                              "Compatibility"
+                                          ],
+                                          "currentValue": "Unknown"
+                                      },
+                                      "partNumber": "90Y7627",
+                                      "arch": "x86",
+                                      "bladeState_string": "Storage ITE Mgm",
+                                      "subSlots": [
+                                          1
+                                      ],
+                                      "ipv6Addresses": [
+                                          "fd55:faaf:e1ab:2021:5ef3:fcff:fe6f:bcc",
+                                          "fe80:0:0:0:5ef3:fcff:fe6f:bcc",
+                                          "fd6d:8bc2:3ad4:0:5ef3:fcff:fe6f:bcc"
+                                      ],
+                                      "uuid": "457784225BA511E18290B4F27BD253A5",
+                                      "isITME": false,
+                                      "bladeState_health": "GOOD",
+                                      "ipInterfaces": [
+                                          {
+                                              "IPv4assignments": [
+                                                  {
+                                                      "subnet": "255.255.252.0",
+                                                      "address": "10.240.72.69",
+                                                      "id": 2,
+                                                      "type": "INUSE",
+                                                      "gateway": "10.240.72.1"
+                                                  }
+                                              ],
+                                              "IPv6DHCPenabled": true,
+                                              "IPv6statelessEnabled": true,
+                                              "IPv6staticEnabled": true,
+                                              "name": "eth0",
+                                              "IPv4DHCPmode": "STATIC_ONLY",
+                                              "label": "eth0",
+                                              "IPv6assignments": [
+                                                  {
+                                                      "address": "fe80:0:0:0:5ef3:fcff:fe6f:bcc",
+                                                      "prefix": 64,
+                                                      "scope": "LinkLocal",
+                                                      "id": 1,
+                                                      "source": "Other",
+                                                      "type": "INUSE",
+                                                      "gateway": "fe80:0:0:0:5:73ff:fea0:2c"
+                                                  },
+                                                  {
+                                                      "address": "fd6d:8bc2:3ad4:0:5ef3:fcff:fe6f:bcc",
+                                                      "prefix": 64,
+                                                      "scope": "Global",
+                                                      "id": 3,
+                                                      "source": "Static",
+                                                      "type": "INUSE",
+                                                      "gateway": "0:0:0:0:0:0:0:0"
+                                                  },
+                                                  {
+                                                      "address": "fd55:faaf:e1ab:2021:5ef3:fcff:fe6f:bcc",
+                                                      "prefix": 64,
+                                                      "scope": "Global",
+                                                      "id": 17,
+                                                      "source": "Stateless",
+                                                      "type": "INUSE",
+                                                      "gateway": "0:0:0:0:0:0:0:0"
+                                                  },
+                                                  {
+                                                      "address": "fd6d:8bc2:3ad4:0:5ef3:fcff:fe6f:bcc",
+                                                      "prefix": 64,
+                                                      "scope": "Global",
+                                                      "id": 3,
+                                                      "source": "Static",
+                                                      "type": "CONFIGURED",
+                                                      "gateway": "0:0:0:0:0:0:0:0"
+                                                  }
+                                              ],
+                                              "IPv4enabled": true,
+                                              "IPv6enabled": true
+                                          },
+                                          {
+                                              "IPv4assignments": [
+                                                  {
+                                                      "subnet": "0.0.0.0",
+                                                      "address": "0.0.0.0",
+                                                      "id": 2,
+                                                      "type": "INUSE",
+                                                      "gateway": "0.0.0.0"
+                                                  }
+                                              ],
+                                              "IPv6DHCPenabled": false,
+                                              "IPv6statelessEnabled": false,
+                                              "IPv6staticEnabled": true,
+                                              "name": "MANAGEMENT1",
+                                              "IPv4DHCPmode": "STATIC_ONLY",
+                                              "label": "MANAGEMENT1",
+                                              "IPv6assignments": [
+                                                  {
+                                                      "address": "0:0:0:0:0:0:0:0",
+                                                      "prefix": 0,
+                                                      "scope": "Global",
+                                                      "id": 3,
+                                                      "source": "Static",
+                                                      "type": "CONFIGURED",
+                                                      "gateway": "0:0:0:0:0:0:0:0"
+                                                  }
+                                              ],
+                                              "IPv4enabled": true,
+                                              "IPv6enabled": true
+                                          },
+                                          {
+                                              "IPv4assignments": [
+                                                  {
+                                                      "subnet": "255.255.252.0",
+                                                      "address": "10.240.72.71",
+                                                      "id": 2,
+                                                      "type": "INUSE",
+                                                      "gateway": "10.240.72.1"
+                                                  }
+                                              ],
+                                              "IPv6DHCPenabled": false,
+                                              "IPv6statelessEnabled": false,
+                                              "IPv6staticEnabled": false,
+                                              "name": "SERVICE",
+                                              "IPv4DHCPmode": "STATIC_ONLY",
+                                              "label": "SERVICE",
+                                              "IPv6assignments": [
+                                                  {
+                                                      "address": "0:0:0:0:0:0:0:0",
+                                                      "prefix": 0,
+                                                      "scope": "Global",
+                                                      "id": 3,
+                                                      "source": "Static",
+                                                      "type": "CONFIGURED",
+                                                      "gateway": "0:0:0:0:0:0:0:0"
+                                                  }
+                                              ],
+                                              "IPv4enabled": true,
+                                              "IPv6enabled": true
+                                          },
+                                          {
+                                              "IPv4assignments": [
+                                                  {
+                                                      "subnet": "0.0.0.0",
+                                                      "address": "0.0.0.0",
+                                                      "id": 2,
+                                                      "type": "INUSE",
+                                                      "gateway": "0.0.0.0"
+                                                  }
+                                              ],
+                                              "IPv6DHCPenabled": false,
+                                              "IPv6statelessEnabled": false,
+                                              "IPv6staticEnabled": true,
+                                              "name": "MANAGEMENT2",
+                                              "IPv4DHCPmode": "STATIC_ONLY",
+                                              "label": "MANAGEMENT2",
+                                              "IPv6assignments": [
+                                                  {
+                                                      "address": "0:0:0:0:0:0:0:0",
+                                                      "prefix": 0,
+                                                      "scope": "Global",
+                                                      "id": 3,
+                                                      "source": "Static",
+                                                      "type": "CONFIGURED",
+                                                      "gateway": "0:0:0:0:0:0:0:0"
+                                                  }
+                                              ],
+                                              "IPv4enabled": true,
+                                              "IPv6enabled": true
+                                          }
+                                      ],
+                                      "userDefinedName": "Storage ITE Mgm",
+                                      "ipv4ServiceAddress": "10.240.72.71",
+                                      "contact": "",
+                                      "serialNumber": "G22L006",
+                                      "complexID": -1,
+                                      "faceplateIDs": [],
+                                      "hostMacAddresses": "",
+                                      "cmmHealthState": "Normal",
+                                      "macAddress": "5C:F3:FC:6F:0B:CC",
+                                      "slots": [
+                                          11
+                                      ],
+                                      "FQDN": "",
+                                      "domainName": "",
+                                      "name": "Storage ITE Mgm",
+                                      "expansionCards": [
+                                          {
+                                              "isAgentless": false,
+                                              "FRU": "90Y7694",
+                                              "manufacturerId": "20301",
+                                              "portInfo": {},
+                                              "partNumber": "90Y7697",
+                                              "isAddOnCard": true,
+                                              "bay": 2,
+                                              "firmware": [],
+                                              "uuid": "47E6F801559611E1923F8122DDA411CD",
+                                              "fruSerialNumber": "YM11BG22A0BW",
+                                              "productName": "PRODUCT DESCRIPTION STORAGE ITE PRODUCT DESCRIPTION STORAGE ITE PRODUCT DESCRIPTION STORAGE ITE",
+                                              "manufacturer": "IBM"
+                                          }
+                                      ],
+                                      "description": "Device data missing",
+                                      "excludedHealthState": "Normal",
+                                      "backedBy": "real",
+                                      "overallHealthState": "Normal",
+                                      "expansionProducts": [],
+                                      "machineType": "4939",
+                                      "lanOverUsb": "disabled",
+                                      "m2Presence": false,
+                                      "vnicMode": "disabled",
+                                      "cmmDisplayName": "Node 11 - 01",
+                                      "activationKeys": [],
+                                      "location": {
+                                          "rack": "",
+                                          "lowestRackUnit": 0,
+                                          "location": "",
+                                          "room": ""
+                                      },
+                                      "leds": [
+                                          {
+                                              "color": "Amber",
+                                              "name": "Internal Fault",
+                                              "location": "FrontPanel",
+                                              "state": "Off"
+                                          },
+                                          {
+                                              "color": "Amber",
+                                              "name": "Fault",
+                                              "location": "FrontPanel",
+                                              "state": "Off"
+                                          },
+                                          {
+                                              "color": "Green",
+                                              "name": "Power",
+                                              "location": "FrontPanel",
+                                              "state": "On"
+                                          },
+                                          {
+                                              "color": "Green",
+                                              "name": "BMC Heartbeat",
+                                              "location": "Unknown",
+                                              "state": "Blinking"
+                                          },
+                                          {
+                                              "color": "Amber",
+                                              "name": "Check Log",
+                                              "location": "FrontPanel",
+                                              "state": "On"
+                                          },
+                                          {
+                                              "color": "Amber",
+                                              "name": "Controller Fault",
+                                              "location": "FrontPanel",
+                                              "state": "Off"
+                                          },
+                                          {
+                                              "color": "Blue",
+                                              "name": "Identification",
+                                              "location": "FrontPanel",
+                                              "state": "Off"
+                                          },
+                                          {
+                                              "color": "Yellow",
+                                              "name": "IMM Fault",
+                                              "location": "Unknown",
+                                              "state": "Off"
+                                          }
+                                      ],
+                                      "addinCards": [],
+                                      "fruSerialNumber": "YM11BG22D03F"
+                                  },
+                                  {
+                                      "encapsulation": {
+                                          "encapsulationMode": "notSupported"
+                                      },
+                                      "parent": {
+                                          "uuid": "B8106786386411E19AE3EF8BCD385476",
+                                          "uri": "nodes/B8106786386411E19AE3EF8BCD385476"
+                                      },
+                                      "pciDevices": [],
+                                      "lanOverUsbPortForwardingModes": [],
+                                      "bladeState": 1,
+                                      "FRU": "90Y7691",
+                                      "processors": [],
+                                      "type": "ITE",
+                                      "expansionCardSlots": 2,
+                                      "pciCapabilities": [],
+                                      "productName": "PRODUCT DESCRIPTION STORAGE ITE PRODUCT DESCRIPTION STORAGE ITE PRODUCT DESCRIPTION STORAGE ITE",
+                                      "mgmtProcIPaddress": "10.240.72.70",
+                                      "hostname": "",
+                                      "powerStatus": 8,
+                                      "isScalable": false,
+                                      "logicalID": -1,
+                                      "powerAllocation": {
+                                          "minimumAllocatedPower": 0,
+                                          "maximumAllocatedPower": 0
+                                      },
+                                      "hasOS": false,
+                                      "model": "A49",
+                                      "errorFields": [
+                                          {
+                                              "HostAndDomain": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "PhysicalAndLocation": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "Encapsulation": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "Memory": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "ServerFirmwareData": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "RackCPU": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "ServerOnboardPciDevices": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "BootMode": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "BootOrder": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "FlashDimm": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "HostMacAddress": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "VnicMode": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "RemotePresenceEnabled": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "ActivationKey": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "LanOverUsbMode": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "ServerStaticMetrics": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "ScalableComplexPartitionUUIDData": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "ActiveAlerts": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "PFAConfiguration": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "ServerIPaddresses": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "FaceplateInfo": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "IOCompatibilityData": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "LanOverUsbPortForwardingModes": "NO_CONNECTOR"
+                                          },
+                                          {
+                                              "ServerConfigFiles": "NO_CONNECTOR"
+                                          }
+                                      ],
+                                      "processorSlots": 1,
+                                      "powerSupplies": [],
+                                      "productId": "374",
+                                      "tlsVersion": {
+                                          "possibleValues": [
+                                              "unsupported",
+                                              "TLS_12",
+                                              "TLS_11",
+                                              "TLS_10"
+                                          ],
+                                          "currentValue": "Unknown"
+                                      },
+                                      "memoryModules": [],
+                                      "isConnectionTrusted": "false",
+                                      "posID": "3",
+                                      "drives": [],
+                                      "raidSettings": [],
+                                      "vpdID": "384",
+                                      "dataHandle": 1529428905250,
+                                      "driveBays": 0,
+                                      "embeddedHypervisorPresence": false,
+                                      "subType": "SRC",
+                                      "addinCardSlots": 0,
+                                      "status": {
+                                          "name": "MANAGED",
+                                          "message": "managed"
+                                      },
+                                      "primary": false,
+                                      "accessState": "Partial",
+                                      "securityDescriptor": {
+                                          "managedAuthSupported": false,
+                                          "publicAccess": false,
+                                          "uri": "nodes/e0d47b8a5bc511e1b5d1d13bf6351882",
+                                          "roleGroups": [],
+                                          "managedAuthEnabled": false
+                                      },
+                                      "partitionID": -1,
+                                      "mgmtProcType": "IMM2",
+                                      "expansionProductType": "",
+                                      "ports": [],
+                                      "bootMode": {
+                                          "possibleValues": [],
+                                          "currentValue": ""
+                                      },
+                                      "manufacturer": "IBM",
+                                      "memorySlots": 2,
+                                      "isRemotePresenceEnabled": false,
+                                      "flashStorage": [],
+                                      "osInfo": {
+                                          "hostname": "",
+                                          "description": "",
+                                          "storedCredential": ""
+                                      },
+                                      "dnsHostnames": [
+                                          "10.240.72.70",
+                                          "fd55:faaf:e1ab:2021:5ef3:fcff:fe6f:c64",
+                                          "fd6d:8bc2:3ad4:0:5ef3:fcff:fe6f:c64"
+                                      ],
+                                      "bootOrder": {
+                                          "uri": "nodes/E0D47B8A5BC511E1B5D1D13BF6351882/bootOrder",
+                                          "bootOrderList": []
+                                      },
+                                      "firmware": [],
+                                      "secureBootMode": {
+                                          "possibleValues": [],
+                                          "currentValue": ""
+                                      },
+                                      "ipv4Addresses": [
+                                          "10.240.72.70"
+                                      ],
+                                      "userDescription": "",
+                                      "onboardPciDevices": [],
+                                      "manufacturerId": "20301",
+                                      "uri": "nodes/E0D47B8A5BC511E1B5D1D13BF6351882",
+                                      "nist": {
+                                          "possibleValues": [
+                                              "Nist_800_131A_Strict",
+                                              "unsupported",
+                                              "Compatibility"
+                                          ],
+                                          "currentValue": "Unknown"
+                                      },
+                                      "partNumber": "90Y7627",
+                                      "arch": "x86",
+                                      "bladeState_string": "Storage ITE Mgm",
+                                      "subSlots": [
+                                          2
+                                      ],
+                                      "ipv6Addresses": [
+                                          "fd55:faaf:e1ab:2021:5ef3:fcff:fe6f:c64",
+                                          "fe80:0:0:0:5ef3:fcff:fe6f:c64",
+                                          "fd6d:8bc2:3ad4:0:5ef3:fcff:fe6f:c64"
+                                      ],
+                                      "uuid": "E0D47B8A5BC511E1B5D1D13BF6351882",
+                                      "isITME": false,
+                                      "bladeState_health": "GOOD",
+                                      "ipInterfaces": [
+                                          {
+                                              "IPv4assignments": [
+                                                  {
+                                                      "subnet": "255.255.252.0",
+                                                      "address": "10.240.72.70",
+                                                      "id": 2,
+                                                      "type": "INUSE",
+                                                      "gateway": "10.240.72.1"
+                                                  }
+                                              ],
+                                              "IPv6DHCPenabled": true,
+                                              "IPv6statelessEnabled": true,
+                                              "IPv6staticEnabled": true,
+                                              "name": "eth0",
+                                              "IPv4DHCPmode": "STATIC_ONLY",
+                                              "label": "eth0",
+                                              "IPv6assignments": [
+                                                  {
+                                                      "address": "fe80:0:0:0:5ef3:fcff:fe6f:c64",
+                                                      "prefix": 64,
+                                                      "scope": "LinkLocal",
+                                                      "id": 1,
+                                                      "source": "Other",
+                                                      "type": "INUSE",
+                                                      "gateway": "fe80:0:0:0:5:73ff:fea0:2c"
+                                                  },
+                                                  {
+                                                      "address": "fd6d:8bc2:3ad4:0:5ef3:fcff:fe6f:c64",
+                                                      "prefix": 64,
+                                                      "scope": "Global",
+                                                      "id": 3,
+                                                      "source": "Static",
+                                                      "type": "CONFIGURED",
+                                                      "gateway": "0:0:0:0:0:0:0:0"
+                                                  },
+                                                  {
+                                                      "address": "fd55:faaf:e1ab:2021:5ef3:fcff:fe6f:c64",
+                                                      "prefix": 64,
+                                                      "scope": "Global",
+                                                      "id": 17,
+                                                      "source": "Stateless",
+                                                      "type": "INUSE",
+                                                      "gateway": "0:0:0:0:0:0:0:0"
+                                                  },
+                                                  {
+                                                      "address": "fd6d:8bc2:3ad4:0:5ef3:fcff:fe6f:c64",
+                                                      "prefix": 64,
+                                                      "scope": "Global",
+                                                      "id": 3,
+                                                      "source": "Static",
+                                                      "type": "INUSE",
+                                                      "gateway": "0:0:0:0:0:0:0:0"
+                                                  }
+                                              ],
+                                              "IPv4enabled": true,
+                                              "IPv6enabled": true
+                                          },
+                                          {
+                                              "IPv4assignments": [
+                                                  {
+                                                      "subnet": "0.0.0.0",
+                                                      "address": "0.0.0.0",
+                                                      "id": 2,
+                                                      "type": "INUSE",
+                                                      "gateway": "0.0.0.0"
+                                                  }
+                                              ],
+                                              "IPv6DHCPenabled": false,
+                                              "IPv6statelessEnabled": false,
+                                              "IPv6staticEnabled": true,
+                                              "name": "MANAGEMENT1",
+                                              "IPv4DHCPmode": "STATIC_ONLY",
+                                              "label": "MANAGEMENT1",
+                                              "IPv6assignments": [
+                                                  {
+                                                      "address": "0:0:0:0:0:0:0:0",
+                                                      "prefix": 0,
+                                                      "scope": "Global",
+                                                      "id": 3,
+                                                      "source": "Static",
+                                                      "type": "CONFIGURED",
+                                                      "gateway": "0:0:0:0:0:0:0:0"
+                                                  }
+                                              ],
+                                              "IPv4enabled": true,
+                                              "IPv6enabled": true
+                                          },
+                                          {
+                                              "IPv4assignments": [
+                                                  {
+                                                      "subnet": "255.255.252.0",
+                                                      "address": "10.240.72.72",
+                                                      "id": 2,
+                                                      "type": "INUSE",
+                                                      "gateway": "10.240.72.1"
+                                                  }
+                                              ],
+                                              "IPv6DHCPenabled": false,
+                                              "IPv6statelessEnabled": false,
+                                              "IPv6staticEnabled": false,
+                                              "name": "SERVICE",
+                                              "IPv4DHCPmode": "STATIC_ONLY",
+                                              "label": "SERVICE",
+                                              "IPv6assignments": [
+                                                  {
+                                                      "address": "0:0:0:0:0:0:0:0",
+                                                      "prefix": 0,
+                                                      "scope": "Global",
+                                                      "id": 3,
+                                                      "source": "Static",
+                                                      "type": "CONFIGURED",
+                                                      "gateway": "0:0:0:0:0:0:0:0"
+                                                  }
+                                              ],
+                                              "IPv4enabled": true,
+                                              "IPv6enabled": true
+                                          },
+                                          {
+                                              "IPv4assignments": [
+                                                  {
+                                                      "subnet": "0.0.0.0",
+                                                      "address": "0.0.0.0",
+                                                      "id": 2,
+                                                      "type": "INUSE",
+                                                      "gateway": "0.0.0.0"
+                                                  }
+                                              ],
+                                              "IPv6DHCPenabled": false,
+                                              "IPv6statelessEnabled": false,
+                                              "IPv6staticEnabled": true,
+                                              "name": "MANAGEMENT2",
+                                              "IPv4DHCPmode": "STATIC_ONLY",
+                                              "label": "MANAGEMENT2",
+                                              "IPv6assignments": [
+                                                  {
+                                                      "address": "0:0:0:0:0:0:0:0",
+                                                      "prefix": 0,
+                                                      "scope": "Global",
+                                                      "id": 3,
+                                                      "source": "Static",
+                                                      "type": "CONFIGURED",
+                                                      "gateway": "0:0:0:0:0:0:0:0"
+                                                  }
+                                              ],
+                                              "IPv4enabled": true,
+                                              "IPv6enabled": true
+                                          }
+                                      ],
+                                      "userDefinedName": "Storage ITE Mgm",
+                                      "ipv4ServiceAddress": "10.240.72.72",
+                                      "contact": "",
+                                      "serialNumber": "G22L006",
+                                      "complexID": -1,
+                                      "faceplateIDs": [],
+                                      "hostMacAddresses": "",
+                                      "cmmHealthState": "Normal",
+                                      "macAddress": "5C:F3:FC:6F:0C:64",
+                                      "slots": [
+                                          11
+                                      ],
+                                      "FQDN": "",
+                                      "domainName": "",
+                                      "name": "Storage ITE Mgm",
+                                      "expansionCards": [
+                                          {
+                                              "isAgentless": false,
+                                              "FRU": "90Y7694",
+                                              "manufacturerId": "20301",
+                                              "portInfo": {},
+                                              "partNumber": "90Y7697",
+                                              "isAddOnCard": true,
+                                              "bay": 2,
+                                              "firmware": [],
+                                              "uuid": "D6DACB61558511E1B874F3202EF54E36",
+                                              "fruSerialNumber": "YM11BG22A02L",
+                                              "productName": "PRODUCT DESCRIPTION STORAGE ITE PRODUCT DESCRIPTION STORAGE ITE PRODUCT DESCRIPTION STORAGE ITE",
+                                              "manufacturer": "IBM"
+                                          }
+                                      ],
+                                      "description": "Device data missing",
+                                      "excludedHealthState": "Normal",
+                                      "backedBy": "real",
+                                      "overallHealthState": "Normal",
+                                      "expansionProducts": [],
+                                      "machineType": "4939",
+                                      "lanOverUsb": "disabled",
+                                      "m2Presence": false,
+                                      "vnicMode": "disabled",
+                                      "cmmDisplayName": "Node 11 - 02",
+                                      "activationKeys": [],
+                                      "location": {
+                                          "rack": "",
+                                          "lowestRackUnit": 0,
+                                          "location": "",
+                                          "room": ""
+                                      },
+                                      "leds": [
+                                          {
+                                              "color": "Amber",
+                                              "name": "Internal Fault",
+                                              "location": "FrontPanel",
+                                              "state": "Off"
+                                          },
+                                          {
+                                              "color": "Amber",
+                                              "name": "Fault",
+                                              "location": "FrontPanel",
+                                              "state": "Off"
+                                          },
+                                          {
+                                              "color": "Green",
+                                              "name": "Power",
+                                              "location": "FrontPanel",
+                                              "state": "On"
+                                          },
+                                          {
+                                              "color": "Green",
+                                              "name": "BMC Heartbeat",
+                                              "location": "Unknown",
+                                              "state": "Blinking"
+                                          },
+                                          {
+                                              "color": "Amber",
+                                              "name": "Check Log",
+                                              "location": "FrontPanel",
+                                              "state": "On"
+                                          },
+                                          {
+                                              "color": "Amber",
+                                              "name": "Controller Fault",
+                                              "location": "FrontPanel",
+                                              "state": "Off"
+                                          },
+                                          {
+                                              "color": "Blue",
+                                              "name": "Identification",
+                                              "location": "FrontPanel",
+                                              "state": "Off"
+                                          },
+                                          {
+                                              "color": "Yellow",
+                                              "name": "IMM Fault",
+                                              "location": "Unknown",
+                                              "state": "Off"
+                                          }
+                                      ],
+                                      "addinCards": [],
+                                      "fruSerialNumber": "YM11BG22D042"
+                                  }
+                              ],
+                              "lanOverUsbPortForwardingModes": [],
+                              "bladeState": 0,
+                              "FRU": "90Y7690",
+                              "processors": [],
+                              "type": "SCU",
+                              "expansionCardSlots": 0,
+                              "pciCapabilities": [],
+                              "productName": "PRODUCT DESCRIPTION STORAGE ITE PRODUCT DESCRIPTION STORAGE ITE PRODUCT DESCRIPTION STORAGE ITE",
+                              "mgmtProcIPaddress": "10.243.15.46",
+                              "hostname": "",
+                              "powerStatus": 0,
+                              "isScalable": false,
+                              "logicalID": -1,
+                              "powerAllocation": {
+                                  "minimumAllocatedPower": -1,
+                                  "maximumAllocatedPower": -1
+                              },
+                              "hasOS": false,
+                              "model": "A49",
+                              "errorFields": [
+                                  {
+                                      "ServerStaticMetrics": "NO_CONNECTOR"
+                                  }
+                              ],
+                              "processorSlots": 0,
+                              "powerSupplies": [],
+                              "productId": "384",
+                              "tlsVersion": {
+                                  "possibleValues": [
+                                      "unsupported",
+                                      "TLS_12",
+                                      "TLS_11",
+                                      "TLS_10"
+                                  ],
+                                  "currentValue": "Unknown"
+                              },
+                              "memoryModules": [],
+                              "isConnectionTrusted": "false",
+                              "posID": "4",
+                              "drives": [
+                                  {
+                                      "bay": 1,
+                                      "capacity": -1
+                                  },
+                                  {
+                                      "bay": 2,
+                                      "capacity": -1
+                                  },
+                                  {
+                                      "bay": 3,
+                                      "capacity": -1
+                                  },
+                                  {
+                                      "bay": 4,
+                                      "capacity": -1
+                                  },
+                                  {
+                                      "bay": 5,
+                                      "capacity": -1
+                                  },
+                                  {
+                                      "bay": 6,
+                                      "capacity": -1
+                                  },
+                                  {
+                                      "bay": 7,
+                                      "capacity": -1
+                                  },
+                                  {
+                                      "bay": 8,
+                                      "capacity": -1
+                                  },
+                                  {
+                                      "bay": 9,
+                                      "capacity": -1
+                                  },
+                                  {
+                                      "bay": 10,
+                                      "capacity": -1
+                                  },
+                                  {
+                                      "bay": 11,
+                                      "capacity": -1
+                                  },
+                                  {
+                                      "bay": 12,
+                                      "capacity": -1
+                                  },
+                                  {
+                                      "bay": 13,
+                                      "capacity": -1
+                                  },
+                                  {
+                                      "bay": 14,
+                                      "capacity": -1
+                                  },
+                                  {
+                                      "bay": 15,
+                                      "capacity": -1
+                                  },
+                                  {
+                                      "bay": 16,
+                                      "capacity": -1
+                                  },
+                                  {
+                                      "bay": 17,
+                                      "capacity": -1
+                                  },
+                                  {
+                                      "bay": 18,
+                                      "capacity": -1
+                                  },
+                                  {
+                                      "bay": 19,
+                                      "capacity": -1
+                                  },
+                                  {
+                                      "bay": 20,
+                                      "capacity": -1
+                                  },
+                                  {
+                                      "bay": 21,
+                                      "capacity": -1
+                                  },
+                                  {
+                                      "bay": 22,
+                                      "capacity": -1
+                                  },
+                                  {
+                                      "bay": 23,
+                                      "capacity": -1
+                                  },
+                                  {
+                                      "bay": 24,
+                                      "capacity": -1
+                                  }
+                              ],
+                              "raidSettings": [],
+                              "vpdID": "512",
+                              "dataHandle": 1529428906347,
+                              "driveBays": 24,
+                              "embeddedHypervisorPresence": false,
+                              "subType": "Nimitz",
+                              "addinCardSlots": 0,
+                              "status": {
+                                  "name": "MANAGED",
+                                  "message": "managed"
+                              },
+                              "primary": false,
+                              "accessState": "Online",
+                              "securityDescriptor": {
+                                  "managedAuthSupported": false,
+                                  "publicAccess": false,
+                                  "uri": "nodes/b8106786386411e19ae3ef8bcd385476",
+                                  "roleGroups": [],
+                                  "managedAuthEnabled": false
+                              },
+                              "partitionID": -1,
+                              "mgmtProcType": "UNKNOWN",
+                              "expansionProductType": "",
+                              "ports": [],
+                              "bootMode": {
+                                  "possibleValues": [],
+                                  "currentValue": ""
+                              },
+                              "manufacturer": "IBM",
+                              "memorySlots": 0,
+                              "isRemotePresenceEnabled": false,
+                              "flashStorage": [],
+                              "osInfo": {
+                                  "hostname": "",
+                                  "description": "",
+                                  "storedCredential": ""
+                              },
+                              "dnsHostnames": [],
+                              "bootOrder": {
+                                  "uri": "nodes/B8106786386411E19AE3EF8BCD385476/bootOrder",
+                                  "bootOrderList": []
+                              },
+                              "firmware": [],
+                              "secureBootMode": {
+                                  "possibleValues": [],
+                                  "currentValue": ""
+                              },
+                              "ipv4Addresses": [],
+                              "userDescription": "",
+                              "onboardPciDevices": [],
+                              "manufacturerId": "20301",
+                              "uri": "nodes/B8106786386411E19AE3EF8BCD385476",
+                              "nist": {
+                                  "possibleValues": [
+                                      "Nist_800_131A_Strict",
+                                      "unsupported",
+                                      "Compatibility"
+                                  ],
+                                  "currentValue": "Unknown"
+                              },
+                              "partNumber": "90Y7629",
+                              "arch": "ppc",
+                              "bladeState_string": "",
+                              "subSlots": [],
+                              "ipv6Addresses": [],
+                              "uuid": "B8106786386411E19AE3EF8BCD385476",
+                              "isITME": false,
+                              "bladeState_health": "NA",
+                              "ipInterfaces": [],
+                              "userDefinedName": "",
+                              "contact": "",
+                              "serialNumber": "G22L006",
+                              "complexID": -1,
+                              "faceplateIDs": [],
+                              "hostMacAddresses": "",
+                              "cmmHealthState": "Unknown",
+                              "macAddress": "",
+                              "slots": [
+                                  11,
+                                  12,
+                                  13,
+                                  14
+                              ],
+                              "FQDN": "",
+                              "domainName": "",
+                              "name": "Enclosure 11",
+                              "expansionCards": [],
+                              "description": "Enclosure",
+                              "canisterSlots": 2,
+                              "excludedHealthState": "Normal",
+                              "backedBy": "real",
+                              "overallHealthState": "Normal",
+                              "expansionProducts": [],
+                              "machineType": "4939",
+                              "lanOverUsb": "disabled",
+                              "m2Presence": false,
+                              "vnicMode": "disabled",
+                              "cmmDisplayName": "Enclosure 11",
+                              "activationKeys": [],
+                              "location": {
+                                  "rack": "",
+                                  "lowestRackUnit": 0,
+                                  "location": "",
+                                  "room": ""
+                              },
+                              "leds": [],
+                              "addinCards": [],
+                              "fruSerialNumber": "YM11BG1CP005"
+                          },
+                          {
                           "name": "ite-co-017",
                           "uuid": "E6C27EC764BA11E1A6AA5CF3FC7F0B50",
                           "status": {
