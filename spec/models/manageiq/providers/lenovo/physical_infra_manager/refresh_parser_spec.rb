@@ -174,7 +174,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       expect(physical_chassis[:health_state]).to eq("Valid")
       expected_type = "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalChassis"
       expect(physical_chassis[:type]).to eq(expected_type)
-      expect(physical_chassis[:location_led_state]).to be_nil
+      expect(physical_chassis[:location_led_state]).to eq("Off")
     end
 
     it 'will parse physical chassis asset detail data' do

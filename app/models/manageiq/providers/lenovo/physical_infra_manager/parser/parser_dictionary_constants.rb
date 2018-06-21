@@ -31,7 +31,7 @@ module ManageIQ::Providers::Lenovo
     }.freeze
 
     PROPERTIES_MAP = {
-      :led_identify_name => %w(Identification Identify),
+      :led_identify_name => %w(Identification Identify Location),
     }.freeze
 
     # TRANSLATE HASHES BEGIN
