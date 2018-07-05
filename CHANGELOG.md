@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
+## Unreleased as of Sprint 89 - 2018-07-02
+
+### Added
+- Add display name for physical switch [(#198)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/198)
+- Add display name for physical rack [(#197)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/197)
+
+### Fixed
+- Adding location led name [(#202)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/202)
+
 ## Unreleased as of Sprint 88 - 2018-06-18
 
 ### Added
