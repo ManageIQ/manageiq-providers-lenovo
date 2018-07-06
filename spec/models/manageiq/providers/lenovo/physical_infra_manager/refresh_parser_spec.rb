@@ -191,6 +191,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       expect(asset_detail[:room]).to be_nil
       expect(asset_detail[:rack_name]).to be_nil
       expect(asset_detail[:lowest_rack_unit]).to eq(0)
+      expect(asset_detail[:location_led_ems_ref]).to eq("Location")
     end
 
     it 'will parse physical chassis hardware data' do
@@ -282,6 +283,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       serial_number
       description
       lowest_rack_unit
+      location_led_ems_ref
     ).each do |attr|
       it "will retrieve #{attr} of asset detail" do
         asset_detail = @result[:physical_servers][0][:asset_detail]
