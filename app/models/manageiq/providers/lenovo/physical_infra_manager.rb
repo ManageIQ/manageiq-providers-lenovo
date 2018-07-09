@@ -19,4 +19,12 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::P
   def self.description
     @description ||= "Lenovo XClarity"
   end
+
+  # Returns a new connection to the LXCA
+  def connection
+    connect(:user => authentications.first.userid,
+            :pass => authentications.first.password,
+            :host => endpoints.first.hostname,
+            :port => endpoints.first.port)
+  end
 end
