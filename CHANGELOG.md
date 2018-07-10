@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
+## Gaprindashvili-4
+
+### Fixed
+- Fixing authentication status update [(#191)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/191)
+
 ## Gaprindashvili-3
 
 ### Fixed
