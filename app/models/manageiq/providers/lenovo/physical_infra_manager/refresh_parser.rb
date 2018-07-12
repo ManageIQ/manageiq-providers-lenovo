@@ -27,6 +27,8 @@ module ManageIQ::Providers::Lenovo
       inventory[:physical_switches]     = get_physical_switches
       inventory[:customization_scripts] = get_config_patterns
 
+      bind_network_ports(inventory)
+
       $log.info("#{log_header}...Complete")
 
       inventory
@@ -138,6 +140,18 @@ module ManageIQ::Providers::Lenovo
     def get_config_patterns
       config_patterns = @connection.discover_config_pattern
       config_patterns.map { |config_pattern| @parser.parse_config_pattern(config_pattern) }
+    end
+
+    def bind_network_ports(inventory)
+      physical_servers = inventory[:physical_servers]
+      physical_switches = inventory[:physical_switches]
+
+      ports = []
+
+      ports.concat(PhysicalInfraManager::Parser::PhysicalNetworkPortsParser.extract_physical_servers_ports(physical_servers))
+      ports.concat(PhysicalInfraManager::Parser::PhysicalNetworkPortsParser.extract_physical_switches_ports(physical_switches))
+
+      PhysicalInfraManager::Parser::PhysicalNetworkPortsParser.bind_network_ports!(ports)
     end
   end
 end

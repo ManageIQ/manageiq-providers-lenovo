@@ -62,7 +62,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       switch = @result[:physical_switches].first
       port   = switch[:physical_network_ports].first
 
-      expect(port[:peer_mac_address]).to eq("7c:d3:0a:e6:47:51")
+      expect(port[:peer_mac_address]).to eq("5C:F3:FC:7F:0B:50")
       expect(port[:port_type]).to eq("physical_port")
       expect(port[:vlan_enabled]).to eq(true)
       expect(port[:vlan_key]).to eq("\"Lenovo-Network-VLAN546\"")
