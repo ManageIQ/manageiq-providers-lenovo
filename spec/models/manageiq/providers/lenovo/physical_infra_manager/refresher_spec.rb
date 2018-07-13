@@ -124,8 +124,8 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
     expect(PhysicalRack.count).to eq(3)
     expect(PhysicalServer.count).to eq(2)
     expect(PhysicalStorage.count).to eq(1)
-    expect(GuestDevice.count).to eq(5)
-    expect(PhysicalNetworkPort.count).to eq(34)
+    expect(GuestDevice.count).to eq(6)
+    expect(PhysicalNetworkPort.count).to eq(42)
   end
 
   def assert_guest_table_contents

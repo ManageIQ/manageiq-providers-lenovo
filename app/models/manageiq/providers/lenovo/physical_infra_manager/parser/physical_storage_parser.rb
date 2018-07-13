@@ -14,6 +14,7 @@ module ManageIQ::Providers::Lenovo
         :type                 => :type,
         :health_state         => :health_state,
         :physical_disks       => :physical_disks,
+        :canisters            => :canisters,
         :asset_detail         => {
           :product_name     => 'productName',
           :machine_type     => 'machineType',
@@ -25,11 +26,6 @@ module ManageIQ::Providers::Lenovo
           :room             => 'location.room',
           :rack_name        => 'location.rack',
           :lowest_rack_unit => 'location.lowestRackUnit',
-        },
-        :computer_system      => {
-          :hardware => {
-            :guest_devices => :guest_devices
-          }
         }
       }.freeze
 
@@ -48,6 +44,7 @@ module ManageIQ::Providers::Lenovo
 
         result[:physical_rack]    = rack if rack
         result[:physical_chassis] = chassis if chassis
+
         result
       end
 
@@ -91,13 +88,70 @@ module ManageIQ::Providers::Lenovo
         }
       end
 
-      def guest_devices(storage)
-        [{
-          :device_type => 'management',
-          :network     => {
-            :ipaddress => storage.mgmtProcIPaddress
+      def canisters(storage)
+        return parse_canisters_inside_components(storage.enclosures) if storage.enclosures.present?
+        parse_canisters_inside_storage(storage) if storage.enclosures.blank?
+      end
+
+      def parse_canisters_inside_storage(storage)
+        canisters = []
+        storage.canisters.each do |canister|
+          canisters << parse_canister(canister)
+        end
+        canisters
+      end
+
+      def parse_canisters_inside_components(components)
+        canisters = []
+        components.each do |component|
+          component['canisters'].each do |canister|
+            canisters << parse_canister(canister)
+          end
+        end
+        canisters
+      end
+
+      def parse_canister(canister)
+        {
+          :serial_number                => canister['serialNumber'],
+          :name                         => canister['cmmDisplayName'],
+          :position                     => canister['position'],
+          :status                       => canister['status'],
+          :health_state                 => canister['health'],
+          :disk_bus_type                => canister['diskBusType'],
+          :phy_isolation                => canister['phyIsolation'],
+          :controller_redundancy_status => canister['controllerRedundancyStatus'],
+          :disks                        => canister['disks'],
+          :disk_channel                 => canister['diskChannel'],
+          :system_cache_memory          => canister['systemCacheMemory'],
+          :power_state                  => canister['powerState'],
+          :host_ports                   => canister['hostPorts'],
+          :hardware_version             => canister['hardwareVersion'],
+          :computer_system              => {
+            :hardware => {
+              :firmwares     => canister_firmwares(canister),
+              :guest_devices => canister_guest_devices(canister)
+            }
           }
-        }]
+        }
+      end
+
+      def canister_firmwares(canister)
+        firmwares = []
+        firmware = canister['firmware']
+
+        if firmware.present? && firmware['storageControllerCpuType'] != 'Not Present'
+          result = parent::FirmwareParser.parse_firmware(firmware)
+          result[:resource_type] = 'Hardware'
+          firmwares << result
+        end
+
+        firmwares
+      end
+
+      def canister_guest_devices(canister)
+        management_device = parent::ManagementDeviceParser.parse_canister_management_device(canister)
+        management_device ? [management_device] : []
       end
     end
   end

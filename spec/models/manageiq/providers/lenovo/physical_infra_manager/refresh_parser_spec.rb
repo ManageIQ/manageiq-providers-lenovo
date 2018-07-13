@@ -110,6 +110,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       expect(physical_storage[:enclosures]).to eq(1)
       expect(physical_storage[:canister_slots]).to eq(2)
       expect(physical_storage[:physical_disks].count).to eq(4)
+      expect(physical_storage[:canisters].count).to eq(2)
     end
 
     it 'will parse physical storage asset detail data' do
@@ -129,19 +130,28 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
     end
 
     it 'will parse physical storage hardware data' do
-      physical_storage = @result[:physical_storages].second
-      computer_system = physical_storage[:computer_system]
-      expect(computer_system).to_not be_nil
+      physical_storage = @result[:physical_storages][1]
+      canister_one = physical_storage[:canisters].first
+      canister_one_computer_system = canister_one[:computer_system]
+      hardware = canister_one_computer_system[:hardware]
 
-      hardware = computer_system[:hardware]
       expect(hardware).to_not be_nil
       expect(hardware[:guest_devices]).to_not be_nil
       expect(hardware[:guest_devices]).to be_kind_of(Array)
       expect(hardware[:guest_devices].size).to eq(1)
 
-      guest_device = hardware[:guest_devices].first
+      guest_device = hardware[:guest_devices][0]
+      expect(guest_device[:address]).to eq("00:c0:ff:26:5e:de")
+      expect(guest_device[:device_name]).to eq("mgmtport_a")
       expect(guest_device[:device_type]).to eq("management")
-      expect(guest_device[:network][:ipaddress]).to eq("10.243.5.61")
+
+      network_info = guest_device[:network]
+      expect(network_info[:ipaddress]).to eq("10.243.5.61")
+      expect(network_info[:subnet_mask]).to eq("255.255.240.0")
+
+      port_one_info = guest_device[:physical_network_ports].first
+      expect(port_one_info[:port_name]).to eq("A3")
+      expect(port_one_info[:port_status]).to eq("Disconnected")
     end
 
     it 'will parse physical disks data' do
