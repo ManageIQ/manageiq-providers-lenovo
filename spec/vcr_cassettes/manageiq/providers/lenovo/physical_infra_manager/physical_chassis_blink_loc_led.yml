@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://10.243.9.123/chassis/27997dba5dba11e89c2dfa7ae01bbebc
+    body:
+      encoding: UTF-8
+      string: '{"leds":[{"name":"Location","state":"Blinking"}]}'
+    headers:
+      User-Agent:
+      - LXCA via Ruby Client/0.6.1 (ManageIQ/master)
+      Authorization:
+      - Basic ZGdvdXZlaWE6UGl4b21heG80
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 03 Jul 2018 11:39:26 GMT
+      - Tue, 03 Jul 2018 11:39:26 GMT
+      Set-Cookie:
+      - userAuthenticationMethod=local_ldap;Path=/;Secure
+      Expires:
+      - "-1"
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Strict-Transport-Security:
+      - max-age=31536000 ; includeSubDomains
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Security-Policy:
+      - frame-ancestors 'self'; default-src 'self' ; script-src 'self' 'unsafe-inline'
+        'unsafe-eval'; style-src 'self' 'unsafe-inline'; object-src 'none'; worker-src
+        'self' blob:; child-src 'self' blob:; img-src 'self' data:;
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/com.lenovo.lxca-v2.1.0+json; charset=UTF-8
+      Vary:
+      - Accept-Encoding, User-Agent
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '{"result":"success","statusDescription":"The request completed successfully.","messages":[{"recoveryUrl":"","id":"FQXDM0200","text":"The
+        request completed successfully.","recovery":"","explanation":"The request
+        completed successfully."}],"statusCode":200}'
+    http_version:
+  recorded_at: Tue, 03 Jul 2018 11:38:53 GMT
+recorded_with: VCR 3.0.3
