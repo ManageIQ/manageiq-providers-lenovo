@@ -6,14 +6,16 @@ module ManageIQ::Providers::Lenovo
       #
       # @param [Hash] storage_hash - hash containing physical storage raw data
       # @param [Hash] rack - parsed physical rack data
+      # @param [Hash] chassis - parsed physical chassis data
       #
       # @return [Hash] containing the physical storage information
       #
-      def parse_physical_storage(storage_hash, rack)
+      def parse_physical_storage(storage_hash, rack, chassis)
         storage = XClarityClient::Storage.new(storage_hash)
         result = parse(storage, parent::ParserDictionaryConstants::PHYSICAL_STORAGE)
 
         result[:physical_rack]              = rack if rack
+        result[:physical_chassis]           = chassis if chassis
         result[:type]                       = parent::ParserDictionaryConstants::MIQ_TYPES["physical_storage"]
         result[:health_state]               = parent::ParserDictionaryConstants::HEALTH_STATE_MAP[storage.cmmHealthState.nil? ? storage.cmmHealthState : storage.cmmHealthState.downcase]
         result[:computer_system][:hardware] = get_hardwares(storage)

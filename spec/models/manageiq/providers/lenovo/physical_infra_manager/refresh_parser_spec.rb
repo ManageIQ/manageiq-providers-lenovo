@@ -95,11 +95,11 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
     end
 
     it 'will retrieve physical storages' do
-      expect(@result[:physical_storages].size).to eq(1)
+      expect(@result[:physical_storages].size).to eq(2)
     end
 
     it 'will parse physical storage fields' do
-      physical_storage = @result[:physical_storages][0]
+      physical_storage = @result[:physical_storages].second
       expected_type = "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalStorage"
 
       expect(physical_storage[:name]).to eq("S3200-1")
@@ -116,7 +116,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
     end
 
     it 'will parse physical storage asset detail data' do
-      physical_storage = @result[:physical_storages][0]
+      physical_storage = @result[:physical_storages].second
       asset_detail = physical_storage[:asset_detail]
 
       expect(asset_detail[:product_name]).to eq("S3200")
@@ -132,7 +132,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
     end
 
     it 'will parse physical storage hardware data' do
-      physical_storage = @result[:physical_storages][0]
+      physical_storage = @result[:physical_storages].second
       computer_system = physical_storage[:computer_system]
       expect(computer_system).to_not be_nil
 
@@ -142,9 +142,23 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       expect(hardware[:guest_devices]).to be_kind_of(Array)
       expect(hardware[:guest_devices].size).to eq(1)
 
-      guest_device = hardware[:guest_devices][0]
+      guest_device = hardware[:guest_devices].first
       expect(guest_device[:device_type]).to eq("management")
       expect(guest_device[:network][:ipaddress]).to eq("10.243.5.61")
+    end
+
+    it 'will have a reference to the physical rack where the storage is inside' do
+      physical_rack = @result[:physical_racks].first
+      physical_storage = @result[:physical_storages].second
+
+      expect(physical_storage[:physical_rack]).to eq(physical_rack)
+    end
+
+    it 'will have a reference to the physical chassis where the storage is inside' do
+      physical_chassis = @result[:physical_chassis].first
+      physical_storage = @result[:physical_storages].first
+
+      expect(physical_storage[:physical_chassis]).to eq(physical_chassis)
     end
   end
 

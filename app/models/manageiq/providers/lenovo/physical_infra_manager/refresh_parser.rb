@@ -81,6 +81,13 @@ module ManageIQ::Providers::Lenovo
             parsed_server = @parser.parse_physical_server(server, find_compliance(server), parsed_rack, parsed_chassis)
             inventory[:physical_servers] << parsed_server
           end
+
+          # Retrieve and parse the storages that are inside the chassis
+          chassis_storages = get_plain_physical_storages_inside_chassis(chassis)
+          chassis_storages.each do |storage|
+            parsed_storage = @parser.parse_physical_storage(storage, parsed_rack, parsed_chassis)
+            inventory[:physical_storages] << parsed_storage
+          end
         end
 
         # Retrieve and parse storages that are inside the rack.
@@ -112,6 +119,11 @@ module ManageIQ::Providers::Lenovo
     # Returns physical storages that are inside a rack.
     def get_plain_physical_storages_inside_rack(rack)
       rack.storageList.map { |storage| storage["itemInventory"] }
+    end
+
+    # Returns physical storages that are inside a chassis.
+    def get_plain_physical_storages_inside_chassis(chassis)
+      chassis["nodes"].select { |node| node["type"] == "SCU" && node["canisterSlots"].present? }
     end
 
     # Returns physical servers that are inside a chassis.
