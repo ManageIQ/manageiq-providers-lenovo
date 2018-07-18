@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
+## Unreleased as of Sprint 90 - 2018-07-16
+
+### Added
+- Add display names for PhysicalChassis and PhysicalRack [(#203)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/203)
+- Parsing the connection b/w ports [(#194)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/194)
+
+## Gaprindashvili-4 - Released 2018-07-16
+
+### Fixed
+- Fixing authentication status update [(#191)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/191)
+
 ## Unreleased as of Sprint 89 - 2018-07-02
 
 ### Added
@@ -23,11 +34,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 ### Fixed
 - Fix the event catcher bug [(#199)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/199)
-
-## Unreleased as of Sprint 87 - 2018-06-04
-
-### Fixed
-- Fixing authentication status update [(#191)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/191)
 
 ## Unreleased as of Sprint 86 - 2018-05-21
 
