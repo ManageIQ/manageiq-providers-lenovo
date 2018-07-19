@@ -126,7 +126,7 @@ module ManageIQ::Providers::Lenovo
       end
 
       def mount_uuid_switch_port(port, physical_switch)
-        physical_switch.uuid + port["interfaceIndex"]
+        physical_switch.uuid + port['port'].to_s
       end
 
       #
