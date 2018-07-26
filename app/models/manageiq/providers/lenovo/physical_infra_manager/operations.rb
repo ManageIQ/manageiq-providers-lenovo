@@ -1,44 +1,46 @@
 module ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations
   extend ActiveSupport::Concern
 
-  def blink_loc_led(server, options = {})
-    change_resource_state(:blink_loc_led, server, options)
+  include_concern 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::Sender'
+
+  def blink_loc_led(server, _options = {})
+    change_led_state(server, :blink_loc_led)
   end
 
-  def turn_on_loc_led(server, options = {})
-    change_resource_state(:turn_on_loc_led, server, options)
+  def turn_on_loc_led(server, _options = {})
+    change_led_state(server, :turn_on_loc_led)
   end
 
-  def turn_off_loc_led(server, options = {})
-    change_resource_state(:turn_off_loc_led, server, options)
+  def turn_off_loc_led(server, _options = {})
+    change_led_state(server, :turn_off_loc_led)
   end
 
-  def power_on(args, options = {})
-    change_resource_state(:power_on_node, args, options)
+  def power_on(server, _options = {})
+    change_resource_state(server, :power_on_node)
   end
 
-  def power_off(args, options = {})
-    change_resource_state(:power_off_node, args, options)
+  def power_off(server, _options = {})
+    change_resource_state(server, :power_off_node)
   end
 
-  def power_off_now(args, options = {})
-    change_resource_state(:power_off_node_now, args, options)
+  def power_off_now(server, _options = {})
+    change_resource_state(server, :power_off_node_now)
   end
 
-  def restart(args, options = {})
-    change_resource_state(:power_restart_node, args, options)
+  def restart(server, _options = {})
+    change_resource_state(server, :power_restart_node)
   end
 
-  def restart_now(args, options = {})
-    change_resource_state(:power_restart_node_now, args, options)
+  def restart_now(server, _options = {})
+    change_resource_state(server, :power_restart_node_now)
   end
 
-  def restart_to_sys_setup(args, options = {})
-    change_resource_state(:power_restart_node_to_setup, args, options)
+  def restart_to_sys_setup(server, _options = {})
+    change_resource_state(server, :power_restart_node_to_setup)
   end
 
-  def restart_mgmt_controller(args, options = {})
-    change_resource_state(:power_restart_node_controller, args, options)
+  def restart_mgmt_controller(server, _options = {})
+    change_resource_state(server, :power_restart_node_controller)
   end
 
   def apply_config_pattern(args, options = {})
@@ -56,20 +58,6 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations
   end
 
   private
-
-  def change_resource_state(verb, args, options = {})
-    $lenovo_log.info("Entering change resource state for #{verb} and uuid: #{args.ems_ref} ")
-
-    # Retrieve a connection to the LXCA instance
-    client = create_client_connection
-
-    # Execute the action via the client
-    response = client.send(verb, args.ems_ref)
-
-    $lenovo_log.info("Exiting change resource state for #{verb} and uuid: #{args.ems_ref}")
-
-    response
-  end
 
   def create_client_connection
     auth = authentications.first
