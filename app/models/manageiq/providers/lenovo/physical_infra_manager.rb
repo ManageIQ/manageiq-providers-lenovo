@@ -19,4 +19,8 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::P
   def self.description
     @description ||= "Lenovo XClarity"
   end
+
+  def supports_provisioning?
+    true
+  end
 end
