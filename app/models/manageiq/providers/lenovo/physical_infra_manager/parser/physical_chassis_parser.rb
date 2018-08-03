@@ -13,22 +13,20 @@ module ManageIQ::Providers::Lenovo
         chassis = XClarityClient::Chassi.new(chassis_hash)
         result = parse(chassis, parent::ParserDictionaryConstants::PHYSICAL_CHASSIS)
 
-        result[:physical_rack]              = rack if rack
-        result[:vendor]                     = "lenovo"
-        result[:type]                       = parent::ParserDictionaryConstants::MIQ_TYPES["physical_chassis"]
-        result[:health_state]               = parent::ParserDictionaryConstants::HEALTH_STATE_MAP[chassis.cmmHealthState.nil? ? chassis.cmmHealthState : chassis.cmmHealthState.downcase]
-        result[:location_led_state]         = find_loc_led_state(chassis.leds)
-        result[:computer_system][:hardware] = get_hardwares(chassis)
+        loc_led_name, loc_led_state = get_location_led_info(chassis.leds)
+
+        result[:physical_rack]                       = rack if rack
+        result[:vendor]                              = "lenovo"
+        result[:type]                                = parent::ParserDictionaryConstants::MIQ_TYPES["physical_chassis"]
+        result[:health_state]                        = parent::ParserDictionaryConstants::HEALTH_STATE_MAP[chassis.cmmHealthState.nil? ? chassis.cmmHealthState : chassis.cmmHealthState.downcase]
+        result[:asset_detail][:location_led_ems_ref] = loc_led_name
+        result[:location_led_state]                  = loc_led_state
+        result[:computer_system][:hardware]          = get_hardwares(chassis)
 
         result
       end
 
       private
-
-      def find_loc_led_state(leds)
-        identification_led = leds.to_a.find { |led| parent::ParserDictionaryConstants::PROPERTIES_MAP[:led_identify_name].include?(led["name"]) }
-        identification_led.try(:[], "state")
-      end
 
       def get_hardwares(chassis)
         parsed_chassi_network = parse(chassis, parent::ParserDictionaryConstants::PHYSICAL_CHASSIS_NETWORK)

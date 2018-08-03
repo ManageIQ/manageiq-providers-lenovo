@@ -14,18 +14,21 @@ module ManageIQ::Providers::Lenovo
         node = XClarityClient::Node.new(node_hash)
         result = parse(node, parent::ParserDictionaryConstants::PHYSICAL_SERVER)
 
+        loc_led_name, loc_led_state = get_location_led_info(node.leds)
+
         # Keep track of the rack where this server is in, if it is in any rack
-        result[:physical_rack]              = rack if rack
-        result[:physical_chassis]           = chassis if chassis
-        result[:ems_compliance_name]        = compliance[:policy_name]
-        result[:ems_compliance_status]      = compliance[:status]
-        result[:vendor]                     = "lenovo"
-        result[:type]                       = parent::ParserDictionaryConstants::MIQ_TYPES["physical_server"]
-        result[:power_state]                = parent::ParserDictionaryConstants::POWER_STATE_MAP[node.powerStatus]
-        result[:health_state]               = parent::ParserDictionaryConstants::HEALTH_STATE_MAP[node.cmmHealthState.nil? ? node.cmmHealthState : node.cmmHealthState.downcase]
-        result[:host]                       = get_host_relationship(node.serialNumber)
-        result[:location_led_state]         = find_loc_led_state(node.leds)
-        result[:computer_system][:hardware] = get_hardwares(node)
+        result[:physical_rack]                       = rack if rack
+        result[:physical_chassis]                    = chassis if chassis
+        result[:ems_compliance_name]                 = compliance[:policy_name]
+        result[:ems_compliance_status]               = compliance[:status]
+        result[:vendor]                              = "lenovo"
+        result[:type]                                = parent::ParserDictionaryConstants::MIQ_TYPES["physical_server"]
+        result[:power_state]                         = parent::ParserDictionaryConstants::POWER_STATE_MAP[node.powerStatus]
+        result[:health_state]                        = parent::ParserDictionaryConstants::HEALTH_STATE_MAP[node.cmmHealthState.nil? ? node.cmmHealthState : node.cmmHealthState.downcase]
+        result[:host]                                = get_host_relationship(node.serialNumber)
+        result[:asset_detail][:location_led_ems_ref] = loc_led_name
+        result[:location_led_state]                  = loc_led_state
+        result[:computer_system][:hardware]          = get_hardwares(node)
 
         result
       end
@@ -37,12 +40,6 @@ module ManageIQ::Providers::Lenovo
       def get_host_relationship(serial_number)
         Host.find_by(:service_tag => serial_number) ||
           Host.joins(:hardware).find_by('hardwares.serial_number' => serial_number)
-      end
-
-      # Find the identification led state
-      def find_loc_led_state(leds)
-        identification_led = leds.to_a.find { |led| parent::ParserDictionaryConstants::PROPERTIES_MAP[:led_identify_name].include?(led["name"]) }
-        identification_led.try(:[], "state")
       end
 
       def get_hardwares(node)
