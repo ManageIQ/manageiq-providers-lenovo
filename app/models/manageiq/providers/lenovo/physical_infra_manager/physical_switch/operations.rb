@@ -11,6 +11,6 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalSwitch::Operat
   #   it does the `power_cycle_soft` operation.
   #
   def restart
-    change_resource_state(:power_cycle_soft_switch)
+    change_resource_state(self, :power_cycle_soft_switch)
   end
 end
