@@ -71,6 +71,7 @@
           - 'IMM0133'
           :detail:
           - 'PLAT0187'
+          :warning: []
           :name: Firmware
         :devices:
           :critical:
@@ -127,6 +128,7 @@
           - 'PLAT0520'
           :name: Devices
         :network:
+          :critical: []
           :detail:
           - 'IMM0056'
           - 'IMM0025'
@@ -143,6 +145,7 @@
           - 'IMM0013'
           - 'IMM0059'
         :login:
+          :critical: []
           :detail:
           - 'IMM0014'
           - 'IMM0154'
@@ -180,6 +183,7 @@
           - 'PLAT0036'
           - 'IMM0034'
           - 'PLAT0446'
+          :warning: []
           :name: Security
         :status:
           :detail:
@@ -355,11 +359,13 @@
           :warning:
           - 'IMM0012'
         :addition:
+          :critical: []
           :detail:
           - 'IMM0106'
           - 'PLAT0084'
           - 'IMM0100'
           - 'IMM0096'
+          :warning: []
 :http_proxy:
   :lenovo:
     :host:
