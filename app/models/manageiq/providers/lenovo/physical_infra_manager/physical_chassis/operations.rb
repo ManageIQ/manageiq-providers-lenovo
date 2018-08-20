@@ -5,6 +5,7 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalChassis::Opera
   extend ActiveSupport::Concern
 
   include_concern 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::Sender'
+  include_concern 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::ComponentAnsibleSender'
 
   def blink_loc_led
     change_led_state(self, :blink_loc_led_chassis)
