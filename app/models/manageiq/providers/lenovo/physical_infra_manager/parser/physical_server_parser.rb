@@ -14,8 +14,6 @@ module ManageIQ::Providers::Lenovo
         node = XClarityClient::Node.new(node_hash)
         result = parse(node, parent::ParserDictionaryConstants::PHYSICAL_SERVER)
 
-        loc_led_name, loc_led_state = get_location_led_info(node.leds)
-
         # Keep track of the rack where this server is in, if it is in any rack
         result[:physical_rack]                       = rack if rack
         result[:physical_chassis]                    = chassis if chassis
@@ -26,9 +24,9 @@ module ManageIQ::Providers::Lenovo
         result[:power_state]                         = POWER_STATE_MAP[node.powerStatus]
         result[:health_state]                        = HEALTH_STATE_MAP[node.cmmHealthState.nil? ? node.cmmHealthState : node.cmmHealthState.downcase]
         result[:host]                                = get_host_relationship(node.serialNumber)
-        result[:asset_detail][:location_led_ems_ref] = loc_led_name
-        result[:location_led_state]                  = loc_led_state
         result[:computer_system][:hardware]          = get_hardwares(node)
+
+        result[:asset_detail].merge!(get_location_led_info(node.leds))
 
         result
       end

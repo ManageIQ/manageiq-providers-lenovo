@@ -184,7 +184,6 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       expect(physical_chassis[:health_state]).to eq("Valid")
       expected_type = "ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalChassis"
       expect(physical_chassis[:type]).to eq(expected_type)
-      expect(physical_chassis[:location_led_state]).to eq("Off")
     end
 
     it 'will parse physical chassis asset detail data' do
@@ -202,6 +201,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       expect(asset_detail[:rack_name]).to be_nil
       expect(asset_detail[:lowest_rack_unit]).to eq(0)
       expect(asset_detail[:location_led_ems_ref]).to eq("Location")
+      expect(asset_detail[:location_led_state]).to eq("Off")
     end
 
     it 'will parse physical chassis hardware data' do
@@ -294,6 +294,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       description
       lowest_rack_unit
       location_led_ems_ref
+      location_led_state
     ).each do |attr|
       it "will retrieve #{attr} of asset detail" do
         asset_detail = @result[:physical_servers][0][:asset_detail]

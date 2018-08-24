@@ -84,7 +84,11 @@ module ManageIQ::Providers::Lenovo
       def get_location_led_info(leds)
         return if leds.blank?
         identification_led = leds.to_a.find { |led| PROPERTIES_MAP[:led_identify_name].include?(led["name"]) }
-        return identification_led.try(:[], "name"), identification_led.try(:[], "state")
+
+        {
+          :location_led_ems_ref => identification_led.try(:[], "name"),
+          :location_led_state   => identification_led.try(:[], "state")
+        }
       end
     end
   end

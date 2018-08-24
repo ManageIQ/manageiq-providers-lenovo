@@ -13,15 +13,13 @@ module ManageIQ::Providers::Lenovo
         chassis = XClarityClient::Chassi.new(chassis_hash)
         result = parse(chassis, parent::ParserDictionaryConstants::PHYSICAL_CHASSIS)
 
-        loc_led_name, loc_led_state = get_location_led_info(chassis.leds)
-
         result[:physical_rack]                       = rack if rack
         result[:vendor]                              = "lenovo"
         result[:type]                                = MIQ_TYPES["physical_chassis"]
         result[:health_state]                        = HEALTH_STATE_MAP[chassis.cmmHealthState.nil? ? chassis.cmmHealthState : chassis.cmmHealthState.downcase]
-        result[:asset_detail][:location_led_ems_ref] = loc_led_name
-        result[:location_led_state]                  = loc_led_state
         result[:computer_system][:hardware]          = get_hardwares(chassis)
+
+        result[:asset_detail].merge!(get_location_led_info(chassis.leds))
 
         result
       end
