@@ -74,7 +74,7 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
 
     def connection_rescue_block
       yield
-    rescue StandardError => err
+    rescue => err
       miq_exception = translate_exception(err)
       raise unless miq_exception
 
