@@ -27,8 +27,8 @@ module ManageIQ::Providers::Lenovo
 
       def get_hardwares(physical_switch)
         {
-          :firmwares     => get_firmwares(physical_switch),
-          :networks      => get_networks(physical_switch)
+          :firmwares => get_firmwares(physical_switch),
+          :networks  => get_networks(physical_switch)
         }
       end
 
