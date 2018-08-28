@@ -3,10 +3,6 @@ module ManageIQ::Providers::Lenovo
   class PhysicalInfraManager::RefreshParser < EmsRefresh::Parsers::Infra
     include ManageIQ::Providers::Lenovo::RefreshHelperMethods
 
-    def self.miq_template_type
-      parent::Parser::ParserDictionaryConstants::MIQ_TYPES["template"]
-    end
-
     def initialize(ems, _options = nil)
       ems_auth = ems.authentications.first
 
