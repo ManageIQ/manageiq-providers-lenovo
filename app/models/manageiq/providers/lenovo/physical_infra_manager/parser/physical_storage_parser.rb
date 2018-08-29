@@ -16,8 +16,8 @@ module ManageIQ::Providers::Lenovo
 
         result[:physical_rack]              = rack if rack
         result[:physical_chassis]           = chassis if chassis
-        result[:type]                       = parent::ParserDictionaryConstants::MIQ_TYPES["physical_storage"]
-        result[:health_state]               = parent::ParserDictionaryConstants::HEALTH_STATE_MAP[storage.cmmHealthState.nil? ? storage.cmmHealthState : storage.cmmHealthState.downcase]
+        result[:type]                       = MIQ_TYPES["physical_storage"]
+        result[:health_state]               = HEALTH_STATE_MAP[storage.cmmHealthState.nil? ? storage.cmmHealthState : storage.cmmHealthState.downcase]
         result[:computer_system][:hardware] = get_hardwares(storage)
 
         result

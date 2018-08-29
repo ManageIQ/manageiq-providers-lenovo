@@ -17,8 +17,8 @@ module ManageIQ::Providers::Lenovo
 
         result[:physical_rack]                       = rack if rack
         result[:vendor]                              = "lenovo"
-        result[:type]                                = parent::ParserDictionaryConstants::MIQ_TYPES["physical_chassis"]
-        result[:health_state]                        = parent::ParserDictionaryConstants::HEALTH_STATE_MAP[chassis.cmmHealthState.nil? ? chassis.cmmHealthState : chassis.cmmHealthState.downcase]
+        result[:type]                                = MIQ_TYPES["physical_chassis"]
+        result[:health_state]                        = HEALTH_STATE_MAP[chassis.cmmHealthState.nil? ? chassis.cmmHealthState : chassis.cmmHealthState.downcase]
         result[:asset_detail][:location_led_ems_ref] = loc_led_name
         result[:location_led_state]                  = loc_led_state
         result[:computer_system][:hardware]          = get_hardwares(chassis)
