@@ -23,13 +23,12 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Stream
           if pool < 1
             stream.stop
             expect(events.count).to be == 1
-            expect($log).to receive(:info).with(/Stopping collect of LXCA events .../)
           else
-            expect(events.count).to be == 20
+            expect(events.count).to be == 8
           end
         end
-        expect(result.count).to be == 21
-        expect(result.all? { |item| item[:full_data][:severity_id] == 200 }).to be true
+        expect(result.count).to be == 9
+        expect(result.all? { |item| item[:full_data][:severity_id] == 300 }).to be true
       end
     end
   end
