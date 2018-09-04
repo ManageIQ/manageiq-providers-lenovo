@@ -22,9 +22,9 @@ module ManageIQ::Providers::Lenovo
         result[:ems_compliance_name]                 = compliance[:policy_name]
         result[:ems_compliance_status]               = compliance[:status]
         result[:vendor]                              = "lenovo"
-        result[:type]                                = parent::ParserDictionaryConstants::MIQ_TYPES["physical_server"]
-        result[:power_state]                         = parent::ParserDictionaryConstants::POWER_STATE_MAP[node.powerStatus]
-        result[:health_state]                        = parent::ParserDictionaryConstants::HEALTH_STATE_MAP[node.cmmHealthState.nil? ? node.cmmHealthState : node.cmmHealthState.downcase]
+        result[:type]                                = MIQ_TYPES["physical_server"]
+        result[:power_state]                         = POWER_STATE_MAP[node.powerStatus]
+        result[:health_state]                        = HEALTH_STATE_MAP[node.cmmHealthState.nil? ? node.cmmHealthState : node.cmmHealthState.downcase]
         result[:host]                                = get_host_relationship(node.serialNumber)
         result[:asset_detail][:location_led_ems_ref] = loc_led_name
         result[:location_led_state]                  = loc_led_state
