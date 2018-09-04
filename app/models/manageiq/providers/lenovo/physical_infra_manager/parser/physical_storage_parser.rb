@@ -1,6 +1,39 @@
 module ManageIQ::Providers::Lenovo
   class PhysicalInfraManager::Parser::PhysicalStorageParser < PhysicalInfraManager::Parser::ComponentParser
     class << self
+      # Mapping between fields inside a [XClarityClient::Storage] to a [Hash] with symbols of PhysicalStorage fields
+      PHYSICAL_STORAGE = {
+        :name                 => 'name',
+        :uid_ems              => 'uuid',
+        :ems_ref              => 'uuid',
+        :access_state         => 'accessState',
+        :overall_health_state => 'overallHealthState',
+        :drive_bays           => 'driveBays',
+        :enclosures           => 'enclosureCount',
+        :canister_slots       => 'canisterSlots',
+        :asset_detail         => {
+          :product_name     => 'productName',
+          :machine_type     => 'machineType',
+          :model            => 'model',
+          :serial_number    => 'serialNumber',
+          :contact          => 'contact',
+          :description      => 'description',
+          :location         => 'location.location',
+          :room             => 'location.room',
+          :rack_name        => 'location.rack',
+          :lowest_rack_unit => 'location.lowestRackUnit',
+        },
+        :computer_system      => {
+          :hardware => {
+            :guest_devices => '',
+          },
+        },
+      }.freeze
+
+      PHYSICAL_STORAGE_NETWORK = {
+        :ipaddress => 'mgmtProcIPaddress',
+      }.freeze
+
       #
       # Parse a storage into a hash
       #
@@ -12,7 +45,7 @@ module ManageIQ::Providers::Lenovo
       #
       def parse_physical_storage(storage_hash, rack, chassis)
         storage = XClarityClient::Storage.new(storage_hash)
-        result = parse(storage, parent::ParserDictionaryConstants::PHYSICAL_STORAGE)
+        result = parse(storage, PHYSICAL_STORAGE)
 
         result[:physical_rack]              = rack if rack
         result[:physical_chassis]           = chassis if chassis
@@ -26,7 +59,7 @@ module ManageIQ::Providers::Lenovo
       private
 
       def get_hardwares(storage)
-        parsed_storage_network = parse(storage, parent::ParserDictionaryConstants::PHYSICAL_STORAGE_NETWORK)
+        parsed_storage_network = parse(storage, PHYSICAL_STORAGE_NETWORK)
 
         {
           :guest_devices => [{
