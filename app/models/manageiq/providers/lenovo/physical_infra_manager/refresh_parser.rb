@@ -49,8 +49,19 @@ module ManageIQ::Providers::Lenovo
       inventory[:physical_storages] = []
 
       racks = get_plain_physical_racks
+      storages = get_plain_physical_storages
+
+      parent_storages = {}
+
+      storages.each do |storage|
+        parent_uuid = storage.parent['uuid']
+
+        parent_storages[parent_uuid] = [] if parent_storages[parent_uuid].nil?
+        parent_storages[parent_uuid] << storage
+      end
+
       racks.each do |rack|
-        parsed_rack = nil
+        parsed_rack = {}
         # One of the API's racks is a mock to indicate physical chassis and servers that are not inside any rack.
         # This rack has the UUID equals to 'STANDALONE_OBJECT_UUID'
         if rack.UUID != 'STANDALONE_OBJECT_UUID'
@@ -79,19 +90,24 @@ module ManageIQ::Providers::Lenovo
           end
 
           # Retrieve and parse the storages that are inside the chassis
-          chassis_storages = get_plain_physical_storages_inside_chassis(chassis)
-          chassis_storages.each do |storage|
-            parsed_storage = @parser.parse_physical_storage(storage, parsed_rack, parsed_chassis)
+          chassis_storages = parent_storages.delete(parsed_chassis[:uid_ems])
+          chassis_storages&.each do |storage|
+            parsed_storage = @parser.parse_physical_storage(storage, :chassis => parsed_chassis)
             inventory[:physical_storages] << parsed_storage
           end
         end
 
         # Retrieve and parse storages that are inside the rack.
-        rack_storages = get_plain_physical_storages_inside_rack(rack)
-        rack_storages.each do |storage|
-          parsed_storage = @parser.parse_physical_storage(storage, parsed_rack)
+        rack_storages = parent_storages.delete(parsed_rack[:uid_ems])
+        rack_storages&.each do |storage|
+          parsed_storage = @parser.parse_physical_storage(storage, :rack => parsed_rack)
           inventory[:physical_storages] << parsed_storage
         end
+      end
+
+      # This parses all storages disassociated to others components (such as racks or chassis)
+      parent_storages.values.flatten.each do |storage|
+        inventory[:physical_storages] << @parser.parse_physical_storage(storage)
       end
 
       inventory
@@ -102,6 +118,11 @@ module ManageIQ::Providers::Lenovo
       @connection.discover_cabinet(:status => "includestandalone")
     end
 
+    # Returns all physical storages from the api.
+    def get_plain_physical_storages
+      @connection.discover_storages
+    end
+
     # Returns physical servers that are inside a rack but not inside a chassis.
     def get_plain_physical_servers_inside_rack(rack)
       rack.nodeList.map { |node| node["itemInventory"] }
@@ -110,16 +131,6 @@ module ManageIQ::Providers::Lenovo
     # Returns physical chassis that are inside a rack.
     def get_plain_physical_chassis_inside_rack(rack)
       rack.chassisList.map { |chassis| chassis["itemInventory"] }
-    end
-
-    # Returns physical storages that are inside a rack.
-    def get_plain_physical_storages_inside_rack(rack)
-      rack.storageList.map { |storage| storage["itemInventory"] }
-    end
-
-    # Returns physical storages that are inside a chassis.
-    def get_plain_physical_storages_inside_chassis(chassis)
-      chassis["nodes"].select { |node| node["type"] == "SCU" && node["canisterSlots"].present? }
     end
 
     # Returns physical servers that are inside a chassis.

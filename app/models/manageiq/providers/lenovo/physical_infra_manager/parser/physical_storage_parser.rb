@@ -38,8 +38,7 @@ module ManageIQ::Providers::Lenovo
       #
       # @return [Hash] containing the physical storage information
       #
-      def parse_physical_storage(storage_hash, rack, chassis)
-        storage = XClarityClient::Storage.new(storage_hash)
+      def parse_physical_storage(storage, rack, chassis)
         result = parse(storage, PHYSICAL_STORAGE)
 
         result[:physical_rack]    = rack if rack

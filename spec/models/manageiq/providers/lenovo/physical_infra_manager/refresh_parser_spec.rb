@@ -6,6 +6,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
     VCR.insert_cassette("#{vcr_path}/mock_aicc", options)
     VCR.insert_cassette("#{vcr_path}/mock_cabinet", options)
     VCR.insert_cassette("#{vcr_path}/mock_config_patterns", options)
+    VCR.insert_cassette("#{vcr_path}/mock_storages", options)
     VCR.insert_cassette("#{vcr_path}/mock_switches", options)
     VCR.insert_cassette("#{vcr_path}/mock_compliance_policy", options)
   end
@@ -91,7 +92,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
     end
 
     it 'will retrieve physical storages' do
-      expect(@result[:physical_storages].size).to eq(2)
+      expect(@result[:physical_storages].size).to eq(3)
     end
 
     it 'will parse physical storage fields' do
@@ -189,6 +190,13 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       physical_storage = @result[:physical_storages].first
 
       expect(physical_storage[:physical_chassis]).to eq(physical_chassis)
+    end
+
+    it 'will have a physical storage that is not associated with another component' do
+      physical_storage = @result[:physical_storages].third
+
+      expect(physical_storage[:physical_rack]).to be_nil
+      expect(physical_storage[:physical_chassis]).to be_nil
     end
   end
 

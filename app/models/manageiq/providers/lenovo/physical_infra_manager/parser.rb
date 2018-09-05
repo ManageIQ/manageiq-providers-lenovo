@@ -41,7 +41,7 @@ module ManageIQ::Providers::Lenovo
       PhysicalServerParser.parse_physical_server(node, compliance, rack, chassis)
     end
 
-    def parse_physical_storage(node, rack = nil, chassis = nil)
+    def parse_physical_storage(node, rack: nil, chassis: nil)
       PhysicalStorageParser.parse_physical_storage(node, rack, chassis)
     end
 

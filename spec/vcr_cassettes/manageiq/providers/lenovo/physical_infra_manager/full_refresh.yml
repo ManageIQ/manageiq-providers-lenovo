@@ -1334,6 +1334,900 @@ http_interactions:
   recorded_at: Tue, 06 Feb 2018 20:20:04 GMT
 - request:
     method: get
+    uri: https://lxcahost/storage
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - LXCA via Ruby Client/0.5.9 (ManageIQ/master)
+      Authorization:
+      - Basic bHhjYzpQQVNTVzByRA==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 06 Feb 2018 20:20:04 GMT
+      Set-Cookie:
+      - userAuthenticationMethod=local;Path=/;Secure
+      Expires:
+      - "-1"
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Strict-Transport-Security:
+      - max-age=86400; includeSubDomains;
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Content-Security-Policy:
+      - 'default-src https:; script-src https: ''unsafe-inline'' ''unsafe-eval'';
+        style-src https: ''unsafe-inline'''
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '1'
+      Content-Type:
+      - application/com.lenovo.lxca-v1.2.2+json; charset=UTF-8
+      Vary:
+      - Accept-Encoding, User-Agent
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"storageList": [
+                      {
+                        "name":"S8000-1",
+                        "uuid":"123400C0FF261234",
+                        "accessState":"Online",
+                        "productName":"S3200",
+                        "type":"Lenovo Storage",
+                        "machineType":"6411",
+                        "model":"S3200",
+                        "serialNumber":"2683AF",
+                        "productBrand":"Storage",
+                        "vendorName":"Lenovo",
+                        "scsiProductId":"S3200",
+                        "scsiVendorId":"Lenovo",
+                        "description":"RTP_S3200_1",
+                        "overallHealthState":"Critical",
+                        "isConnectionTrusted":"true",
+                        "wwnn":"208000C0FF2683AF",
+                        "systemLocation":"LXCA_empty_field,LXCA_empty_field,LXCA_empty_field",
+                        "contact":"Bay Nguyen",
+                        "location":{
+                            "lowestRackUnit":0,
+                            "location":"",
+                            "rack":"",
+                            "room":""
+                        },
+                        "otherMcStatus":"Not Communicating",
+                        "pfu":"Idle",
+                        "healthReason":"A subcomponent of this component is unhealthy.",
+                        "driveBays":12,
+                        "supportedLocales":"English (English), Arabic (العربية), Portuguese (português), Spanish (español), French (français), German (Deutsch), Italian (italiano), Japanese (日本語), Korean (한국어), Dutch (Nederlands), Russian (русский), Chinese-Simplified (简体中文), Chinese-Traditional (繁體中文)",
+                        "canisterSlots":2,
+                        "ipv4Addresses":[
+                            "10.243.5.61",
+                            "10.243.5.62"
+                        ],
+                        "userDefinedName":"S3200-1",
+                        "diskGroups":0,
+                        "cmmHealthState":"Critical",
+                        "userDescription":"RTP_S3200_1",
+                        "excludedHealthState":"Critical",
+                        "virtualPools":0,
+                        "uri":"storage/208000C0FF2683AF",
+                        "enclosures":[
+                            {
+                              "enclosureInfo":{
+                                  "wwn":"500C0FF02683AF3C",
+                                  "model":"S3200",
+                                  "vendorName":"Lenovo",
+                                  "status":"Up",
+                                  "diskCount":0,
+                                  "enclosureId":0,
+                                  "driveBays":12,
+                                  "midplaneSerialNumber":"11S00WC065Y010DH58A0C8",
+                                  "health":"Degraded"
+                              },
+                              "location":{
+                                  "lowestRackUnit":0,
+                                  "location":"",
+                                  "rack":"",
+                                  "room":""
+                              },
+                              "frus":[
+                                  {
+                                    "fruStatus":"OK",
+                                    "description":"CHASSIS 6G 2U12 V2 LENOVO",
+                                    "serialNumber":"11S00WC065Y010DH58A0C8",
+                                    "shortName":"Midplane/Chassis",
+                                    "fruLocation":"MID-PLANE SLOT",
+                                    "partNumber":"00WC065"
+                                  },
+                                  {
+                                    "fruStatus":"OK",
+                                    "description":"PSU 595W AC 2U NO SW LENOVO",
+                                    "serialNumber":"11S00WC067Y010DH58A0YC",
+                                    "shortName":"AC Power Supply",
+                                    "fruLocation":"RIGHT PSU SLOT",
+                                    "partNumber":"00WC067"
+                                  },
+                                  {
+                                    "fruStatus":"OK",
+                                    "description":"PSU 595W AC 2U NO SW LENOVO",
+                                    "serialNumber":"11S00WC067Y010DH58A0YD",
+                                    "shortName":"AC Power Supply",
+                                    "fruLocation":"LEFT PSU SLOT",
+                                    "partNumber":"00WC067"
+                                  },
+                                  {
+                                    "fruStatus":"OK",
+                                    "description":"SPS Memory Card",
+                                    "serialNumber":"",
+                                    "shortName":"Memory Card",
+                                    "fruLocation":"UPPER IOM MEMORY CARD SLOT",
+                                    "partNumber":"40-00000053"
+                                  },
+                                  {
+                                    "fruStatus":"Fault",
+                                    "description":"48X4 4xCNC RIOM-LX 6GB LENOVO",
+                                    "serialNumber":"11S00WC050Y010DH57V0LX",
+                                    "shortName":"RAID IOM",
+                                    "fruLocation":"LOWER IOM SLOT",
+                                    "partNumber":"00WC050"
+                                  },
+                                  {
+                                    "fruStatus":"OK",
+                                    "description":"48X4 4xCNC RIOM-LX 6GB LENOVO",
+                                    "serialNumber":"11S00WC050Y010DH57V0KH",
+                                    "shortName":"RAID IOM",
+                                    "fruLocation":"UPPER IOM SLOT",
+                                    "partNumber":"00WC050"
+                                  },
+                                  {
+                                    "fruStatus":"Absent",
+                                    "description":"",
+                                    "serialNumber":"",
+                                    "shortName":"",
+                                    "fruLocation":"LOWER IOM MEMORY CARD SLOT",
+                                    "partNumber":""
+                                  }
+                              ],
+                              "powerSupplies":[
+                                  {
+                                    "position":"Right",
+                                    "model":"00WC067",
+                                    "vendorName":"",
+                                    "status":"Up",
+                                    "healthReason":"",
+                                    "health":"OK",
+                                    "healthRecommendation":""
+                                  },
+                                  {
+                                    "position":"Left",
+                                    "model":"00WC067",
+                                    "vendorName":"",
+                                    "status":"Up",
+                                    "healthReason":"",
+                                    "health":"OK",
+                                    "healthRecommendation":""
+                                  }
+                              ],
+                              "drives":[
+
+                              ],
+                              "canisters":[
+                                  {
+                                    "position":"Top",
+                                    "systemCacheMemory":6144,
+                                    "diskBusType":"SAS",
+                                    "phyIsolation":"Enabled",
+                                    "controllerRedundancyStatus":"Operational but not redundant",
+                                    "serialNumber":"11S00WC050Y010DH57V0KH",
+                                    "networkPorts":{
+                                        "gateway":"10.243.0.1",
+                                        "networkMask":"255.255.240.0",
+                                        "ipVersion":4,
+                                        "name":"mgmtport_a",
+                                        "macAddress":"00:c0:ff:26:5e:de",
+                                        "healthReason":"",
+                                        "health":"OK",
+                                        "addressingMode":"Manual",
+                                        "healthRecommendation":"",
+                                        "ipAddress":"10.243.5.61"
+                                    },
+                                    "diskChannels":2,
+                                    "revision":"0",
+                                    "cmmDisplayName":"controller_a",
+                                    "healthReason":"",
+                                    "healthRecommendation":"",
+                                    "controllerId":"A",
+                                    "firmware":{
+                                        "storageControllerCpuType":"Gladden 1300MHz",
+                                        "bundleVersion":"No System Bundle",
+                                        "buildDate":"",
+                                        "storageControllerCodeVersion":"GLS221R08-01",
+                                        "storageControllerCodeBaselevel":"GLS221R08-01",
+                                        "storageControllerLoaderCodeVersion":"27.016",
+                                        "capiVersion":"3.19",
+                                        "managementControllerCodeVersion":"GLM221X003",
+                                        "managementControllerLoaderCodeVersion":"6.18.22216",
+                                        "expanderControllerCodeVersion":"3202",
+                                        "cpldCodeVersion":"55",
+                                        "hardwareVersion":"5.2",
+                                        "hostInterfaceModuleVersion":"11",
+                                        "hostInterfaceModuleModel":"6",
+                                        "backplaneType":"7",
+                                        "hostInterfaceHardwareVersion":"2",
+                                        "diskInterfaceHardwareVersion":"3",
+                                        "scBootMemoryReferenceCodeVersion":"1.2.1.10"
+                                    },
+                                    "status":"Operational",
+                                    "failOverReason":"Shutdown",
+                                    "health":"Normal",
+                                    "disks":0,
+                                    "powerState":"On",
+                                    "failedOverToThisController":"Yes",
+                                    "hostPorts":4,
+                                    "controllerRedundancyMode":"Failed Over",
+                                    "hardwareVersion":"5.2",
+                                    "expansionPorts":[
+                                        {
+                                          "status":"Disconnected",
+                                          "name":"Out Port",
+                                          "healthReason":"No drive enclosure is connected to this expansion port. This is normal if this is the last (or only) enclosure in the cabling sequence of the system.",
+                                          "health":"N/A",
+                                          "healthRecommendation":"- No action is required."
+                                        }
+                                    ],
+                                    "energyMetrics":{
+                                        "memoryTemperature":[
+
+                                        ],
+                                        "diskControllerTemperature":[
+
+                                        ],
+                                        "inletAirTemperature":[
+
+                                        ]
+                                    },
+                                    "ports":[
+                                        {
+                                          "port":"A3",
+                                          "reason":"There is no active connection to this host port.",
+                                          "configSpeed":"Auto",
+                                          "status":"Disconnected",
+                                          "action":"- If this host port is intentionally unused, no action is required.\n  - Otherwise, use an appropriate interface cable to connect this host port to a switch or host.\n  - If a cable is connected, check the cable and the switch or host for problems.",
+                                          "topology":"PTP",
+                                          "targetId":"237000c0ff2683af",
+                                          "actualSpeed":"",
+                                          "health":"N/A",
+                                          "media":"FC(-)"
+                                        },
+                                        {
+                                          "port":"A1",
+                                          "reason":"There is no active connection to this host port.",
+                                          "configSpeed":"Auto",
+                                          "status":"Disconnected",
+                                          "action":"- If this host port is intentionally unused, no action is required.\n  - Otherwise, use an appropriate interface cable to connect this host port to a switch or host.\n  - If a cable is connected, check the cable and the switch or host for problems.",
+                                          "topology":"PTP",
+                                          "targetId":"217000c0ff2683af",
+                                          "actualSpeed":"",
+                                          "health":"N/A",
+                                          "media":"FC(-)"
+                                        },
+                                        {
+                                          "port":"A0",
+                                          "reason":"There is no active connection to this host port.",
+                                          "configSpeed":"Auto",
+                                          "status":"Disconnected",
+                                          "action":"- If this host port is intentionally unused, no action is required.\n  - Otherwise, use an appropriate interface cable to connect this host port to a switch or host.\n  - If a cable is connected, check the cable and the switch or host for problems.",
+                                          "topology":"PTP",
+                                          "targetId":"207000c0ff2683af",
+                                          "actualSpeed":"",
+                                          "health":"N/A",
+                                          "media":"FC(-)"
+                                        },
+                                        {
+                                          "port":"A2",
+                                          "reason":"There is no active connection to this host port.",
+                                          "configSpeed":"Auto",
+                                          "status":"Disconnected",
+                                          "action":"- If this host port is intentionally unused, no action is required.\n  - Otherwise, use an appropriate interface cable to connect this host port to a switch or host.\n  - If a cable is connected, check the cable and the switch or host for problems.",
+                                          "topology":"PTP",
+                                          "targetId":"227000c0ff2683af",
+                                          "actualSpeed":"",
+                                          "health":"N/A",
+                                          "media":"FC(-)"
+                                        }
+                                    ]
+                                  },
+                                  {
+                                    "position":"Bottom",
+                                    "systemCacheMemory":6144,
+                                    "diskBusType":"SAS",
+                                    "phyIsolation":"Enabled",
+                                    "controllerRedundancyStatus":"Operational but not redundant",
+                                    "serialNumber":"11S00WC050Y010DH57V0LX",
+                                    "networkPorts":{
+                                        "gateway":"10.243.0.1",
+                                        "networkMask":"255.255.240.0",
+                                        "ipVersion":4,
+                                        "name":"mgmtport_b",
+                                        "macAddress":"00:c0:ff:26:5e:fb",
+                                        "healthReason":"The network port health is unknown. It may be unhealthy.",
+                                        "health":"Unknown",
+                                        "addressingMode":"Manual",
+                                        "healthRecommendation":"- Check in the event log for events related to this component and follow the recommended actions for those events.",
+                                        "ipAddress":"10.243.5.62"
+                                    },
+                                    "diskChannels":2,
+                                    "revision":"0",
+                                    "cmmDisplayName":"controller_b",
+                                    "healthReason":"The controller is not operational.",
+                                    "healthRecommendation":"- Restart the Storage Controller in this controller module, unless it is performing an operation where it is normal for it to be shut down, such as firmware update.",
+                                    "controllerId":"B",
+                                    "firmware":{
+                                        "storageControllerCpuType":"Not Present",
+                                        "bundleVersion":"Not Present",
+                                        "buildDate":"Not Present",
+                                        "storageControllerCodeVersion":"Not Present",
+                                        "storageControllerCodeBaselevel":"Not Present",
+                                        "storageControllerLoaderCodeVersion":"Not Present",
+                                        "capiVersion":"Not Present",
+                                        "managementControllerCodeVersion":"Not Present",
+                                        "managementControllerLoaderCodeVersion":"Not Present",
+                                        "expanderControllerCodeVersion":"Not Present",
+                                        "cpldCodeVersion":"Not Present",
+                                        "hardwareVersion":"Not Present",
+                                        "hostInterfaceModuleVersion":"Not Present",
+                                        "hostInterfaceModuleModel":"Not Present",
+                                        "backplaneType":"0",
+                                        "hostInterfaceHardwareVersion":"0",
+                                        "diskInterfaceHardwareVersion":"0",
+                                        "scBootMemoryReferenceCodeVersion":"Not Present"
+                                    },
+                                    "status":"Down",
+                                    "failOverReason":"Not applicable",
+                                    "health":"Critical",
+                                    "disks":0,
+                                    "powerState":"Off",
+                                    "failedOverToThisController":"No",
+                                    "hostPorts":4,
+                                    "controllerRedundancyMode":"Failed Over",
+                                    "hardwareVersion":"5.2",
+                                    "expansionPorts":[
+                                        {
+                                          "status":"Not Present",
+                                          "name":"Out Port",
+                                          "healthReason":"The controller that contains this subcomponent is not operational.",
+                                          "health":"Unknown",
+                                          "healthRecommendation":"- See the health information for the controller module that contains this component."
+                                        }
+                                    ],
+                                    "energyMetrics":{
+                                        "memoryTemperature":[
+
+                                        ],
+                                        "diskControllerTemperature":[
+
+                                        ],
+                                        "inletAirTemperature":[
+
+                                        ]
+                                    },
+                                    "ports":[
+                                        {
+                                          "port":"B1",
+                                          "reason":"The controller that contains this subcomponent is not operational.",
+                                          "configSpeed":"Auto",
+                                          "status":"Not Present",
+                                          "action":"- See the health information for the controller module that contains this component.",
+                                          "topology":"PTP",
+                                          "targetId":"257000c0ff2683af",
+                                          "actualSpeed":"",
+                                          "health":"Unknown",
+                                          "media":"FC(-)"
+                                        },
+                                        {
+                                          "port":"B0",
+                                          "reason":"The controller that contains this subcomponent is not operational.",
+                                          "configSpeed":"Auto",
+                                          "status":"Not Present",
+                                          "action":"- See the health information for the controller module that contains this component.",
+                                          "topology":"PTP",
+                                          "targetId":"247000c0ff2683af",
+                                          "actualSpeed":"",
+                                          "health":"Unknown",
+                                          "media":"FC(-)"
+                                        },
+                                        {
+                                          "port":"B2",
+                                          "reason":"The controller that contains this subcomponent is not operational.",
+                                          "configSpeed":"Auto",
+                                          "status":"Not Present",
+                                          "action":"- See the health information for the controller module that contains this component.",
+                                          "topology":"PTP",
+                                          "targetId":"267000c0ff2683af",
+                                          "actualSpeed":"",
+                                          "health":"Unknown",
+                                          "media":"FC(-)"
+                                        },
+                                        {
+                                          "port":"B3",
+                                          "reason":"The controller that contains this subcomponent is not operational.",
+                                          "configSpeed":"Auto",
+                                          "status":"Not Present",
+                                          "action":"- See the health information for the controller module that contains this component.",
+                                          "topology":"PTP",
+                                          "targetId":"277000c0ff2683af",
+                                          "actualSpeed":"",
+                                          "health":"Unknown",
+                                          "media":"FC(-)"
+                                        }
+                                    ]
+                                  }
+                              ],
+                              "energyMetrics":{
+                                  "enclosurePower":[
+
+                                  ]
+                              },
+                              "slots":[
+
+                              ]
+                            }
+                        ],
+                        "parent":{
+                            "uuid":"9841028B07714FD09D9297C6D1A4943E",
+                            "uri":""
+                        },
+                        "enclosureCount":1,
+                        "securityDescriptor":{
+                            "managedAuthSupported":false,
+                            "publicAccess":false,
+                            "uri":"storage/208000c0ff2683af",
+                            "roleGroups":[
+
+                            ],
+                            "managedAuthEnabled":false
+                        },
+                        "mgmtProcIPaddress":"10.243.5.61"
+                      },
+                      {
+                        "name":"S3200-1",
+                        "uuid":"208000C0FF2683AF",
+                        "accessState":"Online",
+                        "productName":"S3200",
+                        "type":"Lenovo Storage",
+                        "machineType":"6411",
+                        "model":"S3200",
+                        "serialNumber":"2683AF",
+                        "productBrand":"Storage",
+                        "vendorName":"Lenovo",
+                        "scsiProductId":"S3200",
+                        "scsiVendorId":"Lenovo",
+                        "description":"RTP_S3200_1",
+                        "overallHealthState":"Critical",
+                        "isConnectionTrusted":"true",
+                        "wwnn":"208000C0FF2683AF",
+                        "systemLocation":"LXCA_empty_field,LXCA_empty_field,LXCA_empty_field",
+                        "contact":"Bay Nguyen",
+                        "location":{
+                            "lowestRackUnit":0,
+                            "location":"",
+                            "rack":"",
+                            "room":""
+                        },
+                        "otherMcStatus":"Not Communicating",
+                        "pfu":"Idle",
+                        "healthReason":"A subcomponent of this component is unhealthy.",
+                        "driveBays":12,
+                        "supportedLocales":"English (English), Arabic (العربية), Portuguese (português), Spanish (español), French (français), German (Deutsch), Italian (italiano), Japanese (日本語), Korean (한국어), Dutch (Nederlands), Russian (русский), Chinese-Simplified (简体中文), Chinese-Traditional (繁體中文)",
+                        "canisterSlots":2,
+                        "ipv4Addresses":[
+                            "10.243.5.61",
+                            "10.243.5.62"
+                        ],
+                        "userDefinedName":"S3200-1",
+                        "diskGroups":0,
+                        "cmmHealthState":"Critical",
+                        "userDescription":"RTP_S3200_1",
+                        "excludedHealthState":"Critical",
+                        "virtualPools":0,
+                        "uri":"storage/208000C0FF2683AF",
+                        "enclosures":[
+                            {
+                              "enclosureInfo":{
+                                  "wwn":"500C0FF02683AF3C",
+                                  "model":"S3200",
+                                  "vendorName":"Lenovo",
+                                  "status":"Up",
+                                  "diskCount":0,
+                                  "enclosureId":0,
+                                  "driveBays":12,
+                                  "midplaneSerialNumber":"11S00WC065Y010DH58A0C8",
+                                  "health":"Degraded"
+                              },
+                              "location":{
+                                  "lowestRackUnit":0,
+                                  "location":"",
+                                  "rack":"",
+                                  "room":""
+                              },
+                              "frus":[
+                                  {
+                                    "fruStatus":"OK",
+                                    "description":"CHASSIS 6G 2U12 V2 LENOVO",
+                                    "serialNumber":"11S00WC065Y010DH58A0C8",
+                                    "shortName":"Midplane/Chassis",
+                                    "fruLocation":"MID-PLANE SLOT",
+                                    "partNumber":"00WC065"
+                                  },
+                                  {
+                                    "fruStatus":"OK",
+                                    "description":"PSU 595W AC 2U NO SW LENOVO",
+                                    "serialNumber":"11S00WC067Y010DH58A0YC",
+                                    "shortName":"AC Power Supply",
+                                    "fruLocation":"RIGHT PSU SLOT",
+                                    "partNumber":"00WC067"
+                                  },
+                                  {
+                                    "fruStatus":"OK",
+                                    "description":"PSU 595W AC 2U NO SW LENOVO",
+                                    "serialNumber":"11S00WC067Y010DH58A0YD",
+                                    "shortName":"AC Power Supply",
+                                    "fruLocation":"LEFT PSU SLOT",
+                                    "partNumber":"00WC067"
+                                  },
+                                  {
+                                    "fruStatus":"OK",
+                                    "description":"SPS Memory Card",
+                                    "serialNumber":"",
+                                    "shortName":"Memory Card",
+                                    "fruLocation":"UPPER IOM MEMORY CARD SLOT",
+                                    "partNumber":"40-00000053"
+                                  },
+                                  {
+                                    "fruStatus":"Fault",
+                                    "description":"48X4 4xCNC RIOM-LX 6GB LENOVO",
+                                    "serialNumber":"11S00WC050Y010DH57V0LX",
+                                    "shortName":"RAID IOM",
+                                    "fruLocation":"LOWER IOM SLOT",
+                                    "partNumber":"00WC050"
+                                  },
+                                  {
+                                    "fruStatus":"OK",
+                                    "description":"48X4 4xCNC RIOM-LX 6GB LENOVO",
+                                    "serialNumber":"11S00WC050Y010DH57V0KH",
+                                    "shortName":"RAID IOM",
+                                    "fruLocation":"UPPER IOM SLOT",
+                                    "partNumber":"00WC050"
+                                  },
+                                  {
+                                    "fruStatus":"Absent",
+                                    "description":"",
+                                    "serialNumber":"",
+                                    "shortName":"",
+                                    "fruLocation":"LOWER IOM MEMORY CARD SLOT",
+                                    "partNumber":""
+                                  }
+                              ],
+                              "powerSupplies":[
+                                  {
+                                    "position":"Right",
+                                    "model":"00WC067",
+                                    "vendorName":"",
+                                    "status":"Up",
+                                    "healthReason":"",
+                                    "health":"OK",
+                                    "healthRecommendation":""
+                                  },
+                                  {
+                                    "position":"Left",
+                                    "model":"00WC067",
+                                    "vendorName":"",
+                                    "status":"Up",
+                                    "healthReason":"",
+                                    "health":"OK",
+                                    "healthRecommendation":""
+                                  }
+                              ],
+                              "drives":[
+
+                              ],
+                              "canisters":[
+                                  {
+                                    "position":"Top",
+                                    "systemCacheMemory":6144,
+                                    "diskBusType":"SAS",
+                                    "phyIsolation":"Enabled",
+                                    "controllerRedundancyStatus":"Operational but not redundant",
+                                    "serialNumber":"11S00WC050Y010DH57V0KH",
+                                    "networkPorts":{
+                                        "gateway":"10.243.0.1",
+                                        "networkMask":"255.255.240.0",
+                                        "ipVersion":4,
+                                        "name":"mgmtport_a",
+                                        "macAddress":"00:c0:ff:26:5e:de",
+                                        "healthReason":"",
+                                        "health":"OK",
+                                        "addressingMode":"Manual",
+                                        "healthRecommendation":"",
+                                        "ipAddress":"10.243.5.61"
+                                    },
+                                    "diskChannels":2,
+                                    "revision":"0",
+                                    "cmmDisplayName":"controller_a",
+                                    "healthReason":"",
+                                    "healthRecommendation":"",
+                                    "controllerId":"A",
+                                    "firmware":{
+                                        "storageControllerCpuType":"Gladden 1300MHz",
+                                        "bundleVersion":"No System Bundle",
+                                        "buildDate":"",
+                                        "storageControllerCodeVersion":"GLS221R08-01",
+                                        "storageControllerCodeBaselevel":"GLS221R08-01",
+                                        "storageControllerLoaderCodeVersion":"27.016",
+                                        "capiVersion":"3.19",
+                                        "managementControllerCodeVersion":"GLM221X003",
+                                        "managementControllerLoaderCodeVersion":"6.18.22216",
+                                        "expanderControllerCodeVersion":"3202",
+                                        "cpldCodeVersion":"55",
+                                        "hardwareVersion":"5.2",
+                                        "hostInterfaceModuleVersion":"11",
+                                        "hostInterfaceModuleModel":"6",
+                                        "backplaneType":"7",
+                                        "hostInterfaceHardwareVersion":"2",
+                                        "diskInterfaceHardwareVersion":"3",
+                                        "scBootMemoryReferenceCodeVersion":"1.2.1.10"
+                                    },
+                                    "status":"Operational",
+                                    "failOverReason":"Shutdown",
+                                    "health":"Normal",
+                                    "disks":0,
+                                    "powerState":"On",
+                                    "failedOverToThisController":"Yes",
+                                    "hostPorts":4,
+                                    "controllerRedundancyMode":"Failed Over",
+                                    "hardwareVersion":"5.2",
+                                    "expansionPorts":[
+                                        {
+                                          "status":"Disconnected",
+                                          "name":"Out Port",
+                                          "healthReason":"No drive enclosure is connected to this expansion port. This is normal if this is the last (or only) enclosure in the cabling sequence of the system.",
+                                          "health":"N/A",
+                                          "healthRecommendation":"- No action is required."
+                                        }
+                                    ],
+                                    "energyMetrics":{
+                                        "memoryTemperature":[
+
+                                        ],
+                                        "diskControllerTemperature":[
+
+                                        ],
+                                        "inletAirTemperature":[
+
+                                        ]
+                                    },
+                                    "ports":[
+                                        {
+                                          "port":"A3",
+                                          "reason":"There is no active connection to this host port.",
+                                          "configSpeed":"Auto",
+                                          "status":"Disconnected",
+                                          "action":"- If this host port is intentionally unused, no action is required.\n  - Otherwise, use an appropriate interface cable to connect this host port to a switch or host.\n  - If a cable is connected, check the cable and the switch or host for problems.",
+                                          "topology":"PTP",
+                                          "targetId":"237000c0ff2683af",
+                                          "actualSpeed":"",
+                                          "health":"N/A",
+                                          "media":"FC(-)"
+                                        },
+                                        {
+                                          "port":"A1",
+                                          "reason":"There is no active connection to this host port.",
+                                          "configSpeed":"Auto",
+                                          "status":"Disconnected",
+                                          "action":"- If this host port is intentionally unused, no action is required.\n  - Otherwise, use an appropriate interface cable to connect this host port to a switch or host.\n  - If a cable is connected, check the cable and the switch or host for problems.",
+                                          "topology":"PTP",
+                                          "targetId":"217000c0ff2683af",
+                                          "actualSpeed":"",
+                                          "health":"N/A",
+                                          "media":"FC(-)"
+                                        },
+                                        {
+                                          "port":"A0",
+                                          "reason":"There is no active connection to this host port.",
+                                          "configSpeed":"Auto",
+                                          "status":"Disconnected",
+                                          "action":"- If this host port is intentionally unused, no action is required.\n  - Otherwise, use an appropriate interface cable to connect this host port to a switch or host.\n  - If a cable is connected, check the cable and the switch or host for problems.",
+                                          "topology":"PTP",
+                                          "targetId":"207000c0ff2683af",
+                                          "actualSpeed":"",
+                                          "health":"N/A",
+                                          "media":"FC(-)"
+                                        },
+                                        {
+                                          "port":"A2",
+                                          "reason":"There is no active connection to this host port.",
+                                          "configSpeed":"Auto",
+                                          "status":"Disconnected",
+                                          "action":"- If this host port is intentionally unused, no action is required.\n  - Otherwise, use an appropriate interface cable to connect this host port to a switch or host.\n  - If a cable is connected, check the cable and the switch or host for problems.",
+                                          "topology":"PTP",
+                                          "targetId":"227000c0ff2683af",
+                                          "actualSpeed":"",
+                                          "health":"N/A",
+                                          "media":"FC(-)"
+                                        }
+                                    ]
+                                  },
+                                  {
+                                    "position":"Bottom",
+                                    "systemCacheMemory":6144,
+                                    "diskBusType":"SAS",
+                                    "phyIsolation":"Enabled",
+                                    "controllerRedundancyStatus":"Operational but not redundant",
+                                    "serialNumber":"11S00WC050Y010DH57V0LX",
+                                    "networkPorts":{
+                                        "gateway":"10.243.0.1",
+                                        "networkMask":"255.255.240.0",
+                                        "ipVersion":4,
+                                        "name":"mgmtport_b",
+                                        "macAddress":"00:c0:ff:26:5e:fb",
+                                        "healthReason":"The network port health is unknown. It may be unhealthy.",
+                                        "health":"Unknown",
+                                        "addressingMode":"Manual",
+                                        "healthRecommendation":"- Check in the event log for events related to this component and follow the recommended actions for those events.",
+                                        "ipAddress":"10.243.5.62"
+                                    },
+                                    "diskChannels":2,
+                                    "revision":"0",
+                                    "cmmDisplayName":"controller_b",
+                                    "healthReason":"The controller is not operational.",
+                                    "healthRecommendation":"- Restart the Storage Controller in this controller module, unless it is performing an operation where it is normal for it to be shut down, such as firmware update.",
+                                    "controllerId":"B",
+                                    "firmware":{
+                                        "storageControllerCpuType":"Not Present",
+                                        "bundleVersion":"Not Present",
+                                        "buildDate":"Not Present",
+                                        "storageControllerCodeVersion":"Not Present",
+                                        "storageControllerCodeBaselevel":"Not Present",
+                                        "storageControllerLoaderCodeVersion":"Not Present",
+                                        "capiVersion":"Not Present",
+                                        "managementControllerCodeVersion":"Not Present",
+                                        "managementControllerLoaderCodeVersion":"Not Present",
+                                        "expanderControllerCodeVersion":"Not Present",
+                                        "cpldCodeVersion":"Not Present",
+                                        "hardwareVersion":"Not Present",
+                                        "hostInterfaceModuleVersion":"Not Present",
+                                        "hostInterfaceModuleModel":"Not Present",
+                                        "backplaneType":"0",
+                                        "hostInterfaceHardwareVersion":"0",
+                                        "diskInterfaceHardwareVersion":"0",
+                                        "scBootMemoryReferenceCodeVersion":"Not Present"
+                                    },
+                                    "status":"Down",
+                                    "failOverReason":"Not applicable",
+                                    "health":"Critical",
+                                    "disks":0,
+                                    "powerState":"Off",
+                                    "failedOverToThisController":"No",
+                                    "hostPorts":4,
+                                    "controllerRedundancyMode":"Failed Over",
+                                    "hardwareVersion":"5.2",
+                                    "expansionPorts":[
+                                        {
+                                          "status":"Not Present",
+                                          "name":"Out Port",
+                                          "healthReason":"The controller that contains this subcomponent is not operational.",
+                                          "health":"Unknown",
+                                          "healthRecommendation":"- See the health information for the controller module that contains this component."
+                                        }
+                                    ],
+                                    "energyMetrics":{
+                                        "memoryTemperature":[
+
+                                        ],
+                                        "diskControllerTemperature":[
+
+                                        ],
+                                        "inletAirTemperature":[
+
+                                        ]
+                                    },
+                                    "ports":[
+                                        {
+                                          "port":"B1",
+                                          "reason":"The controller that contains this subcomponent is not operational.",
+                                          "configSpeed":"Auto",
+                                          "status":"Not Present",
+                                          "action":"- See the health information for the controller module that contains this component.",
+                                          "topology":"PTP",
+                                          "targetId":"257000c0ff2683af",
+                                          "actualSpeed":"",
+                                          "health":"Unknown",
+                                          "media":"FC(-)"
+                                        },
+                                        {
+                                          "port":"B0",
+                                          "reason":"The controller that contains this subcomponent is not operational.",
+                                          "configSpeed":"Auto",
+                                          "status":"Not Present",
+                                          "action":"- See the health information for the controller module that contains this component.",
+                                          "topology":"PTP",
+                                          "targetId":"247000c0ff2683af",
+                                          "actualSpeed":"",
+                                          "health":"Unknown",
+                                          "media":"FC(-)"
+                                        },
+                                        {
+                                          "port":"B2",
+                                          "reason":"The controller that contains this subcomponent is not operational.",
+                                          "configSpeed":"Auto",
+                                          "status":"Not Present",
+                                          "action":"- See the health information for the controller module that contains this component.",
+                                          "topology":"PTP",
+                                          "targetId":"267000c0ff2683af",
+                                          "actualSpeed":"",
+                                          "health":"Unknown",
+                                          "media":"FC(-)"
+                                        },
+                                        {
+                                          "port":"B3",
+                                          "reason":"The controller that contains this subcomponent is not operational.",
+                                          "configSpeed":"Auto",
+                                          "status":"Not Present",
+                                          "action":"- See the health information for the controller module that contains this component.",
+                                          "topology":"PTP",
+                                          "targetId":"277000c0ff2683af",
+                                          "actualSpeed":"",
+                                          "health":"Unknown",
+                                          "media":"FC(-)"
+                                        }
+                                    ]
+                                  }
+                              ],
+                              "energyMetrics":{
+                                  "enclosurePower":[
+
+                                  ]
+                              },
+                              "slots":[
+
+                              ]
+                            }
+                        ],
+                        "parent":{
+                            "uuid":"096F8C92-08D4-4A24-ABD8-FE56D482F8C4",
+                            "uri":""
+                        },
+                        "enclosureCount":1,
+                        "securityDescriptor":{
+                            "managedAuthSupported":false,
+                            "publicAccess":false,
+                            "uri":"storage/208000c0ff2683af",
+                            "roleGroups":[
+
+                            ],
+                            "managedAuthEnabled":false
+                        },
+                        "mgmtProcIPaddress":"10.243.5.61"
+                      }
+                    ]}'
+    http_version:
+  recorded_at: Tue, 06 Feb 2018 20:20:04 GMT
+- request:
+    method: get
     uri: https://lxcahost/compliancePolicies/persistedResult
     body:
       encoding: US-ASCII
