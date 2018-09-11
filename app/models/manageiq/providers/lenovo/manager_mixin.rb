@@ -13,18 +13,16 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
   end
 
   def connect(options = {})
-    # raise "no credentials defined" if missing_credentials?(options[:auth_type])
-
     username   = options[:user] || authentication_userid(options[:auth_type])
     password   = options[:pass] || authentication_password(options[:auth_type])
     host       = options[:host] || address
     port       = options[:port] || self.port
     auth_type  = AUTH_TYPES[options[:auth_type]]
+    timeout    = options[:timeout]
     user_agent_label = Vmdb::Appliance.USER_AGENT
-
     # TODO: improve this SSL verification
     verify_ssl = options[:verify_ssl] == 1 ? 'PEER' : 'NONE'
-    self.class.raw_connect(username, password, host, port, auth_type, verify_ssl, user_agent_label)
+    self.class.raw_connect(username, password, host, port, auth_type, verify_ssl, user_agent_label, timeout)
   end
 
   def verify_credentials(auth_type = nil, options = {})
@@ -51,7 +49,7 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
   end
 
   module ClassMethods
-    def raw_connect(username, password, host, port, auth_type, verify_ssl, user_agent_label, validate = false)
+    def raw_connect(username, password, host, port, auth_type, verify_ssl, user_agent_label, validate = false, timeout = nil)
       xclarity = XClarityClient::Configuration.new(
         :username         => username,
         :password         => password,
@@ -60,6 +58,7 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
         :auth_type        => auth_type,
         :verify_ssl       => verify_ssl,
         :user_agent_label => user_agent_label,
+        :timeout          => timeout
       )
       connection = XClarityClient::Client.new(xclarity)
 
