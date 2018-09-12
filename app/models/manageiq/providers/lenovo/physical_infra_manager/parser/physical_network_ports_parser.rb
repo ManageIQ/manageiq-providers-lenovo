@@ -1,6 +1,12 @@
 module ManageIQ::Providers::Lenovo
   class PhysicalInfraManager::Parser::PhysicalNetworkPortsParser < PhysicalInfraManager::Parser::ComponentParser
     class << self
+      # Mapping between fields inside [Hash] Physical Switch Port to a [Hash] with symbols as keys
+      PHYSICAL_SWITCH_PORT = {
+        :peer_mac_address => 'peerMacAddress',
+        :vlan_key         => 'PVID'
+      }.freeze
+
       #
       # Mounts the ports from Network Device
       #
@@ -94,7 +100,7 @@ module ManageIQ::Providers::Lenovo
       end
 
       def parse_switch_port(port, physical_switch)
-        result = parse(port, parent::ParserDictionaryConstants::PHYSICAL_SWITCH_PORT)
+        result = parse(port, PHYSICAL_SWITCH_PORT)
         result.merge(
           :port_name    => port["portName"].presence || port["port"],
           :port_type    => "physical_port",
