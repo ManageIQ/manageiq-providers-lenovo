@@ -32,10 +32,6 @@ module ManageIQ::Providers::Lenovo
         }
       }.freeze
 
-      PHYSICAL_CHASSIS_NETWORK = {
-        :ipaddress => 'mgmtProcIPaddress'
-      }.freeze
-
       #
       # Parse a chassis hash to a hash with physical racks data
       #
@@ -62,12 +58,12 @@ module ManageIQ::Providers::Lenovo
       private
 
       def get_hardwares(chassis)
-        parsed_chassi_network = parse(chassis, PHYSICAL_CHASSIS_NETWORK)
-
         {
           :guest_devices => [{
-            :device_type => "management",
-            :network     => parsed_chassi_network
+            :device_type => 'management',
+            :network     => {
+              :ipaddress => chassis.mgmtProcIPaddress
+            }
           }]
         }
       end
