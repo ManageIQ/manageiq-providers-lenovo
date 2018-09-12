@@ -30,13 +30,6 @@ module ManageIQ::Providers::Lenovo
         }
       }.freeze
 
-      MANAGEMENT_DEVICE = {
-        :address => 'macAddress',
-        :network => {
-          :ipaddress => 'mgmtProcIPaddress'
-        }
-      }.freeze
-
       #
       # parse a node object to a hash with physical servers data
       #
@@ -112,16 +105,7 @@ module ManageIQ::Providers::Lenovo
       def get_guest_devices(node)
         guest_devices = parent::NetworkDeviceParser.parse_network_devices(node)
         guest_devices.concat(parent::StorageDeviceParser.parse_storage_device(node))
-        guest_devices << parse_management_device(node)
-      end
-
-      def parse_management_device(node)
-        result = parse(node, MANAGEMENT_DEVICE)
-
-        result[:device_type] = "management"
-        result[:network][:ipv6address] = node.ipv6Addresses.nil? ? node.ipv6Addresses : node.ipv6Addresses.join(", ")
-
-        result
+        guest_devices << parent::ManagementDeviceParser.parse_management_device(node)
       end
     end
   end

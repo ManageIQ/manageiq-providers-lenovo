@@ -55,8 +55,6 @@ module ManageIQ::Providers::Lenovo
       # @param source     - Object that will be parse to a hash
       # @param dictionary - Hash containing the instructions to translate the object into a Hash
       #
-      # @see ParserDictionaryConstants
-      #
       def parse(source, dictionary)
         result = {}
         dictionary&.each do |key, value|
