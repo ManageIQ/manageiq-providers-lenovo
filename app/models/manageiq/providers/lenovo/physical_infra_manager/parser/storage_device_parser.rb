@@ -1,5 +1,5 @@
 module ManageIQ::Providers::Lenovo
-  class PhysicalInfraManager::Parser::StorageDeviceParser < PhysicalInfraManager::Parser::ComponentParser
+  class PhysicalInfraManager::Parser::StorageDeviceParser < PhysicalInfraManager::Parser::GuestDeviceParser
     class << self
       #
       # @param [XClarityClient::Node] component - component that has storage devices
@@ -8,28 +8,11 @@ module ManageIQ::Providers::Lenovo
         devices = distinct_storage_devices(select_storage_devices(component))
 
         devices.map do |device|
-          parse_device(device)
+          parse_guest_device(device)
         end
       end
 
       private
-
-      #
-      # Mount the storage device from a hash object
-      #
-      # @param [Hash] device - a hash containing the storage device informations
-      #
-      def parse_device(device)
-        result = parse(device, GUEST_DEVICE)
-
-        result[:uid_ems]     = mount_uuid(device)
-        result[:device_name] = device["productName"] ? device["productName"] : device["name"]
-        result[:device_type] = "storage"
-        result[:firmwares]   = parse_device_firmware(device)
-        result[:location]    = device['slotNumber'] ? "Bay #{device['slotNumber']}" : nil
-
-        result
-      end
 
       #
       # Selects all storage devices.
@@ -46,7 +29,7 @@ module ManageIQ::Providers::Lenovo
       end
 
       def distinct_storage_devices(devices)
-        devices.uniq { |device| mount_uuid(device) }
+        devices.uniq { |device| uid_ems(device) }
       end
 
       def storage_device?(device)
@@ -54,21 +37,8 @@ module ManageIQ::Providers::Lenovo
         device["class"] == "Mass storage controller" || device_name =~ /serveraid/ || device_name =~ /sd media raid/
       end
 
-      def parse_device_firmware(device)
-        device_fw = []
-
-        firmware = device["firmware"]
-        unless firmware.nil?
-          device_fw = firmware.map do |fw|
-            parent::FirmwareParser.parse_firmware(fw)
-          end
-        end
-
-        device_fw
-      end
-
-      def mount_uuid(device)
-        device["uuid"] || "#{device['pciBusNumber']}#{device['pciDeviceNumber']}"
+      def device_type(_device)
+        'storage'
       end
     end
   end
