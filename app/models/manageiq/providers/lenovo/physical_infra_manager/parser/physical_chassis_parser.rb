@@ -12,6 +12,14 @@ module ManageIQ::Providers::Lenovo
         :fan_slot_count               => 'fanSlots',
         :blade_slot_count             => 'bladeSlots',
         :powersupply_slot_count       => 'powerSupplySlots',
+        :vendor                       => :vendor,
+        :type                         => :type,
+        :health_state                 => :health_state,
+        :computer_system              => {
+          :hardware => {
+            :guest_devices => :guest_devices
+          }
+        },
         :asset_detail                 => {
           :product_name     => 'productName',
           :manufacturer     => 'manufacturer',
@@ -24,11 +32,6 @@ module ManageIQ::Providers::Lenovo
           :room             => 'location.room',
           :rack_name        => 'location.rack',
           :lowest_rack_unit => 'location.lowestRackUnit'
-        },
-        :computer_system              => {
-          :hardware => {
-            :guest_devices => ''
-          }
         }
       }.freeze
 
@@ -44,28 +47,33 @@ module ManageIQ::Providers::Lenovo
         chassis = XClarityClient::Chassi.new(chassis_hash)
         result = parse(chassis, PHYSICAL_CHASSIS)
 
-        result[:physical_rack]                       = rack if rack
-        result[:vendor]                              = "lenovo"
-        result[:type]                                = MIQ_TYPES["physical_chassis"]
-        result[:health_state]                        = HEALTH_STATE_MAP[chassis.cmmHealthState.nil? ? chassis.cmmHealthState : chassis.cmmHealthState.downcase]
-        result[:computer_system][:hardware]          = get_hardwares(chassis)
+        result[:physical_rack] = rack if rack
 
         result[:asset_detail].merge!(get_location_led_info(chassis.leds) || {})
-
         result
       end
 
       private
 
-      def get_hardwares(chassis)
-        {
-          :guest_devices => [{
-            :device_type => 'management',
-            :network     => {
-              :ipaddress => chassis.mgmtProcIPaddress
-            }
-          }]
-        }
+      def vendor(_chassis)
+        'lenovo'
+      end
+
+      def type(_chassis)
+        'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalChassis'
+      end
+
+      def health_state(chassis)
+        HEALTH_STATE_MAP[chassis.cmmHealthState.nil? ? chassis.cmmHealthState : chassis.cmmHealthState.downcase]
+      end
+
+      def guest_devices(chassis)
+        [{
+          :device_type => 'management',
+          :network     => {
+            :ipaddress => chassis.mgmtProcIPaddress
+          }
+        }]
       end
     end
   end

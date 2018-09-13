@@ -4,7 +4,10 @@ module ManageIQ::Providers::Lenovo
       # Mapping between fields inside [Hash] Physical Switch Port to a [Hash] with symbols as keys
       PHYSICAL_SWITCH_PORT = {
         :peer_mac_address => 'peerMacAddress',
-        :vlan_key         => 'PVID'
+        :vlan_key         => 'PVID',
+        :port_name        => :port_name,
+        :port_type        => :port_type,
+        :vlan_enabled     => :vlan_enabled
       }.freeze
 
       #
@@ -99,16 +102,6 @@ module ManageIQ::Providers::Lenovo
         end
       end
 
-      def parse_switch_port(port, physical_switch)
-        result = parse(port, PHYSICAL_SWITCH_PORT)
-        result.merge(
-          :port_name    => port["portName"].presence || port["port"],
-          :port_type    => "physical_port",
-          :vlan_enabled => port["PVID"].present?,
-          :uid_ems      => mount_uuid_switch_port(port, physical_switch)
-        )
-      end
-
       def parse_physical_port(port)
         {
           :port_type  => port["portType"],
@@ -121,6 +114,24 @@ module ManageIQ::Providers::Lenovo
         {
           :mac_address => format_mac_address(port["addresses"])
         }
+      end
+
+      def parse_switch_port(port, physical_switch)
+        result = parse(port, PHYSICAL_SWITCH_PORT)
+        result[:uid_ems] = mount_uuid_switch_port(port, physical_switch)
+        result
+      end
+
+      def port_name(port)
+        port['portName'].presence || port['port']
+      end
+
+      def port_type(_port)
+        'physical_port'
+      end
+
+      def vlan_enabled(port)
+        port['PVID'].present?
       end
 
       def format_mac_address(mac_address)

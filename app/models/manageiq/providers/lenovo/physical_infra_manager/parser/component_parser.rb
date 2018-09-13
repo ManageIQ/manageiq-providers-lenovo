@@ -24,13 +24,6 @@ module ManageIQ::Providers::Lenovo
         nil               => 'Unknown'
       }.freeze
 
-      MIQ_TYPES = {
-        'physical_server'  => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer',
-        'physical_switch'  => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalSwitch',
-        'physical_storage' => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalStorage',
-        'physical_chassis' => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalChassis'
-      }.freeze
-
       POWER_STATE_MAP = {
         8  => 'On',
         5  => 'Off',
@@ -44,7 +37,6 @@ module ManageIQ::Providers::Lenovo
 
       private_constant :GUEST_DEVICE
       private_constant :HEALTH_STATE_MAP
-      private_constant :MIQ_TYPES
       private_constant :POWER_STATE_MAP
       private_constant :PROPERTIES_MAP
 
@@ -72,6 +64,8 @@ module ManageIQ::Providers::Lenovo
               end
             end
             result[key] = source_value.kind_of?(String) ? source_value.strip.presence : source_value
+          elsif value.kind_of?(Symbol)
+            result[key] = send(value, source)
           elsif value.kind_of?(Hash)
             result[key] = parse(source, dictionary[key])
           end
