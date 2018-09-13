@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
+## Unreleased as of Sprint 94 - 2018-09-10
+
+### Added
+- Add plugin display name [(#221)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/221)
+
 ## Unreleased as of Sprint 92 - 2018-08-13
 
 ### Fixed
