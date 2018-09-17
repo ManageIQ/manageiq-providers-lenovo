@@ -22,7 +22,7 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
     user_agent_label = Vmdb::Appliance.USER_AGENT
     # TODO: improve this SSL verification
     verify_ssl = options[:verify_ssl] == 1 ? 'PEER' : 'NONE'
-    self.class.raw_connect(username, password, host, port, auth_type, verify_ssl, user_agent_label, timeout)
+    self.class.raw_connect(username, password, host, port, auth_type, verify_ssl, user_agent_label, :timeout => timeout)
   end
 
   def verify_credentials(auth_type = nil, options = {})
@@ -49,7 +49,7 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
   end
 
   module ClassMethods
-    def raw_connect(username, password, host, port, auth_type, verify_ssl, user_agent_label, validate = false, timeout = nil)
+    def raw_connect(username, password, host, port, auth_type, verify_ssl, user_agent_label, validate = false, timeout: nil)
       xclarity = XClarityClient::Configuration.new(
         :username         => username,
         :password         => password,
