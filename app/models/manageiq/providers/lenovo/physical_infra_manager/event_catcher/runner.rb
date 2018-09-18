@@ -23,7 +23,6 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Runner < 
   end
 
   def process_event(event)
-    $log.info("Adding LXCA event ... / ID: #{event[:event_type]} / Message: #{event[:message]}")
     EmsEvent.add_queue('add', @cfg[:ems_id], event)
   end
 

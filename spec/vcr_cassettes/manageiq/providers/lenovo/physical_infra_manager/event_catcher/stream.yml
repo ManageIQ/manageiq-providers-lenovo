@@ -2,208 +2,223 @@
 http_interactions:
 - request:
     method: get
-    uri: https://10.243.9.123/events?filterWith=%7B%22filterType%22:%22FIELDNOTREGEXAND%22,%22fields%22:%5B%7B%22operation%22:%22NOT%22,%22field%22:%22eventClass%22,%22value%22:%22200%22%7D,%7B%22operation%22:%22NOT%22,%22field%22:%22eventClass%22,%22value%22:%22800%22%7D%5D%7D
+    uri: https://10.243.9.123/events?filterWith=%7B%22filterType%22:%22FIELDNOTREGEXAND%22,%22fields%22:%5B%7B%22operation%22:%22NOT%22,%22field%22:%22eventClass%22,%22value%22:%22200%22%7D,%7B%22operation%22:%22NOT%22,%22field%22:%22eventClass%22,%22value%22:%22800%22%7D,%7B%22operation%22:%22GT%22,%22field%22:%22cn%22,%22value%22:%220%22%7D%5D%7D
     body:
-      encoding: US-ASCII
+      encoding: UTF-8
       string: ''
     headers:
       User-Agent:
-      - LXCA via Ruby Client/0.5.7
-      Authorization:
-      - Basic bHhjYzpQQVNTVzByRA==
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      - LXCA via Ruby Client/0.6.4 (ManageIQ/master)
       Accept:
       - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Mon, 17 Sep 2018 12:43:15 GMT
+      Authorization:
+      - Basic ZXBlcmVpcmE1Omxlbm92b3BzczA3MThTRTE=
+      Range:
+      - item=0-1
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Wed, 15 Nov 2017 14:13:24 GMT
+      - Mon, 17 Sep 2018 12:44:48 GMT
+      - Mon, 17 Sep 2018 12:44:48 GMT
       Set-Cookie:
-      - userAuthenticationMethod=local;Path=/;Secure
+      - userAuthenticationMethod=ldap_local;Path=/;Secure
       Expires:
       - "-1"
       - Thu, 01 Jan 1970 00:00:00 GMT
       Strict-Transport-Security:
-      - max-age=86400; includeSubDomains;
+      - max-age=31536000 ; includeSubDomains
       X-Frame-Options:
       - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Security-Policy:
+      - frame-ancestors 'self'; default-src 'self' ; script-src 'self' 'unsafe-inline'
+        'unsafe-eval'; style-src 'self' 'unsafe-inline'; object-src 'none'; worker-src
+        'self' blob:; child-src 'self' blob:; img-src 'self' data:;
       Cache-Control:
       - no-store, no-cache, must-revalidate
       Pragma:
       - no-cache
-      Content-Security-Policy:
-      - 'default-src https:; script-src https: ''unsafe-inline'' ''unsafe-eval'';
-        style-src https: ''unsafe-inline'''
-      X-Content-Type-Options:
-      - nosniff
-      X-Xss-Protection:
-      - '1'
       Content-Type:
-      - application/com.lenovo.lxca-v1.2.2+json; charset=UTF-8
+      - application/com.lenovo.lxca-v2.2.0+json; charset=UTF-8
+      Content-Range:
+      - 0-1/892595
       Vary:
       - Accept-Encoding, User-Agent
       Transfer-Encoding:
       - chunked
     body:
-      encoding: ASCII-8BIT
-      string: '[{"eventDate":"2017-11-08T21:50:42Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T17:49:14Z","location":"","args":["Host
-        Power","root/cimv2:IBM_ComputerSystem.CreationClassName=\"IBM_ComputerSystem\",Name=\"Host
-        UUID-EADEBE8316174750A27FEC2E8226AC48\""],"originatorUUID":"","systemName":"XinYi-71","bayText":"Not
-        Available","mtm":"546235Z","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"KVX0171","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
-        Required","failFRUs":[""],"msg":"Host Power has been turned on.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"816F00091301FFFF","sourceLogSequence":9852,"systemSerialNumberText":"KVX0171","cn":"684922","service":100,"typeText":"Power","msgID":"PLAT0107","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T21:50:27Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T17:49:14Z","location":"","args":["Host
-        Power","root/cimv2:IBM_ComputerSystem.CreationClassName=\"IBM_ComputerSystem\",Name=\"Host
-        UUID-EADEBE8316174750A27FEC2E8226AC48\""],"originatorUUID":"","systemName":"XinYi-71","bayText":"Not
-        Available","mtm":"546235Z","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"KVX0171","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
-        Required","failFRUs":[""],"msg":"Host Power has been turned off.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"806F00091301FFFF","sourceLogSequence":9851,"systemSerialNumberText":"KVX0171","cn":"684921","service":100,"typeText":"Power","msgID":"PLAT0106","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T17:49:13Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T17:49:13Z","location":"","args":["Host
-        Power"],"originatorUUID":"","systemName":"XinYi-71","bayText":"Not Available","mtm":"","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
-        Required","failFRUs":"","msg":"Host Power has been turned on.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"816F00091301FFFF","sourceLogSequence":9848,"systemSerialNumberText":"KVX0171","cn":"684920","service":100,"typeText":"Power","msgID":"PLAT0107","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T17:49:13Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T17:49:13Z","location":"","args":["Host
-        Power"],"originatorUUID":"","systemName":"XinYi-71","bayText":"Not Available","mtm":"","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
-        Required","failFRUs":"","msg":"Host Power has been turned off.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"806F00091301FFFF","sourceLogSequence":9847,"systemSerialNumberText":"KVX0171","cn":"684919","service":100,"typeText":"Power","msgID":"PLAT0106","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T17:49:13Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T17:49:13Z","location":"","args":["Host
-        Power"],"originatorUUID":"","systemName":"XinYi-71","bayText":"Not Available","mtm":"","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
-        Required","failFRUs":"","msg":"Host Power has been turned on.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"816F00091301FFFF","sourceLogSequence":9845,"systemSerialNumberText":"KVX0171","cn":"684918","service":100,"typeText":"Power","msgID":"PLAT0107","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T17:49:13Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T17:49:13Z","location":"","args":["Host
-        Power"],"originatorUUID":"","systemName":"XinYi-71","bayText":"Not Available","mtm":"","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
-        Required","failFRUs":"","msg":"Host Power has been turned off.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"806F00091301FFFF","sourceLogSequence":9844,"systemSerialNumberText":"KVX0171","cn":"684917","service":100,"typeText":"Power","msgID":"PLAT0106","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T17:49:13Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T17:49:13Z","location":"","args":["Host
-        Power"],"originatorUUID":"","systemName":"XinYi-71","bayText":"Not Available","mtm":"","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
-        Required","failFRUs":"","msg":"Host Power has been turned on.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"816F00091301FFFF","sourceLogSequence":9836,"systemSerialNumberText":"KVX0171","cn":"684916","service":100,"typeText":"Power","msgID":"PLAT0107","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T17:49:13Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T17:49:13Z","location":"","args":["Host
-        Power"],"originatorUUID":"","systemName":"XinYi-71","bayText":"Not Available","mtm":"","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
-        Required","failFRUs":"","msg":"Host Power has been turned off.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"806F00091301FFFF","sourceLogSequence":9835,"systemSerialNumberText":"KVX0171","cn":"684915","service":100,"typeText":"Power","msgID":"PLAT0106","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T17:49:13Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T17:49:13Z","location":"","args":["Host
-        Power"],"originatorUUID":"","systemName":"XinYi-71","bayText":"Not Available","mtm":"","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
-        Required","failFRUs":"","msg":"Host Power has been turned on.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"816F00091301FFFF","sourceLogSequence":9833,"systemSerialNumberText":"KVX0171","cn":"684914","service":100,"typeText":"Power","msgID":"PLAT0107","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T17:49:13Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T17:49:13Z","location":"","args":["Host
-        Power"],"originatorUUID":"","systemName":"XinYi-71","bayText":"Not Available","mtm":"","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
-        Required","failFRUs":"","msg":"Host Power has been turned off.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"806F00091301FFFF","sourceLogSequence":9831,"systemSerialNumberText":"KVX0171","cn":"684912","service":100,"typeText":"Power","msgID":"PLAT0106","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T19:03:52Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T19:04:04Z","location":"","args":["Host
-        Power","root/cimv2:IBM_ComputerSystem.CreationClassName=\"IBM_ComputerSystem\",Name=\"Host
-        UUID-EADEBE8316174750A27FEC2E8226AC48\""],"originatorUUID":"EADEBE8316174750A27FEC2E8226AC48","systemName":"XinYi-71","bayText":"Not
-        Available","mtm":"546235Z","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"KVX0171","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
-        Required","failFRUs":[""],"msg":"Host Power has been turned on.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"816F00091301FFFF","sourceLogSequence":9808,"systemSerialNumberText":"KVX0171","cn":"684817","service":100,"typeText":"Power","msgID":"PLAT0107","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T19:01:56Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T19:02:06Z","location":"","args":["Host
-        Power","root/cimv2:IBM_ComputerSystem.CreationClassName=\"IBM_ComputerSystem\",Name=\"Host
-        UUID-EADEBE8316174750A27FEC2E8226AC48\""],"originatorUUID":"EADEBE8316174750A27FEC2E8226AC48","systemName":"XinYi-71","bayText":"Not
-        Available","mtm":"546235Z","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"KVX0171","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
-        Required","failFRUs":[""],"msg":"Host Power has been turned off.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"806F00091301FFFF","sourceLogSequence":9807,"systemSerialNumberText":"KVX0171","cn":"684802","service":100,"typeText":"Power","msgID":"PLAT0106","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T18:51:46Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T18:52:00Z","location":"","args":["Host
-        Power","root/cimv2:IBM_ComputerSystem.CreationClassName=\"IBM_ComputerSystem\",Name=\"Host
-        UUID-EADEBE8316174750A27FEC2E8226AC48\""],"originatorUUID":"EADEBE8316174750A27FEC2E8226AC48","systemName":"XinYi-71","bayText":"Not
-        Available","mtm":"546235Z","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"KVX0171","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
-        Required","failFRUs":[""],"msg":"Host Power has been turned on.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"816F00091301FFFF","sourceLogSequence":9801,"systemSerialNumberText":"KVX0171","cn":"684780","service":100,"typeText":"Power","msgID":"PLAT0107","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T18:51:36Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T18:51:53Z","location":"","args":["Host
-        Power","root/cimv2:IBM_ComputerSystem.CreationClassName=\"IBM_ComputerSystem\",Name=\"Host
-        UUID-EADEBE8316174750A27FEC2E8226AC48\""],"originatorUUID":"EADEBE8316174750A27FEC2E8226AC48","systemName":"XinYi-71","bayText":"Not
-        Available","mtm":"546235Z","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"KVX0171","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
-        Required","failFRUs":[""],"msg":"Host Power has been turned off.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"806F00091301FFFF","sourceLogSequence":9800,"systemSerialNumberText":"KVX0171","cn":"684779","service":100,"typeText":"Power","msgID":"PLAT0106","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T18:45:29Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T18:45:49Z","location":"","args":["Host
-        Power","root/cimv2:IBM_ComputerSystem.CreationClassName=\"IBM_ComputerSystem\",Name=\"Host
-        UUID-EADEBE8316174750A27FEC2E8226AC48\""],"originatorUUID":"EADEBE8316174750A27FEC2E8226AC48","systemName":"XinYi-71","bayText":"Not
-        Available","mtm":"546235Z","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"KVX0171","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
-        Required","failFRUs":[""],"msg":"Host Power has been turned on.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"816F00091301FFFF","sourceLogSequence":9798,"systemSerialNumberText":"KVX0171","cn":"684761","service":100,"typeText":"Power","msgID":"PLAT0107","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T18:45:19Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T18:45:49Z","location":"","args":["Host
-        Power","root/cimv2:IBM_ComputerSystem.CreationClassName=\"IBM_ComputerSystem\",Name=\"Host
-        UUID-EADEBE8316174750A27FEC2E8226AC48\""],"originatorUUID":"EADEBE8316174750A27FEC2E8226AC48","systemName":"XinYi-71","bayText":"Not
-        Available","mtm":"546235Z","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"KVX0171","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
-        Required","failFRUs":[""],"msg":"Host Power has been turned off.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"806F00091301FFFF","sourceLogSequence":9797,"systemSerialNumberText":"KVX0171","cn":"684760","service":100,"typeText":"Power","msgID":"PLAT0106","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-11-08T18:42:31Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-11-08T18:42:40Z","location":"","args":["Host
-        Power","root/cimv2:IBM_ComputerSystem.CreationClassName=\"IBM_ComputerSystem\",Name=\"Host
-        UUID-EADEBE8316174750A27FEC2E8226AC48\""],"originatorUUID":"EADEBE8316174750A27FEC2E8226AC48","systemName":"XinYi-71","bayText":"Not
-        Available","mtm":"546235Z","userid":"","fruSerialNumberText":"None","eventSourceText":"Hardware","serialnum":"KVX0171","sourceLogID":"PEL","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"EADEBE8316174750A27FEC2E8226AC48","systemTypeModelText":"5462-35Z","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
-        Required","failFRUs":[""],"msg":"Host Power has been turned on.","componentID":"EADEBE8316174750A27FEC2E8226AC48","eventClass":400,"eventID":"816F00091301FFFF","sourceLogSequence":9794,"systemSerialNumberText":"KVX0171","cn":"684754","service":100,"typeText":"Power","msgID":"PLAT0107","systemFruNumberText":"None","systemText":"XinYi-71"},{"eventDate":"2017-01-11T22:37:44Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-01-11T17:44:09Z","location":"","args":"","originatorUUID":"BD775D06821111E189A3E41F13ED5A1A","systemName":"IMM2-e41f13ed5a1e","bayText":"Not
-        Available","mtm":"","userid":"LXCA_waaBVBOc0A","fruSerialNumberText":"Y015UN23X13P","eventSourceText":"Hardware","serialnum":"","sourceLogID":"SYSTEM","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"BD775D06821111E189A3E41F13ED5A1A","systemTypeModelText":"7914-AC1","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
-        Required","failFRUs":"","msg":"Host Power has been turned on.","componentID":"BD775D06821111E189A3E41F13ED5A1A","eventClass":400,"eventID":"816F00091301FFFF","sourceLogSequence":0,"systemSerialNumberText":"06AREZ9","cn":"71902","service":100,"typeText":"Power","msgID":"snmpimm_107","systemFruNumberText":"Not
-        Available","systemText":"IMM2-e41f13ed5a1e"},{"eventDate":"2017-01-11T02:28:33Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-01-10T21:34:59Z","location":"","args":"","originatorUUID":"BD775D06821111E189A3E41F13ED5A1A","systemName":"IMM2-e41f13ed5a1e","bayText":"Not
-        Available","mtm":"","userid":"LXCA_waaBVBOc0A","fruSerialNumberText":"Y015UN23X13P","eventSourceText":"Hardware","serialnum":"","sourceLogID":"SYSTEM","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"BD775D06821111E189A3E41F13ED5A1A","systemTypeModelText":"7914-AC1","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
-        Required","failFRUs":"","msg":"Host Power has been turned on.","componentID":"BD775D06821111E189A3E41F13ED5A1A","eventClass":400,"eventID":"816F00091301FFFF","sourceLogSequence":0,"systemSerialNumberText":"06AREZ9","cn":"70467","service":100,"typeText":"Power","msgID":"snmpimm_107","systemFruNumberText":"Not
-        Available","systemText":"IMM2-e41f13ed5a1e"},{"eventDate":"2017-01-11T02:03:26Z","systemTypeText":"Node","chassisText":"","timeStamp":"2017-01-10T21:09:51Z","location":"","args":"","originatorUUID":"BD775D06821111E189A3E41F13ED5A1A","systemName":"IMM2-e41f13ed5a1e","bayText":"Not
-        Available","mtm":"","userid":"LXCA_waaBVBOc0A","fruSerialNumberText":"Y015UN23X13P","eventSourceText":"Hardware","serialnum":"","sourceLogID":"SYSTEM","action":100,"parameters":{},"localLogSequence":"","localLogID":"","sourceID":"BD775D06821111E189A3E41F13ED5A1A","systemTypeModelText":"7914-AC1","flags":"","userIDIndex":"","failSNs":"","severityText":"Informational","severity":200,"serviceabilityText":"Not
-        Required","failFRUs":"","msg":"Host Power has been turned on.","componentID":"BD775D06821111E189A3E41F13ED5A1A","eventClass":400,"eventID":"816F00091301FFFF","sourceLogSequence":0,"systemSerialNumberText":"06AREZ9","cn":"70430","service":100,"typeText":"Power","msgID":"snmpimm_107","systemFruNumberText":"Not
-        Available","systemText":"IMM2-e41f13ed5a1e"}]'
+      encoding: UTF-8
+      string: '[]'
     http_version: 
-  recorded_at: Wed, 15 Nov 2017 14:14:02 GMT
+  recorded_at: Mon, 17 Sep 2018 12:43:20 GMT
 - request:
     method: get
-    uri: https://10.243.9.123/events?filterWith=%7B%22filterType%22:%22FIELDNOTREGEXAND%22,%22fields%22:%5B%7B%22operation%22:%22NOT%22,%22field%22:%22eventClass%22,%22value%22:%22200%22%7D,%7B%22operation%22:%22NOT%22,%22field%22:%22eventClass%22,%22value%22:%22800%22%7D,%7B%22operation%22:%22GT%22,%22field%22:%22cn%22,%22value%22:%22684922%22%7D%5D%7D
+    uri: https://10.243.9.123/events?filterWith=%7B%22filterType%22:%22FIELDNOTREGEXAND%22,%22fields%22:%5B%7B%22operation%22:%22NOT%22,%22field%22:%22eventClass%22,%22value%22:%22200%22%7D,%7B%22operation%22:%22NOT%22,%22field%22:%22eventClass%22,%22value%22:%22800%22%7D,%7B%22operation%22:%22GT%22,%22field%22:%22cn%22,%22value%22:%220%22%7D%5D%7D
     body:
-      encoding: US-ASCII
+      encoding: UTF-8
       string: ''
     headers:
       User-Agent:
-      - LXCA via Ruby Client/0.5.7
-      Authorization:
-      - Basic bHhjYzpQQVNTVzByRA==
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      - LXCA via Ruby Client/0.6.4 (ManageIQ/master)
       Accept:
       - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Mon, 17 Sep 2018 12:43:20 GMT
+      Authorization:
+      - Basic ZXBlcmVpcmE1Omxlbm92b3BzczA3MThTRTE=
+      Range:
+      - item=0-62481
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Wed, 15 Nov 2017 14:13:24 GMT
+      - Mon, 17 Sep 2018 12:44:52 GMT
+      - Mon, 17 Sep 2018 12:44:52 GMT
       Set-Cookie:
-      - userAuthenticationMethod=local;Path=/;Secure
+      - userAuthenticationMethod=ldap_local;Path=/;Secure
       Expires:
       - "-1"
       - Thu, 01 Jan 1970 00:00:00 GMT
       Strict-Transport-Security:
-      - max-age=86400; includeSubDomains;
+      - max-age=31536000 ; includeSubDomains
       X-Frame-Options:
       - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Security-Policy:
+      - frame-ancestors 'self'; default-src 'self' ; script-src 'self' 'unsafe-inline'
+        'unsafe-eval'; style-src 'self' 'unsafe-inline'; object-src 'none'; worker-src
+        'self' blob:; child-src 'self' blob:; img-src 'self' data:;
       Cache-Control:
       - no-store, no-cache, must-revalidate
       Pragma:
       - no-cache
-      Content-Security-Policy:
-      - 'default-src https:; script-src https: ''unsafe-inline'' ''unsafe-eval'';
-        style-src https: ''unsafe-inline'''
-      X-Content-Type-Options:
-      - nosniff
-      X-Xss-Protection:
-      - '1'
       Content-Type:
-      - application/com.lenovo.lxca-v1.2.2+json; charset=UTF-8
+      - application/com.lenovo.lxca-v2.2.0+json; charset=UTF-8
+      Content-Range:
+      - 0-62481/892595
       Vary:
       - Accept-Encoding, User-Agent
       Transfer-Encoding:
       - chunked
     body:
-      encoding: ASCII-8BIT
-      string: '[{
-                "eventDate":"2017-11-08T21:50:42Z",
-                "systemTypeText":"Node",
-                "chassisText":"",
-                "timeStamp":"2017-11-08T17:49:14Z",
-                "location":"",
-                "args":[],
-                "originatorUUID":"",
-                "systemName":"XinYi-71",
-                "bayText":"Not Available",
-                "mtm":"546235Z","userid":"",
-                "fruSerialNumberText":"None",
-                "eventSourceText":"Hardware",
-                "serialnum":"KVX0171",
-                "sourceLogID":"PEL",
-                "action":100,
-                "parameters":{},
-                "localLogSequence":"",
-                "localLogID":"",
-                "sourceID":"EADEBE8316174750A27FEC2E8226AC48",
-                "systemTypeModelText":"5462-35Z",
-                "flags":"",
-                "userIDIndex":"",
-                "failSNs":"",
-                "severityText":"Informational",
-                "severity":200,
-                "serviceabilityText":"Not Required",
-                "failFRUs":[""],
-                "msg":"Host Power has been turned on.",
-                "componentID":"EADEBE8316174750A27FEC2E8226AC48",
-                "eventClass":400,
-                "eventID":"816F00091301FFFF",
-                "sourceLogSequence":9852,
-                "systemSerialNumberText":"KVX0171",
-                "cn":"684923",
-                "service":100,
-                "typeText":"Power",
-                "msgID":"PLAT0107",
-                "systemFruNumberText":"None",
-                "systemText":"XinYi-71"}]'
-    http_version:
-  recorded_at: Wed, 15 Nov 2017 14:14:02 GMT
+      encoding: UTF-8
+      string: '[{"msg":"Node Node 13 device Storage back plane[01] VPD is not available.","eventID":"0E01000D","chassisText":"SN#Y034BG176046","serialnum":"10006DA","descriptionArgs":"","senderUUID":"80C0B2F6B84011E0B504EC89B07DB965","serviceabilityText":"Support","componentIdentifierText":"Unknown","flags":"","userid":"","userActionArgs":"","systemTypeModelText":"7893-92X","localLogID":"","severityText":"Warning","systemName":"SN#Y034BG176046:
+        ite-bv-1544: Bay 13","action":100,"failFRUs":[""],"failFRUNames":"","bayText":"Bay
+        13","originatorUUID":"","severity":300,"sourceID":"7F3E7E375B5747E0938969896B1CFDF5","sourceLogSequence":1094941941,"failSNs":[""],"sourceLogID":"IBM:CMM01:Y034BG176046:01","eventClass":1300,"componentID":"2E2CD4CC33CC11E4AEAA40F2E9902BE0","localLogSequence":"","fruSerialNumberText":"Y130BG16L05D","mtm":"789392X","eventSourceText":"Hardware","msgID":"CMM0075","cn":"983","failFRUUUIDs":"","systemText":"SN#Y034BG176046","failFRUPartNumbers":"","timeStamp":"2018-08-23T20:01:54Z","args":["Node
+        13","Storage back plane","01"],"systemTypeText":"Chassis","service":200,"typeText":"Node","location":"0101030D5901","commonEventID":"","systemSerialNumberText":"10006DA","systemFruNumberText":"81Y2893","userIDIndex":"","parameters":{},"eventDate":"2018-08-23T20:01:53Z"},{"msg":"Node
+        Node 03 device Storage back plane[01] VPD is not available.","eventID":"0E010003","chassisText":"SN#Y034BG176046","serialnum":"10006DA","descriptionArgs":"","senderUUID":"80C0B2F6B84011E0B504EC89B07DB965","serviceabilityText":"Support","componentIdentifierText":"Unknown","flags":"","userid":"","userActionArgs":"","systemTypeModelText":"7893-92X","localLogID":"","severityText":"Warning","systemName":"SN#Y034BG176046:
+        ite-bv-1498: Bay 3","action":100,"failFRUs":[""],"failFRUNames":"","bayText":"Bay
+        3","originatorUUID":"","severity":300,"sourceID":"7F3E7E375B5747E0938969896B1CFDF5","sourceLogSequence":1094945989,"failSNs":[""],"sourceLogID":"IBM:CMM01:Y034BG176046:01","eventClass":1300,"componentID":"92B406662ED811E4A3F040F2E9903010","localLogSequence":"","fruSerialNumberText":"Y130BG16L05D","mtm":"789392X","eventSourceText":"Hardware","msgID":"CMM0075","cn":"4721","failFRUUUIDs":"","systemText":"SN#Y034BG176046","failFRUPartNumbers":"","timeStamp":"2018-08-24T02:05:55Z","args":["Node
+        03","Storage back plane","01"],"systemTypeText":"Chassis","service":200,"typeText":"Node","location":"010103035901","commonEventID":"","systemSerialNumberText":"10006DA","systemFruNumberText":"81Y2893","userIDIndex":"","parameters":{},"eventDate":"2018-08-24T02:05:54Z"},{"msg":"Node
+        Node 11 device Storage back plane[01] VPD is not valid.","eventID":"3501048B","chassisText":"SN#Y034BG17604F","serialnum":"KQ2Y83A","descriptionArgs":"","senderUUID":"C12E05BFB85B11E0B3CDDEE7BA2263C9","serviceabilityText":"Support","componentIdentifierText":"Unknown","flags":"","userid":"","userActionArgs":"","systemTypeModelText":"8721-HC1","localLogID":"","severityText":"Warning","systemName":"SN#Y034BG17604F:
+        ite-kt-023: Bay 11","action":100,"failFRUs":[""],"failFRUNames":"","bayText":"Bay
+        11","originatorUUID":"","severity":300,"sourceID":"009D6AC466AF3B3BB6109C8FAFDA3687","sourceLogSequence":977050,"failSNs":[""],"sourceLogID":"IBM:CMM01:Y034BG17604F:01","eventClass":1300,"componentID":"36334D853E5111E1A5F85CF3FC1134AA","localLogSequence":"","fruSerialNumberText":"Y030BG26K00H","mtm":"8721HC1","eventSourceText":"Hardware","msgID":"CMM0111","cn":"6350","failFRUUUIDs":"","systemText":"SN#Y034BG17604F","failFRUPartNumbers":"","timeStamp":"2018-08-24T04:47:34Z","args":["Node
+        11","Storage back plane","01"],"systemTypeText":"Chassis","service":200,"typeText":"Node","location":"0101030B5901","commonEventID":"","systemSerialNumberText":"KQ2Y83A","systemFruNumberText":"81Y2893","userIDIndex":"","parameters":{},"eventDate":"2018-08-24T04:47:33Z"},{"msg":"Node
+        Node 09 device Storage back plane[01] VPD is not valid.","eventID":"35010489","chassisText":"SN#Y034BG16F03V","serialnum":"100065A","descriptionArgs":"","senderUUID":"4BAF370D9DE211E0B25CF29BFB9E7E8B","serviceabilityText":"Support","componentIdentifierText":"Unknown","flags":"","userid":"","userActionArgs":"","systemTypeModelText":"7893-92X","localLogID":"","severityText":"Warning","systemName":"SN#Y034BG16F03V:
+        ite-bt-1599: Bay 9","action":100,"failFRUs":[""],"failFRUNames":"","bayText":"Bay
+        9","originatorUUID":"","severity":300,"sourceID":"E053C9508C244F549011B2518DB71236","sourceLogSequence":296055,"failSNs":[""],"sourceLogID":"IBM:CMM01:Y034BG16F03V:01","eventClass":1300,"componentID":"AEF5BECDEBAD11E0A96189E2A15788EB","localLogSequence":"","fruSerialNumberText":"Y130BG16L00F","mtm":"789392X","eventSourceText":"Hardware","msgID":"CMM0111","cn":"8535","failFRUUUIDs":"","systemText":"SN#Y034BG16F03V","failFRUPartNumbers":"","timeStamp":"2018-08-24T07:54:30Z","args":["Node
+        09","Storage back plane","01"],"systemTypeText":"Chassis","service":200,"typeText":"Node","location":"010103095901","commonEventID":"","systemSerialNumberText":"100065A","systemFruNumberText":"81Y2893","userIDIndex":"","parameters":{},"eventDate":"2018-08-24T07:54:27Z"},{"msg":"Node
+        Node 01 device Storage back plane[01] VPD is not valid.","eventID":"35010481","chassisText":"SN#Y034BG16F03V","serialnum":"100065A","descriptionArgs":"","senderUUID":"4BAF370D9DE211E0B25CF29BFB9E7E8B","serviceabilityText":"Support","componentIdentifierText":"Unknown","flags":"","userid":"","userActionArgs":"","systemTypeModelText":"7893-92X","localLogID":"","severityText":"Warning","systemName":"SN#Y034BG16F03V:
+        ite-bt-890: Bay 1","action":100,"failFRUs":[""],"failFRUNames":"","bayText":"Bay
+        1","originatorUUID":"","severity":300,"sourceID":"E053C9508C244F549011B2518DB71236","sourceLogSequence":296062,"failSNs":[""],"sourceLogID":"IBM:CMM01:Y034BG16F03V:01","eventClass":1300,"componentID":"B9A8192D427011E18F04F5F1A3C864E0","localLogSequence":"","fruSerialNumberText":"Y130BG16L00F","mtm":"789392X","eventSourceText":"Hardware","msgID":"CMM0111","cn":"9282","failFRUUUIDs":"","systemText":"SN#Y034BG16F03V","failFRUPartNumbers":"","timeStamp":"2018-08-24T08:46:44Z","args":["Node
+        01","Storage back plane","01"],"systemTypeText":"Chassis","service":200,"typeText":"Node","location":"010103015901","commonEventID":"","systemSerialNumberText":"100065A","systemFruNumberText":"81Y2893","userIDIndex":"","parameters":{},"eventDate":"2018-08-24T08:46:41Z"},{"msg":"Node
+        in bay 03 device Storage back plane[01] VPD is not valid.","eventID":"35010483","chassisText":"SN#Y034BG16E01B","serialnum":"100066A","descriptionArgs":"","senderUUID":"E610199E9C3611E0835385761D6996E5","serviceabilityText":"Not
+        Required","componentIdentifierText":"Systems Management","flags":"","userid":"","userActionArgs":"","systemTypeModelText":"7893-92X","localLogID":"","severityText":"Warning","systemName":"SN#Y034BG16E01B:
+        ite-kt-1755: Bay 3","action":100,"failFRUs":[""],"failFRUNames":"","bayText":"Bay
+        3","originatorUUID":"","severity":300,"sourceID":"CC29EFE505B54BB19937A702587B9232","sourceLogSequence":1074059625,"failSNs":[""],"sourceLogID":"IBM:CMM01:Y034BG16E01B:01","eventClass":1300,"componentID":"C20F3A0A3CC011E198EC5CF3FC1136CC","localLogSequence":"","fruSerialNumberText":"Y130BG16L057","mtm":"789392X","eventSourceText":"Hardware","msgID":"CMM1028","cn":"11362","failFRUUUIDs":"","systemText":"SN#Y034BG16E01B","failFRUPartNumbers":"","timeStamp":"2018-08-24T11:32:27Z","args":["03","Storage
+        back plane","01"],"systemTypeText":"Chassis","service":100,"typeText":"Node","location":"01010303","commonEventID":"FQXCMCR0200F","systemSerialNumberText":"100066A","systemFruNumberText":"81Y2893","userIDIndex":"","parameters":{},"eventDate":"2018-08-24T11:32:26Z"},{"msg":"Node
+        Node 01 device Storage back plane[01] VPD is not valid.","eventID":"35010481","chassisText":"SN#Y034BG16E03C","serialnum":"10003CA","descriptionArgs":"","senderUUID":"5E7943739D3411E087D79A6F1502A380","serviceabilityText":"Support","componentIdentifierText":"Unknown","flags":"","userid":"","userActionArgs":"","systemTypeModelText":"7893-92X","localLogID":"","severityText":"Warning","systemName":"SN#Y034BG16E03C:
+        ite-bt-101: Bay 1","action":100,"failFRUs":[""],"failFRUNames":"","bayText":"Bay
+        1","originatorUUID":"","severity":300,"sourceID":"AF1E4D58A1764A58A94AC6B5EB72FBE2","sourceLogSequence":581594,"failSNs":[""],"sourceLogID":"IBM:CMM01:Y034BG16E03C:01","eventClass":1300,"componentID":"6B538D351B8211E193F65CF3FC6E4030","localLogSequence":"","fruSerialNumberText":"Y130BG16B002","mtm":"789392X","eventSourceText":"Hardware","msgID":"CMM0111","cn":"37509","failFRUUUIDs":"","systemText":"SN#Y034BG16E03C","failFRUPartNumbers":"","timeStamp":"2018-08-25T07:08:00Z","args":["Node
+        01","Storage back plane","01"],"systemTypeText":"Chassis","service":200,"typeText":"Node","location":"010103015901","commonEventID":"","systemSerialNumberText":"10003CA","systemFruNumberText":"81Y2893","userIDIndex":"","parameters":{},"eventDate":"2018-08-25T07:07:57Z"},{"msg":"Node
+        Node 07 device Storage back plane[01] VPD is not available.","eventID":"0E010007","chassisText":"SN#Y034BG176046","serialnum":"10006DA","descriptionArgs":"","senderUUID":"80C0B2F6B84011E0B504EC89B07DB965","serviceabilityText":"Support","componentIdentifierText":"Unknown","flags":"","userid":"","userActionArgs":"","systemTypeModelText":"7893-92X","localLogID":"","severityText":"Warning","systemName":"SN#Y034BG176046:
+        ite-bv-1534: Bay 7","action":100,"failFRUs":[""],"failFRUNames":"","bayText":"Bay
+        7","originatorUUID":"","severity":300,"sourceID":"7F3E7E375B5747E0938969896B1CFDF5","sourceLogSequence":1094996510,"failSNs":[""],"sourceLogID":"IBM:CMM01:Y034BG176046:01","eventClass":1300,"componentID":"9DBEB1052E6611E4B19C40F2E9903600","localLogSequence":"","fruSerialNumberText":"Y130BG16L05D","mtm":"789392X","eventSourceText":"Hardware","msgID":"CMM0075","cn":"60194","failFRUUUIDs":"","systemText":"SN#Y034BG176046","failFRUPartNumbers":"","timeStamp":"2018-08-25T22:05:28Z","args":["Node
+        07","Storage back plane","01"],"systemTypeText":"Chassis","service":200,"typeText":"Node","location":"010103075901","commonEventID":"","systemSerialNumberText":"10006DA","systemFruNumberText":"81Y2893","userIDIndex":"","parameters":{},"eventDate":"2018-08-25T22:05:26Z"}]'
+    http_version: 
+  recorded_at: Mon, 17 Sep 2018 12:43:22 GMT
+- request:
+    method: get
+    uri: https://10.243.9.123/events?filterWith=%7B%22filterType%22:%22FIELDNOTREGEXAND%22,%22fields%22:%5B%7B%22operation%22:%22NOT%22,%22field%22:%22eventClass%22,%22value%22:%22200%22%7D,%7B%22operation%22:%22NOT%22,%22field%22:%22eventClass%22,%22value%22:%22800%22%7D,%7B%22operation%22:%22GT%22,%22field%22:%22cn%22,%22value%22:%2260194%22%7D%5D%7D
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - LXCA via Ruby Client/0.6.4 (ManageIQ/master)
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Mon, 17 Sep 2018 12:43:22 GMT
+      Authorization:
+      - Basic ZXBlcmVpcmE1Omxlbm92b3BzczA3MThTRTE=
+      Range:
+      - item=62481-124963
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 17 Sep 2018 12:44:55 GMT
+      - Mon, 17 Sep 2018 12:44:55 GMT
+      Set-Cookie:
+      - userAuthenticationMethod=ldap_local;Path=/;Secure
+      Expires:
+      - "-1"
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      Strict-Transport-Security:
+      - max-age=31536000 ; includeSubDomains
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Security-Policy:
+      - frame-ancestors 'self'; default-src 'self' ; script-src 'self' 'unsafe-inline'
+        'unsafe-eval'; style-src 'self' 'unsafe-inline'; object-src 'none'; worker-src
+        'self' blob:; child-src 'self' blob:; img-src 'self' data:;
+      Cache-Control:
+      - no-store, no-cache, must-revalidate
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/com.lenovo.lxca-v2.2.0+json; charset=UTF-8
+      Content-Range:
+      - 62481-124963/892595
+      Vary:
+      - Accept-Encoding, User-Agent
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: '[{"msg":"Node Node 10 device Storage back plane[01] VPD is not valid.","eventID":"3501048A","chassisText":"SN#Y034BG17604F","serialnum":"KQ2Y83A","descriptionArgs":"","senderUUID":"C12E05BFB85B11E0B3CDDEE7BA2263C9","serviceabilityText":"Support","componentIdentifierText":"Unknown","flags":"","userid":"","userActionArgs":"","systemTypeModelText":"8721-HC1","localLogID":"","severityText":"Warning","systemName":"SN#Y034BG17604F:
+        ite-kt-011: Bay 10","action":100,"failFRUs":[""],"failFRUNames":"","bayText":"Bay
+        10","originatorUUID":"","severity":300,"sourceID":"009D6AC466AF3B3BB6109C8FAFDA3687","sourceLogSequence":977065,"failSNs":[""],"sourceLogID":"IBM:CMM01:Y034BG17604F:01","eventClass":1300,"componentID":"F03639473E4F11E19DA85CF3FC113498","localLogSequence":"","fruSerialNumberText":"Y030BG26K00H","mtm":"8721HC1","eventSourceText":"Hardware","msgID":"CMM0111","cn":"63306","failFRUUUIDs":"","systemText":"SN#Y034BG17604F","failFRUPartNumbers":"","timeStamp":"2018-08-26T00:06:42Z","args":["Node
+        10","Storage back plane","01"],"systemTypeText":"Chassis","service":200,"typeText":"Node","location":"0101030A5901","commonEventID":"","systemSerialNumberText":"KQ2Y83A","systemFruNumberText":"81Y2893","userIDIndex":"","parameters":{},"eventDate":"2018-08-26T00:06:40Z"}]'
+    http_version: 
+  recorded_at: Mon, 17 Sep 2018 12:43:25 GMT
 recorded_with: VCR 3.0.3

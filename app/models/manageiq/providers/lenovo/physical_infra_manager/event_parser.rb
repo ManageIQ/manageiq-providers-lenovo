@@ -41,17 +41,18 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventParser
 
     def event_resources(event)
       event_resources = {}
+      suppress_output do
+        if event[:parent_type] == CHASSIS
+          event_resources[:physical_chassis_id] = get_resource_id(PhysicalChassis, event[:parent_uuid])
+        end
 
-      if event[:parent_type] == CHASSIS
-        event_resources[:physical_chassis_id] = get_resource_id(PhysicalChassis, event[:parent_uuid])
-      end
-
-      if event[:component_type] == SWITCH
-        event_resources[:physical_switch_id] = get_resource_id(PhysicalSwitch, event[:component_id])
-      elsif SERVER.include?(event[:component_type])
-        event_resources[:physical_server_id] = get_resource_id(PhysicalServer, event[:component_id])
-      else
-        $log.error("The event of type #{event[:component_type]} is not supported")
+        if event[:component_type] == SWITCH
+          event_resources[:physical_switch_id] = get_resource_id(PhysicalSwitch, event[:component_id])
+        elsif SERVER.include?(event[:component_type])
+          event_resources[:physical_server_id] = get_resource_id(PhysicalServer, event[:component_id])
+        else
+          $log.error("The event of type #{event[:component_type]} is not supported")
+        end
       end
 
       event_resources
@@ -59,6 +60,14 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventParser
 
     def get_resource_id(resource, uid_ems)
       resource.find_by(:uid_ems => uid_ems).try(:id)
+    end
+
+    def suppress_output
+      original_stdout = $stdout.clone
+      $stdout.reopen(File.new('/dev/null', 'a+'))
+      yield
+    ensure
+      $stdout.reopen(original_stdout)
     end
   end
 end

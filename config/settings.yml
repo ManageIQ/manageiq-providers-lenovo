@@ -3,6 +3,8 @@
   :ems_lenovo:
     :blacklisted_event_names: []
     :event_handling:
+      :connection_timeout: 90
+      :events_pool_percentage: 0.07
       :event_groups:
         :power:
           :critical:
