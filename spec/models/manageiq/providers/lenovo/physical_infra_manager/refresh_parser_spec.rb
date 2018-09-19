@@ -109,6 +109,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       expect(physical_storage[:drive_bays]).to eq(12)
       expect(physical_storage[:enclosures]).to eq(1)
       expect(physical_storage[:canister_slots]).to eq(2)
+      expect(physical_storage[:physical_disks].count).to eq(4)
     end
 
     it 'will parse physical storage asset detail data' do
@@ -141,6 +142,29 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       guest_device = hardware[:guest_devices].first
       expect(guest_device[:device_type]).to eq("management")
       expect(guest_device[:network][:ipaddress]).to eq("10.243.5.61")
+    end
+
+    it 'will parse physical disks data' do
+      physical_storage = @result[:physical_storages].second
+      physical_disks = physical_storage[:physical_disks]
+      physical_disk_one = physical_disks.first
+      physical_disk_two = physical_disks.second
+      physical_disk_three = physical_disks.third
+      physical_disk_four = physical_disks.fourth
+
+      expect(physical_disk_one).to_not be_nil
+      expect(physical_disk_two).to_not be_nil
+      expect(physical_disk_three).to_not be_nil
+      expect(physical_disk_four).to_not be_nil
+
+      expect(physical_disk_one[:model]).to eq("ST9300653SS")
+      expect(physical_disk_one[:vendor]).to eq("IBM-ESXS")
+      expect(physical_disk_one[:status]).to eq("Up")
+      expect(physical_disk_one[:location]).to eq("0.22")
+      expect(physical_disk_one[:serial_number]).to eq("6XN43QX50000B349D4LY")
+      expect(physical_disk_one[:health_state]).to eq("OK")
+      expect(physical_disk_one[:type]).to eq("SAS")
+      expect(physical_disk_one[:disk_size]).to eq("300.0GB")
     end
 
     it 'will have a reference to the physical rack where the storage is inside' do

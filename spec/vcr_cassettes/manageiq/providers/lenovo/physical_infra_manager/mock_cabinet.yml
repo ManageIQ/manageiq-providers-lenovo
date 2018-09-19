@@ -202,7 +202,54 @@ http_interactions:
                                     }
                                 ],
                                 "drives":[
-
+                                    {
+                                      "model": "ST9300653SS",
+                                      "vendorName": "IBM-ESXS",
+                                      "status": "Up",
+                                      "location": "0.22",
+                                      "serialNumber": "6XN43QX50000B349D4LY",
+                                      "healthReason": "",
+                                      "health": "OK",
+                                      "type": "SAS",
+                                      "healthRecommendation": "",
+                                      "size": "300.0GB"
+                                    },
+                                    {
+                                      "model": "ST9300605SS",
+                                      "vendorName": "IBM-ESXS",
+                                      "status": "Up",
+                                      "location": "0.17",
+                                      "serialNumber": "6XP5L6ZE0000B344HRZG",
+                                      "healthReason": "",
+                                      "health": "OK",
+                                      "type": "SAS",
+                                      "healthRecommendation": "",
+                                      "size": "300.0GB"
+                                    },
+                                    {
+                                      "model": "ST9300653SS",
+                                      "vendorName": "IBM-ESXS",
+                                      "status": "Up",
+                                      "location": "0.23",
+                                      "serialNumber": "6XN43QR90000B350B5G2",
+                                      "healthReason": "A disk that was previously a member of a disk group has been detected.",
+                                      "health": "Degraded",
+                                      "type": "SAS",
+                                      "healthRecommendation": "- If the associated disk group is offline or quarantined, contact technical support. Otherwise, clear the disk metadata to reuse the disk.",
+                                      "size": "300.0GB"
+                                    },
+                                    {
+                                      "model": "ST9300605SS",
+                                      "vendorName": "IBM-ESXS",
+                                      "status": "Up",
+                                      "location": "0.16",
+                                      "serialNumber": "6XP5L7QP0000B344HS0E",
+                                      "healthReason": "",
+                                      "health": "OK",
+                                      "type": "SAS",
+                                      "healthRecommendation": "",
+                                      "size": "300.0GB"
+                                    }
                                 ],
                                 "canisters":[
                                     {
