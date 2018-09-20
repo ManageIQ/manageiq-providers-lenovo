@@ -11,6 +11,16 @@ module ManageIQ::Providers::Lenovo
         }
       }.freeze
 
+      CANISTER_MANAGEMENT_DEVICE = {
+        :address     => 'macAddress',
+        :device_name => 'name',
+        :device_type => :device_type,
+        :network     => {
+          :ipaddress   => 'ipAddress',
+          :subnet_mask => 'networkMask'
+        },
+      }.freeze
+
       #
       # Parse a node object to get Its management device
       #
@@ -22,6 +32,15 @@ module ManageIQ::Providers::Lenovo
         parse(node, MANAGEMENT_DEVICE)
       end
 
+      def parse_canister_management_device(canister)
+        if canister['networkPorts'].present?
+          canister_management_device = parse(canister['networkPorts'], CANISTER_MANAGEMENT_DEVICE)
+          canister_management_device[:physical_network_ports] = canister_physical_network_ports(canister)
+
+          canister_management_device
+        end
+      end
+
       private
 
       def device_type(_node)
@@ -30,6 +49,10 @@ module ManageIQ::Providers::Lenovo
 
       def ipv6address(node)
         node.ipv6Addresses&.join(', ')
+      end
+
+      def canister_physical_network_ports(canister)
+        parent::PhysicalNetworkPortsParser.parse_physical_network_ports(canister['ports'])
       end
     end
   end
