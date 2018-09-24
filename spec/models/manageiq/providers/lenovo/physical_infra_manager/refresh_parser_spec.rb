@@ -174,7 +174,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       expect(physical_disk_one[:location]).to eq("0.22")
       expect(physical_disk_one[:serial_number]).to eq("6XN43QX50000B349D4LY")
       expect(physical_disk_one[:health_state]).to eq("OK")
-      expect(physical_disk_one[:type]).to eq("SAS")
+      expect(physical_disk_one[:controller_type]).to eq("SAS")
       expect(physical_disk_one[:disk_size]).to eq("300.0GB")
     end
 

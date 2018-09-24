@@ -76,14 +76,14 @@ module ManageIQ::Providers::Lenovo
 
       def parse_driver(driver)
         {
-          :model         => driver['model'],
-          :vendor        => driver['vendorName'],
-          :status        => driver['status'],
-          :location      => driver['location'],
-          :serial_number => driver['serialNumber'],
-          :health_state  => driver['health'],
-          :type          => driver['type'],
-          :disk_size     => driver['size']
+          :model           => driver['model'],
+          :vendor          => driver['vendorName'],
+          :status          => driver['status'],
+          :location        => driver['location'],
+          :serial_number   => driver['serialNumber'],
+          :health_state    => driver['health'],
+          :controller_type => driver['type'],
+          :disk_size       => driver['size']
         }
       end
 
