@@ -6,6 +6,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
     VCR.insert_cassette("#{vcr_path}/mock_aicc", options)
     VCR.insert_cassette("#{vcr_path}/mock_cabinet", options)
     VCR.insert_cassette("#{vcr_path}/mock_config_patterns", options)
+    VCR.insert_cassette("#{vcr_path}/mock_storages", options)
     VCR.insert_cassette("#{vcr_path}/mock_switches", options)
     VCR.insert_cassette("#{vcr_path}/mock_compliance_policy", options)
     VCR.insert_cassette("#{vcr_path}/full_refresh", options)
@@ -54,7 +55,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
     result = refresher.parse_legacy_inventory(ems)
 
     expect(result[:physical_servers].size).to eq(3)
-    expect(result[:physical_storages].size).to eq(2)
+    expect(result[:physical_storages].size).to eq(3)
     expect(result[:physical_chassis].size).to eq(1)
     expect(result[:physical_racks].size).to eq(1)
   end
@@ -123,9 +124,9 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
   def assert_table_counts
     expect(PhysicalRack.count).to eq(3)
     expect(PhysicalServer.count).to eq(2)
-    expect(PhysicalStorage.count).to eq(1)
-    expect(GuestDevice.count).to eq(6)
-    expect(PhysicalNetworkPort.count).to eq(42)
+    expect(PhysicalStorage.count).to eq(2)
+    expect(GuestDevice.count).to eq(8)
+    expect(PhysicalNetworkPort.count).to eq(50)
   end
 
   def assert_guest_table_contents
