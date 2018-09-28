@@ -42,7 +42,7 @@ module ManageIQ::Providers::Lenovo
         firmware = device['firmware']
         unless firmware.nil?
           device_fw = firmware.map do |fw|
-            parent::FirmwareParser.parse_firmware(fw)
+            parent::FirmwareParser.parse_firmware(fw, device)
           end
         end
 
