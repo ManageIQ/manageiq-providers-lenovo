@@ -5,6 +5,7 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalSwitch::Operat
   extend ActiveSupport::Concern
 
   include_concern 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::Sender'
+  include_concern 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::ComponentAnsibleSender'
 
   #
   # Restarts the physical switch.
