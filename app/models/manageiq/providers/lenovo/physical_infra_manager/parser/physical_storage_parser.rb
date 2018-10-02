@@ -1,6 +1,9 @@
 module ManageIQ::Providers::Lenovo
   class PhysicalInfraManager::Parser::PhysicalStorageParser < PhysicalInfraManager::Parser::ComponentParser
     class << self
+      # Unit used to store total disk size information of a physical storage
+      DISK_UNIT = 'GB'
+
       # Mapping between fields inside a [XClarityClient::Storage] to a [Hash] with symbols of PhysicalStorage fields
       PHYSICAL_STORAGE = {
         :name                 => 'name',
