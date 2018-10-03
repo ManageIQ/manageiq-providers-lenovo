@@ -16,3 +16,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "\n"
+
+msgid "Lenovo Provider"
+msgstr ""
+
+msgid "Physical Chassis (Lenovo)"
+msgid_plural "Physical Chassis (Lenovo)"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Physical Rack (Lenovo)"
+msgid_plural "Physical Racks (Lenovo)"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Physical Server (Lenovo)"
+msgid_plural "Physical Servers (Lenovo)"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Physical Switch (Lenovo)"
+msgid_plural "Physical Switches (Lenovo)"
+msgstr[0] ""
+msgstr[1] ""

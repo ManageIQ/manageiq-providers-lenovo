@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManageIQ_Providers_Lenovo 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-10 14:40+0100\n"
-"PO-Revision-Date: 2016-11-10 14:40+0100\n"
+"POT-Creation-Date: 2018-10-03 15:19+0200\n"
+"PO-Revision-Date: 2018-10-03 15:19+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -17,3 +17,31 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: ../lib/manageiq/providers/lenovo/engine.rb:8
+msgid "Lenovo Provider"
+msgstr ""
+
+#: ../app/models/manageiq/providers/lenovo/physical_infra_manager/physical_chassis.rb:6
+msgid "Physical Chassis (Lenovo)"
+msgid_plural "Physical Chassis (Lenovo)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../app/models/manageiq/providers/lenovo/physical_infra_manager/physical_rack.rb:4
+msgid "Physical Rack (Lenovo)"
+msgid_plural "Physical Racks (Lenovo)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../app/models/manageiq/providers/lenovo/physical_infra_manager/physical_server.rb:6
+msgid "Physical Server (Lenovo)"
+msgid_plural "Physical Servers (Lenovo)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../app/models/manageiq/providers/lenovo/physical_infra_manager/physical_switch.rb:6
+msgid "Physical Switch (Lenovo)"
+msgid_plural "Physical Switches (Lenovo)"
+msgstr[0] ""
+msgstr[1] ""
