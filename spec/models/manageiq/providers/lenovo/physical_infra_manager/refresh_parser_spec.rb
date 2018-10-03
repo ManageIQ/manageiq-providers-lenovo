@@ -112,6 +112,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       expect(physical_storage[:canister_slots]).to eq(2)
       expect(physical_storage[:physical_disks].count).to eq(4)
       expect(physical_storage[:canisters].count).to eq(2)
+      expect(physical_storage[:total_space]).to eq(128_849_018_880_0)
     end
 
     it 'will parse physical storage asset detail data' do
