@@ -11,28 +11,32 @@ module ManageIQ::Providers::Lenovo
       :disk_size       => 'size'
     }.freeze
 
-    def lazy_build(components, storage_uuid)
+    def build(driver, index, storage = nil, canister = nil)
+      parsed_disk = parse_disk(driver, storage, index)
+
+      add_parent(parsed_disk, :belongs_to => :physical_storage, :object => storage) if storage
+      add_parent(parsed_disk, :belongs_to => :canister, :object => canister) if canister
+      physical_disk = @persister.physical_disks.build(parsed_disk)
+
+      physical_disk
+    end
+
+    def total_space(components)
       total_space = 0
-
       components.each do |component|
-        component['drives'].each do |drive|
-          properties = parse_drive(drive)
-          properties[:physical_storage] = @persister.physical_storages.lazy_find(storage_uuid)
-
-          total_space += properties[:disk_size].to_i
-
-          @persister.physical_disks.build(properties)
+        component['drives'].each do |driver|
+          total_space += driver['size'].to_i
         end
       end
-
       total_space
     end
 
-    def parse_drive(drive)
+    def parse_disk(driver, storage, index)
       result = {}
-      PHYSICAL_DISK.each_pair do |key, drive_key|
-        result[key] = drive[drive_key]
+      PHYSICAL_DISK.each_pair do |key, driver_key|
+        result[key] = driver[driver_key]
       end
+      result[:ems_ref] = storage[:ems_ref] + '_' + index
       result
     end
   end

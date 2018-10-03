@@ -224,8 +224,8 @@ module ManageIQ::Providers::Lenovo::Inventory::Persister::Definitions::PhysicalI
   def add_physical_disks
     add_collection(physical_infra, :physical_disks) do |builder|
       builder.add_properties(
-        :manager_ref             => %i(physical_storage location),
-        :manager_ref_allowed_nil => %i(location)
+        :manager_ref             => %i(physical_storage ems_ref),
+        :manager_ref_allowed_nil => %i(ems_ref)
       )
     end
   end

@@ -169,6 +169,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       expect(physical_disk_three).to_not be_nil
       expect(physical_disk_four).to_not be_nil
 
+      expect(physical_disk_one[:ems_ref]).to eq("208000C0FF2683AF_0")
       expect(physical_disk_one[:model]).to eq("ST9300653SS")
       expect(physical_disk_one[:vendor]).to eq("IBM-ESXS")
       expect(physical_disk_one[:status]).to eq("Up")
@@ -177,6 +178,22 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       expect(physical_disk_one[:health_state]).to eq("OK")
       expect(physical_disk_one[:controller_type]).to eq("SAS")
       expect(physical_disk_one[:disk_size]).to eq("300.0GB")
+    end
+
+    it 'will parse physical disks inside a canister' do
+      physical_storage = @result[:physical_storages].first
+      canister_one = physical_storage[:canisters].first
+      canister_disk_one = canister_one[:physical_disks].first
+
+      expect(canister_disk_one[:ems_ref]).to eq("457784225BA511E18290B4F27BD253A5_0")
+      expect(canister_disk_one[:model]).to eq("Canister_Driver_Model")
+      expect(canister_disk_one[:vendor]).to eq("Canister_Driver_Vendor")
+      expect(canister_disk_one[:status]).to eq("Up")
+      expect(canister_disk_one[:location]).to eq("0.50")
+      expect(canister_disk_one[:serial_number]).to eq("20183QX50000B3492018")
+      expect(canister_disk_one[:health_state]).to eq("OK")
+      expect(canister_disk_one[:controller_type]).to eq("SAS")
+      expect(canister_disk_one[:disk_size]).to eq("300.0GB")
     end
 
     it 'will have a reference to the physical rack where the storage is inside' do

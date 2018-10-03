@@ -59,33 +59,57 @@ module ManageIQ::Providers::Lenovo
       end
 
       def physical_disks(storage)
-        return parse_drivers_inside_components(storage.canisters) if storage.canisters.present?
-        parse_drivers_inside_components(storage.enclosures) if storage.enclosures.present?
+        parse_drivers_inside_multi_enclosures(storage) if storage.enclosures.present?
       end
 
-      def parse_drivers_inside_components(components)
+      def parse_drivers_inside_multi_enclosures(storage)
         drivers = []
+        storage.enclosures.each do |enclosure|
+          drivers << parse_drivers_inside_single_component(enclosure, :storage => storage)
+        end
 
-        components.each do |component|
-          component['drives'].each do |driver|
-            drivers << parse_driver(driver)
-          end
+        drivers.flatten
+      end
+
+      def parse_drivers_inside_single_component(parent, storage: nil)
+        drivers = []
+        driver_index = 0
+
+        parent['drives']&.each do |driver|
+          drivers << if storage.present?
+                       parse_storage_driver(storage, driver, driver_index.to_s)
+                     else
+                       parse_canister_driver(parent, driver, driver_index.to_s)
+                     end
+          driver_index += 1
         end
 
         drivers
       end
 
-      def parse_driver(driver)
-        {
-          :model           => driver['model'],
-          :vendor          => driver['vendorName'],
-          :status          => driver['status'],
-          :location        => driver['location'],
-          :serial_number   => driver['serialNumber'],
-          :health_state    => driver['health'],
-          :controller_type => driver['type'],
-          :disk_size       => driver['size']
-        }
+      def parse_storage_driver(storage, driver, driver_index)
+        result = parent::PhysicalDiskParser.parse_physical_disk(driver)
+        result[:ems_ref] = storage.uuid + '_' + driver_index
+
+        result
+      end
+
+      def parse_canister_driver(canister, driver, driver_index)
+        result = parent::PhysicalDiskParser.parse_physical_disk(driver, :canister => canister)
+        result[:ems_ref] = canister['uuid'] + '_' + driver_index
+
+        result
+      end
+
+      #
+      # @param storage [Hash] Hash with parsed storage data (including physical_disks in it)
+      #
+      def get_total_space(storage)
+        total_space = 0
+        disks = storage[:physical_disks]
+        disks&.each { |disk| total_space += disk[:disk_size].to_i }
+
+        total_space.zero? ? nil : total_space.gigabytes # returns the size in bytes
       end
 
       #
@@ -127,6 +151,7 @@ module ManageIQ::Providers::Lenovo
 
       def parse_canister(canister)
         {
+          :ems_ref                      => canister['uuid'],
           :serial_number                => canister['serialNumber'],
           :name                         => canister['cmmDisplayName'],
           :position                     => canister['position'],
@@ -141,6 +166,7 @@ module ManageIQ::Providers::Lenovo
           :power_state                  => canister['powerState'],
           :host_ports                   => canister['hostPorts'],
           :hardware_version             => canister['hardwareVersion'],
+          :physical_disks               => parse_drivers_inside_single_component(canister),
           :computer_system              => {
             :hardware => {
               :guest_devices => canister_guest_devices(canister)
