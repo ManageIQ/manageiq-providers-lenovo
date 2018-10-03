@@ -43,6 +43,7 @@ module ManageIQ::Providers::Lenovo
 
         result[:physical_rack]    = rack if rack
         result[:physical_chassis] = chassis if chassis
+        result[:total_space]      = get_total_space(result)
 
         result
       end
@@ -85,6 +86,20 @@ module ManageIQ::Providers::Lenovo
           :controller_type => driver['type'],
           :disk_size       => driver['size']
         }
+      end
+
+      #
+      # @param storage [Hash] Hash with parsed storage data (including physical_disks in it)
+      #
+      def get_total_space(storage)
+        total_space = 0
+        disks = storage[:physical_disks]
+
+        disks&.each do |disk|
+          total_space += disk[:disk_size].to_i
+        end
+
+        total_space.zero? ? nil : total_space.gigabytes # returns the size in bytes
       end
 
       def canisters(storage)
