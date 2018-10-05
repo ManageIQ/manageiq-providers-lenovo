@@ -95,34 +95,43 @@ module ManageIQ::Providers::Lenovo
         total_space = 0
         disks = storage[:physical_disks]
 
-        disks&.each do |disk|
-          total_space += disk[:disk_size].to_i
-        end
+        disks&.each { |disk| total_space += disk[:disk_size].to_i }
 
         total_space.zero? ? nil : total_space.gigabytes # returns the size in bytes
       end
 
       def canisters(storage)
-        return parse_canisters_inside_components(storage.enclosures) if storage.enclosures.present?
+        return parse_canisters_inside_components(storage, storage.enclosures) if storage.enclosures.present?
         parse_canisters_inside_storage(storage) if storage.enclosures.blank?
       end
 
       def parse_canisters_inside_storage(storage)
         canisters = []
+        canister_index = 0
         storage.canisters.each do |canister|
-          canisters << parse_canister(canister)
+          canisters << parse_canister_component(storage, canister, canister_index.to_s)
+          canister_index += 1
         end
         canisters
       end
 
-      def parse_canisters_inside_components(components)
+      def parse_canisters_inside_components(components_parent, components)
         canisters = []
+        canister_index = 0
         components.each do |component|
           component['canisters'].each do |canister|
-            canisters << parse_canister(canister)
+            canisters << parse_canister_component(components_parent, canister, canister_index.to_s)
+            canister_index += 1
           end
         end
         canisters
+      end
+
+      def parse_canister_component(parent, canister, canister_index)
+        result = parse_canister(canister)
+        result[:ems_ref] = canister['uuid'].presence || parent.uuid + '_' + canister_index
+
+        result
       end
 
       def parse_canister(canister)
@@ -136,7 +145,7 @@ module ManageIQ::Providers::Lenovo
           :phy_isolation                => canister['phyIsolation'],
           :controller_redundancy_status => canister['controllerRedundancyStatus'],
           :disks                        => canister['disks'],
-          :disk_channel                 => canister['diskChannel'],
+          :disk_channel                 => canister['diskChannels'],
           :system_cache_memory          => canister['systemCacheMemory'],
           :power_state                  => canister['powerState'],
           :host_ports                   => canister['hostPorts'],

@@ -107,6 +107,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
 
   def assert_specific_storage
     storage = PhysicalStorage.find_by(:ems_ref => "208000C0FF2683AF")
+    storage_canister_one = Canister.find_by(:ems_ref => "208000C0FF2683AF_0")
 
     expect(storage.name).to eq("S3200-1")
     expect(storage.uid_ems).to eq("208000C0FF2683AF")
@@ -119,12 +120,19 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
     expect(storage.drive_bays).to eq(12)
     expect(storage.enclosures).to eq(1)
     expect(storage.canister_slots).to eq(2)
+
+    expect(storage_canister_one.position).to eq("Top")
+    expect(storage_canister_one.status).to eq("Operational")
+    expect(storage_canister_one.health_state).to eq("Normal")
+    expect(storage_canister_one.disks).to eq(0)
+    expect(storage_canister_one.disk_channel).to eq(2)
   end
 
   def assert_table_counts
     expect(PhysicalRack.count).to eq(3)
     expect(PhysicalServer.count).to eq(2)
     expect(PhysicalStorage.count).to eq(2)
+    expect(Canister.count).to eq(4)
     expect(GuestDevice.count).to eq(8)
     expect(PhysicalNetworkPort.count).to eq(50)
   end
