@@ -58,7 +58,7 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::P
   has_many :physical_switch_networks,  :through => :physical_switch_hardwares,           :source => :networks
 
   # Physical network ports
-  has_many :physical_server_network_ports, :through => :physical_server_network_devices,     :source => :physical_network_ports
+  has_many :physical_server_network_ports, :through => :physical_server_network_devices,      :source => :physical_network_ports
   has_many :physical_switch_network_ports, :through => :physical_switches,                    :source => :physical_network_ports
   has_many :physical_storage_network_ports, :through => :physical_storage_management_devices, :source => :physical_network_ports
 
@@ -67,7 +67,6 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::P
 
   # Canisters
   has_many :canisters, :through => :physical_storages
-
 
   def self.ems_type
     @ems_type ||= "lenovo_ph_infra".freeze

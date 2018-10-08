@@ -157,12 +157,12 @@ module ManageIQ::Providers::Lenovo
     end
 
     def memory_info(node)
-      total_memory_gigabytes = node.memoryModules&.reduce(0) {|total, mem| total + mem['capacity']}
+      total_memory_gigabytes = node.memoryModules&.reduce(0) { |total, mem| total + mem['capacity'] }
       total_memory_gigabytes * 1024 # convert to megabytes
     end
 
     def total_cores(node)
-      node.processors&.reduce(0) {|total, pr| total + pr['cores']}
+      node.processors&.reduce(0) { |total, pr| total + pr['cores'] }
     end
 
     def find_compliance(node, compliance_policies)

@@ -31,4 +31,3 @@ module ManageIQ::Providers::Lenovo
     end
   end
 end
-

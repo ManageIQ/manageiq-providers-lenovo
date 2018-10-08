@@ -26,7 +26,6 @@ module ManageIQ::Providers::Lenovo
     delegate :components,
              :to => :parser
 
-
     HEALTH_STATE_MAP = {
       'normal'          => 'Valid',
       'non-critical'    => 'Valid',
@@ -93,7 +92,7 @@ module ManageIQ::Providers::Lenovo
 
     def get_location_led_info(leds)
       return if leds.blank?
-      identification_led = leds.to_a.find {|led| PROPERTIES_MAP[:led_identify_name].include?(led["name"])}
+      identification_led = leds.to_a.find { |led| PROPERTIES_MAP[:led_identify_name].include?(led["name"]) }
 
       {
         :location_led_ems_ref => identification_led.try(:[], "name"),
@@ -114,7 +113,6 @@ module ManageIQ::Providers::Lenovo
     def build_computer_system(parent_object)
       components(:computer_systems).build(:belongs_to => :managed_entity,
                                           :object     => parent_object)
-
     end
 
     def build_asset_detail(inventory_object, xclarity_object, properties)

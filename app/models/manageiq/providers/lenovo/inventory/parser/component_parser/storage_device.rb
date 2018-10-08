@@ -31,8 +31,8 @@ module ManageIQ::Providers::Lenovo
     #   The storage devices could be in `pci_devices` or `addin_cards` prop
     #
     def select_storage_devices(component)
-      pci_devices = component.try(:pciDevices).try(:select) {|device| storage_device?(device)}
-      addin_cards = component.try(:addinCards).try(:select) {|device| storage_device?(device)}
+      pci_devices = component.try(:pciDevices).try(:select) { |device| storage_device?(device) }
+      addin_cards = component.try(:addinCards).try(:select) { |device| storage_device?(device) }
 
       devices = []
       devices.concat(pci_devices) if pci_devices.present?
@@ -41,7 +41,7 @@ module ManageIQ::Providers::Lenovo
     end
 
     def distinct_storage_devices(devices)
-      devices.uniq {|device| uid_ems(device)}
+      devices.uniq { |device| uid_ems(device) }
     end
 
     def storage_device?(device)

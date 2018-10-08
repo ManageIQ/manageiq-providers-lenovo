@@ -8,7 +8,6 @@ module ManageIQ::Providers::Lenovo
     }.freeze
 
     class << self
-
       def parse_compliance_policy(compliance_policies)
         parse_to_hash(compliance_policies)
       end

@@ -34,7 +34,6 @@ module ManageIQ::Providers::Lenovo
     def build_physical_network_ports(device_inventory_object, device, all_devices)
       ports = all_devices.select { |device_with_port| uid_ems(device) == uid_ems(device_with_port) }
 
-
       components(:physical_network_ports).build_server_network_device_ports(ports,
                                                                             :belongs_to => :guest_device,
                                                                             :object     => device_inventory_object)
@@ -48,8 +47,8 @@ module ManageIQ::Providers::Lenovo
     #   (it could have duplicated entries if the entry is in both properties)
     #
     def select_network_devices(component)
-      pci_devices = component.try(:pciDevices).try(:select) {|device| network_device?(device)}
-      addin_cards = component.try(:addinCards).try(:select) {|device| network_device?(device)}
+      pci_devices = component.try(:pciDevices).try(:select) { |device| network_device?(device) }
+      addin_cards = component.try(:addinCards).try(:select) { |device| network_device?(device) }
 
       devices = []
       devices.concat(pci_devices) if pci_devices.present?
@@ -61,7 +60,7 @@ module ManageIQ::Providers::Lenovo
     # Distincts the network devices by pciSubID property (remove duplicated entries)
     #
     def distinct_network_devices(devices)
-      devices.uniq {|device| uid_ems(device)}
+      devices.uniq { |device| uid_ems(device) }
     end
 
     #

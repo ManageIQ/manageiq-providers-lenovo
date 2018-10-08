@@ -119,9 +119,9 @@ module ManageIQ::Providers::Lenovo
     end
 
     def get_parsed_switch_ip_interfaces_by_key(ip_interfaces, key, address_list, is_ipv6 = false)
-      ip_interfaces&.flat_map {|interface| interface[key]}
-        .select {|assignment| address_list.include?(assignment['address'])}
-        .map {|assignment| parse_network(assignment, is_ipv6)}
+      ip_interfaces&.flat_map { |interface| interface[key] }
+        .select { |assignment| address_list.include?(assignment['address']) }
+        .map { |assignment| parse_network(assignment, is_ipv6) }
     end
 
     def parse_network(assignment, is_ipv6 = false)
