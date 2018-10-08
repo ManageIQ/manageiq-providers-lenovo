@@ -69,7 +69,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       switch   = @result[:physical_switches].first
       firmware = switch[:hardware][:firmwares].first
 
-      expect(firmware[:name]).to eq("Uboot-N/A")
+      expect(firmware[:name]).to eq("Uboot - N/A")
       expect(firmware[:version]).to eq("10.4.2.0")
     end
 
@@ -288,7 +288,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
 
       expect(guest_device[:device_name]).to eq("Broadcom 2-port 1GbE NIC Card for IBM")
       expect(guest_device[:device_type]).to eq("ethernet")
-      expect(guest_device[:firmwares][0][:name]).to eq("Primary 17.4.4.2a-Active")
+      expect(guest_device[:firmwares][0][:name]).to eq("Broadcom 2-port 1GbE NIC Card for IBM")
       expect(guest_device[:firmwares][0][:version]).to eq("17.4.4.2a")
       expect(guest_device[:manufacturer]).to eq("IBM")
       expect(guest_device[:field_replaceable_unit]).to eq("90Y9373")

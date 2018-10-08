@@ -143,24 +143,10 @@ module ManageIQ::Providers::Lenovo
           :hardware_version             => canister['hardwareVersion'],
           :computer_system              => {
             :hardware => {
-              :firmwares     => canister_firmwares(canister),
               :guest_devices => canister_guest_devices(canister)
             }
           }
         }
-      end
-
-      def canister_firmwares(canister)
-        firmwares = []
-        firmware = canister['firmware']
-
-        if firmware.present? && firmware['storageControllerCpuType'] != 'Not Present'
-          result = parent::FirmwareParser.parse_firmware(firmware)
-          result[:resource_type] = 'Hardware'
-          firmwares << result
-        end
-
-        firmwares
       end
 
       def canister_guest_devices(canister)
