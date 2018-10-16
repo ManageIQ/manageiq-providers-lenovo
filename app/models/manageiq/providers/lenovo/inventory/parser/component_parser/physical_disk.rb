@@ -11,15 +11,21 @@ module ManageIQ::Providers::Lenovo
       :disk_size       => 'size'
     }.freeze
 
-    def build(components, parent)
+    def lazy_build(components, storage_uuid)
+      total_space = 0
+
       components.each do |component|
         component['drives'].each do |drive|
           properties = parse_drive(drive)
-          add_parent(properties, parent)
+          properties[:physical_storage] = @persister.physical_storages.lazy_find(storage_uuid)
+
+          total_space += properties[:disk_size].to_i
 
           @persister.physical_disks.build(properties)
         end
       end
+
+      total_space
     end
 
     def parse_drive(drive)

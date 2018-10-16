@@ -12,7 +12,7 @@ module ManageIQ::Providers::Lenovo
       :canister_slots       => 'canisterSlots',
       :type                 => :type,
       :health_state         => :health_state,
-      :physical_disks       => nil, #:physical_disks,
+      :physical_disks       => nil,
       :canisters            => {
         :computer_system => {
           :hardware => {
@@ -45,6 +45,9 @@ module ManageIQ::Providers::Lenovo
     def build(storage_xclarity, rack = nil, chassis = nil)
       properties = parse_physical_storage(storage_xclarity)
 
+      total_space = build_physical_disks(storage_xclarity)
+      properties[:total_space] = total_space.zero? ? nil : total_space.gigabytes
+
       add_parent(properties, :belongs_to => :physical_rack, :object => rack) if rack
       add_parent(properties, :belongs_to => :physical_chassis, :object => chassis) if chassis
 
@@ -73,7 +76,6 @@ module ManageIQ::Providers::Lenovo
     def build_associations(storage, storage_xclarity)
       build_canisters(storage, storage_xclarity)
       build_asset_detail(storage, storage_xclarity)
-      build_physical_disks(storage, storage_xclarity)
     end
 
     def build_canisters(storage, storage_xclarity)
@@ -82,13 +84,14 @@ module ManageIQ::Providers::Lenovo
                                    :object     => storage)
     end
 
-    def build_physical_disks(storage, storage_xclarity)
+    def build_physical_disks(storage_xclarity)
+      total_space = 0
       components = storage_xclarity.canisters.presence || storage_xclarity.enclosures.presence
       if components.present?
-        components(:physical_disks).build(components,
-                                          :belongs_to => :physical_storage,
-                                          :object     => storage)
+        total_space = components(:physical_disks).lazy_build(components,
+                                                             storage_xclarity.uuid)
       end
+      total_space
     end
 
     def build_asset_detail(storage, storage_xclarity)

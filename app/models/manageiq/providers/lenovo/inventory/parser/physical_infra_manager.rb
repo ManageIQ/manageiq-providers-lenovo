@@ -26,8 +26,6 @@ module ManageIQ::Providers::Lenovo
       customization_scripts
 
       components(:physical_network_ports).bind_network_ports!
-
-      # binding.pry
     end
 
     def components(name)
