@@ -47,8 +47,9 @@ module ManageIQ::Providers::Lenovo
       firmware&.each do |fw|
         components(:firmwares).build(fw,
                                      inventory_collection_name,
-                                     :belongs_to => :guest_device,
-                                     :object     => inventory_object)
+                                     {:belongs_to => :guest_device,
+                                      :object     => inventory_object},
+                                     device)
       end
     end
 

@@ -19,7 +19,6 @@ module ManageIQ::Providers::Lenovo
       :hardware_version             => 'hardwareVersion',
       :computer_system              => {
         :hardware => {
-          :firmwares     => nil,
           :guest_devices => {
             :physical_network_port => nil
           }
@@ -57,19 +56,7 @@ module ManageIQ::Providers::Lenovo
         :computer_system => comp_system
       )
 
-      build_firmwares(hw, canister_raw_data)
-
       build_guest_devices(hw, canister_raw_data) if canister_raw_data['networkPorts'].present?
-    end
-
-    def build_firmwares(hardware, canister_raw_data)
-      firmware = canister_raw_data['firmware']
-      if firmware.present? && firmware['storageControllerCpuType'] != 'Not Present'
-        components(:firmware).build(firmware,
-                                    :physical_storage_firmwares,
-                                    :belongs_to => :resource,
-                                    :object     => hardware)
-      end
     end
 
     def build_guest_devices(hardware, canister_properties)

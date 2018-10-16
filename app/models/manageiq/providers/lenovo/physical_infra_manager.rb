@@ -49,7 +49,6 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::P
   has_many :physical_server_network_device_firmwares,  :through => :physical_server_network_devices,  :source => :firmwares
   has_many :physical_server_storage_adapter_firmwares, :through => :physical_server_storage_adapters, :source => :firmwares
   has_many :physical_switch_firmwares,                 :through => :physical_switch_hardwares,        :source => :firmwares
-  has_many :physical_storage_firmwares,                :through => :physical_storage_hardwares,       :source => :firmwares
 
   # Network
   has_many :physical_server_networks,  :through => :physical_server_management_devices,  :source => :network

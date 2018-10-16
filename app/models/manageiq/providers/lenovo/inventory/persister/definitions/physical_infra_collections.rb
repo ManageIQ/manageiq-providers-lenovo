@@ -156,7 +156,6 @@ module ManageIQ::Providers::Lenovo::Inventory::Persister::Definitions::PhysicalI
 
   def add_firmwares
     %i(physical_server
-       physical_storage
        physical_switch).each do |firmware_assoc|
 
       add_collection(physical_infra, "#{firmware_assoc}_firmwares".to_sym) do |builder|
