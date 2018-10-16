@@ -2,9 +2,7 @@ module ManageIQ::Providers::Lenovo::Inventory::Persister::Definitions::PhysicalI
   extend ActiveSupport::Concern
 
   def initialize_physical_infra_inventory_collections
-    %i(canisters
-       customization_scripts
-       physical_disks
+    %i(customization_scripts
        physical_chassis
        physical_racks
        physical_servers
@@ -13,6 +11,10 @@ module ManageIQ::Providers::Lenovo::Inventory::Persister::Definitions::PhysicalI
 
       add_collection(physical_infra, name)
     end
+
+    add_canisters
+
+    add_physical_disks
 
     add_asset_details
 
@@ -200,6 +202,31 @@ module ManageIQ::Providers::Lenovo::Inventory::Persister::Definitions::PhysicalI
                       end
         builder.add_properties(:manager_ref => manager_ref)
       end
+    end
+  end
+
+  # TODO! serial_number wasn't in old refresh's find_key
+  # but there can be more canisters for one storage
+  # http://sysmgt.lenovofiles.com/help/index.jsp?topic=%2Fcom.lenovo.lxca_restapis.doc%2Frest_apis_reference.html
+  # In doc, there is UUID, but not used in this provider
+  # Tmp solution with serial_number works for specs
+  def add_canisters
+    add_collection(physical_infra, :canisters) do |builder|
+      builder.add_properties(
+        :manager_ref             => %i(physical_storage serial_number),
+        :manager_ref_allowed_nil => %i(serial_number)
+      )
+    end
+  end
+
+  # Like canisters, physical disks are not uniquely identified in old refresh
+  # Solution with serial_number should work
+  def add_physical_disks
+    add_collection(physical_infra, :physical_disks) do |builder|
+      builder.add_properties(
+        :manager_ref             => %i(physical_storage location),
+        :manager_ref_allowed_nil => %i(location)
+      )
     end
   end
 end
