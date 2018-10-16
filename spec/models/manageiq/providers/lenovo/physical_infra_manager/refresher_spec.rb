@@ -465,15 +465,15 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
 
   def assert_specific_storage_detail(asset_detail)
     expect(asset_detail).to have_attributes(
-      :description      => 'RTP_S3200_1',
-      :contact          => 'Bay Nguyen',
-      :lowest_rack_unit => '0',
-      :resource_type    => 'PhysicalStorage',
-      :product_name     => 'S3200',
-      :machine_type     => '6411',
-      :model            => 'S3200',
-      :serial_number    => '2683AF',
-    )
+                              :description      => 'RTP_S3200_1',
+                              :contact          => 'Bay Nguyen',
+                              :lowest_rack_unit => '0',
+                              :resource_type    => 'PhysicalStorage',
+                              :product_name     => 'S3200',
+                              :machine_type     => '6411',
+                              :model            => 'S3200',
+                              :serial_number    => '2683AF',
+                              )
   end
 
   def assert_specific_storage_computer_system(computer_system)
