@@ -433,6 +433,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
       expect(config_pattern2[:manager_ref]).to eq("54")
       expect(config_pattern2[:name]).to eq("DaAn")
       expect(config_pattern2[:in_use]).to eq(false)
+      expect(config_pattern2[:type]).to eq('ManageIQ::Providers::Lenovo::PhysicalInfraManager::ConfigPattern')
     end
   end
 end
