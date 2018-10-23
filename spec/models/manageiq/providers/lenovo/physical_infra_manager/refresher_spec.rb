@@ -171,7 +171,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
       expect(ComputerSystem.count).to eq(10)
       expect(Hardware.count).to eq(11)
       expect(GuestDevice.count).to eq(14)
-      # expect(Firmware.count).to eq(20)
+      expect(Firmware.count).to eq(20)
       expect(Network.count).to eq(12)
       expect(PhysicalNetworkPort.count).to eq(60)
       expect(CustomizationScript.count).to eq(2)
@@ -260,7 +260,6 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
     expect(hardware.storage_adapters.count).to eq(1)
     expect(hardware.management_devices.count).to eq(1)
 
-    # binding.pry
     assert_specific_server_firmware(hardware.firmwares.find_by(:name => 'UEFI (Primary)'))
     assert_specific_server_network_device(hardware.nics.first)
     assert_specific_storage_adapter(hardware.storage_adapters.first)
@@ -370,8 +369,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
         :type                 => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalStorage',
         :drive_bays           => 12,
         :enclosures           => 1,
-        :canister_slots       => 2,
-        :total_space          => 1_288_490_188_800
+        :canister_slots       => 2
       },
       :ems2 => {
         :name                 => 'S8000-1',
@@ -383,8 +381,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
         :type                 => 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalStorage',
         :drive_bays           => 12,
         :enclosures           => 1,
-        :canister_slots       => 2,
-        :total_space          => nil
+        :canister_slots       => 2
       },
     }
 
@@ -422,15 +419,16 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
       )
     else
       expect(physical_disk).to have_attributes(
-        :serial_number => '20183QX50000B3492018',
-        :model => 'Canister_Driver_Model',
-        :vendor => 'Canister_Driver_Vendor',
-        :status => 'Up',
-        :location => '0.50',
-        :health_state => 'OK',
+        :serial_number   => '20183QX50000B3492018',
+        :model           => 'Canister_Driver_Model',
+        :vendor          => 'Canister_Driver_Vendor',
+        :status          => 'Up',
+        :location        => '0.50',
+        :health_state    => 'OK',
         :controller_type => 'SAS',
-        :disk_size => '300.0GB'
+        :disk_size       => '300.0GB'
       )
+    end
   end
 
   def assert_specific_canister(manager, canister)
@@ -467,15 +465,15 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
 
   def assert_specific_storage_detail(asset_detail)
     expect(asset_detail).to have_attributes(
-                              :description      => 'RTP_S3200_1',
-                              :contact          => 'Bay Nguyen',
-                              :lowest_rack_unit => '0',
-                              :resource_type    => 'PhysicalStorage',
-                              :product_name     => 'S3200',
-                              :machine_type     => '6411',
-                              :model            => 'S3200',
-                              :serial_number    => '2683AF',
-                              )
+      :description      => 'RTP_S3200_1',
+      :contact          => 'Bay Nguyen',
+      :lowest_rack_unit => '0',
+      :resource_type    => 'PhysicalStorage',
+      :product_name     => 'S3200',
+      :machine_type     => '6411',
+      :model            => 'S3200',
+      :serial_number    => '2683AF',
+    )
   end
 
   def assert_specific_storage_computer_system(computer_system)
