@@ -368,6 +368,11 @@
           - 'IMM0100'
           - 'IMM0096'
           :warning: []
+:ems_refresh:
+  :lenovo_ph_infra:
+    :inventory_object_refresh: true
+    :inventory_collections:
+      :saver_strategy: default
 :http_proxy:
   :lenovo:
     :host:
