@@ -130,7 +130,23 @@ module ManageIQ::Providers::Lenovo
     end
 
     def mount_uuid_server_port(device, port_number = nil)
-      (device["uuid"] || "#{device['pciBusNumber']}#{device['pciDeviceNumber']}") + port_number.to_s
+      # Most devices have a UUID, but if they do not, use the unformatted MAC address
+      # of the current port. In the unlikely case that there is no UUID and no MAC address,
+      # use the PCI bus number concatenated with the PCI device number and the port
+      # number; we realize that this combination is not unique, but it is better than nil.
+      if device["uuid"]
+        device["uuid"] + port_number.to_s
+      else
+        physical_ports = device.dig("portInfo", "physicalPorts")
+        matching_port = physical_ports&.select { |physical_port| physical_port["physicalPortIndex"] == port_number }
+        mac_address = matching_port&.dig(0, "logicalPorts", 0, "addresses")
+
+        if mac_address
+          mac_address
+        else
+          "#{device['pciBusNumber']}#{device['pciDeviceNumber']}" + port_number.to_s
+        end
+      end
     end
 
     def mount_uuid_switch_port(port, physical_switch)
