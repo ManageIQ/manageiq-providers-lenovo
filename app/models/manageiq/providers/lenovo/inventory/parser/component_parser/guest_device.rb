@@ -36,7 +36,7 @@ module ManageIQ::Providers::Lenovo
     end
 
     def build_firmwares(device, inventory_object)
-      firmware = device['firmware']
+      firmwares = device['firmware']
 
       parent_collection_name = inventory_object&.inventory_collection&.association
       inventory_collection_name = case parent_collection_name
@@ -44,8 +44,11 @@ module ManageIQ::Providers::Lenovo
                                   when :physical_server_storage_adapters then :physical_server_storage_adapter_firmwares
                                   else raise "Unknown parent inventory collection (#{parent_collection_name})"
                                   end
-      firmware&.each do |fw|
-        components(:firmwares).build(fw,
+      if firmwares.present?
+        versions = firmwares.collect { |fw| fw['version'] }.join(', ')
+        firmware = firmwares.first
+        firmware['version'] = versions
+        components(:firmwares).build(firmware,
                                      inventory_collection_name,
                                      {:belongs_to => :guest_device,
                                       :object     => inventory_object},

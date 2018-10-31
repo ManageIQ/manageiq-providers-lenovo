@@ -39,11 +39,13 @@ module ManageIQ::Providers::Lenovo
       def firmwares(device)
         device_fw = []
 
-        firmware = device['firmware']
-        unless firmware.nil?
-          device_fw = firmware.map do |fw|
-            parent::FirmwareParser.parse_firmware(fw, device)
-          end
+        firmwares = device['firmware']
+
+        if firmwares.present?
+          versions = firmwares.collect { |fw| fw['version'] }.join(', ')
+          firmware = firmwares.first
+          firmware['version'] = versions
+          device_fw.push(parent::FirmwareParser.parse_firmware(firmware, device))
         end
 
         device_fw
