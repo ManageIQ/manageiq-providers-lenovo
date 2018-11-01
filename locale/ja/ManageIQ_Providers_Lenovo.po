@@ -1,41 +1,39 @@
-# Japanese translations for ManageIQ_Providers_Lenovo package.
-# Copyright (C) 2016 THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the ManageIQ_Providers_Lenovo package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
-#
+# kmoriguc <kmoriguc@redhat.com>, 2018. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: ManageIQ_Providers_Lenovo 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2016-11-10 14:40+0100\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2018-10-03 15:19+0200\n"
+"PO-Revision-Date: 2018-10-25 10:19+0000\n"
+"Last-Translator: kmoriguc <kmoriguc@redhat.com>\n"
 "Language-Team: Japanese\n"
-"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: Zanata 4.6.2\n"
 
+#: ../lib/manageiq/providers/lenovo/engine.rb:8
 msgid "Lenovo Provider"
-msgstr ""
+msgstr "Lenovo プロバイダー"
 
+#: ../app/models/manageiq/providers/lenovo/physical_infra_manager/physical_chassis.rb:6
 msgid "Physical Chassis (Lenovo)"
 msgid_plural "Physical Chassis (Lenovo)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "物理シャーシ (Lenovo)"
 
+#: ../app/models/manageiq/providers/lenovo/physical_infra_manager/physical_rack.rb:4
 msgid "Physical Rack (Lenovo)"
 msgid_plural "Physical Racks (Lenovo)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "物理ラック (Lenovo)"
 
+#: ../app/models/manageiq/providers/lenovo/physical_infra_manager/physical_server.rb:6
 msgid "Physical Server (Lenovo)"
 msgid_plural "Physical Servers (Lenovo)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "物理サーバー (Lenovo)"
 
+#: ../app/models/manageiq/providers/lenovo/physical_infra_manager/physical_switch.rb:6
 msgid "Physical Switch (Lenovo)"
 msgid_plural "Physical Switches (Lenovo)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "物理スイッチ (Lenovo)"
