@@ -31,7 +31,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::AnsibleS
       }
     end
 
-    let(:reponse) { subject.run_ansible(playbook_payload) }
+    let(:reponse) { subject.ansible_run(playbook_payload) }
 
     let(:message) { 'Ansible::Runner#run' }
 
@@ -51,7 +51,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::AnsibleS
       }
     end
 
-    let(:reponse) { subject.run_ansible(playbook_payload) }
+    let(:reponse) { subject.ansible_run(playbook_payload) }
 
     let(:message) { 'Ansible::Runner#run_role' }
 
@@ -61,6 +61,42 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::AnsibleS
 
     it 'should run Ansible::Runner#run_role' do
       expect(reponse).to eq(message)
+    end
+  end
+
+  describe '#task_ansible_run' do
+    let(:message) { 'AnsibleSender#ansible_run' }
+
+    let(:user) do
+      FactoryGirl.create(:user)
+    end
+
+    let(:args) do
+      { 'playbook_name' => 'name' }
+    end
+
+    before do
+      allow(subject).to receive(:notify_task_finish) do
+        FactoryGirl.create(:notification, :initiator => user)
+      end
+
+      allow(subject).to receive(:ansible_run) { message }
+    end
+
+    context 'with a valid method' do
+      it 'should create a notification' do
+        subject.task_ansible_run(:ansible_run, args, user.id)
+
+        expect(Notification.count).to eq(1)
+      end
+    end
+
+    context 'with an invalid method' do
+      it 'should rase an error' do
+        expect do
+          subject.task_ansible_run(:invalid_ansible_method, args, user.id)
+        end.to raise_error(MiqException::Error)
+      end
     end
   end
 end
