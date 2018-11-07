@@ -242,6 +242,7 @@ http_interactions:
                               ],
                               "canisters":[
                                   {
+                                    "uuid":"457784225BA511E18290B4F27BD253A5",
                                     "position":"Top",
                                     "systemCacheMemory":6144,
                                     "diskBusType":"SAS",
@@ -260,6 +261,19 @@ http_interactions:
                                         "healthRecommendation":"",
                                         "ipAddress":"10.243.5.61"
                                     },
+                                    "drives":[{
+                                        "model": "Canister_Driver_Model",
+                                        "vendorName": "Canister_Driver_Vendor",
+                                        "status": "Up",
+                                        "location": "0.50",
+                                        "serialNumber": "20183QX50000B3492018",
+                                        "healthReason": "",
+                                        "health": "OK",
+                                        "type": "SAS",
+                                        "healthRecommendation": "",
+                                        "size": "300.0GB"
+                                      }
+                                    ],
                                     "diskChannels":2,
                                     "revision":"0",
                                     "cmmDisplayName":"controller_a",

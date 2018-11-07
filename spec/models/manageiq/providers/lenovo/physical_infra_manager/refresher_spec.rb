@@ -1,4 +1,7 @@
+require_relative 'physical_infra_spec_common'
 describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
+  include PhysicalInfraSpecCommon
+
   before(:all) do
     vcr_path = File.dirname(described_class.name.underscore)
     options = {:allow_playback_repeats => true}
@@ -87,6 +90,18 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
     end
   end
 
+  it 'will check inventory consistency' do
+    EmsRefresh.refresh(ems2)
+    ems2.reload
+    inventory_before = serialize_inventory
+
+    EmsRefresh.refresh(ems2)
+    ems2.reload
+    inventory_after = serialize_inventory
+
+    assert_models_not_changed(inventory_before, inventory_after)
+  end
+
   def assert_specific_rack
     rack = PhysicalRack.find_by(:ems_ref => "096F8C92-08D4-4A24-ABD8-FE56D482F8C4")
 
@@ -107,6 +122,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
 
   def assert_specific_storage
     storage = PhysicalStorage.find_by(:ems_ref => "208000C0FF2683AF")
+    storage_physical_disk_one = PhysicalDisk.find_by(:ems_ref => "208000C0FF2683AF_0")
 
     expect(storage.name).to eq("S3200-1")
     expect(storage.uid_ems).to eq("208000C0FF2683AF")
@@ -119,12 +135,25 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
     expect(storage.drive_bays).to eq(12)
     expect(storage.enclosures).to eq(1)
     expect(storage.canister_slots).to eq(2)
+    expect(storage.physical_disks.count).to eq(4)
+    expect(storage.canisters.count).to eq(2)
+
+    expect(storage_physical_disk_one.model).to eq("ST9300653SS")
+    expect(storage_physical_disk_one.vendor).to eq("IBM-ESXS")
+    expect(storage_physical_disk_one.status).to eq("Up")
+    expect(storage_physical_disk_one.location).to eq("0.22")
+    expect(storage_physical_disk_one.serial_number).to eq("6XN43QX50000B349D4LY")
+    expect(storage_physical_disk_one.health_state).to eq("OK")
+    expect(storage_physical_disk_one.controller_type).to eq("SAS")
+    expect(storage_physical_disk_one.disk_size).to eq("300.0GB")
+    expect(storage_physical_disk_one.physical_storage_id).to eq(storage.id)
   end
 
   def assert_table_counts
     expect(PhysicalRack.count).to eq(3)
     expect(PhysicalServer.count).to eq(2)
     expect(PhysicalStorage.count).to eq(2)
+    expect(PhysicalDisk.count).to eq(4)
     expect(GuestDevice.count).to eq(8)
     expect(PhysicalNetworkPort.count).to eq(50)
   end
