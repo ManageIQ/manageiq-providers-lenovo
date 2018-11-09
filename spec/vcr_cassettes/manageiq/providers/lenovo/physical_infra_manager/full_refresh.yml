@@ -1545,6 +1545,19 @@ http_interactions:
                                         "healthRecommendation":"",
                                         "ipAddress":"10.243.5.61"
                                     },
+                                    "drives":[{
+                                        "model": "Canister_Driver_Model",
+                                        "vendorName": "Canister_Driver_Vendor",
+                                        "status": "Up",
+                                        "location": "0.50",
+                                        "serialNumber": "20183QX50000B3492018",
+                                        "healthReason": "",
+                                        "health": "OK",
+                                        "type": "SAS",
+                                        "healthRecommendation": "",
+                                        "size": "300.0GB"
+                                      }
+                                    ],
                                     "diskChannels":2,
                                     "revision":"0",
                                     "cmmDisplayName":"controller_a",
