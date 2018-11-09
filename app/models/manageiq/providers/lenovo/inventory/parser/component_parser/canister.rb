@@ -38,7 +38,7 @@ module ManageIQ::Providers::Lenovo
 
         canister = @persister.canisters.build(data[:parsed_canister])
 
-        build_associations(canister, data[:raw_data])
+        build_associations(parent[:object], canister, data[:raw_data])
       end
     end
 
@@ -46,9 +46,10 @@ module ManageIQ::Providers::Lenovo
 
     # @param canister [InventoryObject]
     # @param canister_raw_data [Hash]
-    def build_associations(canister, canister_raw_data)
+    def build_associations(storage, canister, canister_raw_data)
       comp_system = build_computer_system(canister)
       build_hardware(comp_system, canister_raw_data)
+      build_physical_disks(storage, canister, canister_raw_data)
     end
 
     def build_hardware(comp_system, canister_raw_data)
@@ -66,12 +67,22 @@ module ManageIQ::Providers::Lenovo
                                                          :object     => hardware)
     end
 
+    def build_physical_disks(storage, canister, canister_raw_data)
+      driver_index = 0
+      canister_raw_data.[]('drives')&.each do |drive|
+        components(:physical_disks).build(drive, driver_index.to_s, storage, canister)
+        driver_index += 1
+      end
+    end
+
     def parse_canisters_inside_components(components)
       canisters = []
+      canister_index = 0
       components.each do |component|
         component['canisters'].each do |canister|
-          canisters << { :parsed_canister => parse_canister(canister),
+          canisters << { :parsed_canister => parse_canister(canister, canister_index),
                          :raw_data        => canister }
+          canister_index += 1
         end
       end
       canisters
@@ -79,20 +90,24 @@ module ManageIQ::Providers::Lenovo
 
     def parse_canisters_inside_storage(storage)
       canisters = []
+      canister_index = 0
       storage.canisters.each do |canister|
-        canisters << { :parsed_canister => parse_canister(canister),
+        canisters << { :parsed_canister => parse_canister(canister, canister_index),
                        :raw_data        => canister }
+        canister_index += 1
       end
       canisters
     end
 
-    def parse_canister(canister)
+    def parse_canister(canister, canister_index)
       result = {}
       CANISTER.each_pair do |key, canister_key|
         next unless canister_key.kind_of?(String)
 
         result[key] = canister[canister_key]
       end
+      result[:ems_ref] = (canister['uuid'] || '') + '_' + canister_index.to_s
+
       result
     end
   end

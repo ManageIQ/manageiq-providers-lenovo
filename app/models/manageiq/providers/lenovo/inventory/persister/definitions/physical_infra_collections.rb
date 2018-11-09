@@ -2,8 +2,10 @@ module ManageIQ::Providers::Lenovo::Inventory::Persister::Definitions::PhysicalI
   extend ActiveSupport::Concern
 
   def initialize_physical_infra_inventory_collections
-    %i(customization_scripts
+    %i(canisters
+       customization_scripts
        physical_chassis
+       physical_disks
        physical_racks
        physical_servers
        physical_storages
