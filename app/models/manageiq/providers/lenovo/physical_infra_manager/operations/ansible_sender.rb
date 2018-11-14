@@ -30,7 +30,7 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::AnsibleSen
   # @see #roles_dir
   #
   def run_ansible(args = {})
-    playbook_name, role_name, vars = load_params(args)
+    playbook_name, role_name, vars, tags = load_params(args)
     if playbook_name.present?
       Ansible::Runner.run(
         {},
@@ -42,6 +42,7 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::AnsibleSen
         {},
         ansible_default_vars.merge(vars),
         role_name,
+        :tags       => tags,
         :roles_path => roles_dir
       )
     end
@@ -93,6 +94,6 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::AnsibleSen
   # @return the params to run ansible
   #
   def load_params(args)
-    return args['playbook_name'], args['role_name'], args['vars'] || {}
+    return args['playbook_name'], args['role_name'], args['vars'] || {}, args['tags']
   end
 end
