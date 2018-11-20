@@ -290,7 +290,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
     expect(network_device.physical_network_ports.count).to eq(2)
 
     assert_server_network_device_firmware(network_device.firmwares.first)
-    assert_server_network_port(network_device.physical_network_ports.find_by(:uid_ems => '14501'))
+    assert_server_network_port(network_device.physical_network_ports.find_by(:uid_ems => '000AF7256738'))
   end
 
   def assert_server_network_device_firmware(firmware)
@@ -304,7 +304,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
 
   def assert_server_network_port(physical_network_port)
     expect(physical_network_port).to have_attributes(
-      :uid_ems     => '14501',
+      :uid_ems     => '000AF7256738',
       :port_name   => 'Physical Port 1',
       :port_type   => 'ETHERNET',
       :mac_address => '00:0A:F7:25:67:38',
