@@ -23,7 +23,7 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer::Operat
   end
 
   def ansible_update_firmware
-    run_ansible(
+    ansible_run(
       'role_name' => 'lenovo.lxca-config',
       'tags'      => 'update_all_firmware_withpolicy',
       'vars'      => {
@@ -35,7 +35,7 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer::Operat
   end
 
   def ansible_update_firmwares(firmware_names = [])
-    run_ansible(
+    ansible_run(
       'role_name' => 'lenovo.lxca-config',
       'tags'      => 'update_firmware',
       'vars'      => {
@@ -47,7 +47,7 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer::Operat
   end
 
   def ansible_apply_pattern(pattern_id)
-    run_ansible(
+    ansible_run(
       'role_name' => 'lenovo.lxca-config',
       'tags'      => 'apply_configpatterns',
       'vars'      => {

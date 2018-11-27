@@ -4,6 +4,8 @@
 module ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::AnsibleSender
   extend ActiveSupport::Concern
 
+  include_concern 'NotificationMixin'
+
   #
   # Executes ansible resources inside +root_dir+
   #
@@ -14,14 +16,17 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::AnsibleSen
   #         In cases where the playbook is not in +playbooks_dir+ root, please, specify
   #         the relative path to it.
   #         Example:
-  #           run_ansible({'playbook_name' => 'config/firmware_update_all_dev'})
+  #           ansible_run({'playbook_name' => 'config/firmware_update_all_dev'})
   #
   # @option args [String] 'role_name' - The name of the role to be executed.
   #        If this param is filled it will search the role inside +roles_dir+.
   #        Example:
-  #           run_ansible({'role_name' => 'lenovo.lxca-inventory'})
+  #           ansible_run({'role_name' => 'lenovo.lxca-inventory'})
   #
   # @option args [Hash] vars - The set of vars needed to execute the ansible resource
+  #
+  # @option args [Hash] user_id - The ID of the user that triggered the action. It is needed
+  #         to notify user when the ansible execution finish
   #
   # @return Ansible::Runner::Response
   #
@@ -29,8 +34,9 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::AnsibleSen
   # @see #playbooks_dir
   # @see #roles_dir
   #
-  def run_ansible(args = {})
+  def ansible_run(args = {})
     playbook_name, role_name, vars, tags = load_params(args)
+
     if playbook_name.present?
       Ansible::Runner.run(
         {},
@@ -45,6 +51,31 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::AnsibleSen
         :tags       => tags,
         :roles_path => roles_dir
       )
+    end
+  end
+
+  #
+  # This method should be used for Ansible executions throught
+  #   enqueued tasks. It will create a notification for users
+  #   after Ansible execution.
+  #
+  # @param ansible_method [Symbol] name of the method that must be executed.
+  # @param args [Array] list of arguments needed to execute the ansible method.
+  # @param user_id [Number] the ID of user that triggered the task.
+  #
+  # @return the response of the ansible execution.
+  #
+  # @raise [Exception] when method_name doesn't starts with 'ansible_'
+  #
+  def task_ansible_run(ansible_method, args, user_id)
+    if ansible_method.to_s.starts_with?('ansible_')
+      response = send(ansible_method, args)
+
+      notify_user(ansible_method, user_id)
+
+      response
+    else
+      raise MiqException::Error, _("%{method_name} is not a valid name to an Ansible operation!") % {:method_name => ansible_method}
     end
   end
 
@@ -94,6 +125,19 @@ module ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::AnsibleSen
   # @return the params to run ansible
   #
   def load_params(args)
-    return args['playbook_name'], args['role_name'], args['vars'] || {}, args['tags']
+    return args['playbook_name'],
+           args['role_name'],
+           args['vars'] || {},
+           args['tags'],
+           args['user_id']
+  end
+
+  def notify_user(ansible_method, user_id)
+    if user_id
+      notify_task_finish(
+        "#{ansible_method} executed for #{name}",
+        user_id
+      )
+    end
   end
 end
