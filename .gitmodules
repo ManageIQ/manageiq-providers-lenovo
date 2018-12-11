@@ -1,0 +1,3 @@
+[submodule "content_tmp/ansible/test"]
+	path = content_tmp/ansible/test
+	url = https://github.com/lenovo/ansible.lenovo-lxca.git
