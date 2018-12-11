@@ -1,0 +1,27 @@
+.tabRow {
+  padding: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.serversCol {
+  overflow: auto;
+  padding:0;
+  box-sizing: border-box;
+  box-shadow: 5px 0 5px -5px #333;
+  min-height: 250px;
+}
+
+.serverIcon{
+  margin-right: 5px;
+}
+
+.firmwaresCol {
+  overflow: auto;
+  margin-right: 0;
+  height: 250px;
+}
+
+.modal-footer {
+  margin-top: 0px;
+}
