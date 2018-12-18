@@ -1,2 +1,3 @@
 # from galaxy
 - src: lenovo.lxca-inventory
+- src: lenovo.lxca-config
