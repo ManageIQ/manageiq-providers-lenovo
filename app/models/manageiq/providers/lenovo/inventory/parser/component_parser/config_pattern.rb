@@ -6,7 +6,8 @@ module ManageIQ::Providers::Lenovo
       :name         => 'name',
       :description  => 'description',
       :user_defined => 'userDefined',
-      :in_use       => 'inUse'
+      :in_use       => 'inUse',
+      :type         => :type
     }.freeze
 
     def build(config_pattern)
@@ -25,6 +26,10 @@ module ManageIQ::Providers::Lenovo
     #
     def parse_config_pattern(config_pattern)
       parse(config_pattern, CONFIG_PATTERNS)
+    end
+
+    def type(_config_pattern)
+      'ManageIQ::Providers::Lenovo::PhysicalInfraManager::ConfigPattern'
     end
   end
 end
