@@ -8,6 +8,13 @@ module ManageIQ::Providers::Lenovo
       :name         => :name
     }.freeze
 
+    CANISTER_FIRMWARE = {
+      :name         => 'storageControllerCodeVersion',
+      :build        => 'storageControllerLoaderCodeVersion',
+      :version      => 'storageControllerCodeVersion',
+      :release_date => 'buildDate'
+    }.freeze
+
     FORMAT_BY_TYPE_ROLE = %w(UEFI IMM2 XCC).freeze
     FORMAT_BY_NAME = %w(DRVWN LXPM DRVLN).freeze
     FORMAT_BY_DISTINCT_NAME = {
@@ -33,6 +40,13 @@ module ManageIQ::Providers::Lenovo
       @persister.send(inventory_collection_name).build(hash)
     end
 
+    def build_for_canister(firmware, inventory_collection_name, parent, component = nil)
+      hash = parse_canister_firmware(firmware, component)
+      add_parent(hash, parent)
+
+      @persister.send(inventory_collection_name).build(hash)
+    end
+
     #
     # Parses a firmware into a Hash
     #
@@ -43,6 +57,11 @@ module ManageIQ::Providers::Lenovo
     def parse_firmware(firmware, component = nil)
       @component = component
       parse(firmware, FIRMWARE)
+    end
+
+    def parse_canister_firmware(firmware, component = nil)
+      @component = component
+      parse(firmware, CANISTER_FIRMWARE)
     end
 
     def name(firmware)

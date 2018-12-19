@@ -485,19 +485,19 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
   def assert_specific_storage_hardware(hardware)
     hardware = lenovo_model(hardware)
 
-    # change 1 -> 0 by https://github.com/ManageIQ/manageiq-providers-lenovo/pull/244
-    expect(hardware.firmwares.count).to eq(0)
+    expect(hardware.firmwares.count).to eq(1)
     expect(hardware.management_devices.count).to eq(1)
 
-    # assert_specific_storage_firmware(hardware.firmwares.first)
+    assert_specific_storage_firmware(hardware.firmwares.first)
     assert_specific_storage_management_device(hardware.management_devices.first)
   end
 
-  # # removed by https://github.com/ManageIQ/manageiq-providers-lenovo/pull/244
-  #
-  # def assert_specific_storage_firmware(firmware)
-  #   expect(firmware).to have_attributes(:name => '-')
-  # end
+  def assert_specific_storage_firmware(firmware)
+    expect(firmware).to have_attributes(:name => 'GLS221R08-01',
+                                        :build => '27.016',
+                                        :version => 'GLS221R08-01',
+                                        :release_date => '')
+  end
 
   def assert_specific_storage_management_device(management_device)
     expect(management_device).to have_attributes(

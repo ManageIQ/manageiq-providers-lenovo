@@ -9,7 +9,8 @@ module ManageIQ::Providers::Lenovo::Inventory::Persister::Definitions::PhysicalI
        physical_racks
        physical_servers
        physical_storages
-       physical_switches).each do |name|
+       physical_switches
+       canisters).each do |name|
 
       add_collection(physical_infra, name)
     end
@@ -160,7 +161,8 @@ module ManageIQ::Providers::Lenovo::Inventory::Persister::Definitions::PhysicalI
 
   def add_firmwares
     %i(physical_server
-       physical_switch).each do |firmware_assoc|
+       physical_switch
+       canister).each do |firmware_assoc|
 
       add_collection(physical_infra, "#{firmware_assoc}_firmwares".to_sym) do |builder|
         builder.add_properties(

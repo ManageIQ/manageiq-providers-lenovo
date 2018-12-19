@@ -3422,7 +3422,26 @@ http_interactions:
                                           "uri": "nodes/457784225BA511E18290B4F27BD253A5/bootOrder",
                                           "bootOrderList": []
                                       },
-                                      "firmware": [],
+                                      "firmware": [{
+                                        "storageControllerCpuType":"Gladden 1300MHz",
+                                        "bundleVersion":"No System Bundle",
+                                        "buildDate":"",
+                                        "storageControllerCodeVersion":"GLS221R08-01",
+                                        "storageControllerCodeBaselevel":"GLS221R08-01",
+                                        "storageControllerLoaderCodeVersion":"27.016",
+                                        "capiVersion":"3.19",
+                                        "managementControllerCodeVersion":"GLM221X003",
+                                        "managementControllerLoaderCodeVersion":"6.18.22216",
+                                        "expanderControllerCodeVersion":"3202",
+                                        "cpldCodeVersion":"55",
+                                        "hardwareVersion":"5.2",
+                                        "hostInterfaceModuleVersion":"11",
+                                        "hostInterfaceModuleModel":"6",
+                                        "backplaneType":"7",
+                                        "hostInterfaceHardwareVersion":"2",
+                                        "diskInterfaceHardwareVersion":"3",
+                                        "scBootMemoryReferenceCodeVersion":"1.2.1.10"
+                                      }],
                                       "secureBootMode": {
                                           "possibleValues": [],
                                           "currentValue": ""
