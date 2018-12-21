@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 24 Apr 2017 18:45:40 GMT
+      - Mon, 24 Apr 2017 18:55:40 GMT
       Set-Cookie:
       - userAuthenticationMethod=local;Path=/;Secure
       Expires:
