@@ -5,72 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 
-## Unreleased as of Sprint 95 - 2018-09-24
-
-### Fixed
-- Fix storage disk type to be controller_type [(#229)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/229)
-
-## Unreleased as of Sprint 94 - 2018-09-10
+## Hammer-1
 
 ### Added
 - Add plugin display name [(#221)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/221)
-
-## Unreleased as of Sprint 92 - 2018-08-13
-
-### Fixed
-- config/settings - add missing fields fixing ui-classic breakage [(#218)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/218)
-
-## Unreleased as of Sprint 91 - 2018-07-30
-
-### Added
 - Adding parser for PhysicalStorage inside PhysicalChassis [(#201)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/201)
-
-## Unreleased as of Sprint 90 - 2018-07-16
-
-### Added
 - Add display names for PhysicalChassis and PhysicalRack [(#203)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/203)
 - Parsing the connection b/w ports [(#194)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/194)
-
-## Gaprindashvili-4 - Released 2018-07-16
-
-### Fixed
-- Fixing authentication status update [(#191)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/191)
-
-## Unreleased as of Sprint 89 - 2018-07-02
-
-### Added
 - Add display name for physical switch [(#198)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/198)
 - Add display name for physical rack [(#197)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/197)
-
-### Fixed
-- Adding location led name [(#202)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/202)
-
-## Unreleased as of Sprint 88 - 2018-06-18
-
-### Added
 - Reducing the data persited in the full_data columm [(#185)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/185)
 - Adding physical switch power operations [(#177)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/177)
 - Parse Physical Storage [(#170)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/170)
-
-### Fixed
-- Fix the event catcher bug [(#199)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/199)
-
-## Unreleased as of Sprint 86 - 2018-05-21
-
-### Fixed
-- Fixing error while trying to refresh a provider with invalid credentials [(#176)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/176)
-- camelize the power state column [(#171)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/171)
-- Fix bug when portInfo was null [(#168)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/168)
-
-## Gaprindashvili-3 released 2018-05-15
-
-### Fixed
-- Fixing the network devices and ports parser [(#155)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/155)
-- searches the hardware resource for a relationship [(#93)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/93)
-
-## Unreleased as of Sprint 84 - 2018-04-23
-
-### Added
 - Using firmware parser at storage parser [(#158)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/158)
 - Moving strings to dictionary and cleaning up empty and malformatted strings [(#157)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/157)
 - Parsing partNumber for Physical Servers [(#156)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/156)
@@ -78,21 +24,29 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 - Parsing pci_device and vlan info to ports [(#142)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/142)
 - Adding parsing steps for switches [(#132)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/132)
 - Migrate model display names from locale/en.yml to plugin [(#126)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/126)
-
-## Unreleased as of Sprint 83 - 2018-04-09
-
-### Added
 - Parsing physical rack [(#147)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/147)
-
-## Unreleased as of Sprint 82 - 2018-03-26
-
-### Added
 - Leaving the disk capacity blank if the LXCA doesn't provide this information [(#141)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/141)
 
-## Unreleased as of Sprint 80 - 2018-02-26
+### Fixed
+- Fix storage disk type to be controller_type [(#229)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/229)
+- config/settings - add missing fields fixing ui-classic breakage [(#218)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/218)
+- Adding location led name [(#202)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/202)
+- Fix the event catcher bug [(#199)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/199)
+- Fixing error while trying to refresh a provider with invalid credentials [(#176)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/176)
+- camelize the power state column [(#171)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/171)
+- Fix bug when portInfo was null [(#168)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/168)
+- AssetDetails should be AssetDetail [(#125)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/125)
+
+## Gaprindashvili-4 - Released 2018-07-16
 
 ### Fixed
-- AssetDetails should be AssetDetail [(#125)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/125)
+- Fixing authentication status update [(#191)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/191)
+
+## Gaprindashvili-3 released 2018-05-15
+
+### Fixed
+- Fixing the network devices and ports parser [(#155)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/155)
+- searches the hardware resource for a relationship [(#93)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/93)
 
 ## Gaprindashvili-1 - Released 2018-01-31
 
