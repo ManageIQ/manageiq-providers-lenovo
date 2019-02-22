@@ -29,13 +29,13 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventParser do
     }
   end
 
-  let(:physical_chassis) { FactoryGirl.create(:physical_chassis, :uid_ems => 'AAAAAAAAAAAAAAAAAAAAAAA') }
+  let(:physical_chassis) { FactoryBot.create(:physical_chassis, :uid_ems => 'AAAAAAAAAAAAAAAAAAAAAAA') }
 
   let(:event1) { XClarityClient::Event.new(event_attrs1) }
-  let(:physical_switch) { FactoryGirl.create(:physical_switch, :uid_ems => 'FFFFFFFFFFFFFFFFFFFFFFFF') }
+  let(:physical_switch) { FactoryBot.create(:physical_switch, :uid_ems => 'FFFFFFFFFFFFFFFFFFFFFFFF') }
 
   let(:event2) { XClarityClient::Event.new(event_attrs2) }
-  let(:physical_server) { FactoryGirl.create(:physical_server, :uid_ems => '00FF00FF00FF00FF00FF00FF') }
+  let(:physical_server) { FactoryBot.create(:physical_server, :uid_ems => '00FF00FF00FF00FF00FF00FF') }
 
   context 'events are parsed' do
     it 'should belong to a switch' do

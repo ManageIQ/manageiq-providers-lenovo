@@ -1,14 +1,14 @@
 describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::AuthenticatableProvider do
   let(:described_class_path) { described_class.name.underscore }
   let(:auth) do
-    FactoryGirl.create(:authentication,
+    FactoryBot.create(:authentication,
                        :userid   => 'admin',
                        :password => 'password',
                        :authtype => 'default')
   end
 
   subject(:physical_infra_manager) do
-    manager = FactoryGirl.create(:physical_infra,
+    manager = FactoryBot.create(:physical_infra,
                                  :name      => 'LXCA',
                                  :hostname  => '10.243.9.123',
                                  :port      => '443',

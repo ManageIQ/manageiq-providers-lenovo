@@ -1,6 +1,6 @@
 describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Runner do
   let(:ems) do
-    FactoryGirl.create(:physical_infra_with_authentication,
+    FactoryBot.create(:physical_infra_with_authentication,
                        :name     => "LXCA",
                        :hostname => "10.243.9.123")
   end

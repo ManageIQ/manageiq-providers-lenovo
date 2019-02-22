@@ -17,14 +17,14 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::RefreshParser do
   end
 
   let(:auth) do
-    FactoryGirl.create(:authentication,
+    FactoryBot.create(:authentication,
                        :userid   => "admin",
                        :password => "password",
                        :authtype => "default")
   end
 
   let(:ems) do
-    ems = FactoryGirl.create(:physical_infra,
+    ems = FactoryBot.create(:physical_infra,
                              :name      => "LXCA",
                              :hostname  => "10.243.9.123",
                              :port      => "443",

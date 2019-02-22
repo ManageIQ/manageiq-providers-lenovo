@@ -4,16 +4,16 @@ require 'webmock/rspec'
 describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer do
   describe "remote console" do
     before :each do
-      @physical_infra_manager = FactoryGirl.create(:physical_infra,
+      @physical_infra_manager = FactoryBot.create(:physical_infra,
                                                    :name      => "LXCA",
                                                    :hostname  => "10.243.9.123",
                                                    :port      => "443",
                                                    :ipaddress => "https://10.243.9.123")
-      @physical_server = FactoryGirl.create(:lenovo_physical_server,
+      @physical_server = FactoryBot.create(:lenovo_physical_server,
                                             :name                  => "IMM2-e41f13ed5a1e",
                                             :ems_ref               => "BD775D06821111E189A3E41F13ED5A1A",
                                             :ext_management_system => @physical_infra_manager)
-      auth = FactoryGirl.create(:authentication,
+      auth = FactoryBot.create(:authentication,
                                 :userid   => "admin",
                                 :password => "password",
                                 :authtype => "default")

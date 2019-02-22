@@ -15,7 +15,7 @@ describe ManageIQ::Providers::Lenovo::ManagerMixin do
   end
 
   let(:physical_infra_manager) do
-    FactoryGirl.create(:physical_infra,
+    FactoryBot.create(:physical_infra,
                        :name      => 'LXCA1',
                        :hostname  => '10.243.5.255',
                        :port      => '443',

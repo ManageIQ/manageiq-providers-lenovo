@@ -49,14 +49,14 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
   end
 
   let(:auth) do
-    FactoryGirl.create(:authentication,
+    FactoryBot.create(:authentication,
                        :userid   => 'lxcc',
                        :password => 'PASSW0rD',
                        :authtype => 'default')
   end
 
   let(:ems) do
-    ems = FactoryGirl.create(:physical_infra,
+    ems = FactoryBot.create(:physical_infra,
                              :name      => "LXCA",
                              :hostname  => "10.243.9.123",
                              :port      => "443",
@@ -69,7 +69,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Refresher do
     # Note: The hostname below cannot be an IP address because it will
     #       cause the full refresh test to fail when being executed
     #       on the Travis CI site.
-    ems2 = FactoryGirl.create(:physical_infra,
+    ems2 = FactoryBot.create(:physical_infra,
                               :name      => "LXCA2",
                               :hostname  => "lxcahost",
                               :port      => "443",
