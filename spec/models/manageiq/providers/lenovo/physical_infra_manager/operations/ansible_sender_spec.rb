@@ -1,13 +1,13 @@
 describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::AnsibleSender do
   let(:auth) do
-    FactoryGirl.create(:authentication,
+    FactoryBot.create(:authentication,
                        :userid   => 'admin',
                        :password => 'password',
                        :authtype => 'default')
   end
 
   subject(:physical_infra_manager) do
-    manager = FactoryGirl.create(:physical_infra,
+    manager = FactoryBot.create(:physical_infra,
                                  :name      => 'LXCA',
                                  :hostname  => '10.243.9.123',
                                  :port      => '443',
@@ -68,7 +68,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::AnsibleS
     let(:message) { 'AnsibleSender#ansible_run' }
 
     let(:user) do
-      FactoryGirl.create(:user)
+      FactoryBot.create(:user)
     end
 
     let(:args) do
@@ -77,7 +77,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::AnsibleS
 
     before do
       allow(subject).to receive(:notify_task_finish) do
-        FactoryGirl.create(:notification, :initiator => user)
+        FactoryBot.create(:notification, :initiator => user)
       end
 
       allow(subject).to receive(:ansible_run) { message }

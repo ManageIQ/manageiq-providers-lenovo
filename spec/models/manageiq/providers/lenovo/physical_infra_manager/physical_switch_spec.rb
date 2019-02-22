@@ -1,7 +1,7 @@
 describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalSwitch do
   context 'power operations' do
     let(:physical_switch) do
-      physical_infra_manager = FactoryGirl.create(
+      physical_infra_manager = FactoryBot.create(
         :physical_infra,
         :name      => "LXCA",
         :hostname  => "10.243.9.123",
@@ -9,7 +9,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalSwitch do
         :ipaddress => "https://10.243.9.123"
       )
 
-      auth = FactoryGirl.create(
+      auth = FactoryBot.create(
         :authentication,
         :userid   => "admin",
         :password => "password",
@@ -18,7 +18,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalSwitch do
 
       physical_infra_manager.authentications = [auth]
 
-      FactoryGirl.create(
+      FactoryBot.create(
         :lenovo_physical_switch,
         :name                  => "Physical_Switch",
         :uid_ems               => "27997dba5dba11e89c2dfa7ae01bbebc",

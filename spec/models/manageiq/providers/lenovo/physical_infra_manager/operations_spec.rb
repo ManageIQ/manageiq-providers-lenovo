@@ -1,14 +1,14 @@
 describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations do
   let(:described_class_path) { described_class.name.underscore }
   let(:auth) do
-    FactoryGirl.create(:authentication,
+    FactoryBot.create(:authentication,
                        :userid   => 'admin',
                        :password => 'password',
                        :authtype => 'default')
   end
 
   subject(:physical_infra_manager) do
-    manager = FactoryGirl.create(:physical_infra,
+    manager = FactoryBot.create(:physical_infra,
                                  :name      => 'LXCA',
                                  :hostname  => '10.243.9.123',
                                  :port      => '443',
@@ -19,7 +19,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations do
 
   describe 'location led' do
     let(:physical_server) do
-      FactoryGirl.create(:physical_server,
+      FactoryBot.create(:physical_server,
                          :name    => 'IMM2-e41f13ed5a1e',
                          :ems_ref => 'BD775D06821111E189A3E41F13ED5A1A')
     end
@@ -45,7 +45,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations do
 
   describe 'power operations' do
     let(:physical_server) do
-      FactoryGirl.create(:physical_server,
+      FactoryBot.create(:physical_server,
                          :name    => 'MimmNameDM',
                          :ems_ref => 'EADEBE8316174750A27FEC2E8226AC48')
     end
@@ -97,7 +97,7 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations do
     let(:endpoint) { 'patterns' }
     let(:uuid)     { 'B918EDCA1B5F11E2803EBECB82710ADE' }
     let(:physical_infra_manager) do
-      manager = FactoryGirl.create(:physical_infra,
+      manager = FactoryBot.create(:physical_infra,
                                    :name     => 'LXCA',
                                    :hostname => 'sample.com',
                                    :port     => '443')
