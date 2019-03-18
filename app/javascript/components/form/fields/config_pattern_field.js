@@ -54,14 +54,14 @@ class ConfigPatternField extends React.Component {
       <FormGroup
         controlId="selectPattern"
         validationState={this.getValidationState()}>
-          <ControlLabel>Config Pattern</ControlLabel>
+          <ControlLabel>{__('Config Pattern')}</ControlLabel>
           <div onClick={this.onClick}>
             <FormControl
               componentClass="select"
               className="selectpicker"
               name={this.props.name}
               value={this.state.value}
-              title="Choose a pattern"
+              title={__('Choose a pattern')}
               onChange={this.handleChange}>
               { patternComponentOptions }
             </FormControl>
