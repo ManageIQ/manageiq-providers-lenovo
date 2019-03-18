@@ -56,7 +56,7 @@ class PhysicalServerField extends React.Component {
       <FormGroup
         controlId="selectServer"
         validationState={this.getValidationState()}>
-          <ControlLabel>Physical Server</ControlLabel>
+          <ControlLabel>{__('Physical Server')}</ControlLabel>
           <div onClick={this.onClick}>
             <FormControl
               disabled={this.props.disabled}
@@ -67,7 +67,7 @@ class PhysicalServerField extends React.Component {
               data-live-search="true"
               data-selected-text-format="count"
               data-actions-box="true"
-              title="Choose a Server"
+              title={__('Choose a Server')}
               onChange={this.handleChange}>
               { serverComponentOptions }
             </FormControl>

@@ -31,7 +31,7 @@ class FirmwareCheckListField extends React.Component {
 
     return (
       <FormGroup>
-        <ControlLabel>Firmwares</ControlLabel>
+        <ControlLabel>{__('Firmwares')}</ControlLabel>
         {firmwareCheckList}
       </FormGroup>
     );
