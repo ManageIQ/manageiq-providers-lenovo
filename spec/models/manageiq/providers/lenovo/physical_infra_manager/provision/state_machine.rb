@@ -50,13 +50,17 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Provision do
     context 'when all steps succeed' do
       let(:options) { { :pxe_image_id => pxe_image.id, :configuration_profile_id => template.id } }
       it do
-        subject.start_provisioning
-        #expect(server).to receive(:deploy_pxe_config).with(pxe_image, template)
-        #expect(server).to receive(:reboot_using_pxe)
+        #subject.start_provisioning
+        expect(server).to receive(:deploy_pxe_config)
+        expect(server).to receive(:reboot_using_pxe)
         #expect(server).to receive(:powered_on_now?).and_return(true)
 
- #       expect(subject).to receive(:done_provisioning)
- #       subject.start_provisioning
+        #expect(subject).to receive(:deploy_pxe_config)
+        #expect(subject).to receive(:start_provisioning)
+        #expect(subject).to receive(:done_provisioning)
+        #expect(subject).to receive(:reboot_using_pxe)
+        subject.start_provisioning
+        #expect(subject).to receive(:start_provisioning)
       end
     end
 

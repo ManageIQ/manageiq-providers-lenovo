@@ -4,6 +4,7 @@ module ManageIQ::Providers::Lenovo
       with_provider_object do |system|
         #  raise MiqException::MiqProvisionError, 'at least one MAC address is needed for provisioning'
       end
+      puts "provisinoing deploy_pxe_config"
     end
 
     def reboot_using_pxe
@@ -12,6 +13,7 @@ module ManageIQ::Providers::Lenovo
       end
       # TODO: we perform force reboot which will fail in some cases. Need to handle with supports mixin.
       #restart_now
+      puts "restarting now"
     end
 
     def powered_on_now?
