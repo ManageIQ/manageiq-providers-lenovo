@@ -1,19 +1,19 @@
 module ManageIQ::Providers::Lenovo
   module PhysicalInfraManager::PhysicalServer::Provisioning
-    def deploy_pxe_config
+    def update_firmware
       with_provider_object do |system|
         #  raise MiqException::MiqProvisionError, 'at least one MAC address is needed for provisioning'
       end
-      puts "provisinoing deploy_pxe_config"
+      puts "updating_firmware"
     end
 
-    def reboot_using_pxe
+    def update_configuration
       with_provider_object do |system|
         #raise MiqException::MiqProvisionError, 'Cannot override boot order' if response.status >= 400
       end
       # TODO: we perform force reboot which will fail in some cases. Need to handle with supports mixin.
       #restart_now
-      puts "restarting now"
+      puts "updating_configuration"
     end
 
     def powered_on_now?
@@ -23,9 +23,5 @@ module ManageIQ::Providers::Lenovo
       true 
     end
 
-    private
-
-    def mac_addresses(system)
-    end
   end
 end

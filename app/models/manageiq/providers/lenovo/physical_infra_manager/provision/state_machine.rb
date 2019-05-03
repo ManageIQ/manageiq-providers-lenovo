@@ -1,18 +1,18 @@
 module ManageIQ::Providers::Lenovo::PhysicalInfraManager::Provision::StateMachine
   def start_provisioning
     update_and_notify_parent(:message => msg('start provisioning'))
-    signal :deploy_pxe_config
+    signal :update_firmware
   end
 
-  def deploy_pxe_config
-    update_and_notify_parent(:message => msg('deploy pxe config'))
-    source.deploy_pxe_config
-    signal :reboot_using_pxe
+  def update_firmware
+    update_and_notify_parent(:message => msg('updating firmware'))
+    source.update_firmware
+    signal :update_configuration
   end
 
-  def reboot_using_pxe
-    update_and_notify_parent(:message => msg('reboot using PXE'))
-    source.reboot_using_pxe
+  def update_configuration
+    update_and_notify_parent(:message => msg('updating configuration'))
+    source.update_configuration
     signal :poll_server_running
   end
 

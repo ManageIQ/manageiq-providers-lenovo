@@ -51,8 +51,8 @@ describe ManageIQ::Providers::Lenovo::PhysicalInfraManager::Provision do
       let(:options) { { :pxe_image_id => pxe_image.id, :configuration_profile_id => template.id } }
       it do
         #subject.start_provisioning
-        expect(server).to receive(:deploy_pxe_config)
-        expect(server).to receive(:reboot_using_pxe)
+        expect(server).to receive(:update_firmware)
+        expect(server).to receive(:update_configuration)
         #expect(server).to receive(:powered_on_now?).and_return(true)
 
         #expect(subject).to receive(:deploy_pxe_config)
