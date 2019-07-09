@@ -2,15 +2,29 @@ module ManageIQ::Providers::Lenovo::Inventory::Persister::Definitions::PhysicalI
   extend ActiveSupport::Concern
 
   def initialize_physical_infra_inventory_collections
-    %i(canisters
-       customization_scripts
-       physical_chassis
-       physical_disks
-       physical_racks
-       physical_servers
-       physical_storages
-       physical_switches).each do |name|
-
+    %i[
+      canisters
+      customization_scripts
+      physical_chassis
+      physical_chassis_details
+      physical_chassis_computer_systems
+      physical_chassis_hardwares
+      physical_disks
+      physical_racks
+      physical_servers
+      physical_server_details
+      physical_server_computer_systems
+      physical_server_hardwares
+      physical_server_network_devices
+      physical_server_storage_adapters
+      physical_storages
+      physical_storage_details
+      physical_storage_computer_systems
+      physical_storage_hardwares
+      physical_switches
+      physical_switch_details
+      physical_switch_hardwares
+    ].each do |name|
       add_collection(physical_infra, name)
     end
 
@@ -18,17 +32,7 @@ module ManageIQ::Providers::Lenovo::Inventory::Persister::Definitions::PhysicalI
 
     add_physical_disks
 
-    add_asset_details
-
-    add_computer_systems
-
-    add_computer_system_hardwares
-    add_physical_switch_hardwares
-
     add_firmwares
-
-    add_physical_server_network_devices
-    add_physical_server_storage_adapters
 
     add_management_devices
 
@@ -39,82 +43,6 @@ module ManageIQ::Providers::Lenovo::Inventory::Persister::Definitions::PhysicalI
   end
 
   # ------ IC provider specific definitions -------------------------
-  def add_asset_details
-    %i(physical_server
-       physical_chassis
-       physical_storage
-       physical_switch).each do |asset_detail_assoc|
-
-      add_collection(physical_infra, "#{asset_detail_assoc}_details".to_sym) do |builder|
-        builder.add_properties(
-          :model_class                  => ::AssetDetail,
-          :manager_ref                  => %i(resource),
-          :parent_inventory_collections => [asset_detail_assoc.to_s.pluralize.to_sym]
-        )
-      end
-    end
-  end
-
-  def add_computer_systems
-    %i(physical_server
-       physical_chassis
-       physical_storage).each do |computer_system_assoc|
-
-      add_collection(physical_infra, "#{computer_system_assoc}_computer_systems".to_sym) do |builder|
-        builder.add_properties(
-          :model_class                  => ::ComputerSystem,
-          :manager_ref                  => %i(managed_entity),
-          :parent_inventory_collections => [computer_system_assoc.to_s.pluralize.to_sym]
-        )
-      end
-    end
-  end
-
-  def add_computer_system_hardwares
-    %i(physical_server
-       physical_chassis
-       physical_storage).each do |computer_system_assoc|
-
-      add_collection(physical_infra, "#{computer_system_assoc}_hardwares".to_sym) do |builder|
-        builder.add_properties(
-          :model_class                  => ManageIQ::Providers::Lenovo::PhysicalInfraManager::Hardware,
-          :manager_ref                  => %i(computer_system),
-          :parent_inventory_collections => [computer_system_assoc.to_s.pluralize.to_sym]
-        )
-      end
-    end
-  end
-
-  def add_physical_switch_hardwares
-    add_collection(physical_infra, :physical_switch_hardwares) do |builder|
-      builder.add_properties(
-        :model_class                  => ManageIQ::Providers::Lenovo::PhysicalInfraManager::Hardware,
-        :manager_ref                  => %i(physical_switch),
-        :parent_inventory_collections => %i(physical_switches),
-      )
-    end
-  end
-
-  def add_physical_server_network_devices
-    add_collection(physical_infra, :physical_server_network_devices) do |builder|
-      builder.add_properties(
-        :model_class                  => ::GuestDevice,
-        :manager_ref                  => %i(device_type uid_ems),
-        :parent_inventory_collections => %i(physical_servers)
-      )
-    end
-  end
-
-  def add_physical_server_storage_adapters
-    add_collection(physical_infra, :physical_server_storage_adapters) do |builder|
-      builder.add_properties(
-        :model_class                  => ::GuestDevice,
-        :manager_ref                  => %i(device_type uid_ems),
-        :parent_inventory_collections => %i(physical_servers)
-      )
-    end
-  end
-
   # Special :guest_device
   def add_management_devices
     %i(physical_server
