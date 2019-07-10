@@ -11,7 +11,6 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::P
   require_nested :RefreshWorker
 
   require_nested :Firmware
-  require_nested :Hardware
   require_nested :PhysicalChassis
   require_nested :PhysicalRack
   require_nested :PhysicalServer
