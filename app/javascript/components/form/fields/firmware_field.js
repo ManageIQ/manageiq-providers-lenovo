@@ -79,7 +79,7 @@ class FirmwareField extends React.Component {
         <Tab.Container id="left-tabs-firmware" defaultActiveKey={this.props.physicalServerData[0].id}>
           <Row className="clearfix tabRow">
             <Col sm={4} className="serversCol">
-              <ControlLabel>Physical Servers</ControlLabel>
+              <ControlLabel>{__('Physical Servers')}</ControlLabel>
               <Nav bsStyle="pills" stacked>
                 {serverNavItens}
               </Nav>
