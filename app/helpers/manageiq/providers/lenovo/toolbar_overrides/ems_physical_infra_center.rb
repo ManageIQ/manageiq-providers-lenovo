@@ -22,7 +22,7 @@ module ManageIQ
                       'function-data' => {:controller     => 'provider_dialogs', # this one is required
                                           :button         => :provision_apply_pattern,
                                           :modal_title    => N_('Apply Config Pattern'),
-                                          :component_name => 'ApplyConfigPatternFormProvider'}.to_json
+                                          :component_name => 'ApplyConfigPatternFormProvider'}
                     },
                     :klass => ApplicationHelper::Button::ButtonWithoutRbacCheck
                   ),
@@ -36,7 +36,7 @@ module ManageIQ
                       'function-data' => {:controller     => 'provider_dialogs', # this one is required
                                           :button         => :provision_firmware_update,
                                           :modal_title    => N_('Firmware Update'),
-                                          :component_name => 'FirmwareUpdateFormProvider'}.to_json
+                                          :component_name => 'FirmwareUpdateFormProvider'}
                     },
                     :klass => ApplicationHelper::Button::ButtonWithoutRbacCheck
                   )
