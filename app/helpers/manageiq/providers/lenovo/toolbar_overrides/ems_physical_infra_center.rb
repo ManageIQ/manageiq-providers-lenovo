@@ -8,7 +8,7 @@ module ManageIQ
             [
               select(
                 :provider_provision_choice,
-                'pficon pficon-process-automation pficon-lg',
+                nil,
                 N_('Provision'),
                 :enabled => true,
                 :items   => [
