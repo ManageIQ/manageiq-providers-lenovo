@@ -44,11 +44,76 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
 
   # Override base class method to provide a provider specific url
   def console_url
-    URI::HTTPS.build(:host => hostname,
-                     :port => port)
+    URI::HTTPS.build(:host => hostname, :port => port)
   end
 
   module ClassMethods
+    def params_for_create
+      @params_for_create ||= {
+        :title  => "Configure Lenovo XClarity",
+        :fields => [
+          {
+            :component  => "text-field",
+            :name       => "endpoints.default.server",
+            :label      => "Server Hostname/IP Address",
+            :isRequired => true,
+            :validate   => [{:type => "required-validator"}]
+          },
+          {
+            :component  => "text-field",
+            :name       => "endpoints.default.username",
+            :label      => "Username",
+            :isRequired => true,
+            :validate   => [{:type => "required-validator"}]
+          },
+          {
+            :component  => "text-field",
+            :name       => "endpoints.default.password",
+            :label      => "Password",
+            :type       => "password",
+            :isRequired => true,
+            :validate   => [{:type => "required-validator"}]
+          },
+          {
+            :component    => "text-field",
+            :name         => "endpoints.default.port",
+            :label        => "Port",
+            :type         => "number",
+            :initialValue => 443,
+            :isRequired   => true,
+            :validate     => [{:type => "required-validator"}]
+          },
+          {
+            :component => "checkbox",
+            :name      => "endpoints.default.verify_ssl",
+            :label     => "Verify SSL"
+          }
+        ]
+      }.freeze
+    end
+
+    # Verify Credentials
+    #
+    # args: {
+    #   "endpoints" => {
+    #     "default" => {
+    #       "username" => String,
+    #       "password" => String,
+    #       "server" => String,
+    #       "port" => Integer,
+    #       "verify_ssl" => Boolean
+    #     }
+    #   }
+    def verify_credentials(args)
+      default_endpoint = args.dig("endpoints", "default")
+
+      username, password, host, port, verify_ssl = default_endpoint&.values_at(
+        "username", "password", "server", "port", "verify_ssl"
+      )
+
+      !!raw_connect(username, password, host, port, "token", verify_ssl, Vmdb::Appliance.USER_AGENT, true)
+    end
+
     def raw_connect(username, password, host, port, auth_type, verify_ssl, user_agent_label, validate = false, timeout: nil)
       xclarity = XClarityClient::Configuration.new(
         :username         => username,
