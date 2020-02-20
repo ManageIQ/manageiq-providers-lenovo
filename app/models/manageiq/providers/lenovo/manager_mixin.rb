@@ -1,4 +1,5 @@
-require 'xclarity_client'
+# Delay load a fairly expensive library until first use.
+autoload(:XClarityClient, 'xclarity_client')
 
 module ManageIQ::Providers::Lenovo::ManagerMixin
   extend ActiveSupport::Concern
