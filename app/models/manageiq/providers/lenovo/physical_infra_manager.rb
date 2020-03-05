@@ -3,13 +3,10 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::P
   include_concern 'Operations'
   include_concern 'AuthenticatableProvider'
 
-  require_nested :Refresher
-  require_nested :RefreshParser
   require_nested :EventCatcher
   require_nested :EventParser
   require_nested :Parser
   require_nested :RefreshWorker
-
   require_nested :Firmware
   require_nested :PhysicalChassis
   require_nested :PhysicalRack
