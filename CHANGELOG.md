@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
+## Ivanchuk-2
+
+### Fixed
+- Test ruby 2.5.5 [(#285)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/285)
+
+## Ivanchuk-1
+
+### Fixed
+- Move ansible requirements.yml to roles [(#276)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/276)
+- Yarn: lock versions by adding yarn.lock  [(#274)](https://github.com/ManageIQ/manageiq-providers-lenovo/pull/274)
 
 ## Hammer-1
 
