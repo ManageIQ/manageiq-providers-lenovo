@@ -1,7 +1,5 @@
 module ManageIQ::Providers::Lenovo
   class Inventory::Parser::PhysicalInfraManager < ::ManageIQ::Providers::Lenovo::Inventory::Parser
-    include ManageIQ::Providers::Lenovo::RefreshHelperMethods
-
     def parse
       physical_racks do |persister_rack, rack|
         # Retrieve and parse the servers that are inside the rack, but not inside any chassis.
