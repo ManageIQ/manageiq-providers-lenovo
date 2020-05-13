@@ -1,7 +1,7 @@
 # ManageIQ plugin for the Lenovo XClarity provider.
 
 [![Gem Version](https://badge.fury.io/rb/manageiq-providers-lenovo.svg)](http://badge.fury.io/rb/manageiq-providers-lenovo)
-[![Build Status](https://travis-ci.org/ManageIQ/manageiq-providers-lenovo.svg?branch=master)](https://travis-ci.org/ManageIQ/manageiq-providers-lenovo)
+[![Build Status](https://travis-ci.com/ManageIQ/manageiq-providers-lenovo.svg?branch=master)](https://travis-ci.com/ManageIQ/manageiq-providers-lenovo)
 [![Code Climate](https://codeclimate.com/github/ManageIQ/manageiq-providers-lenovo.svg)](https://codeclimate.com/github/ManageIQ/manageiq-providers-lenovo)
 [![Test Coverage](https://codeclimate.com/github/ManageIQ/manageiq-providers-lenovo/badges/coverage.svg)](https://codeclimate.com/github/ManageIQ/manageiq-providers-lenovo/coverage)
 [![Dependency Status](https://gemnasium.com/ManageIQ/manageiq-providers-lenovo.svg)](https://gemnasium.com/ManageIQ/manageiq-providers-lenovo)
