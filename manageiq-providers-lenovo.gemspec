@@ -21,6 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "xclarity_client", "~> 0.6.0"
 
   spec.add_development_dependency "faker", "= 1.8.3"
+  spec.add_development_dependency "manageiq-style"
   spec.add_development_dependency "simplecov"
   spec.add_development_dependency "webmock", "~> 2.1.0"
 end
