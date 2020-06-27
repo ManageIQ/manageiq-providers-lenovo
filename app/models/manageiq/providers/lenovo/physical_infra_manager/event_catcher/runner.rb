@@ -8,8 +8,8 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager::EventCatcher::Runner < 
   def monitor_events
     $log.info('Starting LXCA event catcher ...')
     raise "LXCA event_monitor_handle is nil" if event_monitor_handle.nil?
+    event_monitor_running
     event_monitor_handle.each_batch do |events|
-      event_monitor_running
       if events.present?
         $log.info("Quantity of new LXCA events: #{events.size}")
         @queue.enq(events)
