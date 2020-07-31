@@ -146,6 +146,7 @@
           :warning:
           - 'IMM0013'
           - 'IMM0059'
+          :name: Network
         :login:
           :critical: []
           :detail:
@@ -162,6 +163,7 @@
           :warning:
           - 'IMM0016'
           - 'IMM0017'
+          :name: Login
         :security:
           :detail:
           - 'IMM0206'
@@ -360,6 +362,7 @@
           - 'PLAT0126'
           :warning:
           - 'IMM0012'
+          :name: Status
         :addition:
           :critical: []
           :detail:
@@ -368,6 +371,7 @@
           - 'IMM0100'
           - 'IMM0096'
           :warning: []
+          :name: Addition
 :ems_refresh:
   :lenovo_ph_infra:
     :inventory_object_refresh: true
