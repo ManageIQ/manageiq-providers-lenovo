@@ -371,7 +371,7 @@
           - 'IMM0100'
           - 'IMM0096'
           :warning: []
-          :name: Addition
+          :name: Creation/Addition
 :ems_refresh:
   :lenovo_ph_infra:
     :inventory_collections:
