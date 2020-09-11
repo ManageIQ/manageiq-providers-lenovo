@@ -1,17 +1,17 @@
-# ManageIQ plugin for the Lenovo XClarity provider.
+# ManageIQ::Providers::Lenovo
 
-[![Gem Version](https://badge.fury.io/rb/manageiq-providers-lenovo.svg)](http://badge.fury.io/rb/manageiq-providers-lenovo)
 [![Build Status](https://travis-ci.com/ManageIQ/manageiq-providers-lenovo.svg?branch=master)](https://travis-ci.com/ManageIQ/manageiq-providers-lenovo)
-[![Code Climate](https://codeclimate.com/github/ManageIQ/manageiq-providers-lenovo.svg)](https://codeclimate.com/github/ManageIQ/manageiq-providers-lenovo)
-[![Test Coverage](https://codeclimate.com/github/ManageIQ/manageiq-providers-lenovo/badges/coverage.svg)](https://codeclimate.com/github/ManageIQ/manageiq-providers-lenovo/coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/e94c6eba3b8417ae3164/maintainability)](https://codeclimate.com/github/ManageIQ/manageiq-providers-lenovo/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/e94c6eba3b8417ae3164/test_coverage)](https://codeclimate.com/github/ManageIQ/manageiq-providers-lenovo/test_coverage)
 [![Security](https://hakiri.io/github/ManageIQ/manageiq-providers-lenovo/master.svg)](https://hakiri.io/github/ManageIQ/manageiq-providers-lenovo/master)
 
 [![Chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ManageIQ/manageiq-providers-lenovo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![License](http://img.shields.io/badge/license-APACHE2-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
+
+ManageIQ plugin for the Lenovo XClarity provider.
 
 ## Development
 
-See the section on pluggable providers in the [ManageIQ Developer Setup](http://manageiq.org/docs/guides/developer_setup)
+See the section on plugins in the [ManageIQ Developer Setup](http://manageiq.org/docs/guides/developer_setup/plugins)
 
 For quick local setup run `bin/setup`, which will clone the core ManageIQ repository under the *spec* directory and setup necessary config files. If you have already cloned it, you can run `bin/update` to bring the core ManageIQ code up to date.
 
