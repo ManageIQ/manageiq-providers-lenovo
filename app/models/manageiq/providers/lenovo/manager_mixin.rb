@@ -63,6 +63,7 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
                 :id                     => 'authentications.default.valid',
                 :name                   => 'authentications.default.valid',
                 :skipSubmit             => true,
+                :isRequired             => true,
                 :validationDependencies => %w[type],
                 :fields                 => [
                   {
