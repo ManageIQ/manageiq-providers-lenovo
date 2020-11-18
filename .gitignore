@@ -16,4 +16,3 @@
 /config/environments/*.local.yml
 /node_modules/
 /spec/manageiq
-/yarn.lock
