@@ -4,7 +4,7 @@
 module ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::ComponentAnsibleSender
   extend ActiveSupport::Concern
 
-  include parent::AnsibleSender
+  include module_parent::AnsibleSender
 
   #
   # It adds some extra vars to run playbook against physical components
