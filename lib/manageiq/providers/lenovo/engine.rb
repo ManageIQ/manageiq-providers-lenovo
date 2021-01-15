@@ -13,6 +13,14 @@ module ManageIQ
         def self.plugin_name
           _('Lenovo Provider')
         end
+
+        def self.init_loggers
+          $lenovo_log ||= Vmdb::Loggers.create_logger("lenovo.log")
+        end
+
+        def self.apply_logger_config(config)
+          Vmdb::Loggers.apply_config_value(config, $lenovo_log, :level_lenovo)
+        end
       end
     end
   end
