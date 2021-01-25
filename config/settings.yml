@@ -385,10 +385,8 @@
 :log:
   :level_lenovo: info
 :workers:
-  :worker_base:
-    :event_catcher:
-      :event_catcher_lenovo:
-        :poll: 15.seconds
-    :queue_worker_base:
-      :ems_refresh_worker:
-        :ems_refresh_worker_lenovo_physical_infra: {}
+  :ems_refresh_worker_lenovo_physical_infra:
+    :inherits_from: ems_refresh_worker
+  :event_catcher_lenovo:
+    :inherits_from: event_catcher
+    :poll: 15.seconds
