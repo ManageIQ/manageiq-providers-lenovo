@@ -11,4 +11,9 @@ require "manageiq-providers-lenovo"
 VCR.configure do |config|
   config.ignore_hosts 'codeclimate.com' if ENV['CI']
   config.cassette_library_dir = File.join(ManageIQ::Providers::Lenovo::Engine.root, 'spec/vcr_cassettes')
+
+  secrets = Rails.application.secrets
+  secrets.lenovo&.each_key do |secret|
+    config.define_cassette_placeholder(secrets.lenovo_defaults[secret]) { secrets.lenovo[secret] }
+  end
 end
