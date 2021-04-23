@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://10.243.2.107/aicc
+    uri: https://xclarity.example.com/aicc
     body:
       encoding: UTF-8
       string: ''
@@ -626,7 +626,7 @@ http_interactions:
         15, 2018 5:00:35 PM EST","timezone":"Eastern Standard Time","timezone_id":"America/New_York","parts":{"mm":11,"dd":15,"hours":17,"mins":0,"secs":35,"yyyy":2018},"utc_offset_w_dst":-18000000},"appliance":{"date":"133","build":"133","name":"LXCA
         - 10.243.12.26","runlevel":3,"version":"2.2.0","uuid":"945b6198-47ca-461d-840a-7e86c7e94f78","status":"Normal"},"subscriptions":[{"submonitor_uri":"/ntp","id":1,"monitor_uri":"/aicc","uri":"/ntpNotification"},{"submonitor_uri":"","id":2,"monitor_uri":"/aicc/network/interfaces","uri":"/netchangenotsec"}],"appliance_states":[{"description":"Halt
         the appliance","runlevel":0},{"description":"Normal operation","runlevel":3},{"description":"Reboot
-        the appliance","runlevel":6}],"preferredDisplayName":"byDefault","services":[{"pid":18112,"id":"lxca-core-service","state":0,"initd":"xhmc-core"},{"pid":2536,"id":"keydaemon","state":0,"initd":"sympl-keydaemon"},{"pid":2772,"id":"watchdog","state":0,"initd":"sympl-watchdog"},{"pid":15269,"id":"apache2","state":0,"initd":"httpd"},{"pid":24741,"id":"samba","state":0,"initd":"smb"},{"pid":-1,"id":"network","state":0,"initd":"network"},{"pid":1195,"id":"ntp","state":0,"initd":"ntpd"},{"pid":2443,"id":"sftp","state":0,"initd":"sshd"},{"pid":21395,"id":"xcat","state":0,"initd":"xcatd"}],"ntp":{"servers":[{"server":"us.pool.ntp.org","authenticated":false,"v3_key_type":"","v3_key":"","v3_key_index":0,"version":0},{"server":"127.127.1.0","authenticated":false,"v3_key_type":"","v3_key":"","v3_key_index":0,"version":0}]},"network_interfaces":[{"role":["management","osdeployment"],"mac_address":"52:54:00:83:0B:CC","ip_addresses":[{"ip":"fe80:0:0:0:5054:ff:fe83:bcc%eth0","ip_linklocal":"true","prefix_length":64,"version":6,"assign_method":"static"},{"ip":"10.243.2.107","ip_linklocal":"false","prefix_length":19,"version":4,"assign_method":"static"},{"ip":"0::0%0","ip_linklocal":"false","prefix_length":64,"version":6,"assign_method":"dhcp"}],"rpf":"RFC3704Strict","id":"eth0"}],"service_states":[{"description":"Service
+        the appliance","runlevel":6}],"preferredDisplayName":"byDefault","services":[{"pid":18112,"id":"lxca-core-service","state":0,"initd":"xhmc-core"},{"pid":2536,"id":"keydaemon","state":0,"initd":"sympl-keydaemon"},{"pid":2772,"id":"watchdog","state":0,"initd":"sympl-watchdog"},{"pid":15269,"id":"apache2","state":0,"initd":"httpd"},{"pid":24741,"id":"samba","state":0,"initd":"smb"},{"pid":-1,"id":"network","state":0,"initd":"network"},{"pid":1195,"id":"ntp","state":0,"initd":"ntpd"},{"pid":2443,"id":"sftp","state":0,"initd":"sshd"},{"pid":21395,"id":"xcat","state":0,"initd":"xcatd"}],"ntp":{"servers":[{"server":"us.pool.ntp.org","authenticated":false,"v3_key_type":"","v3_key":"","v3_key_index":0,"version":0},{"server":"127.127.1.0","authenticated":false,"v3_key_type":"","v3_key":"","v3_key_index":0,"version":0}]},"network_interfaces":[{"role":["management","osdeployment"],"mac_address":"52:54:00:83:0B:CC","ip_addresses":[{"ip":"fe80:0:0:0:5054:ff:fe83:bcc%eth0","ip_linklocal":"true","prefix_length":64,"version":6,"assign_method":"static"},{"ip":"xclarity.example.com","ip_linklocal":"false","prefix_length":19,"version":4,"assign_method":"static"},{"ip":"0::0%0","ip_linklocal":"false","prefix_length":64,"version":6,"assign_method":"dhcp"}],"rpf":"RFC3704Strict","id":"eth0"}],"service_states":[{"description":"Service
         is running","state":0},{"description":"Service is dead but PID file exists","state":1},{"description":"Service
         is dead but lock file exists","state":2},{"description":"Service is not running","state":3},{"description":"Also
         to indicate service is not running","state":98},{"description":"Service state
@@ -636,7 +636,7 @@ http_interactions:
   recorded_at: Thu, 15 Nov 2018 22:00:35 GMT
 - request:
     method: get
-    uri: https://10.243.2.107/cabinet?status=includestandalone
+    uri: https://xclarity.example.com/cabinet?status=includestandalone
     body:
       encoding: UTF-8
       string: ''
@@ -14624,7 +14624,7 @@ http_interactions:
   recorded_at: Thu, 15 Nov 2018 22:00:38 GMT
 - request:
     method: get
-    uri: https://10.243.2.107/compliancePolicies/persistedResult
+    uri: https://xclarity.example.com/compliancePolicies/persistedResult
     body:
       encoding: UTF-8
       string: ''
@@ -14684,7 +14684,7 @@ http_interactions:
   recorded_at: Thu, 15 Nov 2018 22:00:40 GMT
 - request:
     method: get
-    uri: https://10.243.2.107/storage
+    uri: https://xclarity.example.com/storage
     body:
       encoding: UTF-8
       string: ''
@@ -14772,7 +14772,7 @@ http_interactions:
   recorded_at: Thu, 15 Nov 2018 22:00:41 GMT
 - request:
     method: get
-    uri: https://10.243.2.107/storage
+    uri: https://xclarity.example.com/storage
     body:
       encoding: UTF-8
       string: ''
@@ -14860,7 +14860,7 @@ http_interactions:
   recorded_at: Thu, 15 Nov 2018 22:00:44 GMT
 - request:
     method: get
-    uri: https://10.243.2.107/switches
+    uri: https://xclarity.example.com/switches
     body:
       encoding: UTF-8
       string: ''
@@ -15366,7 +15366,7 @@ http_interactions:
   recorded_at: Thu, 15 Nov 2018 22:00:45 GMT
 - request:
     method: get
-    uri: https://10.243.2.107/patterns
+    uri: https://xclarity.example.com/patterns
     body:
       encoding: UTF-8
       string: ''
