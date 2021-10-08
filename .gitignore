@@ -15,6 +15,14 @@
 /config/settings.local.yml
 /config/settings/*.local.yml
 /config/environments/*.local.yml
-/node_modules/
 /spec/manageiq
+
+/node_modules/
 /yarn.lock
+/.pnp.*
+/.yarn/*
+!/.yarn/patches
+!/.yarn/plugins
+!/.yarn/releases
+!/.yarn/sdks
+!/.yarn/versions
