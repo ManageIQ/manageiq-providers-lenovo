@@ -18,7 +18,6 @@
 /spec/manageiq
 
 /node_modules/
-/yarn.lock
 /.pnp.*
 /.yarn/*
 !/.yarn/patches
