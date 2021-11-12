@@ -1,5 +1,3 @@
-require 'faker'
-
 describe ManageIQ::Providers::Lenovo::ManagerMixin do
   let(:auth) do
     {
@@ -49,8 +47,8 @@ describe ManageIQ::Providers::Lenovo::ManagerMixin do
 
   describe 'discover' do
     let(:port)            { Random.rand(10_000).to_s }
-    let(:address)         { URI("https://#{Faker::Internet.ip_v4_address}:#{port}/aicc") }
-    let(:invalid_address) { URI("https://#{Faker::Internet.ip_v4_address}:#{port}") }
+    let(:address)         { URI("https://10.10.10.10:#{port}/aicc") }
+    let(:invalid_address) { URI("https://10.10.10.12:#{port}") }
 
     before :each do
       EvmSpecHelper.local_miq_server(:zone => Zone.seed)
