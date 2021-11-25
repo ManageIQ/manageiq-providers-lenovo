@@ -20,7 +20,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "xclarity_client", "~> 0.6.0"
 
-  spec.add_development_dependency "faker"
   spec.add_development_dependency "manageiq-style"
   spec.add_development_dependency "simplecov"
 end
