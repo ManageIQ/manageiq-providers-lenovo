@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Spinner} from "patternfly-react";
+import { Loading } from 'carbon-components-react';
 import connect from "react-redux/es/connect/connect";
 
 class LenovoForm extends React.Component {
@@ -74,7 +74,7 @@ class LenovoForm extends React.Component {
 
   render() {
     if (Object.values(this.props.fieldsDataLoading).includes(true)) {
-      return <Spinner loading size="lg" />;
+      return  <Loading className="export-spinner" withOverlay={false} small />;
     }
 
     return (
