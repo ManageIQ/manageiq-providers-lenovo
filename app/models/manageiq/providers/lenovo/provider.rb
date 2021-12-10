@@ -5,4 +5,6 @@ class ManageIQ::Providers::Lenovo::Provider < ::Provider
           :autosave    => true
 
   validates :name, :presence => true, :uniqueness => true
+
+  supports :create
 end
