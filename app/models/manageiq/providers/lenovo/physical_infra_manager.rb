@@ -15,6 +15,7 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::P
   require_nested :PhysicalSwitch
 
   supports :change_password
+  supports :create
   supports :provisioning
 
   def self.ems_type
