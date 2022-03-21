@@ -42,7 +42,7 @@ describe ManageIQ::Providers::Lenovo::ManagerMixin do
   end
 
   it 'console should be supported' do
-    expect(tested_class.new.console_supported?).to eql(true)
+    expect(tested_class.new.supports?(:native_console)).to be_truthy
   end
 
   describe 'discover' do
