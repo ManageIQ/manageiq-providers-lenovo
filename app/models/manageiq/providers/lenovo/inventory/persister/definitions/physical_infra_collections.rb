@@ -16,14 +16,17 @@ module ManageIQ::Providers::Lenovo::Inventory::Persister::Definitions::PhysicalI
       physical_server_computer_systems
       physical_server_hardwares
       physical_server_network_devices
+      physical_server_network_ports
       physical_server_storage_adapters
       physical_storages
       physical_storage_details
       physical_storage_computer_systems
       physical_storage_hardwares
+      physical_storage_network_ports
       physical_switches
       physical_switch_details
       physical_switch_hardwares
+      physical_switch_network_ports
     ].each do |name|
       add_collection(physical_infra, name)
     end
@@ -38,8 +41,6 @@ module ManageIQ::Providers::Lenovo::Inventory::Persister::Definitions::PhysicalI
 
     add_management_device_networks
     add_physical_switch_networks
-
-    add_physical_network_ports
   end
 
   # ------ IC provider specific definitions -------------------------
@@ -109,28 +110,6 @@ module ManageIQ::Providers::Lenovo::Inventory::Persister::Definitions::PhysicalI
           :manager_ref                  => %i(name guest_device),
           :parent_inventory_collections => %i(physical_servers)
         )
-      end
-    end
-  end
-
-  def add_physical_network_ports
-    %i(physical_server
-       physical_storage
-       physical_switch).each do |network_port_assoc|
-
-      add_collection(physical_infra, "#{network_port_assoc}_network_ports".to_sym) do |builder|
-        builder.add_properties(
-          :model_class                  => ::PhysicalNetworkPort,
-          :parent_inventory_collections => [network_port_assoc.to_s.pluralize.to_sym]
-        )
-
-        manager_ref = case network_port_assoc
-                      when :physical_server then %i(port_type uid_ems)
-                      when :physical_storage then %i(port_type port_name guest_device)
-                      when :physical_switch then %i(port_type port_name physical_switch)
-                      else []
-                      end
-        builder.add_properties(:manager_ref => manager_ref)
       end
     end
   end
