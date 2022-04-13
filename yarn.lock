@@ -9,13 +9,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "manageiq-providers-lenovo@workspace:."
   dependencies:
-    urijs: ^1.19.9
+    urijs: ^1.19.11
   languageName: unknown
   linkType: soft
 
-"urijs@npm:^1.19.9":
-  version: 1.19.9
-  resolution: "urijs@npm:1.19.9"
-  checksum: 9be08c5cf4fb822d6bb62652640fd42e09985a081a205c0d5bf7edc416ff3e4073c5780c4eae46ab9277f4112908b7f79fd5199659214a94df90c73b2033e3ce
+"urijs@npm:^1.19.11":
+  version: 1.19.11
+  resolution: "urijs@npm:1.19.11"
+  checksum: f9b95004560754d30fd7dbee44b47414d662dc9863f1cf5632a7c7983648df11d23c0be73b9b4f9554463b61d5b0a520b70df9e1ee963ebb4af02e6da2cc80f3
   languageName: node
   linkType: hard
