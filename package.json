@@ -1,25 +1,26 @@
 {
   "name": "manageiq-providers-lenovo",
   "version": "1.0.0",
-  "description": "ManageIQ Cloud Management Platform",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ManageIQ/manageiq.git"
-  },
-  "author": "ManageIQ",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/ManageIQ/manageiq/issues"
-  },
-  "homepage": "https://github.com/ManageIQ/manageiq#readme",
-  "dependencies": {
-    "urijs": "^1.19.11"
-  },
-  "engines": {
-    "node": ">= 14.0.0",
-    "npm": ">= 6.0.0",
-    "yarn": ">= 0.20.1"
-  },
-  "packageManager": "yarn@3.0.2"
+  "lockfileVersion": 2,
+  "requires": true,
+  "packages": {
+    "": {
+      "name": "manageiq-providers-lenovo",
+      "version": "1.0.0",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "urijs": "^1.19.11"
+      },
+      "engines": {
+        "node": ">= 14.0.0",
+        "npm": ">= 6.0.0",
+        "yarn": ">= 0.20.1"
+      }
+    },
+    "urijs": {
+      "version": "1.19.11",
+      "resolved": "https://registry.npmjs.org/urijs/-/urijs-1.19.11.tgz",
+      "integrity": "sha512-HXgFDgDommxn5/bIv0cnQZsPhHDA90NPHD6+c/v21U5+Sx5hoP8+dP9IZXBU1gIfvdRfhG8cel9QNPeionfcCQ=="
+    }
+  }
 }
