@@ -1,8 +1,12 @@
 {
   "name": "manageiq-providers-lenovo",
   "version": "1.0.0",
-  "lockfileVersion": 2,
-  "requires": true,
+  "description": "ManageIQ Cloud Management Platform",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ManageIQ/manageiq.git"
+  },
   "packages": {
     "": {
       "name": "manageiq-providers-lenovo",
