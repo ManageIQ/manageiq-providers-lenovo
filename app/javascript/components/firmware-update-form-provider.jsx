@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import URI from "urijs";
 import LenovoForm from "./form/lenovo_form";
 import FirmwareField from "./form/fields/firmware_field";
 
@@ -24,12 +23,7 @@ const applyFirmwareUpdate = (values) =>{
 };
 
 const getPhysicalServerData = (providerID) => {
-  const uri = new URI("/api/physical_servers/?")
-    .query({
-      "attributes": "id,name,hardware.firmwares",
-      "expand": "resources",
-      "filter[]": `ems_id=${providerID}`
-    });
+  const uri = `/api/physical_servers?attributes=id,name,hardware.firmwares&expand=resources&filter[]=ems_id=${providerID}`;
   return API.get(uri).then((data) => data.resources.map(resource => ({
     id: resource.id,
     name: resource.name,
