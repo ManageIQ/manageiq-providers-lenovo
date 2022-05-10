@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import URI from "urijs";
 import LenovoForm from "./form/lenovo_form";
 import PhysicalServerField from "./form/fields/physical_server_field";
 import ConfigPatternField from "./form/fields/config_pattern_field";
@@ -21,12 +20,7 @@ const applyPattern = (values) =>{
 };
 
 const getPhysicalServerData = (providerID, patternID) => {
-  const uri = new URI("/api/physical_servers/?")
-    .query({
-      "attributes": "name,href",
-      "expand": "resources",
-      "filter[]": `ems_id=${providerID}`
-    });
+  const uri = `/api/physical_servers?attributes=name,href&expand=resources&filter[]=ems_id=${providerID}`;
   return API.get(uri).then((data) => data.resources.map(resource => ({
     value: resource.href,
     label: resource.name,
@@ -34,16 +28,8 @@ const getPhysicalServerData = (providerID, patternID) => {
 };
 
 const getConfigPatternData = (providerID) => {
-  const uri = new URI("/api/customization_scripts/?")
-    .query({
-      "attributes": "manager_ref,name",
-      "expand": "resources",
-      "filter[]": "type='ManageIQ::Providers::Lenovo::PhysicalInfraManager::ConfigPattern'",
-    })
-    .addQuery({
-      "filter[]": `manager_id=${providerID}`
-    });
-  return API.get(decodeURI(uri.toString())).then((data)=> data.resources.map(resource => ({
+  const uri = `/api/customization_scripts?attributes=manager_ref,name&expand=resources&filter[]=type='ManageIQ::Providers::Lenovo::PhysicalInfraManager::ConfigPattern'&filter[]=manager_id=${providerID}`;
+  return API.get(uri).then((data) => data.resources.map(resource => ({
     value: resource.manager_ref,
     label: resource.name,
   })));

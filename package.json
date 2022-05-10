@@ -13,9 +13,6 @@
     "url": "https://github.com/ManageIQ/manageiq/issues"
   },
   "homepage": "https://github.com/ManageIQ/manageiq#readme",
-  "dependencies": {
-    "urijs": "^1.19.11"
-  },
   "engines": {
     "node": ">= 14.0.0",
     "npm": ">= 6.0.0",
