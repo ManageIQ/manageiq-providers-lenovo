@@ -14,8 +14,8 @@
   },
   "homepage": "https://github.com/ManageIQ/manageiq#readme",
   "engines": {
-    "node": ">= 14.0.0",
-    "npm": ">= 6.0.0",
+    "node": ">= 16.0.0",
+    "npm": ">= 8.0.0",
     "yarn": ">= 0.20.1"
   },
   "packageManager": "yarn@3.0.2"
