@@ -126,7 +126,7 @@ module ManageIQ::Providers::Lenovo::ManagerMixin
       userid, password = authentication&.values_at("userid", "password")
 
       password = ManageIQ::Password.try_decrypt(password)
-      password ||= find(args["id"]).authentication_password(endpoint_name) if args["id"]
+      password ||= find(args["id"]).authentication_password("default") if args["id"]
 
       !!raw_connect(userid, password, hostname, port, "token", false, Vmdb::Appliance.USER_AGENT, true)
     end
