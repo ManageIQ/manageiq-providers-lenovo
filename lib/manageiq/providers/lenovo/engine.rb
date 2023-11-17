@@ -20,7 +20,7 @@ module ManageIQ
         end
 
         def self.init_loggers
-          $lenovo_log ||= Vmdb::Loggers.create_logger("lenovo.log")
+          $lenovo_log ||= Vmdb::Loggers.create_logger("lenovo.log", Vmdb::Loggers::ProviderSdkLogger)
         end
 
         def self.apply_logger_config(config)
