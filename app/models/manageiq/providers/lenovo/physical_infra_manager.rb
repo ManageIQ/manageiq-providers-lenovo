@@ -1,7 +1,7 @@
 class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::PhysicalInfraManager
   include ManageIQ::Providers::Lenovo::ManagerMixin
-  include_concern 'Operations'
-  include_concern 'AuthenticatableProvider'
+  include Operations
+  include AuthenticatableProvider
 
   require_nested :EventCatcher
   require_nested :EventParser
