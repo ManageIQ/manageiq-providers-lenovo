@@ -4,23 +4,6 @@ module ManageIQ::Providers::Lenovo
   # to a MiQ format
   #
   class Inventory::Parser::ComponentParser
-    require_nested :Canister
-    require_nested :CompliancePolicy
-    require_nested :ComputerSystem
-    require_nested :ConfigPattern
-    require_nested :Firmware
-    require_nested :GuestDevice
-    require_nested :ManagementDevice
-    require_nested :NetworkDevice
-    require_nested :PhysicalDisk
-    require_nested :PhysicalChassis
-    require_nested :PhysicalNetworkPort
-    require_nested :PhysicalRack
-    require_nested :PhysicalServer
-    require_nested :PhysicalStorage
-    require_nested :PhysicalSwitch
-    require_nested :StorageDevice
-
     attr_reader :persister, :parser
 
     delegate :components,

@@ -3,17 +3,6 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::P
   include Operations
   include AuthenticatableProvider
 
-  require_nested :EventCatcher
-  require_nested :EventParser
-  require_nested :Parser
-  require_nested :RefreshWorker
-  require_nested :Firmware
-  require_nested :PhysicalChassis
-  require_nested :PhysicalRack
-  require_nested :PhysicalServer
-  require_nested :PhysicalStorage
-  require_nested :PhysicalSwitch
-
   supports :change_password
   supports :native_console
   supports :create
