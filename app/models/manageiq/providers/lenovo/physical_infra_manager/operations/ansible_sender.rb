@@ -3,8 +3,7 @@
 #
 module ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::AnsibleSender
   extend ActiveSupport::Concern
-
-  include_concern 'NotificationMixin'
+  include NotificationMixin
 
   #
   # Executes ansible resources inside +root_dir+

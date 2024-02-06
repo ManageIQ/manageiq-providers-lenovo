@@ -1,7 +1,6 @@
 module ManageIQ::Providers::Lenovo::PhysicalInfraManager::PhysicalServer::Operations
   extend ActiveSupport::Concern
-
-  include_concern 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::ComponentAnsibleSender'
+  include ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::ComponentAnsibleSender
 
   #
   # Makes the provision of a server step-by-step using ansible methods.

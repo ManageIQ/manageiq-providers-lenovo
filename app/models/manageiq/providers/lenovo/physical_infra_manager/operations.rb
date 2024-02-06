@@ -1,8 +1,7 @@
 module ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations
   extend ActiveSupport::Concern
-
-  include_concern 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::Sender'
-  include_concern 'ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::AnsibleSender'
+  include ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::Sender
+  include ManageIQ::Providers::Lenovo::PhysicalInfraManager::Operations::AnsibleSender
 
   def blink_loc_led(server, _options = {})
     change_led_state(server, :blink_loc_led)

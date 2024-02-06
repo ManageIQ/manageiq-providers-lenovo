@@ -1,6 +1,4 @@
 class ManageIQ::Providers::Lenovo::Inventory::Collector < ManageIQ::Providers::Inventory::Collector
-  require_nested :PhysicalInfraManager
-
   def initialize(_manager, _target)
     super
 
