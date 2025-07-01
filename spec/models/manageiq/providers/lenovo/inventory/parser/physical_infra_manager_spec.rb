@@ -14,15 +14,15 @@ describe ManageIQ::Providers::Lenovo::Inventory::Parser::PhysicalInfraManager do
 
   let(:auth) do
     FactoryBot.create(:authentication,
-                      :userid   => Rails.application.secrets.lenovo[:username],
-                      :password => Rails.application.secrets.lenovo[:password],
+                      :userid   => VcrSecrets.lenovo.username,
+                      :password => VcrSecrets.lenovo.password,
                       :authtype => "default")
   end
 
   let(:ems) do
     ems = FactoryBot.create(:physical_infra,
                             :name     => "LXCA",
-                            :hostname => Rails.application.secrets.lenovo[:hostname],
+                            :hostname => VcrSecrets.lenovo.hostname,
                             :port     => "443")
     ems.authentications = [auth]
     ems
