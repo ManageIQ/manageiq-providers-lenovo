@@ -1,6 +1,6 @@
 # ManageIQ::Providers::Lenovo
 
-[![CI](https://github.com/ManageIQ/manageiq-providers-lenovo/actions/workflows/ci.yaml/badge.svg?branch=spassky)](https://github.com/ManageIQ/manageiq-providers-lenovo/actions/workflows/ci.yaml)
+[![CI](https://github.com/ManageIQ/manageiq-providers-lenovo/actions/workflows/ci.yaml/badge.svg?branch=master)](https://github.com/ManageIQ/manageiq-providers-lenovo/actions/workflows/ci.yaml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/e94c6eba3b8417ae3164/maintainability)](https://codeclimate.com/github/ManageIQ/manageiq-providers-lenovo/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/e94c6eba3b8417ae3164/test_coverage)](https://codeclimate.com/github/ManageIQ/manageiq-providers-lenovo/test_coverage)
 
