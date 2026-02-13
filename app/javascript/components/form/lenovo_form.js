@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Loading } from 'carbon-components-react';
+import { Loading } from '@carbon/react';
 import connect from "react-redux/es/connect/connect";
 
 class LenovoForm extends React.Component {
