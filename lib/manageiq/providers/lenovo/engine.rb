@@ -16,6 +16,9 @@ module ManageIQ
 
         def self.init_loggers
           $lenovo_log ||= Vmdb::Loggers.create_logger("lenovo.log", Vmdb::Loggers::ProviderSdkLogger)
+
+          require "xclarity_client"
+          XClarityClient.logger = $lenovo_log
         end
 
         def self.apply_logger_config(config)
