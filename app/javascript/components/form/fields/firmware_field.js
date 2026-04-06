@@ -1,14 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  Col,
-  ControlLabel,
-  Nav,
-  NavItem,
-  Row,
-  Tab,
-} from "react-bootstrap";
-import FirmwareCheckListField from "./firmware_check_list_field";
+import { Grid, Column, ClickableTile } from "@carbon/react";
+import { BareMetalServer, Checkmark } from "@carbon/react/icons";
+import FirmwareCheckListField from "./firmware_check_list_field.js";
 import "../../style/firmware-update-field.css";
 
 class FirmwareField extends React.Component {
@@ -18,6 +12,7 @@ class FirmwareField extends React.Component {
 
     this.state = {
       navItemSelected: {},
+      selectedServerId: props.physicalServerData[0]?.id || null,
     };
 
   }
@@ -27,70 +22,97 @@ class FirmwareField extends React.Component {
     let values = navItemSelected[id] || {};
     values[firmwareName] = checked;
     navItemSelected[id] = values;
-    this.setState({navItemSelected})
+    this.setState({navItemSelected}, () => {
+      // Notify parent component of changes if onChange prop is provided
+      if (this.props.onChange) {
+        // Check if any firmware is selected
+        const hasSelection = Object.keys(navItemSelected).some(serverId => {
+          const serverFirmwares = navItemSelected[serverId];
+          return Object.values(serverFirmwares).some(isChecked => isChecked);
+        });
+        
+        // Convert navItemSelected to the format expected by the parent
+        const firmwareField = {};
+        Object.keys(navItemSelected).forEach(serverId => {
+          const selectedFirmwares = [];
+          Object.keys(navItemSelected[serverId]).forEach(firmwareName => {
+            if (navItemSelected[serverId][firmwareName]) {
+              selectedFirmwares.push(firmwareName);
+            }
+          });
+          if (selectedFirmwares.length > 0) {
+            firmwareField[serverId] = selectedFirmwares;
+          }
+        });
+        
+        this.props.onChange(firmwareField, hasSelection);
+      }
+    });
   };
 
-  hideNavItem = (id) => {
+  hasSelectedFirmware = (id) => {
     let navItemSelected= this.state.navItemSelected;
     if (navItemSelected.hasOwnProperty(id)) {
-      return !Object.values(navItemSelected[id]).includes(true);
+      return Object.values(navItemSelected[id]).includes(true);
     }
-    return true;
+    return false;
   };
 
+  handleServerClick = (serverId) => {
+    this.setState({ selectedServerId: serverId });
+  };
 
   render() {
-    const serverNavItens = this.props.physicalServerData.map((physicalServer) => {
-      const visibility = this.hideNavItem(physicalServer.id) ? "invisible" : "visible";
-      return(
-        <NavItem
-          eventKey={physicalServer.id}
-          key={physicalServer.id}>
-          <div className="media">
-            <div className="media-left">
-              <i className="pficon pficon-server serverIcon"/>
-              {physicalServer.name}
-            </div>
-            <div className="media-right">
-              <i className={"fa fa-check " + visibility}/>
-            </div>
+    const { physicalServerData } = this.props;
+    const { selectedServerId } = this.state;
 
-          </div>
-        </NavItem>
-      )
-    });
-    const firmwareTabPane = this.props.physicalServerData.map((physicalServer) => {
-      return(
-        <Tab.Pane
-          key={physicalServer.id}
-          eventKey={physicalServer.id}>
-          <h4>{physicalServer.name}</h4>
-          <FirmwareCheckListField
-            updateNavItem={this.updateNavItem}
-            firmwareData={physicalServer.firmwares}
-            parentName={this.props.name}
-            serverID={physicalServer.id}/>
-        </Tab.Pane>
-      )
-    });
+    if (!physicalServerData || physicalServerData.length === 0) {
+      return null;
+    }
+
+    const selectedServer = physicalServerData.find(server => server.id === selectedServerId);
 
     return (
-      <div>
-        <Tab.Container id="left-tabs-firmware" defaultActiveKey={this.props.physicalServerData[0].id}>
-          <Row className="clearfix tabRow">
-            <Col sm={4} className="serversCol">
-              <ControlLabel>{__('Physical Servers')}</ControlLabel>
-              <Nav bsStyle="pills" stacked>
-                {serverNavItens}
-              </Nav>
-            </Col>
-            <Col sm={8} className="firmwaresCol">
-              <Tab.Content animation>
-                {firmwareTabPane}
-              </Tab.Content>
-            </Col>
-          </Row>
-        </Tab.Container>
+      <div className="firmware-field-container">
+        <Grid fullWidth narrow>
+          <Column lg={6} md={4} sm={4} className="firmware-servers-column">
+            <h4 className="firmware-section-title">{__('Physical Servers')}</h4>
+            <div className="firmware-server-list">
+              {physicalServerData.map((physicalServer) => {
+                const hasSelection = this.hasSelectedFirmware(physicalServer.id);
+                const isSelected = physicalServer.id === selectedServerId;
+                return (
+                  <ClickableTile
+                    key={physicalServer.id}
+                    className={`firmware-server-tile ${isSelected ? 'selected' : ''}`}
+                    onClick={() => this.handleServerClick(physicalServer.id)}
+                  >
+                    <div className="firmware-server-tile-content">
+                      <BareMetalServer />
+                      <span className="firmware-server-name">{physicalServer.name}</span>
+                      {hasSelection && <Checkmark size={16} className="firmware-checkmark" />}
+                    </div>
+                  </ClickableTile>
+                );
+              })}
+            </div>
+          </Column>
+          <Column lg={10} md={4} sm={4} className="firmware-details-column">
+            {selectedServer && (
+              <div className="firmware-details-content">
+                <h4 className="firmware-section-title">{selectedServer.name}</h4>
+                <h5 className="firmware-subsection-title">{__('Firmwares')}</h5>
+                <FirmwareCheckListField
+                  updateNavItem={this.updateNavItem}
+                  firmwareData={selectedServer.firmwares}
+                  parentName={this.props.name}
+                  serverID={selectedServer.id}
+                  selectedFirmwares={this.state.navItemSelected[selectedServer.id] || {}}
+                />
+              </div>
+            )}
+          </Column>
+        </Grid>
       </div>
     );
   }
@@ -99,6 +121,7 @@ class FirmwareField extends React.Component {
 FirmwareField.propTypes = {
   physicalServerData: PropTypes.array.isRequired,
   name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
 };
 
 export default FirmwareField;

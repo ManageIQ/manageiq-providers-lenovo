@@ -1,27 +1,95 @@
-.tabRow {
-  padding: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
+.firmware-field-container {
+  margin-top: 1rem;
+  height: 400px;
+  overflow: hidden;
 }
 
-.serversCol {
-  overflow: auto;
-  padding:0;
-  box-sizing: border-box;
-  box-shadow: 5px 0 5px -5px #333;
-  min-height: 250px;
+.firmware-section-title {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
-.serverIcon{
-  margin-right: 5px;
+.firmware-subsection-title {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
-.firmwaresCol {
-  overflow: auto;
-  margin-right: 0;
-  height: 250px;
+.firmware-servers-column {
+  border-right: 1px solid #e0e0e0;
+  padding-right: 0 !important;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.firmware-server-list {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.firmware-server-tile {
+  border-radius: 0 !important;
+  border: none !important;
+  border-bottom: 1px solid #e0e0e0 !important;
+  padding: 1rem !important;
+  cursor: pointer !important;
+  background-color: #ffffff;
+  transition: background-color 0.2s;
+}
+
+.firmware-server-tile:hover {
+  background-color: #f4f4f4;
+}
+
+.firmware-server-tile.selected {
+  background-color: #0f62fe;
+  color: #ffffff;
+}
+
+.firmware-server-tile.selected:hover {
+  background-color: #0353e9;
+}
+
+.firmware-server-tile-content {
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  min-width: 0;
+}
+
+.firmware-server-name {
+  margin-left: 5px;
+  margin-right: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.firmware-checkmark {
+  flex-shrink: 0;
+}
+
+.firmware-details-column {
+  padding-left: 2rem !important;
+  min-width: 0;
+}
+
+.firmware-details-content {
+  height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-width: 0;
 }
 
 .modal-footer {
-  margin-top: 0px;
+  margin-top: 0;
 }

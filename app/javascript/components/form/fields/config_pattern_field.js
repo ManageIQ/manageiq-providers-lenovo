@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {ControlLabel, FormControl, FormGroup} from "react-bootstrap";
+import { Select, SelectItem } from "@carbon/react";
 
 class ConfigPatternField extends React.Component {
 
@@ -18,55 +18,54 @@ class ConfigPatternField extends React.Component {
 
   getValidationState() {
     let {valid, touched} = this.state;
-    if (valid) {
-      return "success";
-    }else if (touched) {
-      return "warning";
+    if (!touched) {
+      return false;
     }
+    return valid;
    }
 
   handleChange(e) {
     let value = e.target.value;
-    if (!! this.props.updateChildren) {
+    const isValid = value !== 'placeholder-item' && value !== '';
+    
+    this.setState({
+      value: value,
+      valid: isValid
+    });
+
+    // Always call updateChildren to refresh the server list, passing the value
+    if (this.props.updateChildren) {
       this.props.updateChildren(value);
     }
 
-    this.setState({
-      value: value,
-      valid: e.target.validity.valid
-    });
+    // Call parent onChange if provided
+    if (this.props.onChange) {
+      this.props.onChange(value, isValid);
+    }
   }
 
   onClick = () => {
     this.setState({touched: true})
   };
 
-  componentDidMount() {
-    $(".selectpicker").selectpicker();
-  }
-
   render() {
     const patternComponentOptions = this.props.configPatternData.map((pattern) => {
-      return <option key={pattern.value} value={pattern.value}>{pattern.label}</option>
+      return <SelectItem key={pattern.value} value={pattern.value} text={pattern.label} />
     });
 
     return (
-      <FormGroup
-        controlId="selectPattern"
-        validationState={this.getValidationState()}>
-          <ControlLabel>{__('Config Pattern')}</ControlLabel>
-          <div onClick={this.onClick}>
-            <FormControl
-              componentClass="select"
-              className="selectpicker"
-              name={this.props.name}
-              value={this.state.value}
-              title={__('Choose a pattern')}
-              onChange={this.handleChange}>
-              { patternComponentOptions }
-            </FormControl>
-          </div>
-      </FormGroup>
+      <Select
+        id="selectPattern"
+        labelText={__('Config Pattern')}
+        name={this.props.name}
+        value={this.state.value}
+        onChange={this.handleChange}
+        onClick={this.onClick}
+        invalid={this.state.touched && !this.state.valid}
+        invalidText={__('Please select a pattern')}>
+        <SelectItem value="placeholder-item" text={__('Choose a pattern')} />
+        { patternComponentOptions }
+      </Select>
     );
   }
 }
@@ -74,6 +73,8 @@ class ConfigPatternField extends React.Component {
 ConfigPatternField.propTypes = {
   configPatternData: PropTypes.array.isRequired,
   name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  updateChildren: PropTypes.func,
 };
 
 export default ConfigPatternField;

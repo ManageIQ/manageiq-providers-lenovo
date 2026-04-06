@@ -1,25 +1,25 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
-import LenovoForm from "./form/lenovo_form";
-import PhysicalServerField from "./form/fields/physical_server_field";
-import ConfigPatternField from "./form/fields/config_pattern_field";
+import { connect } from "react-redux";
+import { Form, Stack, Loading } from "@carbon/react";
+import PhysicalServerField from "./form/fields/physical_server_field.js";
+import ConfigPatternField from "./form/fields/config_pattern_field.js";
+import './style/apply-config-pattern-form.css';
 
 const API = window.API;
 
-const applyPattern = (values) =>{
-  const resources = values["physicalServerField"].map(href => (
-    {
-      href: href,
-      pattern_id: values["configPatternField"]
-    }));
+const applyPattern = (values) => {
+  const resources = values.physicalServerField.map(href => ({
+    href: href,
+    pattern_id: values.configPatternField
+  }));
   API.post("/api/physical_servers/", {
     action: "apply_config_pattern_ansible",
     resources: resources,
-   });
+  });
 };
 
-const getPhysicalServerData = (providerID, patternID) => {
+const getPhysicalServerData = (providerID) => {
   const uri = `/api/physical_servers?attributes=name,href&expand=resources&filter[]=ems_id=${providerID}`;
   return API.get(uri).then((data) => data.resources.map(resource => ({
     value: resource.href,
@@ -28,86 +28,120 @@ const getPhysicalServerData = (providerID, patternID) => {
 };
 
 const getConfigPatternData = (providerID) => {
-  const uri = `/api/customization_scripts?attributes=manager_ref,name&expand=resources&filter[]=type='ManageIQ::Providers::Lenovo::PhysicalInfraManager::ConfigPattern'&filter[]=manager_id=${providerID}`;
+  const typeFilter = encodeURIComponent("type='ManageIQ::Providers::Lenovo::PhysicalInfraManager::ConfigPattern'");
+  // const uri = `/api/customization_scripts?attributes=manager_ref,name&expand=resources&filter[]=${typeFilter}&filter[]=manager_id=${providerID}`;
+  const uri = `/api/customization_scripts?attributes=manager_ref,name&expand=resources&filter[]=manager_id=${providerID}`;
   return API.get(uri).then((data) => data.resources.map(resource => ({
     value: resource.manager_ref,
     label: resource.name,
   })));
 };
 
-class ApplyConfigPatternFormProvider extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      configPatternList: [],
-      physicalServerList: [],
-      physicalServerFieldDisabled: true,
-      values: {},
-      fieldsDataLoading: {
-        configPatternLoading: true,
-      },
-    };
-  }
+const ApplyConfigPatternFormProvider = ({ dispatch }) => {
+  const [configPatternList, setConfigPatternList] = useState([]);
+  const [physicalServerList, setPhysicalServerList] = useState([]);
+  const [physicalServerFieldDisabled, setPhysicalServerFieldDisabled] = useState(true);
+  const [values, setValues] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const [isValid, setIsValid] = useState(false);
 
-  updateFieldsDataLoading = (name, status) => {
-    const fieldsDataLoading= this.state.fieldsDataLoading;
-    fieldsDataLoading[name]=status;
-    return fieldsDataLoading;
-  };
+  const updateServers = useCallback((patternValue) => {
+    // If pattern value is empty or placeholder, clear the server list and disable the field
+    if (!patternValue || patternValue === 'placeholder-item') {
+      setPhysicalServerList([]);
+      setPhysicalServerFieldDisabled(true);
+      // Clear the physical server field value
+      setValues(prev => ({
+        ...prev,
+        physicalServerField: []
+      }));
+      return;
+    }
+    
+    // Otherwise, load the server list
+    getPhysicalServerData(ManageIQ.record.recordId)
+      .then(serverList => {
+        setPhysicalServerList(serverList);
+        setPhysicalServerFieldDisabled(false);
+      });
+  }, []);
 
-  componentDidMount() {
-    this.props.dispatch({
+  const handleFieldChange = useCallback((fieldName, fieldValue, isFieldValid) => {
+    setValues(prev => ({
+      ...prev,
+      [fieldName]: fieldValue
+    }));
+
+    // Check if all required fields are valid
+    const newIsValid = fieldName === 'configPatternField' 
+      ? isFieldValid && values.physicalServerField && values.physicalServerField.length > 0
+      : values.configPatternField && isFieldValid;
+    
+    setIsValid(newIsValid);
+  }, [values]);
+
+  useEffect(() => {
+    // Initialize form buttons
+    dispatch({
       type: "FormButtons.init",
       payload: {
         newRecord: true,
         pristine: true,
         addClicked: () => {
-          applyPattern(this.state.values);
+          applyPattern(values);
         },
       },
     });
-    this.props.dispatch({
+    dispatch({
       type: "FormButtons.customLabel",
       payload: "Apply",
     });
+    
+    // Load config patterns
     getConfigPatternData(ManageIQ.record.recordId)
-      .then((configPatternList) => this.setState(
-        {
-          configPatternList: configPatternList,
-          fieldsDataLoading: this.updateFieldsDataLoading("configPatternLoading", false),
-        }
-      ));
-  };
+      .then((patternList) => {
+        setConfigPatternList(patternList);
+        setIsLoading(false);
+      });
+  }, [dispatch, values]);
 
-  updateValues = (values) => {
-    this.setState({values});
-  };
+  useEffect(() => {
+    // Update form button state
+    dispatch({
+      type: "FormButtons.saveable",
+      payload: isValid,
+    });
+    dispatch({
+      type: "FormButtons.pristine",
+      payload: Object.keys(values).length === 0,
+    });
+  }, [dispatch, isValid, values]);
 
-  updateServers = (resourceID) => {
-    getPhysicalServerData(ManageIQ.record.recordId, resourceID)
-      .then(physicalServerList => this.setState({ physicalServerList: physicalServerList, physicalServerFieldDisabled: false }));
-  };
-
-  render() {
-    return (
-      <LenovoForm
-        fieldsDataLoading={this.state.fieldsDataLoading}
-        handleValues={this.updateValues}
-        dispatch={this.props.dispatch}>
-        <ConfigPatternField
-          name="configPatternField"
-          validate={true}
-          updateChildren={this.updateServers}
-          configPatternData={this.state.configPatternList}/>
-        <PhysicalServerField
-          validate={true}
-          name="physicalServerField"
-          physicalServerData={this.state.physicalServerList}
-          disabled={this.state.physicalServerFieldDisabled}/>
-      </LenovoForm>
-    )
+  if (isLoading) {
+    return <Loading className="export-spinner" withOverlay={false} small />;
   }
-}
+
+  return (
+    <Form className='apply-config-pattern-form'>
+      <Stack gap={6}>
+          <ConfigPatternField
+            name="configPatternField"
+            validate={true}
+            updateChildren={updateServers}
+            configPatternData={configPatternList}
+            onChange={(value, isValid) => handleFieldChange('configPatternField', value, isValid)}
+          />
+          <PhysicalServerField
+            validate={true}
+            name="physicalServerField"
+            physicalServerData={physicalServerList}
+            disabled={physicalServerFieldDisabled}
+            onChange={(value, isValid) => handleFieldChange('physicalServerField', value, isValid)}
+          />
+      </Stack>
+    </Form>
+  );
+};
 
 ApplyConfigPatternFormProvider.propTypes = {
   dispatch: PropTypes.func.isRequired,

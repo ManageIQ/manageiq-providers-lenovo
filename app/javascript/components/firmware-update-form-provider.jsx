@@ -1,14 +1,12 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
-import LenovoForm from "./form/lenovo_form";
-import FirmwareField from "./form/fields/firmware_field";
-
+import { connect } from "react-redux";
+import { Form, Loading } from "@carbon/react";
+import FirmwareField from "./form/fields/firmware_field.js";
 
 const API = window.API;
 
-const applyFirmwareUpdate = (values) =>{
-
+const applyFirmwareUpdate = (values) => {
   const firmwareField = values['firmwareField'];
 
   const resources = Object.keys(firmwareField).map(id => ({
@@ -19,7 +17,7 @@ const applyFirmwareUpdate = (values) =>{
   API.post("/api/physical_servers/", {
     action: "apply_firmware_update_ansible",
     resources: resources,
-   });
+  });
 };
 
 const getPhysicalServerData = (providerID) => {
@@ -31,65 +29,72 @@ const getPhysicalServerData = (providerID) => {
   })));
 };
 
-class FirmwareUpdateFormProvider extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      physicalServerList: [],
-      values: {},
-      fieldsDataLoading: {
-        physicalServerLoading: true,
-      },
-    };
-  }
+const FirmwareUpdateFormProvider = ({ dispatch }) => {
+  const [physicalServerList, setPhysicalServerList] = useState([]);
+  const [values, setValues] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const [isValid, setIsValid] = useState(false);
 
-  updateFieldsDataLoading = (name, status) => {
-    const fieldsDataLoading= this.state.fieldsDataLoading;
-    fieldsDataLoading[name]=status;
-    return fieldsDataLoading;
-  };
+  const handleFieldChange = useCallback((fieldName, fieldValue, isFieldValid) => {
+    setValues(prev => ({
+      ...prev,
+      [fieldName]: fieldValue
+    }));
+    setIsValid(isFieldValid);
+  }, []);
 
-  updateValues = (values) => {
-    this.setState({values});
-  };
-
-  componentDidMount() {
-    this.props.dispatch({
+  useEffect(() => {
+    // Initialize form buttons
+    dispatch({
       type: "FormButtons.init",
       payload: {
         newRecord: true,
         pristine: true,
         addClicked: () => {
-          applyFirmwareUpdate(this.state.values);
+          applyFirmwareUpdate(values);
         },
       },
     });
-    this.props.dispatch({
+    dispatch({
       type: "FormButtons.customLabel",
       payload: "Apply",
     });
-    getPhysicalServerData(ManageIQ.record.recordId).then((physicalServerList) => {
-      this.setState(
-        {physicalServerList,
-         fieldsDataLoading: this.updateFieldsDataLoading("physicalServerLoading", false),
-        });
+
+    // Load physical server data
+    getPhysicalServerData(ManageIQ.record.recordId)
+      .then((serverList) => {
+        setPhysicalServerList(serverList);
+        setIsLoading(false);
+      });
+  }, [dispatch, values]);
+
+  useEffect(() => {
+    // Update form button state
+    dispatch({
+      type: "FormButtons.saveable",
+      payload: isValid,
     });
+    dispatch({
+      type: "FormButtons.pristine",
+      payload: Object.keys(values).length === 0,
+    });
+  }, [dispatch, isValid, values]);
+
+  if (isLoading) {
+    return <Loading className="export-spinner" withOverlay={false} small />;
   }
 
-  render() {
-    return (
-      <LenovoForm
-        fieldsDataLoading={this.state.fieldsDataLoading}
-        handleValues={this.updateValues}
-        dispatch={this.props.dispatch}>
-        <FirmwareField
-          name="firmwareField"
-          validate={true}
-          physicalServerData={this.state.physicalServerList}/>
-      </LenovoForm>
-    )
-  }
-}
+  return (
+    <Form>
+      <FirmwareField
+        name="firmwareField"
+        validate={true}
+        physicalServerData={physicalServerList}
+        onChange={(value, isValid) => handleFieldChange('firmwareField', value, isValid)}
+      />
+    </Form>
+  );
+};
 
 FirmwareUpdateFormProvider.propTypes = {
   dispatch: PropTypes.func.isRequired,

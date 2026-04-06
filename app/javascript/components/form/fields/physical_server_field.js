@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {ControlLabel, FormControl, FormGroup} from "react-bootstrap";
+import { MultiSelect } from "@carbon/react";
 
 class PhysicalServerField extends React.Component {
 
@@ -10,7 +10,8 @@ class PhysicalServerField extends React.Component {
     this.state = {
       touched: false,
       pristine: true,
-      valid: false
+      valid: false,
+      selectedItems: []
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -19,60 +20,57 @@ class PhysicalServerField extends React.Component {
   getValidationState() {
     let {valid, pristine, touched} = this.state;
     if (valid) {
-      return "success";
-    }else if (touched && pristine) {
-      return "warning";
-    }else if (!pristine && !valid){
-      return "error";
+      return true;
+    } else if (touched && pristine) {
+      return false;
+    } else if (!pristine && !valid) {
+      return false;
     }
+    return true;
   }
 
-  handleChange(e) {
-    const selectedOptions = $(e.target).val();
+  handleChange = (data) => {
+    const selectedValues = data.selectedItems.map(item => item.id);
+    const isValid = selectedValues.length > 0;
+    
     this.setState({
-      valid: !!selectedOptions,
-      pristine: false
+      valid: isValid,
+      pristine: false,
+      selectedItems: data.selectedItems
     });
-  }
+
+    // Call parent onChange if provided
+    if (this.props.onChange) {
+      this.props.onChange(selectedValues, isValid);
+    }
+  };
 
   onClick = () => {
     this.setState({touched: true})
   };
 
-  componentDidMount() {
-    $(".selectpicker").selectpicker();
-  }
-
-  componentDidUpdate() {
-    $(".selectpicker").selectpicker("refresh");
-  }
-
   render() {
-    const serverComponentOptions = this.props.physicalServerData.map((server) => {
-      return <option data-icon="pficon pficon-server" key={server.value} value={server.value}>{server.label}</option>;
-    });
+    const serverItems = this.props.physicalServerData.map((server) => ({
+      id: server.value,
+      label: server.label,
+      value: server.value,
+    }));
 
     return (
-      <FormGroup
-        controlId="selectServer"
-        validationState={this.getValidationState()}>
-          <ControlLabel>{__('Physical Server')}</ControlLabel>
-          <div onClick={this.onClick}>
-            <FormControl
-              disabled={this.props.disabled}
-              componentClass="select"
-              className="selectpicker"
-              name={this.props.name}
-              multiple
-              data-live-search="true"
-              data-selected-text-format="count"
-              data-actions-box="true"
-              title={__('Choose a Server')}
-              onChange={this.handleChange}>
-              { serverComponentOptions }
-            </FormControl>
-          </div>
-      </FormGroup>
+      <div onClick={this.onClick}>
+        <MultiSelect
+          id="selectServer"
+          titleText={__('Physical Server')}
+          label={__('Choose a Server')}
+          items={serverItems}
+          itemToString={(item) => (item ? item.label : '')}
+          disabled={this.props.disabled}
+          onChange={this.handleChange}
+          initialSelectedItems={this.state.selectedItems}
+          invalid={!this.getValidationState()}
+          invalidText={__('Please select at least one server')}
+        />
+      </div>
     );
   }
 }
@@ -81,6 +79,7 @@ PhysicalServerField.propTypes = {
   physicalServerData: PropTypes.array.isRequired,
   name: PropTypes.string.isRequired,
   disabled: PropTypes.bool.isRequired,
+  onChange: PropTypes.func,
 };
 
 export default PhysicalServerField;
