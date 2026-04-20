@@ -2,8 +2,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Form, Stack, Loading } from "@carbon/react";
-import PhysicalServerField from "./form/fields/physical_server_field.js";
-import ConfigPatternField from "./form/fields/config_pattern_field.js";
+import PhysicalServerField from "./form/fields/physical_server_field.jsx";
+import ConfigPatternField from "./form/fields/config_pattern_field.jsx";
 import './style/apply-config-pattern-form.scss';
 
 const API = window.API;

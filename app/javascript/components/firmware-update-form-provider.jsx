@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Form, Loading } from "@carbon/react";
-import FirmwareField from "./form/fields/firmware_field.js";
+import FirmwareField from "./form/fields/firmware_field.jsx";
 
 const API = window.API;
 
