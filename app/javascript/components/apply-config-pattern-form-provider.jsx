@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Form, Stack, Loading } from "@carbon/react";
 import PhysicalServerField from "./form/fields/physical_server_field.js";
 import ConfigPatternField from "./form/fields/config_pattern_field.js";
-import './style/apply-config-pattern-form.css';
+import './style/apply-config-pattern-form.scss';
 
 const API = window.API;
 

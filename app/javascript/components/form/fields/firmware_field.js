@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Grid, Column, ClickableTile } from "@carbon/react";
 import { BareMetalServer, Checkmark } from "@carbon/react/icons";
 import FirmwareCheckListField from "./firmware_check_list_field.js";
-import "../../style/firmware-update-field.css";
+import "../../style/firmware-update-field.scss";
 
 class FirmwareField extends React.Component {
 
