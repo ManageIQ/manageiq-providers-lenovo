@@ -25,7 +25,7 @@ const getPhysicalServerData = (providerID) => {
   return API.get(uri).then((data) => data.resources.map(resource => ({
     id: resource.id,
     name: resource.name,
-    firmwares: resource.hardware.firmwares,
+    firmwares: resource?.hardware?.firmwares || [],
   })));
 };
 

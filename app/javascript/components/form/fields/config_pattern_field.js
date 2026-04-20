@@ -16,14 +16,6 @@ class ConfigPatternField extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  getValidationState() {
-    let {valid, touched} = this.state;
-    if (!touched) {
-      return false;
-    }
-    return valid;
-   }
-
   handleChange(e) {
     let value = e.target.value;
     const isValid = value !== 'placeholder-item' && value !== '';

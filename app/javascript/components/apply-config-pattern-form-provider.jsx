@@ -73,9 +73,8 @@ const ApplyConfigPatternFormProvider = ({ dispatch }) => {
     }));
 
     // Check if all required fields are valid
-    const newIsValid = fieldName === 'configPatternField' 
-      ? isFieldValid && values.physicalServerField && values.physicalServerField.length > 0
-      : values.configPatternField && isFieldValid;
+    const newIsValid = isFieldValid &&
+    (fieldName === "configPatternField" ? values?.physicalServerField?.length : values?.configPatternField);
     
     setIsValid(newIsValid);
   }, [values]);

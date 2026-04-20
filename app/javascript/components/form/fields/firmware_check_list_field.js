@@ -10,7 +10,7 @@ const FirmwareCheckListField = ({ firmwareData, parentName, updateNavItem, serve
   return (
     <FormGroup legendText={__('Firmwares')}>
       {firmwareData.map((firmware) => {
-        const isChecked = selectedFirmwares && selectedFirmwares[firmware.name] === true;
+        const isChecked = selectedFirmwares?.[firmware?.name] || false;
         return (
           <Checkbox
             key={firmware.name}

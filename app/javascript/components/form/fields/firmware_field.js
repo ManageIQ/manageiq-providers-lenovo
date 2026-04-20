@@ -12,7 +12,7 @@ class FirmwareField extends React.Component {
 
     this.state = {
       navItemSelected: {},
-      selectedServerId: props.physicalServerData[0]?.id || null,
+      selectedServerId: props.physicalServerData?.[0]?.id || null,
     };
 
   }
@@ -66,7 +66,7 @@ class FirmwareField extends React.Component {
     const { physicalServerData } = this.props;
     const { selectedServerId } = this.state;
 
-    if (!physicalServerData || physicalServerData.length === 0) {
+    if (!physicalServerData?.length === 0) {
       return null;
     }
 
@@ -101,7 +101,6 @@ class FirmwareField extends React.Component {
             {selectedServer && (
               <div className="firmware-details-content">
                 <h4 className="firmware-section-title">{selectedServer.name}</h4>
-                <h5 className="firmware-subsection-title">{__('Firmwares')}</h5>
                 <FirmwareCheckListField
                   updateNavItem={this.updateNavItem}
                   firmwareData={selectedServer.firmwares}
