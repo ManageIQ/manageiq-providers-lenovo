@@ -28,8 +28,8 @@ const getPhysicalServerData = (providerID) => {
 };
 
 const getConfigPatternData = (providerID) => {
-  const typeFilter = encodeURIComponent("type='ManageIQ::Providers::Lenovo::PhysicalInfraManager::ConfigPattern'");
-const uri = `/api/customization_scripts?attributes=manager_ref,name&expand=resources&filter[]=type='ManageIQ::Providers::Lenovo::PhysicalInfraManager::ConfigPattern'&filter[]=manager_id=${providerID}`;
+  const uri = `/api/customization_scripts?attributes=manager_ref,name&expand=resources&filter[]=type='ManageIQ::Providers::Lenovo::PhysicalInfraManager::ConfigPattern'&filter[]=manager_id=${providerID}`;
+
   return API.get(uri).then((data) => data.resources.map(resource => ({
     value: resource.manager_ref,
     label: resource.name,

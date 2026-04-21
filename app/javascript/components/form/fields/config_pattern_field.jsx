@@ -57,5 +57,3 @@ ConfigPatternField.propTypes = {
 };
 
 export default ConfigPatternField;
-
-// Made with Bob

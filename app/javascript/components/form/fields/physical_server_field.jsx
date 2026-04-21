@@ -71,5 +71,3 @@ PhysicalServerField.propTypes = {
 };
 
 export default PhysicalServerField;
-
-// Made with Bob

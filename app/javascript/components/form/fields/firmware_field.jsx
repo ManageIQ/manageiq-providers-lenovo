@@ -115,5 +115,3 @@ FirmwareField.propTypes = {
 };
 
 export default FirmwareField;
-
-// Made with Bob
