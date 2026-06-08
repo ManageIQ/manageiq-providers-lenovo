@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import { Grid, Column, ClickableTile } from "@carbon/react";
 import { BareMetalServer, Checkmark } from "@carbon/react/icons";
@@ -20,12 +20,6 @@ const FirmwareField = ({ physicalServerData, name, onChange }) => {
 
       // Notify parent component of changes if onChange prop is provided
       if (onChange) {
-        // Check if any firmware is selected
-        const hasSelection = Object.keys(updatedNavItemSelected).some(serverId => {
-          const serverFirmwares = updatedNavItemSelected[serverId];
-          return Object.values(serverFirmwares).some(isChecked => isChecked);
-        });
-        
         // Convert navItemSelected to the format expected by the parent
         const firmwareField = {};
         Object.keys(updatedNavItemSelected).forEach(serverId => {
@@ -39,7 +33,8 @@ const FirmwareField = ({ physicalServerData, name, onChange }) => {
             firmwareField[serverId] = selectedFirmwares;
           }
         });
-        
+        // Check if any firmware is selected
+        const hasSelection = Object.keys(firmwareField).length > 0;
         onChange(firmwareField, hasSelection);
       }
 
