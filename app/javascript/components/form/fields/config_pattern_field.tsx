@@ -1,16 +1,28 @@
-import { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from "react";
 import { Select, SelectItem } from "@carbon/react";
+import type { OptionType } from "../common_types";
 
-const ConfigPatternField = ({ configPatternData, name, onChange, updateChildren }) => {
+type ConfigPatternFieldProps = {
+  configPatternData: OptionType[];
+  name: string;
+  onChange?: (value: string, isValid: boolean) => void;
+  updateChildren?: (value: string) => void;
+};
+
+const ConfigPatternField: React.FC<ConfigPatternFieldProps> = ({
+  configPatternData,
+  name,
+  onChange,
+  updateChildren,
+}) => {
   const [touched, setTouched] = useState(false);
   const [value, setValue] = useState("");
   const [valid, setValid] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newValue = e.target.value;
-    const isValid = newValue !== 'placeholder-item' && newValue !== '';
-    
+    const isValid = newValue !== "placeholder-item" && newValue !== "";
+
     setValue(newValue);
     setValid(isValid);
 
@@ -30,30 +42,30 @@ const ConfigPatternField = ({ configPatternData, name, onChange, updateChildren 
   };
 
   const patternComponentOptions = configPatternData.map((pattern) => {
-    return <SelectItem key={pattern.value} value={pattern.value} text={pattern.label} />
+    return (
+      <SelectItem
+        key={pattern.value as string}
+        value={pattern.value as string}
+        text={pattern.label}
+      />
+    );
   });
 
   return (
     <Select
       id="selectPattern"
-      labelText={__('Config Pattern')}
+      labelText={__("Config Pattern")}
       name={name}
       value={value}
       onChange={handleChange}
       onClick={handleClick}
       invalid={touched && !valid}
-      invalidText={__('Please select a pattern')}>
-      <SelectItem value="placeholder-item" text={__('Choose a pattern')} />
+      invalidText={__("Please select a pattern")}
+    >
+      <SelectItem value="placeholder-item" text={__("Choose a pattern")} />
       {patternComponentOptions}
     </Select>
   );
-};
-
-ConfigPatternField.propTypes = {
-  configPatternData: PropTypes.array.isRequired,
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func,
-  updateChildren: PropTypes.func,
 };
 
 export default ConfigPatternField;
