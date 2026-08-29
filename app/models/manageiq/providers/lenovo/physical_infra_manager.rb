@@ -4,7 +4,7 @@ class ManageIQ::Providers::Lenovo::PhysicalInfraManager < ManageIQ::Providers::P
   include AuthenticatableProvider
 
   supports :change_password
-  supports :native_console
+  supports :management_console
   supports :create
   supports :provisioning
 
