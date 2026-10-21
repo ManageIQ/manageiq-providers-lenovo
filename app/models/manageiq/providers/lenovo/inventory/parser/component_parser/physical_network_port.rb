@@ -72,7 +72,9 @@ module ManageIQ::Providers::Lenovo
               @persister.physical_switch_network_ports.data
 
       ports.each do |origin_port|
-        connected_port = ports.find { |destination_port| connected_port?(origin_port, destination_port) }
+        connected_port = ports.find do |destination_port|
+          destination_port.data[:uid_ems] != origin_port.data[:uid_ems] && connected_port?(origin_port, destination_port)
+        end
         origin_port.data[:connected_port_uid] = connected_port.data[:uid_ems] if connected_port
       end
     end

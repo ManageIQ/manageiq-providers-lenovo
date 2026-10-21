@@ -55,7 +55,9 @@ module ManageIQ::Providers::Lenovo
       #
       def bind_network_ports!(ports)
         ports.each do |origin_port|
-          connected_port = ports.find { |destination_port| connected_port?(origin_port, destination_port) }
+          connected_port = ports.find do |destination_port|
+            destination_port[:uid_ems] != origin_port[:uid_ems] && connected_port?(origin_port, destination_port)
+          end
           origin_port[:connected_port_uid] = connected_port[:uid_ems] if connected_port
         end
       end
